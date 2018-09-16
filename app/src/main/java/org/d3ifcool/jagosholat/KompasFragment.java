@@ -24,6 +24,8 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.d3ifcool.jagosholat.KompasFragmentContent.KompasGPSTracker;
+import org.d3ifcool.jagosholat.KompasFragmentContent.KompasRose;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -32,8 +34,6 @@ import java.io.InputStream;
 import java.util.List;
 import java.util.Locale;
 
-import id.duglegir.jagosholat.Controller.KompasFragmentContent.KompasGPSTracker;
-import id.duglegir.jagosholat.Controller.KompasFragmentContent.KompasRose;
 
 public class KompasFragment extends Fragment implements SensorListener {
 

@@ -1,0 +1,8 @@
+<android.support.v7.widget.RecyclerView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/listViewFeature"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:listitem="@layout/content_tatacara_text_niat"
+    tools:context="id.duglegir.jagosholat.Controller.TataCaraFragmentContent.TataCaraNiatFragment"/>

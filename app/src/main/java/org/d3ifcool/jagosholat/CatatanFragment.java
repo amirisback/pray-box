@@ -173,14 +173,14 @@ public class CatatanFragment extends Fragment {
         // Panggil method untuk mencatat -----------------------------------------------------------
         id_ibadah = "IDS" + functionHelper.getRandomChar();
 
-        tampilanButtonSimpan(isi_sholat);
-
-        btn_simpan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                addData(isi_sholat);
-            }
-        });
+//        tampilanButtonSimpan(isi_sholat);
+//
+//        btn_simpan.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                addData(isi_sholat);
+//            }
+//        });
         // -----------------------------------------------------------------------------------------
         return rootView;
         }

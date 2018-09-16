@@ -2,6 +2,27 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.d3ifcool.jagosholat">
 
+    <!-- === Permission Kiblat Dari Bryan === -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_GPS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-feature android:name="android.hardware.location.gps" />
+
+    <uses-permission
+        android:name="com.arifin.sujud.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
+    <!-- =================================== -->
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_logo_jago_sholat"
@@ -22,23 +43,29 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".TentangKamiActivity"
-            android:label="Tentang Kami"
-            android:parentActivityName=".MainActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
-        </activity>
-        <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+    <activity
+        android:name=".TentangKamiActivity"
+        android:label="Tentang Kami"
+        android:parentActivityName=".MainActivity"
+        android:screenOrientation="portrait"
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".MainActivity" />
+    </activity>
+    <activity
+        android:name=".MainActivity"
+        android:label="@string/app_name"
+        android:screenOrientation="portrait"
+        android:theme="@style/AppTheme.NoActionBar">
+    </activity>
 
+    <provider
+        android:name=".Model.DataProvider"
+        android:authorities="org.d3ifcool.jagosholat"
+        android:exported="false"/>
+
+    <service android:name=".KompasFragmentContent.KompasGPSTracker" />
     </application>
 
 </manifest>

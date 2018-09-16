@@ -31,7 +31,7 @@ public class MainPagerAdapter extends FragmentPagerAdapter {
             case 3 :
                 return new KompasFragment();
             case 4 :
-                return new FeatureFragment();
+                return new TataCaraFragment();
             default:
                 return null;
         }
