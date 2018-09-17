@@ -13,8 +13,6 @@ import android.util.Log;
 
 import org.d3ifcool.jagosholat.Model.DataContract.DataEntry;
 
-
-
 /**
  * Created by Faisal Amir
  * FrogoBox Inc License

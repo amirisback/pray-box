@@ -61,7 +61,7 @@
             android:layout_marginBottom="@dimen/dimen_primary"
             android:gravity="right"
             android:text="Arab"
-            android:textColor="@color/textColorButton"
+            android:textColor="@color/textColorWhite"
             android:textSize="30sp" />
 
         <TextView

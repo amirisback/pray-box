@@ -39,10 +39,6 @@ public class DataOperation {
             DataEntry.COLUMN_WAKTU,
             DataEntry.COLUMN_STATUS
     };
-
-
-
-
     // ---------------------------------------------------------------------------------------------
 
     private long result; // result ini untuk mendapatkan boolean dari insert data (true/false)

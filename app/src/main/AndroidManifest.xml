@@ -31,7 +31,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".SplashScreenActivity"
+            android:name=".View.SplashScreenActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
@@ -44,17 +44,17 @@
         </activity>
 
     <activity
-        android:name=".TentangKamiActivity"
+        android:name=".View.TentangKamiActivity"
         android:label="Tentang Kami"
-        android:parentActivityName=".MainActivity"
+        android:parentActivityName=".View.MainActivity"
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme">
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
-            android:value=".MainActivity" />
+            android:value=".View.MainActivity" />
     </activity>
     <activity
-        android:name=".MainActivity"
+        android:name=".View.MainActivity"
         android:label="@string/app_name"
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme.NoActionBar">
@@ -65,7 +65,7 @@
         android:authorities="org.d3ifcool.jagosholat"
         android:exported="false"/>
 
-    <service android:name=".KompasFragmentContent.KompasGPSTracker" />
+    <service android:name=".Controller.KompasFragmentContent.KompasGPSTracker" />
     </application>
 
 </manifest>
