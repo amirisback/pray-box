@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.d3ifcool.jagosholat.Controller.Helper.FunctionHelper;
+import org.d3ifcool.jagosholat.Controller.Helper.MethodHelper;
 import org.d3ifcool.jagosholat.Controller.Helper.JadwalHelper;
 import org.d3ifcool.jagosholat.Model.DataOperation;
 import org.d3ifcool.jagosholat.R;
@@ -21,7 +21,7 @@ public class CatatanFragment extends Fragment {
 
     // ---------------------------------------------------------------------------------------------
     // Deklarasi Class Helper Buatan Sendiri
-    private FunctionHelper functionHelper = new FunctionHelper();
+    private MethodHelper methodHelper = new MethodHelper();
     private JadwalHelper jadwalHelper = new JadwalHelper();
     private DataOperation crud = new DataOperation();
     // ---------------------------------------------------------------------------------------------
@@ -146,17 +146,17 @@ public class CatatanFragment extends Fragment {
         // -----------------------------------------------------------------------------------------
 
         // Set tampilan tanggal dan waktu ----------------------------------------------------------
-        functionHelper.getSystemTime();
-        functionHelper.getSystemRealTime();
-        functionHelper.getSumRealTime();
+        methodHelper.getSystemTime();
+        methodHelper.getSystemRealTime();
+        methodHelper.getSumRealTime();
         jadwalHelper.setJadwalShalat(txt_sholat);
-        txt_tanggal.setText(functionHelper.getDateToday());
+        txt_tanggal.setText(methodHelper.getDateToday());
         // -----------------------------------------------------------------------------------------
 
         // Get Data dari XML Layout ----------------------------------------------------------------
         isi_sholat = txt_sholat.getText().toString();
-        isi_waktu = functionHelper.getOutputStringTime();
-        isi_tanggal = functionHelper.getDateToday();
+        isi_waktu = methodHelper.getOutputStringTime();
+        isi_tanggal = methodHelper.getDateToday();
         isi_status = "Shalat";
         // -----------------------------------------------------------------------------------------
 
@@ -172,7 +172,7 @@ public class CatatanFragment extends Fragment {
         // -----------------------------------------------------------------------------------------
 
         // Panggil method untuk mencatat -----------------------------------------------------------
-        id_ibadah = "IDS" + functionHelper.getRandomChar();
+        id_ibadah = "IDS" + methodHelper.getRandomChar();
 
         tampilanButtonSimpan(isi_sholat);
 

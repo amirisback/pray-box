@@ -1,5 +1,23 @@
 package org.d3ifcool.jagosholat.View;
 
+/**
+ * Created by Faisal Amir
+ * FrogoBox Inc License
+ * =========================================
+ * JagoSholat
+ * Copyright (C) 25/04/2018.
+ * All rights reserved
+ * -----------------------------------------
+ * Name     : Muhammad Faisal Amir
+ * E-mail   : faisalamircs@gmail.com
+ * Line     : bullbee117
+ * Phone    : 081357108568
+ * Majors   : D3 Teknik Informatika 2016
+ * Campus   : Telkom University
+ * -----------------------------------------
+ * id.amirisback.frogobox
+ */
+
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
@@ -20,13 +38,13 @@ public class MainActivity extends AppCompatActivity {
     // Deklarasi Kebutuhan
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
-    private int resID;
     // ---------------------------------------------------------------------------------------------
 
     // ---------------------------------------------------------------------------------------------
     // Deklarasi Judul
     private String[] pageTitle = {"Catatan", "Jadwal", "Statistik", "Kiblat", "Tata Cara"};
-    private String[] pageIcon = {"catat", "jadwal", "statistik", "kompas", "more"};
+    private int[] pageIcon = {R.drawable.ic_main_24px_catat, R.drawable.ic_main_24px_jadwal,
+            R.drawable.ic_main_24px_statistik, R.drawable.ic_main_24px_kompas, R.drawable.ic_main_24px_more};
     // ---------------------------------------------------------------------------------------------
 
     @Override
@@ -78,8 +96,7 @@ public class MainActivity extends AppCompatActivity {
 
         // -----------------------------------------------------------------------------------------
         for (int i = 0 ; i < pageTitle.length; i ++){
-            resID = getResources().getIdentifier("ic_"+pageIcon[i]+"_24px" , "drawable", getPackageName());
-            mTabLayout.addTab(mTabLayout.newTab().setIcon(resID));
+            mTabLayout.addTab(mTabLayout.newTab().setIcon(pageIcon[i]));
         }
         // -----------------------------------------------------------------------------------------
 

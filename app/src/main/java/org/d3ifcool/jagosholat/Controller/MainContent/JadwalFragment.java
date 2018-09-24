@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import org.d3ifcool.jagosholat.Controller.Helper.FunctionHelper;
+import org.d3ifcool.jagosholat.Controller.Helper.MethodHelper;
 import org.d3ifcool.jagosholat.Controller.Helper.JadwalHelper;
 import org.d3ifcool.jagosholat.R;
 
@@ -16,7 +16,7 @@ public class JadwalFragment extends Fragment {
 
     // Deklarasi Class Helper ----------------------------------------------------------------------
     private JadwalHelper jadwalHelper = new JadwalHelper();
-    private FunctionHelper functionHelper = new FunctionHelper();
+    private MethodHelper methodHelper = new MethodHelper();
     // ---------------------------------------------------------------------------------------------
 
     // Deklarasi Requirement Variable --------------------------------------------------------------
@@ -26,8 +26,8 @@ public class JadwalFragment extends Fragment {
     private final String ASHAR = "Shalat Ashar";
     private final String MAGHRIB = "Shalat Maghrib";
     private final String ISYA = "Shalat Isya";
-    private int jumlahDetikSaatIni = functionHelper.getSumWaktuDetik();
-    private int miliDetik = functionHelper.getDetikKeMiliDetik();
+    private int jumlahDetikSaatIni = methodHelper.getSumWaktuDetik();
+    private int miliDetik = methodHelper.getDetikKeMiliDetik();
     // ---------------------------------------------------------------------------------------------
 
     // Deklarasi Element Layout XML ----------------------------------------------------------------

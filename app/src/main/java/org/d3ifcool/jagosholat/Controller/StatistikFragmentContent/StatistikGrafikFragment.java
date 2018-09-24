@@ -15,7 +15,7 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
-import org.d3ifcool.jagosholat.Controller.Helper.FunctionHelper;
+import org.d3ifcool.jagosholat.Controller.Helper.MethodHelper;
 import org.d3ifcool.jagosholat.Model.DataOperation;
 import org.d3ifcool.jagosholat.R;
 import org.d3ifcool.jagosholat.Controller.MainContent.StatistikFragment;
@@ -27,7 +27,7 @@ public class StatistikGrafikFragment extends Fragment {
     // ---------------------------------------------------------------------------------------------
     private LineChart mChart;
     // ---------------------------------------------------------------------------------------------
-    private FunctionHelper functionHelper = new FunctionHelper();
+    private MethodHelper methodHelper = new MethodHelper();
     private DataOperation crud = new DataOperation();
     private Cursor cursorTanggal, cursorCount;
     private String [] days;
@@ -56,6 +56,7 @@ public class StatistikGrafikFragment extends Fragment {
         mChart.setScaleEnabled(false);
         mChart.canScrollHorizontally(10);
         mChart.setDescription(null);
+        mChart.setMinimumHeight(20);
         // -----------------------------------------------------------------------------------------
         ArrayList<Entry> yValues = new ArrayList<>();
         ArrayList<ILineDataSet> dataSets = new ArrayList<>();
@@ -105,13 +106,14 @@ public class StatistikGrafikFragment extends Fragment {
             }
         }
 
-        LineDataSet mLineDataSet = new LineDataSet(yValues, "Grafik PerHari Tahun " + functionHelper.getSystemYear());
+        LineDataSet mLineDataSet = new LineDataSet(yValues, "Grafik PerHari Tahun " + methodHelper.getSystemYear());
         // -----------------------------------------------------------------------------------------
         mLineDataSet.setFillAlpha(10);
         mLineDataSet.setColor(Color.BLACK);
         mLineDataSet.setLineWidth(3f);
         mLineDataSet.setValueTextSize(10f);
         mLineDataSet.setValueTextColor(Color.BLACK);
+        mLineDataSet.setLabel("ASASAS");
         // -----------------------------------------------------------------------------------------
         dataSets.add(mLineDataSet);
         LineData data = new LineData(dataSets);

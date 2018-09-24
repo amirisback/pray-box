@@ -7,8 +7,8 @@ import android.support.v4.app.FragmentPagerAdapter;
 import org.d3ifcool.jagosholat.Controller.MainContent.CatatanFragment;
 import org.d3ifcool.jagosholat.Controller.MainContent.JadwalFragment;
 import org.d3ifcool.jagosholat.Controller.MainContent.KompasFragment;
-import org.d3ifcool.jagosholat.Controller.MainContent.StatistikFragment;
 import org.d3ifcool.jagosholat.Controller.MainContent.TataCaraFragment;
+import org.d3ifcool.jagosholat.Controller.StatistikFragmentContent.StatistikHarianFragment;
 
 /**
  * Created by Faisal Amir on 25/02/2018.
@@ -33,7 +33,7 @@ public class MainPagerAdapter extends FragmentPagerAdapter {
             case 1 :
                 return new JadwalFragment();
             case 2 :
-                return new StatistikFragment();
+                return new StatistikHarianFragment();
             case 3 :
                 return new KompasFragment();
             case 4 :

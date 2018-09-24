@@ -20,16 +20,16 @@
     <color name="Background_JadwalList_Event_0">#E600796B</color>
     <color name="Background_JadwalList_Event_1">#A600695C</color>
 
-    <color name="Bacground_Statistik_Harian">#558B2F</color>
+    <!--<color name="Bacground_Statistik_Harian">#558B2F</color>-->
 
     <!--Color Icon TabLayout-->
     <color name="IconUnselect">@color/textColorWhite</color>
     <color name="IconSelect">@color/colorAccent</color>
-    <color name="Background_TabLayout">@color/Background_Primary</color>
+    <!--<color name="Background_TabLayout">@color/Background_Primary</color>-->
 
-    <color name="Progress_Red">#F44336</color>
-    <color name="Progress_Yellow">#FFC107</color>
-    <color name="Progress_Green">#1B5E20</color>
+    <!--<color name="Progress_Red">#F44336</color>-->
+    <!--<color name="Progress_Yellow">#FFC107</color>-->
+    <!--<color name="Progress_Green">#1B5E20</color>-->
     <color name="Judul_statistik">#26A69A</color>
     <color name="background_material_dark">#ffffff</color>
 </resources>

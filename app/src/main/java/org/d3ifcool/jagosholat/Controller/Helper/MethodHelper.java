@@ -5,16 +5,12 @@ import android.widget.TextView;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-
 
 /**
  * Created by Bryan Rafsanzani on 06/09/2018.
  */
 
-public class FunctionHelper {
+public class MethodHelper {
 
     // Requirement Random Karakter -----------------------------------------------------------------
     private char[] chars = "1234567890".toCharArray();
@@ -32,7 +28,7 @@ public class FunctionHelper {
     private final int detikKeMili = 1000;
     // ---------------------------------------------------------------------------------------------
 
-    public FunctionHelper() {
+    public MethodHelper() {
         this.currentTime = Calendar.getInstance();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd MMMM yyyy");
         this.dateToday = simpleDateFormat.format(currentTime.getTime());
