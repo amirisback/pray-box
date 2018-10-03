@@ -21,6 +21,9 @@
 <resources>
 
     <dimen name="margin_inside_fragment">24dp</dimen>
+    <dimen name="dimen_small">10dp</dimen>
     <dimen name="dimen_primary">16dp</dimen>
+    <dimen name="dimen_jadwal_shalat">50dp</dimen>
+    <dimen name="dimen_little">2dp</dimen>
 
 </resources>

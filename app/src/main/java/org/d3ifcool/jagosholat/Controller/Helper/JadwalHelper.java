@@ -3,6 +3,7 @@ package org.d3ifcool.jagosholat.Controller.Helper;
 import android.os.CountDownTimer;
 import android.widget.TextView;
 
+import org.d3ifcool.jagosholat.Controller.Helper.LibraryPrayerTime.PrayerTime;
 import org.d3ifcool.jagosholat.R;
 
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public class JadwalHelper {
 
     // Deklarasi Method Helper ---------------------------------------------------------------------
     private MethodHelper methodHelper = new MethodHelper();
-    private WaktuShalatHelper prayers = new WaktuShalatHelper();
+    private PrayerTime prayers = new PrayerTime();
     private Date now = new Date();
     private Calendar cal = Calendar.getInstance();
     // ---------------------------------------------------------------------------------------------

@@ -35,9 +35,6 @@ public class TataCaraFragment extends Fragment {
         viewPager.setAdapter(tataCaraPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
         // -----------------------------------------------------------------------------------------
-
         return rootView;
     }
-
 }
-

@@ -30,8 +30,10 @@ public class CatatanFragment extends Fragment {
     // Deklarasi Requirement Variable
     private String cekid;
     private final String bukanWaktuSholat = "Belum Masuk Waktu Sholat";
-    private String[] mHadistArab = {"hadis_arab_0","hadis_arab_1","hadis_arab_2","hadis_arab_3","hadis_arab_4","hadis_arab_5"};
-    private String[] mHadistText = {"hadis_text_0","hadis_text_1","hadis_text_2","hadis_text_3","hadis_text_4","hadis_text_5"};
+    private int[] mHadistArab = {R.string.hadis_arab_0, R.string.hadis_arab_1, R.string.hadis_arab_2,
+            R.string.hadis_arab_3, R.string.hadis_arab_4, R.string.hadis_arab_5};
+    private int[] mHadistText = {R.string.hadis_text_0, R.string.hadis_text_1, R.string.hadis_text_2,
+            R.string.hadis_text_3, R.string.hadis_text_4, R.string.hadis_text_5};
     // ---------------------------------------------------------------------------------------------
 
     // ---------------------------------------------------------------------------------------------
@@ -165,8 +167,9 @@ public class CatatanFragment extends Fragment {
         int maxRandom = mHadistArab.length - 1;
         int minRandom = 0;
         int getIndexArrayHadis = randomInt.nextInt(maxRandom - minRandom + 1) + minRandom;
-        int mResIdHadistArab = getResources().getIdentifier(mHadistArab[getIndexArrayHadis],"string", getActivity().getPackageName());
-        int mResIdHadistText = getResources().getIdentifier(mHadistText[getIndexArrayHadis],"string", getActivity().getPackageName());
+
+        int mResIdHadistArab = mHadistArab[getIndexArrayHadis];
+        int mResIdHadistText = mHadistText[getIndexArrayHadis];
         txt_hadist_arab.setText(mResIdHadistArab);
         txt_hadist_text.setText(mResIdHadistText);
         // -----------------------------------------------------------------------------------------

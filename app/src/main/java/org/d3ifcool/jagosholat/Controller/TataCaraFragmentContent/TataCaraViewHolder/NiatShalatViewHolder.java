@@ -12,7 +12,6 @@ import org.d3ifcool.jagosholat.R;
 
 import java.util.ArrayList;
 
-
 /**
  * Created by Faisal Amir
  * FrogoBox Inc License

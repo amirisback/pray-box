@@ -1,4 +1,4 @@
-package org.d3ifcool.jagosholat.Controller.StatistikFragmentContent.StatistikAdapter;
+package org.d3ifcool.jagosholat.Controller.StatistikFragmentContent;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -8,13 +8,13 @@ import android.view.ViewGroup;
 import android.widget.CursorAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import org.d3ifcool.jagosholat.Model.DataContract.DataEntry;
 
+import org.d3ifcool.jagosholat.Model.DataContract.DataEntry;
 import org.d3ifcool.jagosholat.R;
 
-public class StatistikHarianCursorAdapter extends CursorAdapter {
+public class StatistikCursorAdapter extends CursorAdapter {
 
-    public StatistikHarianCursorAdapter(Context context, Cursor c) {
+    public StatistikCursorAdapter(Context context, Cursor c) {
         super(context, c, 0 /* flags */);
     }
 
@@ -22,7 +22,7 @@ public class StatistikHarianCursorAdapter extends CursorAdapter {
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
         // Mereturn layout content dari listview yang akan di pakai
         // disini mereturn content_statistik_harian
-        return LayoutInflater.from(context).inflate(R.layout.content_statistik_harian, parent, false);
+        return LayoutInflater.from(context).inflate(R.layout.content_statistik_hari_ini, parent, false);
     }
 
     @Override
@@ -30,9 +30,9 @@ public class StatistikHarianCursorAdapter extends CursorAdapter {
 
         // -----------------------------------------------------------------------------------------
         // Deklarasi Element XML
-        TextView stat_waktu = (TextView)view.findViewById(R.id.stat_waktu);
-        TextView stat_shalat = (TextView)view.findViewById(R.id.stat_shalat);
-        ImageView img = (ImageView)view.findViewById(R.id.img_status);
+        TextView stat_waktu = (TextView)view.findViewById(R.id.txt_harian_waktu);
+        TextView stat_shalat = (TextView)view.findViewById(R.id.txt_harian_shalat);
+        ImageView img = (ImageView)view.findViewById(R.id.img_harian_shalat);
         // -----------------------------------------------------------------------------------------
 
         // -----------------------------------------------------------------------------------------
@@ -51,14 +51,13 @@ public class StatistikHarianCursorAdapter extends CursorAdapter {
 
         // -----------------------------------------------------------------------------------------
         // Mengecek gambar checklist
-        String resourceImageStat[] = {"ic_done_white_48px", "ic_undone_white_48px"};
-        String outImage;
+        int outImage;
         if (status.equalsIgnoreCase("shalat")){
-            outImage = resourceImageStat[0]; // Tidak Shalat
+            outImage = R.drawable.ic_statistik_48dp_iya; // Shalat
         } else {
-            outImage = resourceImageStat[1]; // Shalat
+            outImage = R.drawable.ic_statistik_48dp_tidak; // Tidak Shalat
         }
-        int resIdImage = context.getResources().getIdentifier(outImage, "drawable", context.getPackageName());
+        int resIdImage = outImage;
         // -----------------------------------------------------------------------------------------
 
         // -----------------------------------------------------------------------------------------

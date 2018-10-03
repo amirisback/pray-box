@@ -51,7 +51,7 @@ public class TataCaraWudhuFragment extends Fragment {
             // -------------------------------------------------------------------------------------
             dots[i] = new ImageView(getContext());
             dots[i].setImageDrawable(ContextCompat.getDrawable(getContext().getApplicationContext(),
-                    R.drawable.dot_nonactive));
+                    R.drawable.ic_tatacara_24dp_dot_nonactive));
             // -------------------------------------------------------------------------------------
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             params.setMargins(8, 0, 8, 0);
@@ -60,7 +60,7 @@ public class TataCaraWudhuFragment extends Fragment {
         }
         // -----------------------------------------------------------------------------------------
 
-        dots[0].setImageDrawable(ContextCompat.getDrawable(getContext().getApplicationContext(), R.drawable.dot_active));
+        dots[0].setImageDrawable(ContextCompat.getDrawable(getContext().getApplicationContext(), R.drawable.ic_tatacara_24dp_dot_active));
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -71,9 +71,9 @@ public class TataCaraWudhuFragment extends Fragment {
             @Override
             public void onPageSelected(int position) {
                 for(int i = 0; i< dotscount; i++){
-                    dots[i].setImageDrawable(ContextCompat.getDrawable(getContext().getApplicationContext(), R.drawable.dot_nonactive));
+                    dots[i].setImageDrawable(ContextCompat.getDrawable(getContext().getApplicationContext(), R.drawable.ic_tatacara_24dp_dot_nonactive));
                 }
-                dots[position].setImageDrawable(ContextCompat.getDrawable(getContext().getApplicationContext(), R.drawable.dot_active));
+                dots[position].setImageDrawable(ContextCompat.getDrawable(getContext().getApplicationContext(), R.drawable.ic_tatacara_24dp_dot_active));
             }
 
             @Override

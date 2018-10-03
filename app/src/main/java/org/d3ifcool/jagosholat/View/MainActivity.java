@@ -19,8 +19,11 @@ package org.d3ifcool.jagosholat.View;
  */
 
 import android.content.Intent;
+import android.content.res.TypedArray;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
@@ -47,6 +50,14 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.ic_main_24px_statistik, R.drawable.ic_main_24px_kompas, R.drawable.ic_main_24px_more};
     // ---------------------------------------------------------------------------------------------
 
+
+    public int getActionBarSize() {
+        TypedArray styledAttributes = getTheme().obtainStyledAttributes(new int[] { android.R.attr.actionBarSize });
+        int actionBarSize = (int) styledAttributes.getDimension(0, 0);
+        styledAttributes.recycle();
+        return actionBarSize;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
         // Menjalankan Fungsi
         SlideView();// Fungsi Slide di gunakan untuk ViewPager sliding Fragments
         // -----------------------------------------------------------------------------------------
-
     }
 
     @Override
@@ -86,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatemen
         return super.onOptionsItemSelected(item);
     }
+
 
     public void SlideView(){
 
@@ -116,6 +127,9 @@ public class MainActivity extends AppCompatActivity {
                 setTitle(pageTitle[tab.getPosition()]);
                 int tabIconColor = ContextCompat.getColor(getApplicationContext(), R.color.IconSelect);
                 tab.getIcon().setColorFilter(tabIconColor, PorterDuff.Mode.SRC_IN);
+
+                // ---------------------------------------------------------------------------------
+                // ---------------------------------------------------------------------------------
 
             }
 
