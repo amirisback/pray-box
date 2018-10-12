@@ -80,4 +80,8 @@
         <item name="android:layout_weight">1</item>
         <item name="android:textColor">@color/textColorBlack</item>
     </style>
+
+    <style name="Theme"></style>
+
+    <style name="ThemeOverlay"></style>
 </resources>
