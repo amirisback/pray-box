@@ -19,8 +19,9 @@
  * 
  -->
 
-<android.support.design.widget.CoordinatorLayout
+<LinearLayout
     android:id="@+id/main_layout"
+    android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -66,8 +67,8 @@
         android:id="@+id/viewpager"
         android:layout_below="@+id/tab_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         />
 
-</android.support.design.widget.CoordinatorLayout>
+</LinearLayout>

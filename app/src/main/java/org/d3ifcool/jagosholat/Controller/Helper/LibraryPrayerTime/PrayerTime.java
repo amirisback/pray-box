@@ -1,4 +1,4 @@
-package org.d3ifcool.jagosholat.Controller.Helper;
+package org.d3ifcool.jagosholat.Controller.Helper.LibraryPrayerTime;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -14,7 +14,7 @@ import java.util.TimeZone;
  * All rights reserved
  * -----------------------------------------
  */
-public class WaktuShalatHelper {
+public class PrayerTime {
     // ---------------------- Global Variables --------------------
     private int calcMethod; // caculation method
     private int asrJuristic; // Juristic method for Asr
@@ -59,7 +59,7 @@ public class WaktuShalatHelper {
     private double[] prayerTimesCurrent;
     private int[] offsets;
 
-    public WaktuShalatHelper(){
+    public PrayerTime(){
         this.setCalcMethod(0);
         this.setAsrJuristic(0);
         this.setDhuhrMinutes(0);

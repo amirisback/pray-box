@@ -7,19 +7,20 @@
     android:gravity="center">
 
     <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:src="@drawable/empty_view"/>
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/ic_empty_view"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:text="Belum ada catatan ibadah"/>
+        android:textSize="12sp"
+        android:text="Silahkan Mencatatan"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Silahkan mencatat ibadah shalat"/>
+        android:textSize="14sp"
+        android:text="Ibadah Shalat"/>
 
 </LinearLayout>

@@ -6,7 +6,6 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
-
 import org.d3ifcool.jagosholat.R;
 
 /**
@@ -30,7 +29,7 @@ import org.d3ifcool.jagosholat.R;
 public class SplashScreenActivity extends AppCompatActivity {
 
     // ---------------------------------------------------------------------------------------------
-    private final static int SPLASH_INTERVAL = 1500;
+    private final static int SPLASH_INTERVAL = 1000;
     // ---------------------------------------------------------------------------------------------
 
     @Override

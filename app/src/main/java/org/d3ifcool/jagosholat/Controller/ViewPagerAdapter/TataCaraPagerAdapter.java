@@ -22,6 +22,7 @@ public class TataCaraPagerAdapter extends FragmentPagerAdapter {
         super(fm);
         mContext = context;
     }
+
     @Override
     public android.support.v4.app.Fragment getItem(int position) {
         switch (position){

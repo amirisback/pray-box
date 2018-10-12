@@ -3,13 +3,13 @@ package org.d3ifcool.jagosholat.Controller.Helper;
 import android.os.CountDownTimer;
 import android.widget.TextView;
 
+import org.d3ifcool.jagosholat.Controller.Helper.LibraryPrayerTime.PrayerTime;
 import org.d3ifcool.jagosholat.R;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
-
 
 /**
  * Created by Faisal Amir on 18/03/2018.
@@ -18,8 +18,8 @@ import java.util.concurrent.TimeUnit;
 public class JadwalHelper {
 
     // Deklarasi Method Helper ---------------------------------------------------------------------
-    private FunctionHelper functionHelper = new FunctionHelper();
-    private WaktuShalatHelper prayers = new WaktuShalatHelper();
+    private MethodHelper methodHelper = new MethodHelper();
+    private PrayerTime prayers = new PrayerTime();
     private Date now = new Date();
     private Calendar cal = Calendar.getInstance();
     // ---------------------------------------------------------------------------------------------
@@ -60,8 +60,8 @@ public class JadwalHelper {
         this.jmlBeMidnight = (23 * JAM_KE_DETIK) + (59 * MENIT_KE_DETIK); // 86.340
         this.jmlAftMidnight = (0 * JAM_KE_DETIK) + (0 * MENIT_KE_DETIK); // 0
         setJmlWaktu();
-        functionHelper.getSystemRealTime();
-        this.waktuSaatIni = functionHelper.getSumWaktuDetik();
+        methodHelper.getSystemRealTime();
+        this.waktuSaatIni = methodHelper.getSumWaktuDetik();
     }
     // ---------------------------------------------------------------------------------------------
     public int getJmlWaktuShubuh() {
@@ -183,8 +183,6 @@ public class JadwalHelper {
         // -----------------------------------------------------------------------------------------
 
     }
-
-
 
     public void setJmlWaktu(){
         // -----------------------------------------------------------------------------------------

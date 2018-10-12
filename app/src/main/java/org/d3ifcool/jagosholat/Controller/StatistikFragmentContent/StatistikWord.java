@@ -1,4 +1,4 @@
-package org.d3ifcool.jagosholat.Controller.StatistikFragmentContent.StatistikObject;
+package org.d3ifcool.jagosholat.Controller.StatistikFragmentContent;
 
 /**
  * Created by Faisal Amir

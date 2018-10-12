@@ -1,8 +1,29 @@
 package org.d3ifcool.jagosholat.View;
 
+/**
+ * Created by Faisal Amir
+ * FrogoBox Inc License
+ * =========================================
+ * JagoSholat
+ * Copyright (C) 25/04/2018.
+ * All rights reserved
+ * -----------------------------------------
+ * Name     : Muhammad Faisal Amir
+ * E-mail   : faisalamircs@gmail.com
+ * Line     : bullbee117
+ * Phone    : 081357108568
+ * Majors   : D3 Teknik Informatika 2016
+ * Campus   : Telkom University
+ * -----------------------------------------
+ * id.amirisback.frogobox
+ */
+
 import android.content.Intent;
+import android.content.res.TypedArray;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
@@ -20,14 +41,22 @@ public class MainActivity extends AppCompatActivity {
     // Deklarasi Kebutuhan
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
-    private int resID;
     // ---------------------------------------------------------------------------------------------
 
     // ---------------------------------------------------------------------------------------------
     // Deklarasi Judul
     private String[] pageTitle = {"Catatan", "Jadwal", "Statistik", "Kiblat", "Tata Cara"};
-    private String[] pageIcon = {"catat", "jadwal", "statistik", "kompas", "more"};
+    private int[] pageIcon = {R.drawable.ic_main_24px_catat, R.drawable.ic_main_24px_jadwal,
+            R.drawable.ic_main_24px_statistik, R.drawable.ic_main_24px_kompas, R.drawable.ic_main_24px_more};
     // ---------------------------------------------------------------------------------------------
+
+
+    public int getActionBarSize() {
+        TypedArray styledAttributes = getTheme().obtainStyledAttributes(new int[] { android.R.attr.actionBarSize });
+        int actionBarSize = (int) styledAttributes.getDimension(0, 0);
+        styledAttributes.recycle();
+        return actionBarSize;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
         // Menjalankan Fungsi
         SlideView();// Fungsi Slide di gunakan untuk ViewPager sliding Fragments
         // -----------------------------------------------------------------------------------------
-
     }
 
     @Override
@@ -69,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
     public void SlideView(){
 
         // -----------------------------------------------------------------------------------------
@@ -78,8 +107,7 @@ public class MainActivity extends AppCompatActivity {
 
         // -----------------------------------------------------------------------------------------
         for (int i = 0 ; i < pageTitle.length; i ++){
-            resID = getResources().getIdentifier("ic_"+pageIcon[i]+"_24px" , "drawable", getPackageName());
-            mTabLayout.addTab(mTabLayout.newTab().setIcon(resID));
+            mTabLayout.addTab(mTabLayout.newTab().setIcon(pageIcon[i]));
         }
         // -----------------------------------------------------------------------------------------
 
@@ -99,6 +127,9 @@ public class MainActivity extends AppCompatActivity {
                 setTitle(pageTitle[tab.getPosition()]);
                 int tabIconColor = ContextCompat.getColor(getApplicationContext(), R.color.IconSelect);
                 tab.getIcon().setColorFilter(tabIconColor, PorterDuff.Mode.SRC_IN);
+
+                // ---------------------------------------------------------------------------------
+                // ---------------------------------------------------------------------------------
 
             }
 
