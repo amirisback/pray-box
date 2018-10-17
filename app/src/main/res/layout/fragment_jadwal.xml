@@ -45,7 +45,7 @@
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/txt_view_sholat"
+                    android:id="@+id/txt_sholat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="@dimen/dimen_primary"

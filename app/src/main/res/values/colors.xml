@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimaryDark">#004D40</color> <!-- StatusBar -->
-    <color name="colorPrimary">#00695C</color>  <!-- 900 -->
-    <color name="colorAccent">#00BF9A</color>
+    <color name="colorPrimaryDark">#004d40</color> <!-- StatusBar -->
+    <color name="colorPrimary">#00695c</color>  <!-- 900 -->
+    <color name="colorAccent">#00bf9a</color>
     <color name="background_app">#fafafa</color>
 
     <color name="textColorBlack">#000000</color>
@@ -31,6 +31,6 @@
     <!--<color name="Progress_Red">#F44336</color>-->
     <!--<color name="Progress_Yellow">#FFC107</color>-->
     <!--<color name="Progress_Green">#1B5E20</color>-->
-    <color name="Judul_statistik">#26A69A</color>
+    <color name="Judul_statistik">#26a69a</color>
     <color name="background_material_dark">#ffffff</color>
 </resources>

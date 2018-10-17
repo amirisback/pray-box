@@ -48,11 +48,11 @@
     <!-- ====================================================== -->
 
     <!-- === Waktu Sholat === -->
-    <string name="sholat_shubuh">Shubuh</string>
-    <string name="sholat_dzuhur">Dzuhur</string>
-    <string name="sholat_ashar">Ashar</string>
-    <string name="sholat_maghrib">Maghrib</string>
-    <string name="sholat_isya">Isya</string>
+    <string name="sholat_shubuh">Shalat Shubuh</string>
+    <string name="sholat_dzuhur">Shalat Dzuhur</string>
+    <string name="sholat_ashar">Shalat Ashar</string>
+    <string name="sholat_maghrib">Shalat Maghrib</string>
+    <string name="sholat_isya">Shalat Isya</string>
 
     <!--<string name="waktu_shubuh">04 : 39</string>-->
     <!--<string name="waktu_dzuhur">12 : 02</string>-->
@@ -202,8 +202,9 @@
     <!--=================================-->
 
     <string name="kompas_no_internet">No Internet Connection</string>
-    <string name="jadwal_helper_saatnya_shalat">Saatnya Shalat</string>
-    
+    <string name="jadwal_helper_saatnya_shalat">Saatnya</string>
+    <string name="jam">jam</string>
+
     <!-- =============================== -->
 
 </resources>

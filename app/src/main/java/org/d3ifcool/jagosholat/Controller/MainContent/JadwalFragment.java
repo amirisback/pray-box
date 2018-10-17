@@ -26,6 +26,7 @@ public class JadwalFragment extends Fragment {
     private final String ASHAR = "Shalat Ashar";
     private final String MAGHRIB = "Shalat Maghrib";
     private final String ISYA = "Shalat Isya";
+    private TextView txt_sholat_sekarang ;
     private int jumlahDetikSaatIni = methodHelper.getSumWaktuDetik();
     private int miliDetik = methodHelper.getDetikKeMiliDetik();
     // ---------------------------------------------------------------------------------------------
@@ -75,24 +76,28 @@ public class JadwalFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_jadwal, container, false);
+        View rootView = inflater.inflate(R.layout.constraint_jadwal, container, false);
 
         // -----------------------------------------------------------------------------------------
         // Deklarasi Elemen XML
         txt_coundown = (TextView)rootView.findViewById(R.id.countDown);
-        txt_shalat = (TextView)rootView.findViewById(R.id.txt_view_sholat);
+        txt_shalat = (TextView)rootView.findViewById(R.id.txt_sholat);
         txt_waktu_shubuh = (TextView)rootView.findViewById(R.id.txt_waktu_shubuh);
         txt_waktu_dzuhur = (TextView)rootView.findViewById(R.id.txt_waktu_dzuhur);
         txt_waktu_ashar = (TextView)rootView.findViewById(R.id.txt_waktu_ashar);
         txt_waktu_maghrib = (TextView)rootView.findViewById(R.id.txt_waktu_maghrib);
         txt_waktu_isya = (TextView)rootView.findViewById(R.id.txt_waktu_isya);
+        txt_sholat_sekarang = (TextView) rootView.findViewById(R.id.txt_sholat_sekarang);
         // -----------------------------------------------------------------------------------------
-
+        //set waktu sholat saat ini
+        jadwalHelper.setJadwalShalat(txt_sholat_sekarang);
         // -----------------------------------------------------------------------------------------
         CekJadwal();
         jadwalHelper.setTimeOnline(txt_waktu_shubuh, txt_waktu_dzuhur, txt_waktu_ashar, txt_waktu_maghrib, txt_waktu_isya);
         jadwalHelper.CoundownTime(countTime, txt_coundown);
         // -----------------------------------------------------------------------------------------
+
+
 
         return rootView;
     }

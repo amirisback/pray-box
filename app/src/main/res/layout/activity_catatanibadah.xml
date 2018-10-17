@@ -6,11 +6,11 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btn_simpan"
         style="@android:style/Widget.DeviceDefault.Light.Button.Inset"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="19dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
@@ -24,7 +24,7 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_hadist_text" />
 
     <View
         android:id="@+id/view4"
@@ -37,33 +37,32 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/border_button"
-        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintBottom_toTopOf="@+id/txt_hadist_arab"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/txt_sholat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="44dp"
         android:text="Sholat Dzuhur"
         android:textColor="#fff"
         android:textSize="20sp"
         android:typeface="sans"
         app:fontFamily="casual"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_tanggal" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/txt_tanggal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="28dp"
@@ -71,7 +70,7 @@
         android:gravity="center"
         android:text="Tanggal"
         android:textColor="#fff"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintBottom_toTopOf="@+id/txt_sholat"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="@+id/guideline"
@@ -101,7 +100,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/txt_hadist_arab"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -113,7 +112,7 @@
         android:text="@string/hadis_arab_3"
         android:textColor="#000000"
         android:textSize="13sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:layout_constraintBottom_toTopOf="@+id/txt_hadist_text"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/guideline"
@@ -121,7 +120,7 @@
         tools:layout_editor_absoluteY="268dp"/>
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/txt_hadist_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="100dp"
@@ -133,10 +132,10 @@
         android:gravity="center_horizontal"
         android:text="@string/hadis_text_3"
         android:textColor="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@+id/btn_simpan"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_hadist_arab" />
 
     <android.support.constraint.Group
         android:id="@+id/group3"
