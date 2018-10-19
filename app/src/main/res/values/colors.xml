@@ -13,7 +13,7 @@
     <color name="Background_Primary">@color/colorPrimary</color>
     <!--<color name="Background_Secondary">@color/colorAccent</color>-->
     <color name="Background_Button">#E6008975</color>
-    <color name="Background_SplashScreen">#F5F5F5</color>
+    <color name="Background_SplashScreen">#f5f5f5</color>
     <color name="Background_JadwalList_Odd_0">#00796B</color>
     <color name="Background_JadwalList_Odd_1">#00695C</color>
     <color name="Background_JadwalList_Odd_2">#00796B</color>

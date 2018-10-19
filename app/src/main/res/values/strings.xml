@@ -17,6 +17,7 @@
     <string name="grafik">Grafik</string>
     <string name="stat_harian">Harian</string>
     <string name="stat_semua">Semua Data</string>
+    <string name="judul_statistik">Statistik Shalat Hari Ini</string>
     <!-- ======================================= -->
 
     <!-- === String Untuk Pemberian Nama ViewPager / Title === -->
