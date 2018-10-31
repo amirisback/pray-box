@@ -1,60 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/dimen_primary"
+    android:paddingRight="@dimen/dimen_primary"
+    android:paddingTop="@dimen/dimen_primary"
+    android:paddingBottom="@dimen/dimen_primary"
+    tools:context="org.d3ifcool.jagosholat.presenters.fragments.KompasFragment">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/background_app"
-        android:orientation="vertical"
-        android:padding="@dimen/dimen_primary">
+    <TextView
+        android:id="@id/textview_arah_kabah"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        tools:text="@string/kompas_arah_kabah"/>
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:orientation="horizontal">
+    <ImageView
+        android:id="@id/imageview_kompas"
+        android:layout_width="320dp"
+        android:layout_height="320dp"
+        android:layout_centerInParent="true"
+        android:contentDescription="@string/compass_dial"
+        android:src="@drawable/kompas_back" />
 
-            <ImageView
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_marginRight="@dimen/dimen_primary"
-                android:src="@drawable/ic_kompas_place_24dp" />
+    <ImageView
+        android:id="@id/imageview_kompas_jarum"
+        android:layout_width="23dp"
+        android:layout_height="270dp"
+        android:layout_centerInParent="true"
+        android:contentDescription="@string/compass_hands"
+        android:scaleType="fitXY"
+        android:src="@drawable/kiblat" />
 
-            <TextView
-                android:id="@+id/idTvCountryName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:layout_marginLeft="5dp"
-                android:textColor="@color/textColorBlack"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                tools:hint="Country" />
-        </LinearLayout>
+    <TextView
+        android:id="@id/textview_lokasi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
+        tools:text="@string/lokasi_anda"/>
 
-        <RelativeLayout
-            android:id="@+id/container_layout"
-            android:layout_width="match_parent"
-            android:layout_height="260dp"
-            android:layout_centerInParent="true"
-            android:layout_marginVertical="@dimen/dimen_primary"
-            android:gravity="center">
-
-        </RelativeLayout>
-
-        <TextView
-            android:id="@+id/txt_no_internet"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            tools:hint="@string/kompas_no_internet" />
-
-    </RelativeLayout>
-
-</FrameLayout>
+</RelativeLayout>

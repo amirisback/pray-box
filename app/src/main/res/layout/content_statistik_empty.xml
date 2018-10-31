@@ -1,26 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@id/statistik_view_emptyview"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:gravity="center">
-
+    android:gravity="center"
+    android:orientation="vertical">
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@drawable/ic_empty_view"/>
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="12sp"
-        android:text="Silahkan Mencatatan"/>
-
+        android:text="Silahkan Mencatatat"
+        android:textColor="@color/textColorBlack"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:text="Ibadah Shalat"/>
-
+        android:text="Ibadah Shalat"
+        android:textColor="@color/textColorBlack"/>
 </LinearLayout>

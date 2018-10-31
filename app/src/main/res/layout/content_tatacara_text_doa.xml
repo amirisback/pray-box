@@ -17,72 +17,49 @@
  * id.amirisback.frogobox
  * 
  -->
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/Background_Button">
+    android:background="@drawable/border_button"
+    android:orientation="vertical"
+    android:layout_margin="@dimen/dimen_small"
+    android:padding="@dimen/dimen_small">
 
-    <LinearLayout
-        android:id="@+id/linear"
+    <TextView
+        android:id="@id/doa_setelah_shalat_arab"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="10dp">
+        android:layout_marginBottom="@dimen/dimen_small"
+        android:textSize="30sp"
+        android:gravity="right"
+        tools:text="@string/tatacara_text_arab"
+        android:textColor="@color/textColorWhite"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/border_button"
-            android:orientation="vertical"
-            android:padding="10dp">
+    <TextView
+        android:id="@id/doa_setelah_shalat_latin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dimen_small"
+        tools:text="@string/tatacara_text_latin"
+        android:textColor="@color/textColorWhite"
+        android:textStyle="italic"
+        android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/arabDoaSetelah"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:textSize="30sp"
-                android:gravity="right"
-                tools:hint="Arab"
-                android:textColor="@color/textColorButton" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tatacara_text_artinya"
+        android:textColor="@android:color/darker_gray"
+        android:textStyle="italic" />
 
-            <TextView
-                android:id="@+id/latinDoaSetelah"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                tools:hint="text"
-                android:textColor="@color/textColorButton"
-                android:textSize="16sp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Artinya : "
-                    android:textColor="@android:color/darker_gray"
-                    android:textStyle="italic" />
-
-                <TextView
-                    android:id="@+id/terjemahDoaSetelah"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/latinDoaSetelah"
-                    android:layout_marginLeft="10dp"
-                    tools:hint="Arti"
-                    android:textColor="@color/textColorButton"
-                    android:textSize="16sp" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </LinearLayout>
+    <TextView
+        android:id="@id/doa_setelah_shalat_arti"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        tools:text="@string/tatacara_text_arti"
+        android:textColor="@color/textColorButton"/>
 
 </LinearLayout>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+ * Created by 
+ * FrogoBox Inc License
+ * =========================================
+ * 
+ * Copyright (C) .      
+ * All rights reserved
+ * 
+ * Name     : Muhammad Faisal Amir
+ * E-mail   : faisalamircs@gmail.com
+ * Line     : bullbee117
+ * Phone    : 081357108568
+ * Majors   : D3 Teknik Informatika 2016
+ * Campus   : Telkom University
+ * 
+ * id.amirisback.frogobox
+ * 
+ -->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/category_numbers">
+        <TextView
+            android:id="@+id/numbers"
+            style="@style/MenuStyle"
+            android:background="?android:attr/selectableItemBackground"
+            android:text="@string/menu_catatan" />
+    </FrameLayout>
+
+    <!-- Family category -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/category_family">
+        <TextView
+            android:id="@+id/family"
+            style="@style/MenuStyle"
+            android:background="?android:attr/selectableItemBackground"
+            android:text="@string/menu_jadwal" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/category_colors">
+        <TextView
+            android:id="@+id/colors"
+            style="@style/MenuStyle"
+            android:background="?android:attr/selectableItemBackground"
+            android:text="@string/menu_statistik" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/category_phrases">
+        <TextView
+            android:id="@+id/phrases"
+            style="@style/MenuStyle"
+            android:background="?android:attr/selectableItemBackground"
+            android:text="@string/menu_kiblat" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/category_phrases">
+        <TextView
+
+            style="@style/MenuStyle"
+            android:background="?android:attr/selectableItemBackground"
+            android:text="@string/menu_tatacara" />
+    </FrameLayout>
+
+
+</LinearLayout>

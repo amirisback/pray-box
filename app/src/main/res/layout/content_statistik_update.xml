@@ -4,59 +4,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:gravity="center">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:paddingVertical="@dimen/dimen_primary"
+        android:paddingTop="@dimen/dimen_primary"
+        android:paddingBottom="@dimen/dimen_primary"
         android:background="@color/Background_Primary">
 
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/ic_dialog_info_24dp"/>
+            android:src="@drawable/ic_dialog_info"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cek Waktu Shalat"
+            android:text="@string/dialog_waktu_cek"
             android:textSize="20sp"
             android:textColor="@color/textColorWhite"/>
     </LinearLayout>
 
-
-    <LinearLayout
-        android:paddingHorizontal="@dimen/dimen_primary"
-        android:layout_marginTop="@dimen/dimen_primary"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center">
+        android:text="@string/dialog_waktu_sentuh"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/dimen_primary"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Apakah Waktu Shalat Anda Sudah Benar?"
-            android:textSize="16sp"
-            android:gravity="center"
-            android:textColor="@color/textColorBlack"/>
-
-        <TextView
-            android:layout_marginVertical="@dimen/dimen_primary"
-            android:id="@+id/txt_waktu_update"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="30sp"
-            tools:hint="JAM"
-            android:textColor="@color/Background_Primary"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="12sp"
-            android:text="Sentuh waktu untuk merubah waktu" />
-    </LinearLayout>
+    <TextView
+        android:id="@id/textview_statistik_update"
+        android:layout_marginTop="@dimen/dimen_primary"
+        android:layout_marginBottom="@dimen/dimen_primary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        tools:text="@string/dialog_jam"
+        android:textColor="@color/Background_Primary"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:text="@string/dialog_waktu_sentuh"
+        android:layout_marginBottom="@dimen/dimen_primary"/>
 
 
 </LinearLayout>

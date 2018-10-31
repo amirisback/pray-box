@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+ * Created by 
+ * FrogoBox Inc License
+ * =========================================
+ * 
+ * Copyright (C) .      
+ * All rights reserved
+ * 
+ * Name     : Muhammad Faisal Amir
+ * E-mail   : faisalamircs@gmail.com
+ * Line     : bullbee117
+ * Phone    : 081357108568
+ * Majors   : D3 Teknik Informatika 2016
+ * Campus   : Telkom University
+ * 
+ * id.amirisback.frogobox
+ * 
+ -->
+
+<resources>
+
+    <!--activity_main.xml-->
+    <item name="main_layout" type="id"/> <!--LinearLayout-->
+    <item name="main_appbarlayout" type="id"/> <!--AppBarLayout-->
+    <item name="main_toolbar" type="id"/> <!--ToolBar-->
+    <item name="main_tablayout" type="id"/> <!--TabLayout-->
+    <item name="main_viewpager" type="id"/> <!--ViewPager-->
+
+    <!--activity_detail.xml-->
+    <item name="detail_framelayout" type="id"/> <!--FrameLayout-->
+
+    <!--content_statistik_harian.xml-->
+    <item name="textview_harian_shalat" type="id"/> <!--TextView-->
+    <item name="textview_harian_waktu" type="id"/> <!--TextView-->
+    <item name="imageview_harian_shalat" type="id"/> <!--ImageView-->
+
+    <!--content_statistik_update.xml-->
+    <item name="textview_statistik_update" type="id"/> <!--TextView-->
+
+    <!--content_tatacara_image.xml-->
+    <item name="tatacara_imageview" type="id"/> <!--ImageView-->
+
+    <!--content_tatacara_text_niat.xml-->
+    <item name="niat_textview_shalat" type="id"/> <!--TextView-->
+    <item name="niat_textview_rakaat" type="id"/> <!--TextView-->
+    <item name="niat_textview_arab" type="id"/> <!--TextView-->
+    <item name="niat_textview_latin_arab" type="id"/> <!--TextView-->
+    <item name="niat_textview_arti" type="id"/> <!--TextView-->
+
+    <!--content_tatacara_text_doa.xml-->
+    <item name="doa_linearlayout" type="id"/> <!--LinearLayout-->
+    <item name="doa_setelah_shalat_arab" type="id"/> <!--TextView-->
+    <item name="doa_setelah_shalat_latin" type="id"/> <!--TextView-->
+    <item name="doa_setelah_shalat_arti" type="id"/> <!--TextView-->
+
+    <!--fragment_tatacara_text.xml-->
+    <item name="tatacara_listview_text" type="id"/> <!--ListView-->
+
+    <!--fragment_tatacara_image.xml-->
+    <item name="tatacara_relativelayout" type="id"/> <!--RelativeLayout-->
+    <item name="tatacara_sliderimage_viewpager" type="id"/> <!--ViewPager-->
+    <item name="tatacara_sliderdots_linearLayout" type="id"/> <!--LinearLayout-->
+
+    <!--fragment_catatan.xml-->
+    <item name="catatan_linearlayout_container" type="id"/> <!--LinearLayout-->
+    <item name="catatan_textview_bismillah" type="id"/> <!--TextView-->
+    <item name="catatan_textview_tanggal" type="id"/> <!--TextView-->
+    <item name="catatan_textview_shalat" type="id"/> <!--TextView-->
+    <item name="catatan_textview_hadist_arab" type="id"/> <!--TextView-->
+    <item name="catatan_textview_hadist_text" type="id"/> <!--TextView-->
+    <item name="catatan_button_catat_ibadah" type="id"/> <!--Button-->
+
+    <!--fragment_jadwal.xml-->
+    <item name="jadwal_textview_shalat" type="id"/> <!--TextView-->
+    <item name="jadwal_textview_hitungmundur" type="id"/> <!--TextView-->
+    <item name="jadwal_textview_shubuh" type="id"/> <!--TextView-->
+    <item name="jadwal_textview_dzuhur" type="id"/> <!--TextView-->
+    <item name="jadwal_textview_ashar" type="id"/> <!--TextView-->
+    <item name="jadwal_textview_maghrib" type="id"/> <!--TextView-->
+    <item name="jadwal_textview_isya" type="id"/> <!--TextView-->
+
+    <!--fragment_statistik_harian_harian.xml-->
+    <item name="statistik_cardview_judul" type="id"/> <!--CardView-->
+    <item name="statistik_progress_bar" type="id"/> <!--ProgressBar-->
+    <item name="statistik_textview_bar" type="id"/> <!--TextView-->
+    <item name="statistik_list_data" type="id"/> <!--ListView-->
+    <item name="statistik_view_emptyview" type="id"/> <!--RelativeLayout-->
+
+    <!--fragment_kompas.xml-->
+    <item name="textview_arah_kabah" type="id"/> <!--TextView-->
+    <item name="textview_lokasi" type="id"/> <!--TextView-->
+    <item name="imageview_kompas" type="id"/> <!--ImageView-->
+    <item name="imageview_kompas_jarum" type="id"/> <!--ImageView-->
+
+    <!--fragment_tatacara.xml-->
+    <item name="tatacara_tablayout" type="id"/> <!--TabLayout-->
+    <item name="tatacara_viewpager" type="id"/> <!--ViewPager-->
+
+    <!--fragment_statistik.xml-->
+    <item name="button_statistik_grafik" type="id"/> <!--Button-->
+    <item name="button_statistik_harian" type="id"/> <!--Button-->
+    <item name="framelayout_statistik" type="id"/> <!--Button-->
+
+    <!--fragment_statistik_grafik.xml-->
+    <item name="chart_id" type="id"/> <!--BarChart-->
+
+</resources>
