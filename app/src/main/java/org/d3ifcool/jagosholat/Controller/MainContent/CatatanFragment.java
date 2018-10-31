@@ -137,7 +137,7 @@ public class CatatanFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_catatan, container, false);
+        View rootView = inflater.inflate(R.layout.activity_catatanibadah, container, false);
 
         // Inisiasi element XML layout -------------------------------------------------------------
         txt_tanggal = rootView.findViewById(R.id.txt_tanggal);

@@ -3,12 +3,16 @@ package org.d3ifcool.jagosholat.Controller.MainContent;
 
 import android.app.AlertDialog;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +31,10 @@ import org.d3ifcool.jagosholat.Controller.Helper.DialogFormHelper;
 import org.d3ifcool.jagosholat.Controller.Helper.MethodHelper;
 import org.d3ifcool.jagosholat.Model.DataContract;
 import org.d3ifcool.jagosholat.Model.DataOperation;
+import org.d3ifcool.jagosholat.Model.DataProvider;
+import org.d3ifcool.jagosholat.Model.DatabaseHelper;
 import org.d3ifcool.jagosholat.R;
+import org.d3ifcool.jagosholat.RecyclerViewAdapter;
 
 import java.util.ArrayList;
 
@@ -35,12 +42,16 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class StatistikFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor>{
-
+public class StatistikFragment extends Fragment {
+    private SQLiteDatabase database;
+    private RecyclerViewAdapter mAdapter;
     // ---------------------------------------------------------------------------------------------
     // Deklarasi Kebutuhan
     private static final int DATA_LOADER = 0;
     private ArrayList<StatistikWord> arrayWord = new ArrayList<>();
+
+
+
     // ---------------------------------------------------------------------------------------------
 
     // ---------------------------------------------------------------------------------------------
@@ -58,6 +69,7 @@ public class StatistikFragment extends Fragment implements LoaderManager.LoaderC
     private DataOperation crud = new DataOperation();
     private Cursor cursorTanggal, cursorCount;
     private String [] days;
+
     // ---------------------------------------------------------------------------------------------
 
 
@@ -174,13 +186,21 @@ public class StatistikFragment extends Fragment implements LoaderManager.LoaderC
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_statistik, container, false);
+        DatabaseHelper helper = new DatabaseHelper(getContext());
+        database = helper.getWritableDatabase();
+
+         View rootView = inflater.inflate(R.layout.constraint_statistik, container, false);
+
+
 
         // -----------------------------------------------------------------------------------------
         View empty_listView = rootView.findViewById(R.id.empty_views);
         ListView mListView = rootView.findViewById(R.id.ListData);
         ProgressBar mProgressBar = rootView.findViewById(R.id.stat_progressBar);
         TextView mTextViewPercentage = rootView.findViewById(R.id.txt_percentage);
+
+
+
         // -----------------------------------------------------------------------------------------
 
         // -----------------------------------------------------------------------------------------
@@ -192,29 +212,44 @@ public class StatistikFragment extends Fragment implements LoaderManager.LoaderC
         // -----------------------------------------------------------------------------------------
 
         // -----------------------------------------------------------------------------------------
-        mListView.setEmptyView(empty_listView);
+//        mListView.setEmptyView(empty_listView);
         mDialogForm = new DialogFormHelper(mDialogBuilder,inflater, mDialogView, mTextViewWaktu, mMethodHelper, getActivity(), mDataOperation);
         mCursorAdapter = new StatistikCursorAdapter(getContext(), null);
-        mListView.setAdapter(mCursorAdapter);
 
-        getDataFromTable();
-        mProgressBar.setProgress(getProgress());
-        String percen = getProgress() + "%";
-        mTextViewPercentage.setText(percen);
+
+//        getDataFromTable();
+//        mProgressBar.setProgress(getProgress());
+//        String percen = getProgress() + "%";
+//        mTextViewPercentage.setText(percen);
+
+        RecyclerView recyclerView = rootView.findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
+//        recyclerView.setEmp
+
+        LinearLayoutManager layoutManager =
+                new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        recyclerView.setLayoutManager(layoutManager);
+
+        DividerItemDecoration divider = new DividerItemDecoration(getContext(),
+                layoutManager.getOrientation());
+        recyclerView.addItemDecoration(divider);
+        mAdapter = new RecyclerViewAdapter(getContext(),getAllItems() );
+
+        recyclerView.setAdapter(mAdapter);
         // -----------------------------------------------------------------------------------------
 
         // -----------------------------------------------------------------------------------------
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // ---------------------------------------------------------------------------------
-                String getArrayId = arrayWord.get(position).getId();
-                String getArrayWaktu = arrayWord.get(position).getWaktu();
-                String getArrayShalat = arrayWord.get(position).getShalat();
-                mDialogForm.DialogForm(getArrayId, getArrayWaktu);
-                // ---------------------------------------------------------------------------------
-            }
-        });
+//        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                // ---------------------------------------------------------------------------------
+//                String getArrayId = arrayWord.get(position).getId();
+//                String getArrayWaktu = arrayWord.get(position).getWaktu();
+//                String getArrayShalat = arrayWord.get(position).getShalat();
+//                mDialogForm.DialogForm(getArrayId, getArrayWaktu);
+//                // ---------------------------------------------------------------------------------
+//            }
+//        });
 
         // -----------------------------------------------------------------------------------------
 
@@ -246,48 +281,58 @@ public class StatistikFragment extends Fragment implements LoaderManager.LoaderC
         }
     }
     // ---------------------------------------------------------------------------------------------
-
-
-
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        getLoaderManager().initLoader(DATA_LOADER, null, this);
-        super.onActivityCreated(savedInstanceState);
-    }
-
-    @Override
-    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        String selection = DataContract.DataEntry.COLUMN_TANGGAL + " = '" + mMethodHelper.getDateToday() + "'";
-        return new CursorLoader(getActivity(), // getActivity disini menggantikan this
-                DataContract.DataEntry.CONTENT_URI,
-                mDataOperation.getProjection(),
-                selection,
+    public Cursor getAllItems(){
+        return database.query(
+                DataContract.DataEntry.TABLE_NAME,
                 null,
-                null);
+                null,
+                null,
+                null,
+                null,
+                DataContract.DataEntry._ID
+        );
     }
 
-    @Override
-    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-        mCursorAdapter.swapCursor(data);
-    }
 
-    @Override
-    public void onLoaderReset(Loader<Cursor> loader) {
-        mCursorAdapter.swapCursor(null);
-    }
 
-    // ---------------------------------------------------------------------------------------------
-    public static class MyXAxisValueFormatter implements IAxisValueFormatter {
-        private String[] mValues;
-        public MyXAxisValueFormatter(String[] values) {
-            this.mValues = values;
-        }
+//    @Override
+//    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+//        getLoaderManager().initLoader(DATA_LOADER, null, this);
+//        super.onActivityCreated(savedInstanceState);
+//    }
 
-        @Override
-        public String getFormattedValue(float value, AxisBase axis) {
-            return mValues[(int) value];
-        }
-    }
+//    @Override
+//    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+//        String selection = DataContract.DataEntry.COLUMN_TANGGAL + " = '" + mMethodHelper.getDateToday() + "'";
+//        return new CursorLoader(getActivity(), // getActivity disini menggantikan this
+//                DataContract.DataEntry.CONTENT_URI,
+//                mDataOperation.getProjection(),
+//                selection,
+//                null,
+//                null);
+//    }
+//
+//    @Override
+//    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+//        mCursorAdapter.swapCursor(data);
+//    }
+//
+//    @Override
+//    public void onLoaderReset(Loader<Cursor> loader) {
+//        mCursorAdapter.swapCursor(null);
+//    }
+//
+//    // ---------------------------------------------------------------------------------------------
+//    public static class MyXAxisValueFormatter implements IAxisValueFormatter {
+//        private String[] mValues;
+//        public MyXAxisValueFormatter(String[] values) {
+//            this.mValues = values;
+//        }
+//
+//        @Override
+//        public String getFormattedValue(float value, AxisBase axis) {
+//            return mValues[(int) value];
+//        }
+//    }
 
 }

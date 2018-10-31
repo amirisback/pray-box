@@ -15,6 +15,7 @@ import org.d3ifcool.jagosholat.R;
 public class StatistikCursorAdapter extends CursorAdapter {
 
     public StatistikCursorAdapter(Context context, Cursor c) {
+
         super(context, c, 0 /* flags */);
     }
 
@@ -44,9 +45,9 @@ public class StatistikCursorAdapter extends CursorAdapter {
 
         // -----------------------------------------------------------------------------------------
         // Mendapat data dari database berdasarkan index
-        String waktu = cursor.getString(waktuColumnIndex);
-        String shalat = cursor.getString(shalatColumnIndex);
-        String status = cursor.getString(statusColumnIndex);
+            String waktu = cursor.getString(waktuColumnIndex);
+            String shalat = cursor.getString(shalatColumnIndex);
+            String status = cursor.getString(statusColumnIndex);
         // -----------------------------------------------------------------------------------------
 
         // -----------------------------------------------------------------------------------------
@@ -57,6 +58,7 @@ public class StatistikCursorAdapter extends CursorAdapter {
         } else {
             outImage = R.drawable.ic_statistik_48dp_tidak; // Tidak Shalat
         }
+
         int resIdImage = outImage;
         // -----------------------------------------------------------------------------------------
 
