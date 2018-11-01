@@ -179,31 +179,7 @@ public class KompasFragment extends Fragment {
             }
         }
     }
-
-
-    public void SaveString(String Judul, String tex){
-        SharedPreferences.Editor edit = prefs.edit();
-        edit.putString(Judul, tex);
-        edit.apply();
-    }
-    public String GetString(String Judul){
-        return prefs.getString(Judul, "");
-    }
-
-    public void SaveBoolean(String Judul, Boolean bbb){
-        SharedPreferences.Editor edit = prefs.edit();
-        edit.putBoolean(Judul, bbb);
-        edit.apply();
-    }
-
-    public void Savelong(String Judul, Long bbb){
-        SharedPreferences.Editor edit = prefs.edit();
-        edit.putLong(Judul, bbb);
-        edit.apply();
-    }
-    public Long Getlong(String Judul){
-        return prefs.getLong(Judul, 0);
-    }
+    
 
     public void SaveFloat(String Judul, Float bbb){
         SharedPreferences.Editor edit = prefs.edit();
@@ -248,7 +224,6 @@ public class KompasFragment extends Fragment {
                 float result2 = (float)result;
                 SaveFloat("kiblat_derajat", result2);
                 mTextView_ArahKiblat.setText("Arah Ka'bah : \n" + result2 + " derajat dari utara");
-                Toast.makeText(getContext(), "Arah Ka'bah : " + result2 + " derajat dari utara", Toast.LENGTH_LONG).show();
                 // ---------------------------------------------------------------------------------
             }
         }else{

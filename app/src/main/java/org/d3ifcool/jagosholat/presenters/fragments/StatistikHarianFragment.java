@@ -63,7 +63,11 @@ public class StatistikHarianFragment extends Fragment implements LoaderManager.L
         String percen = getProgress() + "%";
         mTextViewPercentage.setText(percen);
         mProgressBar.setProgress(getProgress());
-        empty_listView.setVisibility(View.GONE);
+        if (getProgress()!=0) {
+            empty_listView.setVisibility(View.GONE);
+        } else {
+            empty_listView.setVisibility(View.VISIBLE);
+        }
         // -----------------------------------------------------------------------------------------
         Cursor cursor = mDataOperation.getDataTanggal(getContext(), mMethodHelper.getDateToday());
         mCursorAdapter = new StatistikHarianCursorRecyclerAdapter(getContext(), cursor, mDialogForm);
@@ -74,6 +78,7 @@ public class StatistikHarianFragment extends Fragment implements LoaderManager.L
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mCursorAdapter);
+
         // -----------------------------------------------------------------------------------------
         return rootView;
     }
