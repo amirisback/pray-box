@@ -6,9 +6,11 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 
@@ -38,6 +40,7 @@ public class KompasFragment extends Fragment {
     private TextView mTextView_ArahKiblat, mTextview_Lokasi;
     private SharedPreferences prefs;
     private GPSTracker gps;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
     // ---------------------------------------------------------------------------------------------
 
     public KompasFragment() {
@@ -55,12 +58,23 @@ public class KompasFragment extends Fragment {
         gps = new GPSTracker(getContext());
         // -----------------------------------------------------------------------------------------
         getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        mSwipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipeToRefresh);
         mImageView_Kompas_Jarum = (ImageView)rootView.findViewById(R.id.imageview_kompas_jarum);
         mImageView_Kompas = (ImageView)rootView.findViewById(R.id.imageview_kompas);
         mTextView_ArahKiblat = (TextView)rootView.findViewById(R.id.textview_arah_kabah);
         mTextview_Lokasi = (TextView)rootView.findViewById(R.id.textview_lokasi);
         // -----------------------------------------------------------------------------------------
         setupCompass();
+
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                fetch_GPS();
+                mSwipeRefreshLayout.setRefreshing(false);
+            }
+        });
+
+
         return rootView;
     }
 
@@ -141,8 +155,8 @@ public class KompasFragment extends Fragment {
         }
         float kiblat_derajat = GetFloat("kiblat_derajat");
         if(kiblat_derajat > 0.0001){
-            mTextview_Lokasi.setText("Lokasi anda: menggunakan lokasi terakhir ");
-            mTextView_ArahKiblat.setText("Arah Ka'bah: " + kiblat_derajat + " derajat dari utara");
+            mTextview_Lokasi.setText("Lokasi anda : \nmenggunakan lokasi terakhir ");
+            mTextView_ArahKiblat.setText("Arah Ka'bah : \n" + kiblat_derajat + " derajat dari utara");
         }else {
             fetch_GPS();
         }
@@ -209,7 +223,7 @@ public class KompasFragment extends Fragment {
             // -------------------------------------------------------------------------------------
             double latitude = gps.getLatitude();
             double longitude = gps.getLongitude();
-            mTextview_Lokasi.setText("Lokasi anda: \nLatitude: " + latitude + " Longitude: " + longitude);
+            mTextview_Lokasi.setText("Lokasi anda : \nLatitude : " + latitude + " & Longitude : " + longitude);
             Log.e("TAG", "GPS is on");
             double lat_saya = gps.getLatitude ();
             double lon_saya = gps.getLongitude ();
@@ -233,8 +247,8 @@ public class KompasFragment extends Fragment {
                 result = (Math.toDegrees(Math.atan2(y, x))+360)%360;
                 float result2 = (float)result;
                 SaveFloat("kiblat_derajat", result2);
-                mTextView_ArahKiblat.setText("Arah Ka'bah: " + result2 + " derajat dari utara");
-                Toast.makeText(getContext(), "Arah Ka'bah: " + result2 + " derajat dari utara", Toast.LENGTH_LONG).show();
+                mTextView_ArahKiblat.setText("Arah Ka'bah : \n" + result2 + " derajat dari utara");
+                Toast.makeText(getContext(), "Arah Ka'bah : " + result2 + " derajat dari utara", Toast.LENGTH_LONG).show();
                 // ---------------------------------------------------------------------------------
             }
         }else{

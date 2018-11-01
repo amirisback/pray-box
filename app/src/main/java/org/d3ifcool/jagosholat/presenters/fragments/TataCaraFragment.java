@@ -28,7 +28,7 @@ public class TataCaraFragment extends Fragment {
         ViewPager viewPager = rootView.findViewById(R.id.tatacara_viewpager);
         // -----------------------------------------------------------------------------------------
         // Membuat ViewPager (SLIDER)
-        TataCaraPagerAdapter tataCaraPagerAdapter = new TataCaraPagerAdapter(getActivity(),getFragmentManager());
+        TataCaraPagerAdapter tataCaraPagerAdapter = new TataCaraPagerAdapter(getActivity(),getChildFragmentManager());
         viewPager.setAdapter(tataCaraPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
         // -----------------------------------------------------------------------------------------
