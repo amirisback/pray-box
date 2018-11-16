@@ -31,6 +31,23 @@
     <!--activity_detail.xml-->
     <item name="detail_framelayout" type="id"/> <!--FrameLayout-->
 
+    <!--content_catatan_button.xml-->
+    <item name="layout_catatan_button_jam_shubuh" type="id"/> <!--LinearLayout-->
+    <item name="layout_catatan_button_jam_dzuhur" type="id"/> <!--LinearLayout-->
+    <item name="layout_catatan_button_jam_ashar" type="id"/> <!--LinearLayout-->
+    <item name="layout_catatan_button_jam_maghrib" type="id"/> <!--LinearLayout-->
+    <item name="layout_catatan_button_jam_isya" type="id"/> <!--LinearLayout-->
+    <item name="checkbox_catatan_button_jam_shubuh" type="id"/> <!--Checkbox-->
+    <item name="checkbox_catatan_button_jam_dzuhur" type="id"/> <!--Checkbox-->
+    <item name="checkbox_catatan_button_jam_ashar" type="id"/> <!--Checkbox-->
+    <item name="checkbox_catatan_button_jam_maghrib" type="id"/> <!--Checkbox-->
+    <item name="checkbox_catatan_button_jam_isya" type="id"/> <!--Checkbox-->
+    <item name="textview_catatan_button_jam_shubuh" type="id"/> <!--TextView-->
+    <item name="textview_catatan_button_jam_dzuhur" type="id"/> <!--TextView-->
+    <item name="textview_catatan_button_jam_ashar" type="id"/> <!--TextView-->
+    <item name="textview_catatan_button_jam_maghrib" type="id"/> <!--TextView-->
+    <item name="textview_catatan_button_jam_isya" type="id"/> <!--TextView-->
+
     <!--content_statistik_harian.xml-->
     <item name="textview_harian_shalat" type="id"/> <!--TextView-->
     <item name="textview_harian_waktu" type="id"/> <!--TextView-->

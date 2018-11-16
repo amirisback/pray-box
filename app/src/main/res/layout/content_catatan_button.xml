@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+ * Created by 
+ * FrogoBox Inc License
+ * =========================================
+ * 
+ * Copyright (C) .      
+ * All rights reserved
+ * 
+ * Name     : Muhammad Faisal Amir
+ * E-mail   : faisalamircs@gmail.com
+ * Line     : bullbee117
+ * Phone    : 081357108568
+ * Majors   : D3 Teknik Informatika 2016
+ * Campus   : Telkom University
+ * 
+ * id.amirisback.frogobox
+ * 
+ -->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="@dimen/dimen_primary"
+        android:paddingBottom="@dimen/dimen_primary"
+        android:background="@color/Background_Primary">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_main_catat"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_catat_shalat"
+            android:textSize="20sp"
+            android:textColor="@color/textColorWhite"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@id/layout_catatan_button_jam_shubuh"
+        style="@style/layoutCatatanButton">
+
+        <CheckBox
+            android:id="@id/checkbox_catatan_button_jam_shubuh"
+            android:text="@string/shalat_shubuh"
+            style="@style/checkboxCatatanButton"/>
+
+        <TextView
+            android:id="@id/textview_catatan_button_jam_shubuh"
+            android:text="@string/dialog_jam"
+            style="@style/textviewCatatanButton"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@id/layout_catatan_button_jam_dzuhur"
+        style="@style/layoutCatatanButton">
+
+        <CheckBox
+            android:id="@id/checkbox_catatan_button_jam_dzuhur"
+            android:text="@string/shalat_dzuhur"
+            style="@style/checkboxCatatanButton"/>
+
+        <TextView
+            android:id="@id/textview_catatan_button_jam_dzuhur"
+            android:text="@string/dialog_jam"
+            style="@style/textviewCatatanButton"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@id/layout_catatan_button_jam_ashar"
+        style="@style/layoutCatatanButton">
+
+        <CheckBox
+            android:id="@id/checkbox_catatan_button_jam_ashar"
+            android:text="@string/shalat_ashar"
+            style="@style/checkboxCatatanButton"/>
+
+        <TextView
+            android:id="@id/textview_catatan_button_jam_ashar"
+            android:text="@string/dialog_jam"
+            style="@style/textviewCatatanButton"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@id/layout_catatan_button_jam_maghrib"
+        style="@style/layoutCatatanButton">
+
+        <CheckBox
+            android:id="@id/checkbox_catatan_button_jam_maghrib"
+            android:text="@string/shalat_maghrib"
+            style="@style/checkboxCatatanButton"/>
+
+        <TextView
+            android:id="@id/textview_catatan_button_jam_maghrib"
+            android:text="@string/dialog_jam"
+            style="@style/textviewCatatanButton"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@id/layout_catatan_button_jam_isya"
+        style="@style/layoutCatatanButton">
+
+        <CheckBox
+            android:id="@id/checkbox_catatan_button_jam_isya"
+            android:text="@string/shalat_isya"
+            style="@style/checkboxCatatanButton"/>
+
+        <TextView
+            android:id="@id/textview_catatan_button_jam_isya"
+            android:text="@string/dialog_jam"
+            style="@style/textviewCatatanButton"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:text="@string/dialog_waktu_sentuh"
+        android:layout_marginTop="@dimen/dimen_small"/>
+</LinearLayout>

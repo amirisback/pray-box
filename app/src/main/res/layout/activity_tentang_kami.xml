@@ -24,7 +24,7 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:layout_marginTop="@dimen/dimen_primary"
-    tools:context=".views.TentangKamiActivity">
+    tools:mContext=".views.activities.TentangKamiActivity">
 
     <LinearLayout
         android:id="@+id/layout_desc_jagosholat"
@@ -80,10 +80,9 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/iamgeican"
-                    android:layout_width="120dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/about_us_ican" />
+                    android:id="@+id/imageican"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -99,10 +98,9 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/iamgeamir"
-                    android:layout_width="120dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/about_us_amir" />
+                    android:id="@+id/imageamir"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -118,10 +116,9 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/iamgebrian"
-                    android:layout_width="120dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/about_us_bryan" />
+                    android:id="@+id/imagebrian"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"/>
 
                 <TextView
                     android:layout_width="match_parent"

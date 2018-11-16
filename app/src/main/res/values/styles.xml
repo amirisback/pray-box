@@ -78,7 +78,6 @@
 
     <style name="ThemeOverlay"></style>
 
-
     <style name="MenuStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/list_item_height</item>
@@ -88,4 +87,29 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textAppearance">?android:textAppearanceMedium</item>
     </style>
+
+    <style name="layoutCatatanButton">
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginTop">@dimen/dimen_small</item>
+    </style>
+
+    <style name="checkboxCatatanButton">
+        <item name="android:layout_width">140dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/textSizeCatatanShalat</item>
+    </style>
+
+    <style name="textviewCatatanButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:layout_marginLeft">@dimen/dimen_catatan_dialog</item>
+        <item name="android:textSize">@dimen/textSizeCatatanShalat</item>
+    </style>
+
+
+
 </resources>

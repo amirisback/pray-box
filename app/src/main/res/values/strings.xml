@@ -102,6 +102,9 @@
     <string name="kompas_arah_kabah">Arah Kabah</string>
     <string name="lokasi_anda">Lokasi Anda</string>
 
+    <string name="location_not_found">Location not ready, try again</string>
+    <string name="enable_location_please">Please enable Location first</string>
+    <string name="dialog_catat_shalat">Catat Shalat</string>
 
 
 </resources>

@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:padding="@dimen/dimen_small"
     android:background="@color/background_app"
-    tools:context=".presenters.fragments.JadwalFragment">
+    tools:mContext=".views.fragments.JadwalFragment">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
