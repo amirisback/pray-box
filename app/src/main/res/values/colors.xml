@@ -27,9 +27,10 @@
     <color name="background_material_dark">#ffffff</color>
 
     <color name="tan_background">#FFF7DA</color>
-    <color name="category_numbers">#FD8E09</color>
-    <color name="category_family">#379237</color>
-    <color name="category_colors">#8800A0</color>
-    <color name="category_phrases">#16AFCA</color>
+    <color name="menu_catatan">#FD8E09</color>
+    <color name="menu_jadwal">#379237</color>
+    <color name="menu_statistik">#8800A0</color>
+    <color name="menu_kiblat">#16AFCA</color>
+    <color name="menu_tatacara">#ca162b</color>
 
 </resources>

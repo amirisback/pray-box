@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:mContext=".views.fragments.StatistikGrafikFragment">
+    tools:context=".views.fragments.StatistikGrafikFragment">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"

@@ -27,6 +27,8 @@
     <item type="id" name="main_toolbar"/> <!--ToolBar-->
     <item type="id" name="main_tablayout"/> <!--TabLayout-->
     <item type="id" name="main_viewpager"/> <!--ViewPager-->
+    <item type="id" name="main_fragment"/> <!--Fragment-->
+    <item type="id" name="detail_frame_layout"/> <!--Frame_Layout-->
 
     <!--activity_detail.xml-->
     <item type="id" name="detail_framelayout"/> <!--FrameLayout-->
@@ -105,7 +107,7 @@
     <item type="id" name="statistik_list_data"/> <!--ListView-->
     <item type="id" name="statistik_view_emptyview"/> <!--RelativeLayout-->
 
-    <!--fragment_kompas.xml-->
+    <!--fragment_kiblat.xml-->
     <item type="id" name="textview_arah_kabah"/> <!--TextView-->
     <item type="id" name="textview_lokasi"/> <!--TextView-->
     <item type="id" name="imageview_kompas"/> <!--ImageView-->
@@ -122,5 +124,13 @@
 
     <!--fragment_statistik_grafik.xml-->
     <item type="id" name="chart_id"/> <!--BarChart-->
+
+
+    <item type="id" name="menu_tab_catatan"/> <!--TextView-->
+    <item type="id" name="menu_tab_jadwal"/> <!--TextView-->
+    <item type="id" name="menu_tab_statistik"/> <!--TextView-->
+    <item type="id" name="menu_tab_kiblat"/> <!--TextView-->
+    <item type="id" name="menu_tab_tatacara"/> <!--TextView-->
+
 
 </resources>

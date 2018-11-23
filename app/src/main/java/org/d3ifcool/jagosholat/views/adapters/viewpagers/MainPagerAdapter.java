@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import org.d3ifcool.jagosholat.views.fragments.CatatanFragment;
 import org.d3ifcool.jagosholat.views.fragments.StatistikFragment;
 import org.d3ifcool.jagosholat.views.fragments.JadwalFragment;
-import org.d3ifcool.jagosholat.views.fragments.KompasFragment;
+import org.d3ifcool.jagosholat.views.fragments.KiblatFragment;
 import org.d3ifcool.jagosholat.views.fragments.TataCaraFragment;
 
 /**
@@ -46,7 +46,7 @@ public class MainPagerAdapter extends FragmentPagerAdapter{
             case 2 :
                 return new StatistikFragment();
             case 3 :
-                return new KompasFragment();
+                return new KiblatFragment();
             case 4 :
                 return new TataCaraFragment();
             default:

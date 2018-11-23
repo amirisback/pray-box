@@ -2,10 +2,10 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:mContext="org.d3ifcool.jagosholat.views.fragments.StatistikFragment"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context="org.d3ifcool.jagosholat.views.fragments.StatistikFragment">
 
     <LinearLayout
         android:layout_marginVertical="@dimen/dimen_small"

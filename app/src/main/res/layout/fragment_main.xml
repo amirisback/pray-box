@@ -1,47 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    android:id="@id/main_layout"
-    android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@id/main_layout"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-    <android.support.design.widget.AppBarLayout
-        android:id="@id/main_appbarlayout"
+    <android.support.design.widget.TabLayout
+        android:id="@id/main_tablayout"
+        app:tabMode="fixed"
+        android:layout_below="@id/main_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:elevation="6dp">
-        <android.support.v7.widget.Toolbar
-            android:id="@id/main_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:background="?attr/colorPrimary"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:elevation="0dp"
-            app:layout_scrollFlags="scroll|enterAlways"
-            />
-
-        <android.support.design.widget.TabLayout
-            android:id="@id/main_tablayout"
-            app:tabMode="fixed"
-            android:layout_below="@id/main_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
-            app:elevation="0dp"
-            app:tabTextColor="#d3d3d3"
-            app:tabSelectedTextColor="#ffffff"
-            app:tabIndicatorColor="@color/colorAccent"
-            android:minHeight="?attr/actionBarSize"
-            />
-
-    </android.support.design.widget.AppBarLayout>
+        android:background="?attr/colorPrimary"
+        app:elevation="0dp"
+        app:tabTextColor="#d3d3d3"
+        app:tabSelectedTextColor="#ffffff"
+        app:tabIndicatorColor="@color/colorAccent"
+        android:minHeight="?attr/actionBarSize" />
 
     <android.support.v4.view.ViewPager
         android:id="@id/main_viewpager"

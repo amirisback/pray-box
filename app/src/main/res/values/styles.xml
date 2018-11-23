@@ -54,7 +54,6 @@
         <item name="android:layout_gravity">center</item>
     </style>
 
-
     <style name="content_title_listView_stat_semua">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">match_parent</item>
@@ -64,7 +63,6 @@
         <item name="android:layout_weight">1</item>
         <item name="android:textColor">@color/textColorWhite</item>
     </style>
-
 
     <style name="content_listView_stat_semua">
         <item name="android:layout_width">0dp</item>
@@ -78,14 +76,24 @@
 
     <style name="ThemeOverlay"></style>
 
-    <style name="MenuStyle">
+    <style name="MenuStyleText">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/list_item_height</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_centerVertical">true</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:padding">16dp</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:textSize">28sp</item>
         <item name="android:textAppearance">?android:textAppearanceMedium</item>
+    </style>
+
+    <style name="MenuStyleImage">
+        <item name="android:layout_width">36dp</item>
+        <item name="android:layout_height">36dp</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginRight">24dp</item>
     </style>
 
     <style name="layoutCatatanButton">

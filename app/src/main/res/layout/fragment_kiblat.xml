@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:mContext="org.d3ifcool.jagosholat.views.fragments.KompasFragment">
+    tools:context="org.d3ifcool.jagosholat.views.fragments.KiblatFragment">
 
 <RelativeLayout
         android:layout_width="match_parent"

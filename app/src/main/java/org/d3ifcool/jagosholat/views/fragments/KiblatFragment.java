@@ -29,10 +29,10 @@ import org.d3ifcool.jagosholat.presenters.network.GPSTracker;
 import static android.content.Context.MODE_PRIVATE;
 import static android.view.View.INVISIBLE;
 
-public class KompasFragment extends Fragment {
+public class KiblatFragment extends Fragment {
 
     // ---------------------------------------------------------------------------------------------
-    private static final String TAG = "KompasFragment";
+    private static final String TAG = "KiblatFragment";
     private float currentAzimuth;
     private Compass compass;
     private ImageView mImageView_Kompas_Jarum, mImageView_Kompas;
@@ -42,7 +42,7 @@ public class KompasFragment extends Fragment {
     private SwipeRefreshLayout mSwipeRefreshLayout;
     // ---------------------------------------------------------------------------------------------
 
-    public KompasFragment() {
+    public KiblatFragment() {
         // Required empty public constructor
     }
 
@@ -50,7 +50,7 @@ public class KompasFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_kompas, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_kiblat, container, false);
         // -----------------------------------------------------------------------------------------
         compass = new Compass(getContext());
         prefs = getContext().getSharedPreferences("", MODE_PRIVATE);

@@ -36,7 +36,6 @@
             android:background="?attr/colorPrimary"
             android:minHeight="?attr/actionBarSize"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
-
     </android.support.design.widget.AppBarLayout>
 
     <LinearLayout
@@ -48,22 +47,22 @@
         <fragment
             xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/main_fragment"
-            android:name="org.d3ifcool.jagosholat.views.fragments.MainFragment"
+            android:id="@id/main_fragment"
+            android:name="org.d3ifcool.jagosholat.views.fragments.MainTabFragment"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical"
-            tools:mContext="com.example.android.miwok.MainActivity"/>
+            tools:context=".views.activities.MainActivity"/>
 
         <FrameLayout
-            android:id="@+id/frame_layout"
+            android:id="@id/detail_frame_layout"
             xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"
-            tools:mContext=".DetailActivity"/>
+            tools:context=".views.activities.DetailActivity"/>
 
     </LinearLayout>
 
