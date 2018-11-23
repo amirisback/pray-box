@@ -24,13 +24,13 @@ public class TataCaraFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_tatacara, container, false);
         // -----------------------------------------------------------------------------------------
         // Deklarasi Element XML
-        TabLayout tabLayout = rootView.findViewById(R.id.tatacara_tablayout);
-        ViewPager viewPager = rootView.findViewById(R.id.tatacara_viewpager);
+        TabLayout mTabLayout = rootView.findViewById(R.id.tatacara_tablayout);
+        ViewPager mViewPager = rootView.findViewById(R.id.tatacara_viewpager);
         // -----------------------------------------------------------------------------------------
         // Membuat ViewPager (SLIDER)
         TataCaraPagerAdapter tataCaraPagerAdapter = new TataCaraPagerAdapter(getActivity(),getChildFragmentManager());
-        viewPager.setAdapter(tataCaraPagerAdapter);
-        tabLayout.setupWithViewPager(viewPager);
+        mViewPager.setAdapter(tataCaraPagerAdapter);
+        mTabLayout.setupWithViewPager(mViewPager);
         // -----------------------------------------------------------------------------------------
         return rootView;
     }

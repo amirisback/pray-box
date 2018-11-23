@@ -29,29 +29,29 @@ public class JadwalFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_jadwal, container, false);
         // -----------------------------------------------------------------------------------------
         // Deklarasi Class helper
-        WaktuShalatHelper waktuShalatHelper = new WaktuShalatHelper();
-        MethodHelper methodHelper = new MethodHelper();
+        WaktuShalatHelper mWaktuShalatHelper = new WaktuShalatHelper();
+        MethodHelper mMethodHelper = new MethodHelper();
         // -----------------------------------------------------------------------------------------
-        int jumlahDetikSaatIni = methodHelper.getSumWaktuDetik();
-        int miliDetik = methodHelper.getDetikKeMiliDetik();
-        String mJadwal = waktuShalatHelper.getJadwalShalat();
+        int jumlahDetikSaatIni = mMethodHelper.getSumWaktuDetik();
+        int miliDetik = mMethodHelper.getDetikKeMiliDetik();
+        String mJadwal = mWaktuShalatHelper.getJadwalShalat();
         // -----------------------------------------------------------------------------------------
-        int detikShubuh = waktuShalatHelper.getJmlWaktuShubuh();
-        int detikDzuhur = waktuShalatHelper.getJmlWaktuDzuhur();
-        int detikAshar = waktuShalatHelper.getJmlWaktuAshar();
-        int detikMaghrib = waktuShalatHelper.getJmlWaktuMaghrib();
-        int detikIsya = waktuShalatHelper.getJmlWaktuIsya();
-        int detikAfterMid = waktuShalatHelper.getJmlAftMidnight();
-        int detikBeforeMid = waktuShalatHelper.getJmlBeMidnight();
+        int detikShubuh = mWaktuShalatHelper.getJmlWaktuShubuh();
+        int detikDzuhur = mWaktuShalatHelper.getJmlWaktuDzuhur();
+        int detikAshar = mWaktuShalatHelper.getJmlWaktuAshar();
+        int detikMaghrib = mWaktuShalatHelper.getJmlWaktuMaghrib();
+        int detikIsya = mWaktuShalatHelper.getJmlWaktuIsya();
+        int detikAfterMid = mWaktuShalatHelper.getJmlAftMidnight();
+        int detikBeforeMid = mWaktuShalatHelper.getJmlBeMidnight();
         // -----------------------------------------------------------------------------------------
         // Deklarasi Elemen XML
-        TextView txt_coundown = (TextView)rootView.findViewById(R.id.jadwal_textview_hitungmundur);
-        TextView txt_waktu_shubuh = (TextView)rootView.findViewById(R.id.jadwal_textview_shubuh);
-        TextView txt_waktu_dzuhur = (TextView)rootView.findViewById(R.id.jadwal_textview_dzuhur);
-        TextView txt_waktu_ashar = (TextView)rootView.findViewById(R.id.jadwal_textview_ashar);
-        TextView txt_waktu_maghrib = (TextView)rootView.findViewById(R.id.jadwal_textview_maghrib);
-        TextView txt_waktu_isya = (TextView)rootView.findViewById(R.id.jadwal_textview_isya);
-        TextView txt_shalat = (TextView)rootView.findViewById(R.id.jadwal_textview_shalat);
+        TextView mTextViewCoundown = rootView.findViewById(R.id.jadwal_textview_hitungmundur);
+        TextView mTextViewWaktuShubuh = rootView.findViewById(R.id.jadwal_textview_shubuh);
+        TextView mTextViewWaktuDzuhur = rootView.findViewById(R.id.jadwal_textview_dzuhur);
+        TextView mTextViewWaktuAshar = rootView.findViewById(R.id.jadwal_textview_ashar);
+        TextView mTextViewWaktuMaghrib = rootView.findViewById(R.id.jadwal_textview_maghrib);
+        TextView mTextViewWaktuIsya = rootView.findViewById(R.id.jadwal_textview_isya);
+        TextView mTextViewShalatMendatang = rootView.findViewById(R.id.jadwal_textview_shalat);
         // -----------------------------------------------------------------------------------------
         // Deklarasi konstanta
         final String SHUBUH = "Shalat Shubuh";
@@ -62,23 +62,23 @@ public class JadwalFragment extends Fragment {
         // -----------------------------------------------------------------------------------------
         switch (mJadwal) {
             case SHUBUH:
-                txt_shalat.setText(DZUHUR.substring(7));
+                mTextViewShalatMendatang.setText(DZUHUR.substring(7));
                 countTime = (detikDzuhur - jumlahDetikSaatIni) * miliDetik;
                 break;
             case DZUHUR:
-                txt_shalat.setText(ASHAR.substring(7));
+                mTextViewShalatMendatang.setText(ASHAR.substring(7));
                 countTime = (detikAshar - jumlahDetikSaatIni) * miliDetik;
                 break;
             case ASHAR:
-                txt_shalat.setText(MAGHRIB.substring(7));
+                mTextViewShalatMendatang.setText(MAGHRIB.substring(7));
                 countTime = (detikMaghrib - jumlahDetikSaatIni) * miliDetik;
                 break;
             case MAGHRIB:
-                txt_shalat.setText(ISYA.substring(7));
+                mTextViewShalatMendatang.setText(ISYA.substring(7));
                 countTime = (detikIsya - jumlahDetikSaatIni) * miliDetik;
                 break;
             case ISYA:
-                txt_shalat.setText(SHUBUH.substring(7));
+                mTextViewShalatMendatang.setText(SHUBUH.substring(7));
                 if ((jumlahDetikSaatIni == detikAfterMid) || (jumlahDetikSaatIni < detikShubuh)) {
                     countTime = (detikShubuh - jumlahDetikSaatIni) * miliDetik;
                 } else if ((jumlahDetikSaatIni == detikIsya) || (jumlahDetikSaatIni <= detikBeforeMid)) {
@@ -86,13 +86,13 @@ public class JadwalFragment extends Fragment {
                 }
                 break;
             default:
-                txt_shalat.setText(DZUHUR.substring(7));
+                mTextViewShalatMendatang.setText(DZUHUR.substring(7));
                 countTime = (detikDzuhur - jumlahDetikSaatIni) * miliDetik;
                 break;
         }
         // -----------------------------------------------------------------------------------------
-        waktuShalatHelper.setTimeOnline(txt_waktu_shubuh, txt_waktu_dzuhur, txt_waktu_ashar, txt_waktu_maghrib, txt_waktu_isya);
-        waktuShalatHelper.CoundownTime(countTime, txt_coundown);
+        mWaktuShalatHelper.setTimeOnline(mTextViewWaktuShubuh, mTextViewWaktuDzuhur, mTextViewWaktuAshar, mTextViewWaktuMaghrib, mTextViewWaktuIsya);
+        mWaktuShalatHelper.CoundownTime(countTime, mTextViewCoundown);
         // -----------------------------------------------------------------------------------------
         return rootView;
     }

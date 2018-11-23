@@ -4,11 +4,14 @@ import android.app.AlertDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.database.Cursor;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import org.d3ifcool.jagosholat.R;
 import org.d3ifcool.jagosholat.models.databases.DataOperation;
@@ -43,10 +46,9 @@ public class CatatanCustomDialog {
     private DataOperation mDataOperation;
     private WaktuShalatHelper mWaktuShalatHelper;
     // ---------------------------------------------------------------------------------------------
-
-    // ---------------------------------------------------------------------------------------------
     // Constructor
-    public CatatanCustomDialog(AlertDialog.Builder mDialog, View mDialogView, MethodHelper mMethodHelper, Context mContext, DataOperation mDataOperation, WaktuShalatHelper mWaktuShalatHelper) {
+    public CatatanCustomDialog(AlertDialog.Builder mDialog, View mDialogView, MethodHelper mMethodHelper, Context mContext,
+                               DataOperation mDataOperation, WaktuShalatHelper mWaktuShalatHelper) {
         this.mDialog = mDialog;
         this.mDialogView = mDialogView;
         this.mMethodHelper = mMethodHelper;
@@ -59,6 +61,8 @@ public class CatatanCustomDialog {
     // ---------------------------------------------------------------------------------------------
     // Pop Up update waktu
     public void DialogForm() {
+
+        // -----------------------------------------------------------------------------------------
         mDialog.setView(mDialogView);
         mDialog.setCancelable(true);
         // -----------------------------------------------------------------------------------------
@@ -68,17 +72,17 @@ public class CatatanCustomDialog {
         View mLayoutMaghrib = mDialogView.findViewById(R.id.layout_catatan_button_jam_maghrib);
         View mLayoutIsya = mDialogView.findViewById(R.id.layout_catatan_button_jam_isya);
         // -----------------------------------------------------------------------------------------
-        CheckBox mCheckBoxShubuh = mDialogView.findViewById(R.id.checkbox_catatan_button_jam_shubuh);
-        CheckBox mCheckBoxDzuhur = mDialogView.findViewById(R.id.checkbox_catatan_button_jam_dzuhur);
-        CheckBox mCheckBoxAshar = mDialogView.findViewById(R.id.checkbox_catatan_button_jam_ashar);
-        CheckBox mCheckBoxMaghrib = mDialogView.findViewById(R.id.checkbox_catatan_button_jam_maghrib);
-        CheckBox mCheckBoxIsya = mDialogView.findViewById(R.id.checkbox_catatan_button_jam_isya);
+        final CheckBox mCheckBoxShubuh = mDialogView.findViewById(R.id.checkbox_catatan_button_jam_shubuh);
+        final CheckBox mCheckBoxDzuhur = mDialogView.findViewById(R.id.checkbox_catatan_button_jam_dzuhur);
+        final CheckBox mCheckBoxAshar = mDialogView.findViewById(R.id.checkbox_catatan_button_jam_ashar);
+        final CheckBox mCheckBoxMaghrib = mDialogView.findViewById(R.id.checkbox_catatan_button_jam_maghrib);
+        final CheckBox mCheckBoxIsya = mDialogView.findViewById(R.id.checkbox_catatan_button_jam_isya);
         // -----------------------------------------------------------------------------------------
-        TextView mTextViewWaktuShubuh = mDialogView.findViewById(R.id.textview_catatan_button_jam_shubuh);
-        TextView mTextViewWaktuDzuhur = mDialogView.findViewById(R.id.textview_catatan_button_jam_dzuhur);
-        TextView mTextViewWaktuAshar = mDialogView.findViewById(R.id.textview_catatan_button_jam_ashar);
-        TextView mTextViewWaktuMaghrib = mDialogView.findViewById(R.id.textview_catatan_button_jam_maghrib);
-        TextView mTextViewWaktuIsya = mDialogView.findViewById(R.id.textview_catatan_button_jam_isya);
+        final TextView mTextViewWaktuShubuh = mDialogView.findViewById(R.id.textview_catatan_button_jam_shubuh);
+        final TextView mTextViewWaktuDzuhur = mDialogView.findViewById(R.id.textview_catatan_button_jam_dzuhur);
+        final TextView mTextViewWaktuAshar = mDialogView.findViewById(R.id.textview_catatan_button_jam_ashar);
+        final TextView mTextViewWaktuMaghrib = mDialogView.findViewById(R.id.textview_catatan_button_jam_maghrib);
+        final TextView mTextViewWaktuIsya = mDialogView.findViewById(R.id.textview_catatan_button_jam_isya);
         // -----------------------------------------------------------------------------------------
         mWaktuShalatHelper.setTimeOnline(mTextViewWaktuShubuh, mTextViewWaktuDzuhur, mTextViewWaktuAshar, mTextViewWaktuMaghrib, mTextViewWaktuIsya);
         // -----------------------------------------------------------------------------------------
@@ -89,12 +93,110 @@ public class CatatanCustomDialog {
         setTimePicker(mTextViewWaktuIsya);
         // -----------------------------------------------------------------------------------------
 
-        mDialog.setPositiveButton("CATAT", new DialogInterface.OnClickListener() {
+        if (mWaktuShalatHelper.saatWaktunyaIsyaPagi()) {
+            if (!isEmptyDataToday()) {
+                if (isDataNotExistID(mWaktuShalatHelper.SHUBUH)) mLayoutShubuh.setVisibility(View.VISIBLE);
+                if (isDataNotExistID(mWaktuShalatHelper.DZUHUR)) mLayoutDzuhur.setVisibility(View.VISIBLE);
+                if (isDataNotExistID(mWaktuShalatHelper.ASHAR)) mLayoutAshar.setVisibility(View.VISIBLE);
+                if (isDataNotExistID(mWaktuShalatHelper.MAGHRIB)) mLayoutMaghrib.setVisibility(View.VISIBLE);
+                if (isDataNotExistID(mWaktuShalatHelper.ISYA)) mLayoutIsya.setVisibility(View.VISIBLE);
+            } else {
+                mLayoutShubuh.setVisibility(View.VISIBLE);
+                mLayoutDzuhur.setVisibility(View.VISIBLE);
+                mLayoutAshar.setVisibility(View.VISIBLE);
+                mLayoutMaghrib.setVisibility(View.VISIBLE);
+                mLayoutIsya.setVisibility(View.VISIBLE);
+            }
+        } else if (mWaktuShalatHelper.saatWaktunyaShubuh()) {
+            if (!isEmptyDataToday()) {
+                if (isDataNotExistID(mWaktuShalatHelper.SHUBUH)) mLayoutShubuh.setVisibility(View.VISIBLE);
+            } else {
+                mLayoutShubuh.setVisibility(View.VISIBLE);
+            }
+        } else if (mWaktuShalatHelper.saatWaktunyaDzuhur()){
+            if (!isEmptyDataToday()){
+                if (isDataNotExistID(mWaktuShalatHelper.SHUBUH)) mLayoutShubuh.setVisibility(View.VISIBLE);
+                if (isDataNotExistID(mWaktuShalatHelper.DZUHUR)) mLayoutDzuhur.setVisibility(View.VISIBLE);
+            } else {
+                mLayoutShubuh.setVisibility(View.VISIBLE);
+                mLayoutDzuhur.setVisibility(View.VISIBLE);
+            }
+        } else if (mWaktuShalatHelper.saatWaktunyaAshar()){
+            if (!isEmptyDataToday()){
+                if (isDataNotExistID(mWaktuShalatHelper.SHUBUH)) mLayoutShubuh.setVisibility(View.VISIBLE);
+                if (isDataNotExistID(mWaktuShalatHelper.DZUHUR)) mLayoutDzuhur.setVisibility(View.VISIBLE);
+                if (isDataNotExistID(mWaktuShalatHelper.ASHAR)) mLayoutAshar.setVisibility(View.VISIBLE);
+            } else {
+                mLayoutShubuh.setVisibility(View.VISIBLE);
+                mLayoutDzuhur.setVisibility(View.VISIBLE);
+                mLayoutAshar.setVisibility(View.VISIBLE);
+            }
 
+        } else if (mWaktuShalatHelper.saatWaktunyaMaghrib()){
+            if (!isEmptyDataToday()){
+                if (isDataNotExistID(mWaktuShalatHelper.SHUBUH)) mLayoutShubuh.setVisibility(View.VISIBLE);
+                if (isDataNotExistID(mWaktuShalatHelper.DZUHUR)) mLayoutDzuhur.setVisibility(View.VISIBLE);
+                if (isDataNotExistID(mWaktuShalatHelper.ASHAR)) mLayoutAshar.setVisibility(View.VISIBLE);
+                if (isDataNotExistID(mWaktuShalatHelper.MAGHRIB)) mLayoutMaghrib.setVisibility(View.VISIBLE);
+            } else {
+                mLayoutShubuh.setVisibility(View.VISIBLE);
+                mLayoutDzuhur.setVisibility(View.VISIBLE);
+                mLayoutAshar.setVisibility(View.VISIBLE);
+                mLayoutMaghrib.setVisibility(View.VISIBLE);
+            }
+
+        } else if (mWaktuShalatHelper.saatWaktunyaIsyaMalam()){
+            if (!isEmptyDataToday()){
+                if (isDataNotExistID(mWaktuShalatHelper.SHUBUH)) mLayoutShubuh.setVisibility(View.VISIBLE);
+                if (isDataNotExistID(mWaktuShalatHelper.DZUHUR)) mLayoutDzuhur.setVisibility(View.VISIBLE);
+                if (isDataNotExistID(mWaktuShalatHelper.ASHAR)) mLayoutAshar.setVisibility(View.VISIBLE);
+                if (isDataNotExistID(mWaktuShalatHelper.MAGHRIB)) mLayoutMaghrib.setVisibility(View.VISIBLE);
+                if (isDataNotExistID(mWaktuShalatHelper.ISYA)) mLayoutIsya.setVisibility(View.VISIBLE);
+            } else {
+                mLayoutShubuh.setVisibility(View.VISIBLE);
+                mLayoutDzuhur.setVisibility(View.VISIBLE);
+                mLayoutAshar.setVisibility(View.VISIBLE);
+                mLayoutMaghrib.setVisibility(View.VISIBLE);
+                mLayoutIsya.setVisibility(View.VISIBLE);
+            }
+        }
+
+        mDialog.setPositiveButton("CATAT", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                // ---------------------------------------------------------------------------------
 
+                if (mCheckBoxShubuh.isChecked()){
+                    String tempIDShubuh = "IDS11" + mMethodHelper.getRandomChar();
+                    String tempWaktuShubuh = mTextViewWaktuShubuh.getText().toString();
+                    addData(tempIDShubuh, mWaktuShalatHelper.SHUBUH, tempWaktuShubuh);
+                }
 
+                if (mCheckBoxDzuhur.isChecked()){
+                    String tempIDDzuhur = "IDS22" + mMethodHelper.getRandomChar();
+                    String tempWaktuDzuhur = mTextViewWaktuDzuhur.getText().toString();
+                    addData(tempIDDzuhur, mWaktuShalatHelper.DZUHUR, tempWaktuDzuhur);
+                }
+
+                if (mCheckBoxAshar.isChecked()){
+                    String tempIDAshar = "IDS33" + mMethodHelper.getRandomChar();
+                    String tempWaktuAshar = mTextViewWaktuAshar.getText().toString();
+                    addData(tempIDAshar, mWaktuShalatHelper.ASHAR, tempWaktuAshar);
+                }
+
+                if (mCheckBoxMaghrib.isChecked()){
+                    String tempIDMaghrib = "IDS44" + mMethodHelper.getRandomChar();
+                    String tempWaktuMaghrib = mTextViewWaktuMaghrib.getText().toString();
+                    addData(tempIDMaghrib, mWaktuShalatHelper.MAGHRIB, tempWaktuMaghrib);
+                }
+
+                if (mCheckBoxIsya.isChecked()){
+                    String tempIDIsya = "IDS55" + mMethodHelper.getRandomChar();
+                    String tempWaktuIsya = mTextViewWaktuIsya.getText().toString();
+                    addData(tempIDIsya, mWaktuShalatHelper.ISYA, tempWaktuIsya);
+                }
+
+                Toast.makeText(mContext, "Alhamdulillah Shalat", Toast.LENGTH_LONG).show();
                 // ---------------------------------------------------------------------------------
                 dialog.dismiss(); // Keluar Dari Dialog
                 if (mDialogView.getParent() != null) {
@@ -118,9 +220,57 @@ public class CatatanCustomDialog {
     // ---------------------------------------------------------------------------------------------
 
 
+    // Cek di dalam table belum ada data sama sekali -----------------------------------------------
+    private boolean isEmptyDataToday() {
+        Cursor res = mDataOperation.getDataToday(mContext, mMethodHelper.getDateToday());
+        int cek = res.getCount();
+        return cek == 0;
+    }
+    // ---------------------------------------------------------------------------------------------
+
+    // Cek di dalam table belum ada data sama sekali -----------------------------------------------
+    private boolean isDataNotExistID(String mShalat) {
+        Cursor res = null;
+        try {
+            res = mDataOperation.getDataDateShalat(mContext, mMethodHelper.getDateToday(), mShalat);
+            int cek = res.getCount();
+            return cek == 0;
+        } finally {
+            res.close();
+        }
+    }
+    // ---------------------------------------------------------------------------------------------
+
+    // Method langsung isi dalam database ----------------------------------------------------------
+    private void insertDataToDatabase(String id_ibadah, String isi_shalat, String isi_waktu) {
+        String isi_tanggal = mMethodHelper.getDateToday();
+        String isi_status = "Shalat";
+        mDataOperation.insertData(mContext, id_ibadah, isi_tanggal, isi_shalat, isi_waktu, isi_status);
+
+    }
+    // ---------------------------------------------------------------------------------------------
+
+    // Method untuk menyimpan data ketika button "Simpan" di tekan ---------------------------------
+    private void addData(String mId, String mShalat, String mWaktu) {
+        try {
+            if (isDataNotExistID(mShalat)) {
+                if (!mShalat.equals(mWaktuShalatHelper.BUKAN_WAKTU_SHOLAT)) {
+                    insertDataToDatabase(mId, mShalat, mWaktu);
+                }
+            } else {
+                if (!isDataNotExistID(mShalat)) {
+                    insertDataToDatabase(mId, mShalat, mWaktu);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    // ---------------------------------------------------------------------------------------------
+
+    // Set Waktu -----------------------------------------------------------------------------------
     private void setTimePicker(final TextView mTextView) {
-        // -----------------------------------------------------------------------------------------
-        // Set Waktu
+
         mTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -134,7 +284,21 @@ public class CatatanCustomDialog {
 
             }
         });
-        // -----------------------------------------------------------------------------------------
     }
+    // ---------------------------------------------------------------------------------------------
+
+    // Mengatur Tombol -----------------------------------------------------------------------------
+    public void viewSaveButton(Button mButton, String mShalat){
+        if (mShalat.equalsIgnoreCase(mWaktuShalatHelper.BUKAN_WAKTU_SHOLAT)){
+            mButton.setVisibility(View.GONE);
+        } else {
+            if (isDataNotExistID(mShalat)){
+                mButton.setVisibility(View.VISIBLE);
+            } else {
+                mButton.setVisibility(View.GONE);
+            }
+        }
+    }
+    // ---------------------------------------------------------------------------------------------
 
 }

@@ -29,7 +29,6 @@ public class DataOperation {
 
     public DataOperation() {
     }
-
     // ---------------------------------------------------------------------------------------------
     // Variable projection ini gunanya untuk memilih column pada database
     // Guna variable projection ini sama seperti * pada SQL
@@ -41,20 +40,17 @@ public class DataOperation {
     };
     // ---------------------------------------------------------------------------------------------
 
-    private long result; // result ini untuk mendapatkan boolean dari insert data (true/false)
+//    private long result; // result ini untuk mendapatkan boolean dari insert data (true/false)
 
     // Insert Data dalam DatabaseHelper ------------------------------------------------------------------
     public boolean insertData(Context context, String id, String tanggal, String shalat, String waktu, String status) {
-
         ContentValues contentValues = new ContentValues();
         contentValues.put(DataEntry._ID, id);
         contentValues.put(DataEntry.COLUMN_TANGGAL, tanggal);
         contentValues.put(DataEntry.COLUMN_SHALAT, shalat);
         contentValues.put(DataEntry.COLUMN_WAKTU, waktu);
         contentValues.put(DataEntry.COLUMN_STATUS, status);
-
         Uri resultUri = context.getContentResolver().insert(DataEntry.CONTENT_URI,contentValues);
-
         if (resultUri == null) {
             return false;
         } else {
@@ -64,11 +60,10 @@ public class DataOperation {
     // ---------------------------------------------------------------------------------------------
 
 
-    public boolean updateDataWaktu(Context context, String waktu, String selcetion, String[] selectionArgs) {
+    public boolean updateDataTime(Context context, String waktu, String selcetion, String[] selectionArgs) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(DataEntry.COLUMN_WAKTU,waktu);
         int resultUri = context.getContentResolver().update(DataEntry.CONTENT_URI, contentValues, selcetion, selectionArgs);
-
         if (resultUri == 0) {
             return false;
         } else {
@@ -76,59 +71,53 @@ public class DataOperation {
         }
     }
 
-
-
-
     // Method Cursor untuk menarik semua data sementara dari database ------------------------------
     // dalam method ini menggambil semua data tanpa arguments
-    public Cursor getSemuaData(Context context){
-        Cursor res = context.getContentResolver().query(
-                DataEntry.CONTENT_URI,
-                projection,
-                null,
-                null,
-                DataEntry.COLUMN_TANGGAL);
-        return res;
+    public Cursor getDataAll(Context context){
+        return context.getContentResolver().query(
+            DataEntry.CONTENT_URI,
+            projection,
+            null,
+            null,
+            DataEntry.COLUMN_TANGGAL);
     }
     // ---------------------------------------------------------------------------------------------
 
 
     // Mengambil semua data dengan kondisi dimana tanggal sama dengan tanggal inputan --------------
-    public Cursor getDataTanggal(Context context, String tanggal){
+    public Cursor getDataToday(Context context, String tanggal){
         String selection = DataContract.DataEntry.COLUMN_TANGGAL + " = '" + tanggal + "'";
-        Cursor res = context.getContentResolver().query(
-                DataEntry.CONTENT_URI,
-                projection,
-                selection,
-                null,
-                null);
-        return res;
+        return context.getContentResolver().query(
+            DataEntry.CONTENT_URI,
+            projection,
+            selection,
+            null,
+            null);
     }
     // ---------------------------------------------------------------------------------------------
 
-    // kondisi dimana tanggal dan shalat sama dengan inputan ---------------------------------------
-    public Cursor getDataTanggalJenis(Context context, String tanggal, String shalat) {
+    // Kondisi dimana tanggal dan shalat sama dengan inputan ---------------------------------------
+    public Cursor getDataDateShalat(Context context, String tanggal, String shalat) {
         String selection = DataContract.DataEntry.COLUMN_TANGGAL + " = '" + tanggal +
                 "' AND " + DataContract.DataEntry.COLUMN_SHALAT + " = '" + shalat + "'";
-        Cursor res = context.getContentResolver().query(
-                DataEntry.CONTENT_URI,
-                projection,
-                selection,
-                null,
-                null);
-        return res;
+        return context.getContentResolver().query(
+            DataEntry.CONTENT_URI,
+            projection,
+            selection,
+            null,
+            DataEntry._ID);
+
     }
     // ---------------------------------------------------------------------------------------------
 
-    public Cursor getSemuaTanggal(Context context){
+    public Cursor getDataSameDate(Context context){
         String projectionTanggal[] = {"DISTINCT " + DataEntry.COLUMN_TANGGAL};
-        Cursor res = context.getContentResolver().query(
+        return context.getContentResolver().query(
             DataEntry.CONTENT_URI,
             projectionTanggal,
             null,
             null,
             null);
-        return res;
     }
 
     public String[] getProjection() {

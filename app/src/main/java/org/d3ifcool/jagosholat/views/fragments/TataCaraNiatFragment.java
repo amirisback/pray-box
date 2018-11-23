@@ -28,9 +28,10 @@ public class TataCaraNiatFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_tatacara_text, container, false);
         // -----------------------------------------------------------------------------------------
-        ArrayList<NiatShalat> arrayWords = TataCaraJSON.extractNiatShalat();
-        RecyclerView mRecyclerView = (RecyclerView) rootView.findViewById(R.id.tatacara_listview_text);
-        NiatShalatRecyclerViewAdapter adapter = new NiatShalatRecyclerViewAdapter(getContext(), arrayWords);
+        ArrayList<NiatShalat> arrayNiatShalat = TataCaraJSON.extractNiatShalat();
+        RecyclerView mRecyclerView = rootView.findViewById(R.id.tatacara_listview_text);
+        // -----------------------------------------------------------------------------------------
+        NiatShalatRecyclerViewAdapter adapter = new NiatShalatRecyclerViewAdapter(getContext(), arrayNiatShalat);
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         DividerItemDecoration divider = new DividerItemDecoration(getContext(), mLayoutManager.getOrientation());
         // -----------------------------------------------------------------------------------------

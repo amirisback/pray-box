@@ -42,7 +42,7 @@ public class StatistikGrafikFragment extends Fragment{
 
         View rootView = inflater.inflate(R.layout.fragment_statistik_grafik, container, false);
         // -----------------------------------------------------------------------------------------
-        BarChart mBarChart = (BarChart) rootView.findViewById(R.id.chart_id); // Diagram Batang
+        BarChart mBarChart = rootView.findViewById(R.id.chart_id); // Diagram Batang
         YAxis leftAxis = mBarChart.getAxis(YAxis.AxisDependency.LEFT); // Inisiasi Sumbu Y kiri
         YAxis rightAxis = mBarChart.getAxis(YAxis.AxisDependency.RIGHT); // Inisiasi Sumbu Y kanan
         XAxis xAxis = mBarChart.getXAxis(); // Inisiasi Sumbu X
@@ -51,7 +51,7 @@ public class StatistikGrafikFragment extends Fragment{
         ArrayList<String> barLabels = new ArrayList<>();
         // -----------------------------------------------------------------------------------------
         barLabels.add("");
-        Cursor cursor = mDataOperation.getSemuaTanggal(getContext());
+        Cursor cursor = mDataOperation.getDataSameDate(getContext());
         int i=1;
         while (cursor.moveToNext()) {
             // -------------------------------------------------------------------------------------
@@ -59,7 +59,7 @@ public class StatistikGrafikFragment extends Fragment{
             String tanggal = cursor.getString(tanggalColoumnIndex);
             barLabels.add(tanggal);
             // -------------------------------------------------------------------------------------
-            Cursor cursorSum = mDataOperation.getDataTanggal(getContext(), tanggal);
+            Cursor cursorSum = mDataOperation.getDataToday(getContext(), tanggal);
             int countX = i;
             int countY = cursorSum.getCount() * 20;
             barEntries.add(new BarEntry(countX, countY));

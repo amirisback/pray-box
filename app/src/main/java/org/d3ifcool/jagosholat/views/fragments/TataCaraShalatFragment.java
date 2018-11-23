@@ -32,11 +32,11 @@ public class TataCaraShalatFragment extends Fragment {
         // Inflate the layout for this fragment
         // -----------------------------------------------------------------------------------------
         View rootView = inflater.inflate(R.layout.fragment_tatacara_image, container, false);
-        ViewPager viewPager = (ViewPager) rootView.findViewById(R.id.tatacara_sliderimage_viewpager);
+        ViewPager mViewPager = rootView.findViewById(R.id.tatacara_sliderimage_viewpager);
         LinearLayout sliderDotspanel = (LinearLayout) rootView.findViewById(R.id.tatacara_sliderdots_linearLayout);
         // -----------------------------------------------------------------------------------------
         TataCaraImagePagerAdapter imagePagerAdapter = new TataCaraImagePagerAdapter(getContext(), imageResId);
-        viewPager.setAdapter(imagePagerAdapter);
+        mViewPager.setAdapter(imagePagerAdapter);
         dotscount = imagePagerAdapter.getCount();
         dots = new ImageView[dotscount];
         // -----------------------------------------------------------------------------------------
@@ -55,7 +55,7 @@ public class TataCaraShalatFragment extends Fragment {
 
         dots[0].setImageDrawable(ContextCompat.getDrawable(getContext().getApplicationContext(), R.drawable.ic_tatacara_dot_active));
 
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
             }

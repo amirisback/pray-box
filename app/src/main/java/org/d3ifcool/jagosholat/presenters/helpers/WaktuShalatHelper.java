@@ -56,19 +56,17 @@ public class WaktuShalatHelper {
 
     // ---------------------------------------------------------------------------------------------
     // Konstanta
+    private static final String FORMAT_COUNTDOWN = "%02d : %02d : %02d";
     private final int JAM_KE_DETIK = 3600;
     private final int MENIT_KE_DETIK = 60;
-    private static final String FORMAT_COUNTDOWN = "%02d : %02d : %02d";
-    private final String BUKAN_WAKTU_SHOLAT = "Belum Masuk Waktu Sholat";
-    private final String SHUBUH = "Shalat Shubuh";
-    private final String DZUHUR = "Shalat Dzuhur";
-    private final String ASHAR = "Shalat Ashar";
-    private final String MAGHRIB = "Shalat Maghrib";
-    private final String ISYA = "Shalat Isya";
     private final String MATAHARI_TERBIT = "Matahari Terbit";
     private final String MATAHARI_TERBENAM = "Matahari Terbenam";
-    // ---------------------------------------------------------------------------------------------
-
+    public final String BUKAN_WAKTU_SHOLAT = "Belum Masuk Waktu Sholat";
+    public final String SHUBUH = "Shalat Shubuh";
+    public final String DZUHUR = "Shalat Dzuhur";
+    public final String ASHAR = "Shalat Ashar";
+    public final String MAGHRIB = "Shalat Maghrib";
+    public final String ISYA = "Shalat Isya";
     // ---------------------------------------------------------------------------------------------
 
     private double timezone = (Calendar.getInstance().getTimeZone().getOffset(Calendar.getInstance().getTimeInMillis())) / (1000 * 60 * 60);
@@ -91,31 +89,31 @@ public class WaktuShalatHelper {
 
     // ---------------------------------------------------------------------------------------------
 
-    private boolean saatWaktunyaShubuh() {
+    public boolean saatWaktunyaShubuh() {
         return (waktuSaatIni == jmlWaktuShubuh) || (waktuSaatIni < jmlWaktuTerbit);
     }
 
-    private boolean saatWaktunyaDzuhur(){
+    public boolean saatWaktunyaDzuhur(){
         return (waktuSaatIni == jmlWaktuDzuhur) || (waktuSaatIni < jmlWaktuAshar);
     }
 
-    private boolean saatWaktunyaAshar(){
+    public boolean saatWaktunyaAshar(){
         return (waktuSaatIni == jmlWaktuAshar) || (waktuSaatIni < jmlWaktuMaghrib);
     }
 
-    private boolean saatWaktunyaMaghrib(){
+    public boolean saatWaktunyaMaghrib(){
         return (waktuSaatIni == jmlWaktuMaghrib) || (waktuSaatIni < jmlWaktuIsya);
     }
 
-    private boolean saatWaktunyaIsyaPagi(){
+    public boolean saatWaktunyaIsyaPagi(){
         return (waktuSaatIni == jmlAftMidnight) || (waktuSaatIni < jmlWaktuShubuh);
     }
 
-    private boolean saatWaktunyaIsyaMalam(){
+    public boolean saatWaktunyaIsyaMalam(){
         return (waktuSaatIni == jmlWaktuIsya) || (waktuSaatIni <= jmlBeMidnight);
     }
 
-    private boolean saatWaktunyaBukan(){
+    public boolean saatWaktunyaBukan(){
         return (waktuSaatIni == jmlWaktuTerbit) || (waktuSaatIni < jmlWaktuDzuhur);
     }
 

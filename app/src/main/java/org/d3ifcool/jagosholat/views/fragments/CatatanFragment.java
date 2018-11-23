@@ -1,6 +1,6 @@
 package org.d3ifcool.jagosholat.views.fragments;
 
-import android.database.Cursor;
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -8,9 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import org.d3ifcool.jagosholat.views.interfaces.InterfaceCatatanFragment;
+import org.d3ifcool.jagosholat.views.dialogs.CatatanCustomDialog;
 import org.d3ifcool.jagosholat.presenters.helpers.MethodHelper;
 import org.d3ifcool.jagosholat.presenters.helpers.WaktuShalatHelper;
 import org.d3ifcool.jagosholat.models.databases.DataOperation;
@@ -36,8 +35,7 @@ import java.util.Random;
  * id.amirisback.frogobox
  */
 
-public class CatatanFragment extends Fragment implements InterfaceCatatanFragment {
-
+public class CatatanFragment extends Fragment{
     // ---------------------------------------------------------------------------------------------
     // Deklarasi Class helper Buatan Sendiri
     private MethodHelper methodHelper = new MethodHelper();
@@ -45,17 +43,10 @@ public class CatatanFragment extends Fragment implements InterfaceCatatanFragmen
     private DataOperation crud = new DataOperation();
     // ---------------------------------------------------------------------------------------------
     // Deklarasi Requirement Variable
-    private String cekid;
-    private final String bukanWaktuSholat = "Belum Masuk Waktu Sholat";
     private int[] mHadistArab = {R.string.hadis_arab_0, R.string.hadis_arab_1, R.string.hadis_arab_2,
             R.string.hadis_arab_3, R.string.hadis_arab_4, R.string.hadis_arab_5};
     private int[] mHadistText = {R.string.hadis_text_0, R.string.hadis_text_1, R.string.hadis_text_2,
             R.string.hadis_text_3, R.string.hadis_text_4, R.string.hadis_text_5};
-    // ---------------------------------------------------------------------------------------------
-    // Deklarasi element layout
-    private Button btn_simpan;
-    private String isi_tanggal, isi_sholat, isi_waktu, isi_status;
-    private String id_ibadah;
     // ---------------------------------------------------------------------------------------------
 
     public CatatanFragment() {
@@ -70,24 +61,18 @@ public class CatatanFragment extends Fragment implements InterfaceCatatanFragmen
         View rootView = inflater.inflate(R.layout.fragment_catatan, container, false);
         // -----------------------------------------------------------------------------------------
         // Inisiasi element XML layout
-        TextView txt_tanggal = rootView.findViewById(R.id.catatan_textview_tanggal);
-        TextView txt_sholat = rootView.findViewById(R.id.jadwal_textview_shalat);
-        TextView txt_hadist_arab = rootView.findViewById(R.id.catatan_textview_hadist_arab);
-        TextView txt_hadist_text = rootView.findViewById(R.id.catatan_textview_hadist_text);
-        btn_simpan = rootView.findViewById(R.id.catatan_button_catat_ibadah);
+        TextView mTextViewTanggal = rootView.findViewById(R.id.catatan_textview_tanggal);
+        TextView mTextViewSholat = rootView.findViewById(R.id.jadwal_textview_shalat);
+        TextView mTextViewHadistArab = rootView.findViewById(R.id.catatan_textview_hadist_arab);
+        TextView mTextViewHadistText = rootView.findViewById(R.id.catatan_textview_hadist_text);
+        Button mButtonCatat = rootView.findViewById(R.id.catatan_button_catat_ibadah);
         // -----------------------------------------------------------------------------------------
         // Set tampilan tanggal dan waktu
         methodHelper.getSystemTime();
         methodHelper.getSystemRealTime();
         methodHelper.getSumRealTime();
-        waktuShalatHelper.setJadwalShalat(txt_sholat);
-        txt_tanggal.setText(methodHelper.getDateToday());
-        // -----------------------------------------------------------------------------------------
-        // Get Data dari XML Layout
-        isi_sholat = txt_sholat.getText().toString();
-        isi_waktu = methodHelper.getOutputStringTime();
-        isi_tanggal = methodHelper.getDateToday();
-        isi_status = "Shalat";
+        waktuShalatHelper.setJadwalShalat(mTextViewSholat);
+        mTextViewTanggal.setText(methodHelper.getDateToday());
         // -----------------------------------------------------------------------------------------
         // Set Data Random Hadist untuk XML Layout
         Random randomInt = new Random();
@@ -97,101 +82,30 @@ public class CatatanFragment extends Fragment implements InterfaceCatatanFragmen
         // -----------------------------------------------------------------------------------------
         int mResIdHadistArab = mHadistArab[getIndexArrayHadis];
         int mResIdHadistText = mHadistText[getIndexArrayHadis];
-        txt_hadist_arab.setText(mResIdHadistArab);
-        txt_hadist_text.setText(mResIdHadistText);
+        mTextViewHadistArab.setText(mResIdHadistArab);
+        mTextViewHadistText.setText(mResIdHadistText);
+        // -----------------------------------------------------------------------------------------
+        // Deklarasi Element XML Update View
+        AlertDialog.Builder mDialogBuilder = new AlertDialog.Builder(getContext());
+        View mDialogView = inflater.inflate(R.layout.content_catatan_button, null);
+        // -----------------------------------------------------------------------------------------
+        // Deklarasi custom dialog
+        final CatatanCustomDialog mDialogForm = new CatatanCustomDialog(mDialogBuilder, mDialogView,
+                methodHelper, getContext(), crud, waktuShalatHelper);
+        // -----------------------------------------------------------------------------------------
+        // Fungsi untuk menampilkan button simpan
+        String mShalatNow = mTextViewSholat.getText().toString();
+        mDialogForm.viewSaveButton(mButtonCatat, mShalatNow);
         // -----------------------------------------------------------------------------------------
         // Panggil method untuk mencatat
-        id_ibadah = "IDS" + methodHelper.getRandomChar();
-        tampilanButtonSimpan(isi_sholat);
-        btn_simpan.setOnClickListener(new View.OnClickListener() {
+        mButtonCatat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addData(isi_sholat);
+                mDialogForm.DialogForm();
             }
         });
         // -----------------------------------------------------------------------------------------
         return rootView;
     }
 
-    // Cek di dalam table belum ada data sama sekali -----------------------------------------------
-    public boolean isEmptyRowTable() {
-        Cursor res = null;
-        try {
-            res = crud.getDataTanggalJenis(getContext(), isi_tanggal, isi_sholat);
-            int cek = res.getCount();
-            return cek == 0;
-        } finally {
-            res.close();
-        }
-    }
-    // ---------------------------------------------------------------------------------------------
-
-    // Method untuk mengecek apakah data sudah terisi / dengan cara search di database -------------
-    public String cekDataSudahAda() {
-        Cursor res = crud.getDataTanggalJenis(getContext(), isi_tanggal, isi_sholat);
-        try{
-            while (res.moveToNext()) {
-                cekid = res.getString(2);
-            }
-        } finally {
-            res.close();
-        }
-        return cekid;
-    }
-    // ---------------------------------------------------------------------------------------------
-
-    // Method langsung isi dalam database ----------------------------------------------------------
-    public void insertDataToDatabase() {
-        boolean isInserted = crud.insertData(getContext(), id_ibadah, isi_tanggal, isi_sholat, isi_waktu, isi_status);
-        if (isInserted) {
-            Toast.makeText(getActivity(), "Alhamdullilah " + isi_sholat, Toast.LENGTH_LONG).show();
-            btn_simpan.setVisibility(View.GONE);
-        } else {
-            Toast.makeText(getActivity(), "Data Not Inserted", Toast.LENGTH_LONG).show();
-        }
-    }
-    // ---------------------------------------------------------------------------------------------
-
-    // Method untuk menyimpan data ketika button "Simpan" di tekan ---------------------------------
-    public void addData(String mShalat) {
-        try {
-            if (isEmptyRowTable()) {
-                if (mShalat.equals(bukanWaktuSholat)) {
-                    Toast.makeText(getActivity(), bukanWaktuSholat, Toast.LENGTH_LONG).show();
-                } else {
-                    insertDataToDatabase();
-                }
-            } else {
-                if (cekDataSudahAda().equals(mShalat)) {
-                    Toast.makeText(getActivity(), "Data Sudah Tercatat", Toast.LENGTH_LONG).show();
-                } else if (mShalat.equals(bukanWaktuSholat)) {
-                    Toast.makeText(getActivity(), bukanWaktuSholat, Toast.LENGTH_LONG).show();
-                } else {
-                    insertDataToDatabase();
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    // ---------------------------------------------------------------------------------------------
-
-    // ---------------------------------------------------------------------------------------------
-    // Mengatur Tombol
-    public void tampilanButtonSimpan(String mShalat){
-        if (mShalat.equalsIgnoreCase(bukanWaktuSholat)){
-            btn_simpan.setVisibility(View.GONE);
-        } else {
-            if (isEmptyRowTable()){
-                btn_simpan.setVisibility(View.VISIBLE);
-            } else {
-                if (!cekDataSudahAda().equals(mShalat)){
-                    btn_simpan.setVisibility(View.VISIBLE);
-                } else {
-                    btn_simpan.setVisibility(View.GONE);
-                }
-            }
-        }
-    }
-    // ---------------------------------------------------------------------------------------------
 }

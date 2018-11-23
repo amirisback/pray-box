@@ -55,13 +55,13 @@ public class MethodHelper {
     }
 
     // ---------------------------------------------------------------------------------------------
-    public String getOutputStringTime() {
+    private String getOutputStringTime() {
         outputStringTime = nilai_jam + ":" + nilai_menit;
         return outputStringTime;
     }
     // ---------------------------------------------------------------------------------------------
 
-    public void getPureSystemTime() {
+    private void getPureSystemTime() {
         // Skala Waktu 24 Jam ----------------------------------------------------------------------
         Calendar cal = Calendar.getInstance();
         systemYear = cal.get(Calendar.YEAR);
@@ -71,7 +71,7 @@ public class MethodHelper {
         // -----------------------------------------------------------------------------------------
     }
 
-    public void getCekFormat(){
+    private void getCekFormat(){
         getPureSystemTime(); // skala waktu 24 Jam
         // -----------------------------------------------------------------------------------------
         // Jika waktu itu kurang dari 9 maka akan di tambahkan 0 didepan angkanya
@@ -116,7 +116,8 @@ public class MethodHelper {
         String NewJam = nolJams + Integer.toString(hourInput);
         String NewMenit = nolMenits + Integer.toString(menitInput);
         // -----------------------------------------------------------------------------------------
-        txt_text.setText(NewJam + ":" + NewMenit);
+        String Waktu = NewJam + " : " + NewMenit;
+        txt_text.setText(Waktu);
     }
 
     // ---------------------------------------------------------------------------------------------

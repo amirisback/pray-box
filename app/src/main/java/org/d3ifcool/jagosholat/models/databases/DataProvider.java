@@ -42,8 +42,6 @@ public class DataProvider extends ContentProvider {
     private static final UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
     private DatabaseHelper mDbHelper;
     // ---------------------------------------------------------------------------------------------
-
-    // ---------------------------------------------------------------------------------------------
     static {
         sUriMatcher.addURI(DataContract.CONTENT_AUTHORITY, DataContract.PATH_DATA, DATA);
         sUriMatcher.addURI(DataContract.CONTENT_AUTHORITY, DataContract.PATH_DATA + "/#", DATA_ID);
@@ -132,7 +130,6 @@ public class DataProvider extends ContentProvider {
             default :
                 throw new IllegalArgumentException("Update is not Supported");
         }
-
     }
 
     private int updateData(Uri uri, ContentValues values, String selection, String[] selectionArgs){

@@ -68,7 +68,7 @@ public class StatistikHarianFragment extends Fragment implements LoaderManager.L
             empty_listView.setVisibility(View.VISIBLE);
         }
         // -----------------------------------------------------------------------------------------
-        Cursor cursor = mDataOperation.getDataTanggal(getContext(), mMethodHelper.getDateToday());
+        Cursor cursor = mDataOperation.getDataToday(getContext(), mMethodHelper.getDateToday());
         mCursorAdapter = new StatistikHarianCursorRecyclerViewAdapter(getContext(), cursor, mDialogForm);
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         DividerItemDecoration divider = new DividerItemDecoration(getContext(), mLayoutManager.getOrientation());
@@ -82,7 +82,7 @@ public class StatistikHarianFragment extends Fragment implements LoaderManager.L
     }
 
     public int getProgress(){
-        Cursor cursor = mDataOperation.getDataTanggal(getContext(), mMethodHelper.getDateToday());
+        Cursor cursor = mDataOperation.getDataToday(getContext(), mMethodHelper.getDateToday());
         int countTable = cursor.getCount();
         return countTable * 20;
     }

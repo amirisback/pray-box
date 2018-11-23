@@ -30,8 +30,8 @@ public class StatistikFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_statistik, container, false);
         // -----------------------------------------------------------------------------------------
         // Deklarasi Element XML
-        Button btn_statGrafik = rootView.findViewById(R.id.button_statistik_grafik);
-        Button btn_statHarian = rootView.findViewById(R.id.button_statistik_harian);
+        Button mButtonStatGrafik = rootView.findViewById(R.id.button_statistik_grafik);
+        Button mButtonStatHarian = rootView.findViewById(R.id.button_statistik_harian);
         // -----------------------------------------------------------------------------------------
         // Fragment Pertama yang di panggil yaitu Grafik
         final StatistikHarianFragment mStatistikHarianFragment = new StatistikHarianFragment();
@@ -40,14 +40,14 @@ public class StatistikFragment extends Fragment {
         exchangeFragment(mFrameLayout, mStatistikHarianFragment);
         // -----------------------------------------------------------------------------------------
         // Button pada Statistik Fragment
-        btn_statHarian.setOnClickListener(new View.OnClickListener() {
+        mButtonStatHarian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 exchangeFragment(mFrameLayout, mStatistikHarianFragment);
             }
         });
 
-        btn_statGrafik.setOnClickListener(new View.OnClickListener() {
+        mButtonStatGrafik.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 exchangeFragment(mFrameLayout, mStatistikGrafikFragment);

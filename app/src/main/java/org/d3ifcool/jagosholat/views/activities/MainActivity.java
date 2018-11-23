@@ -1,6 +1,6 @@
 package org.d3ifcool.jagosholat.views.activities;
 
-/**
+/*
  * Created by Faisal Amir
  * FrogoBox Inc License
  * =========================================
@@ -35,68 +35,22 @@ import org.d3ifcool.jagosholat.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    // ---------------------------------------------------------------------------------------------
-    // Deklarasi Kebutuhan
-    private TabLayout mTabLayout;
-    private ViewPager mViewPager;
-    // ---------------------------------------------------------------------------------------------
-    // Deklarasi Judul
-    private String[] pageTitle = {"Catatan", "Jadwal", "Statistik", "Kiblat", "Tata Cara"};
-    private int[] pageIcon = {R.drawable.ic_main_catat, R.drawable.ic_main_jadwal,
-            R.drawable.ic_main_statistik, R.drawable.ic_main_kompas, R.drawable.ic_main_more};
-    // ---------------------------------------------------------------------------------------------
-
-
-    public int getActionBarSize() {
-        TypedArray styledAttributes = getTheme().obtainStyledAttributes(new int[] { android.R.attr.actionBarSize });
-        int actionBarSize = (int) styledAttributes.getDimension(0, 0);
-        styledAttributes.recycle();
-        return actionBarSize;
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         // -----------------------------------------------------------------------------------------
         // Deklarasi element XML
-        Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        final TabLayout mTabLayout = findViewById(R.id.main_tablayout);
+        final ViewPager mViewPager = findViewById(R.id.main_viewpager);
+        Toolbar toolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
         // -----------------------------------------------------------------------------------------
+        final String[] pageTitle = {"Catatan", "Jadwal", "Statistik", "Kiblat", "Tata Cara"};
+        int[] pageIcon = {R.drawable.ic_main_catat, R.drawable.ic_main_jadwal,
+                R.drawable.ic_main_statistik, R.drawable.ic_main_kompas, R.drawable.ic_main_more};
+        // -----------------------------------------------------------------------------------------
         // Menjalankan Fungsi
-        SlideView();// Fungsi Slide di gunakan untuk ViewPager sliding Fragments
-        // -----------------------------------------------------------------------------------------
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        // Membuat Tombol Menu di Ujung Kanan Aplikasi
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Melihat Info Apps dengan cara Toolbar
-        switch (item.getItemId()) {
-            case R.id.info_apps:
-                Intent i = new Intent(MainActivity.this, TentangKamiActivity.class);
-                startActivity(i);
-                return true;
-        }
-        //noinspection SimplifiableIfStatemen
-        return super.onOptionsItemSelected(item);
-    }
-
-
-    public void SlideView(){
-        // -----------------------------------------------------------------------------------------
-        mTabLayout = (TabLayout) findViewById(R.id.main_tablayout);
-        mViewPager = (ViewPager)findViewById(R.id.main_viewpager);
-        // -----------------------------------------------------------------------------------------
         for (int i = 0 ; i < pageTitle.length; i ++){
             mTabLayout.addTab(mTabLayout.newTab().setIcon(pageIcon[i]));
         }
@@ -106,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
         mViewPager.setAdapter(Adatapters);
         // -----------------------------------------------------------------------------------------
         mViewPager.setOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
-
         mTabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -128,5 +81,35 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        // -----------------------------------------------------------------------------------------
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        // Membuat Tombol Menu di Ujung Kanan Aplikasi
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Melihat Info Apps dengan cara Toolbar
+        switch (item.getItemId()) {
+            case R.id.info_apps:
+                Intent i = new Intent(MainActivity.this, TentangKamiActivity.class);
+                startActivity(i);
+                return true;
+        }
+        //noinspection SimplifiableIfStatemen
+        return super.onOptionsItemSelected(item);
+    }
+
+    public int getActionBarSize() {
+        TypedArray styledAttributes = getTheme().obtainStyledAttributes(new int[] { android.R.attr.actionBarSize });
+        int actionBarSize = (int) styledAttributes.getDimension(0, 0);
+        styledAttributes.recycle();
+        return actionBarSize;
+    }
+
 }

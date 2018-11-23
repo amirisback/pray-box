@@ -28,9 +28,10 @@ public class TataCaraDoaFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_tatacara_text, container, false);
         // -----------------------------------------------------------------------------------------
-        ArrayList<DoaShalat> arrayWords = TataCaraJSON.extractDoaShalat();
-        RecyclerView mRecyclerView = (RecyclerView) rootView.findViewById(R.id.tatacara_listview_text);
-        DoaShalatRecyclerViewAdapter adapter = new DoaShalatRecyclerViewAdapter(getContext(), arrayWords);
+        ArrayList<DoaShalat> arrayDoaShalat = TataCaraJSON.extractDoaShalat();
+        RecyclerView mRecyclerView = rootView.findViewById(R.id.tatacara_listview_text);
+        // -----------------------------------------------------------------------------------------
+        DoaShalatRecyclerViewAdapter adapter = new DoaShalatRecyclerViewAdapter(getContext(), arrayDoaShalat);
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         DividerItemDecoration divider = new DividerItemDecoration(getContext(), mLayoutManager.getOrientation());
         // -----------------------------------------------------------------------------------------

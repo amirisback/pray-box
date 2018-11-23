@@ -21,7 +21,6 @@
 
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -50,6 +49,7 @@
 
     <LinearLayout
         android:id="@id/layout_catatan_button_jam_shubuh"
+        android:visibility="gone"
         style="@style/layoutCatatanButton">
 
         <CheckBox
@@ -65,6 +65,7 @@
     </LinearLayout>
     <LinearLayout
         android:id="@id/layout_catatan_button_jam_dzuhur"
+        android:visibility="gone"
         style="@style/layoutCatatanButton">
 
         <CheckBox
@@ -80,6 +81,7 @@
     </LinearLayout>
     <LinearLayout
         android:id="@id/layout_catatan_button_jam_ashar"
+        android:visibility="gone"
         style="@style/layoutCatatanButton">
 
         <CheckBox
@@ -95,6 +97,7 @@
     </LinearLayout>
     <LinearLayout
         android:id="@id/layout_catatan_button_jam_maghrib"
+        android:visibility="gone"
         style="@style/layoutCatatanButton">
 
         <CheckBox
@@ -110,6 +113,7 @@
     </LinearLayout>
     <LinearLayout
         android:id="@id/layout_catatan_button_jam_isya"
+        android:visibility="gone"
         style="@style/layoutCatatanButton">
 
         <CheckBox

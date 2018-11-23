@@ -32,25 +32,25 @@ import java.util.ArrayList;
 public class DoaShalatRecyclerViewAdapter extends RecyclerView.Adapter<DoaShalatRecyclerViewAdapter.ViewHolder> {
 
     public Context context;
-    public ArrayList<DoaShalat> mArrayList;
+    private ArrayList<DoaShalat> mArrayListDoaShalat;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView txt_arab_doa, txt_latin_doa, txt_terjemah_doa;
+        TextView mTextViewDoaArab, mTextViewDoaLatin, mTextViewDoaTerjemahan;
 
         public ViewHolder(View itemView) {
             super(itemView);
             // -------------------------------------------------------------------------------------
-            txt_arab_doa = (TextView)itemView.findViewById(R.id.doa_setelah_shalat_arab);
-            txt_latin_doa = (TextView)itemView.findViewById(R.id.doa_setelah_shalat_latin);
-            txt_terjemah_doa = (TextView)itemView.findViewById(R.id.doa_setelah_shalat_arti);
+            mTextViewDoaArab = itemView.findViewById(R.id.doa_setelah_shalat_arab);
+            mTextViewDoaLatin = itemView.findViewById(R.id.doa_setelah_shalat_latin);
+            mTextViewDoaTerjemahan = itemView.findViewById(R.id.doa_setelah_shalat_arti);
             // -------------------------------------------------------------------------------------
         }
     }
 
     public DoaShalatRecyclerViewAdapter(Context context, ArrayList<DoaShalat> mArrayList) {
         this.context = context;
-        this.mArrayList = mArrayList;
+        this.mArrayListDoaShalat = mArrayList;
     }
 
     @Override
@@ -63,14 +63,14 @@ public class DoaShalatRecyclerViewAdapter extends RecyclerView.Adapter<DoaShalat
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         // -----------------------------------------------------------------------------------------
-        holder.txt_arab_doa.setText(mArrayList.get(position).getArabDoa());
-        holder.txt_latin_doa.setText(mArrayList.get(position).getLatinDoa());
-        holder.txt_terjemah_doa.setText(mArrayList.get(position).getTerjemahDoa());
+        holder.mTextViewDoaArab.setText(mArrayListDoaShalat.get(position).getArabDoa());
+        holder.mTextViewDoaLatin.setText(mArrayListDoaShalat.get(position).getLatinDoa());
+        holder.mTextViewDoaTerjemahan.setText(mArrayListDoaShalat.get(position).getTerjemahDoa());
         // -----------------------------------------------------------------------------------------
     }
 
     @Override
     public int getItemCount() {
-        return mArrayList.size();
+        return mArrayListDoaShalat.size();
     }
 }

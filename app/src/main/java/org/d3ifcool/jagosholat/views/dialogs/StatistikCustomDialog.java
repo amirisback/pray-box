@@ -89,14 +89,11 @@ public class StatistikCustomDialog {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
                 // ---------------------------------------------------------------------------------
                 String tempWaktu = mTextView.getText().toString();
                 String selection = DataContract.DataEntry._ID + " = '" + mID + "'";
                 // ---------------------------------------------------------------------------------
-
-                // ---------------------------------------------------------------------------------
-                boolean isUpdated = mDataOperation.updateDataWaktu(mContext, tempWaktu, selection, null);
+                boolean isUpdated = mDataOperation.updateDataTime(mContext, tempWaktu, selection, null);
                 if (isUpdated) {
                     Toast.makeText(mContext, "Waktu Telah Diubah", Toast.LENGTH_LONG).show();
                 } else {

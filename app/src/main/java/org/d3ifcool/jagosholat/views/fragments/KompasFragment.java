@@ -190,7 +190,8 @@ public class KompasFragment extends Fragment {
                 result = (Math.toDegrees(Math.atan2(y, x))+360)%360;
                 float result2 = (float)result;
                 SaveFloat("kiblat_derajat", result2);
-                arahKiblat.setText("Arah Ka'bah : \n" + result2 + " derajat dari utara");
+                String tempArahKiblat = "Arah Ka'bah : \n" + result2 + " derajat dari utara";
+                arahKiblat.setText(tempArahKiblat);
                 // ---------------------------------------------------------------------------------
             }
         }else{
@@ -230,6 +231,5 @@ public class KompasFragment extends Fragment {
         compass.stop();
 
     }
-
 
 }
