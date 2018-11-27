@@ -13,11 +13,11 @@ import org.d3ifcool.jagosholat.models.databases.DataContract.DataEntry;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     // Deklarasi Nama DatabaseHelper dan Versinya --------------------------------------------------------
-    private static final String DATABASE = "jagosholat.db";
+    private static final String DATABASE = DataContract.DB;
     private static final int DATABASE_VERSION = 1;
     // ---------------------------------------------------------------------------------------------
 
-    // Variable ini gunanya adalah untuk mendapatkan fungsi dari library SQLiteDatabase ------------
+    // Constants ini gunanya adalah untuk mendapatkan fungsi dari library SQLiteDatabase ------------
     private SQLiteDatabase sqLiteDatabase = getWritableDatabase();
     // ada dua macam, "WriteableDatabase" dan "ReadableDatabase"
     // ---------------------------------------------------------------------------------------------

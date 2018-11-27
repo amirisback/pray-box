@@ -30,7 +30,7 @@ public class DataOperation {
     public DataOperation() {
     }
     // ---------------------------------------------------------------------------------------------
-    // Variable projection ini gunanya untuk memilih column pada database
+    // Constants projection ini gunanya untuk memilih column pada database
     // Guna variable projection ini sama seperti * pada SQL
     private String projection[] = {DataEntry._ID,
             DataEntry.COLUMN_TANGGAL,

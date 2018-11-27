@@ -18,6 +18,8 @@ import org.d3ifcool.jagosholat.models.databases.DataOperation;
 import org.d3ifcool.jagosholat.presenters.helpers.WaktuShalatHelper;
 import org.d3ifcool.jagosholat.presenters.helpers.MethodHelper;
 
+import static org.d3ifcool.jagosholat.models.constants.VarConstants.Constants;
+
 /**
  * Created by Faisal Amir
  * FrogoBox Inc License
@@ -95,11 +97,11 @@ public class CatatanCustomDialog {
 
         if (mWaktuShalatHelper.saatWaktunyaIsyaPagi()) {
             if (!isEmptyDataToday()) {
-                if (isDataNotExistID(mWaktuShalatHelper.SHUBUH)) mLayoutShubuh.setVisibility(View.VISIBLE);
-                if (isDataNotExistID(mWaktuShalatHelper.DZUHUR)) mLayoutDzuhur.setVisibility(View.VISIBLE);
-                if (isDataNotExistID(mWaktuShalatHelper.ASHAR)) mLayoutAshar.setVisibility(View.VISIBLE);
-                if (isDataNotExistID(mWaktuShalatHelper.MAGHRIB)) mLayoutMaghrib.setVisibility(View.VISIBLE);
-                if (isDataNotExistID(mWaktuShalatHelper.ISYA)) mLayoutIsya.setVisibility(View.VISIBLE);
+                if (isDataNotExistID(Constants.SHUBUH)) mLayoutShubuh.setVisibility(View.VISIBLE);
+                if (isDataNotExistID(Constants.DZUHUR)) mLayoutDzuhur.setVisibility(View.VISIBLE);
+                if (isDataNotExistID(Constants.ASHAR)) mLayoutAshar.setVisibility(View.VISIBLE);
+                if (isDataNotExistID(Constants.MAGHRIB)) mLayoutMaghrib.setVisibility(View.VISIBLE);
+                if (isDataNotExistID(Constants.ISYA)) mLayoutIsya.setVisibility(View.VISIBLE);
             } else {
                 mLayoutShubuh.setVisibility(View.VISIBLE);
                 mLayoutDzuhur.setVisibility(View.VISIBLE);
@@ -109,23 +111,23 @@ public class CatatanCustomDialog {
             }
         } else if (mWaktuShalatHelper.saatWaktunyaShubuh()) {
             if (!isEmptyDataToday()) {
-                if (isDataNotExistID(mWaktuShalatHelper.SHUBUH)) mLayoutShubuh.setVisibility(View.VISIBLE);
+                if (isDataNotExistID(Constants.SHUBUH)) mLayoutShubuh.setVisibility(View.VISIBLE);
             } else {
                 mLayoutShubuh.setVisibility(View.VISIBLE);
             }
         } else if (mWaktuShalatHelper.saatWaktunyaDzuhur()){
             if (!isEmptyDataToday()){
-                if (isDataNotExistID(mWaktuShalatHelper.SHUBUH)) mLayoutShubuh.setVisibility(View.VISIBLE);
-                if (isDataNotExistID(mWaktuShalatHelper.DZUHUR)) mLayoutDzuhur.setVisibility(View.VISIBLE);
+                if (isDataNotExistID(Constants.SHUBUH)) mLayoutShubuh.setVisibility(View.VISIBLE);
+                if (isDataNotExistID(Constants.DZUHUR)) mLayoutDzuhur.setVisibility(View.VISIBLE);
             } else {
                 mLayoutShubuh.setVisibility(View.VISIBLE);
                 mLayoutDzuhur.setVisibility(View.VISIBLE);
             }
         } else if (mWaktuShalatHelper.saatWaktunyaAshar()){
             if (!isEmptyDataToday()){
-                if (isDataNotExistID(mWaktuShalatHelper.SHUBUH)) mLayoutShubuh.setVisibility(View.VISIBLE);
-                if (isDataNotExistID(mWaktuShalatHelper.DZUHUR)) mLayoutDzuhur.setVisibility(View.VISIBLE);
-                if (isDataNotExistID(mWaktuShalatHelper.ASHAR)) mLayoutAshar.setVisibility(View.VISIBLE);
+                if (isDataNotExistID(Constants.SHUBUH)) mLayoutShubuh.setVisibility(View.VISIBLE);
+                if (isDataNotExistID(Constants.DZUHUR)) mLayoutDzuhur.setVisibility(View.VISIBLE);
+                if (isDataNotExistID(Constants.ASHAR)) mLayoutAshar.setVisibility(View.VISIBLE);
             } else {
                 mLayoutShubuh.setVisibility(View.VISIBLE);
                 mLayoutDzuhur.setVisibility(View.VISIBLE);
@@ -134,10 +136,10 @@ public class CatatanCustomDialog {
 
         } else if (mWaktuShalatHelper.saatWaktunyaMaghrib()){
             if (!isEmptyDataToday()){
-                if (isDataNotExistID(mWaktuShalatHelper.SHUBUH)) mLayoutShubuh.setVisibility(View.VISIBLE);
-                if (isDataNotExistID(mWaktuShalatHelper.DZUHUR)) mLayoutDzuhur.setVisibility(View.VISIBLE);
-                if (isDataNotExistID(mWaktuShalatHelper.ASHAR)) mLayoutAshar.setVisibility(View.VISIBLE);
-                if (isDataNotExistID(mWaktuShalatHelper.MAGHRIB)) mLayoutMaghrib.setVisibility(View.VISIBLE);
+                if (isDataNotExistID(Constants.SHUBUH)) mLayoutShubuh.setVisibility(View.VISIBLE);
+                if (isDataNotExistID(Constants.DZUHUR)) mLayoutDzuhur.setVisibility(View.VISIBLE);
+                if (isDataNotExistID(Constants.ASHAR)) mLayoutAshar.setVisibility(View.VISIBLE);
+                if (isDataNotExistID(Constants.MAGHRIB)) mLayoutMaghrib.setVisibility(View.VISIBLE);
             } else {
                 mLayoutShubuh.setVisibility(View.VISIBLE);
                 mLayoutDzuhur.setVisibility(View.VISIBLE);
@@ -147,11 +149,11 @@ public class CatatanCustomDialog {
 
         } else if (mWaktuShalatHelper.saatWaktunyaIsyaMalam()){
             if (!isEmptyDataToday()){
-                if (isDataNotExistID(mWaktuShalatHelper.SHUBUH)) mLayoutShubuh.setVisibility(View.VISIBLE);
-                if (isDataNotExistID(mWaktuShalatHelper.DZUHUR)) mLayoutDzuhur.setVisibility(View.VISIBLE);
-                if (isDataNotExistID(mWaktuShalatHelper.ASHAR)) mLayoutAshar.setVisibility(View.VISIBLE);
-                if (isDataNotExistID(mWaktuShalatHelper.MAGHRIB)) mLayoutMaghrib.setVisibility(View.VISIBLE);
-                if (isDataNotExistID(mWaktuShalatHelper.ISYA)) mLayoutIsya.setVisibility(View.VISIBLE);
+                if (isDataNotExistID(Constants.SHUBUH)) mLayoutShubuh.setVisibility(View.VISIBLE);
+                if (isDataNotExistID(Constants.DZUHUR)) mLayoutDzuhur.setVisibility(View.VISIBLE);
+                if (isDataNotExistID(Constants.ASHAR)) mLayoutAshar.setVisibility(View.VISIBLE);
+                if (isDataNotExistID(Constants.MAGHRIB)) mLayoutMaghrib.setVisibility(View.VISIBLE);
+                if (isDataNotExistID(Constants.ISYA)) mLayoutIsya.setVisibility(View.VISIBLE);
             } else {
                 mLayoutShubuh.setVisibility(View.VISIBLE);
                 mLayoutDzuhur.setVisibility(View.VISIBLE);
@@ -169,31 +171,31 @@ public class CatatanCustomDialog {
                 if (mCheckBoxShubuh.isChecked()){
                     String tempIDShubuh = "IDS11" + mMethodHelper.getRandomChar();
                     String tempWaktuShubuh = mTextViewWaktuShubuh.getText().toString();
-                    addData(tempIDShubuh, mWaktuShalatHelper.SHUBUH, tempWaktuShubuh);
+                    addData(tempIDShubuh, Constants.SHUBUH, tempWaktuShubuh);
                 }
 
                 if (mCheckBoxDzuhur.isChecked()){
                     String tempIDDzuhur = "IDS22" + mMethodHelper.getRandomChar();
                     String tempWaktuDzuhur = mTextViewWaktuDzuhur.getText().toString();
-                    addData(tempIDDzuhur, mWaktuShalatHelper.DZUHUR, tempWaktuDzuhur);
+                    addData(tempIDDzuhur, Constants.DZUHUR, tempWaktuDzuhur);
                 }
 
                 if (mCheckBoxAshar.isChecked()){
                     String tempIDAshar = "IDS33" + mMethodHelper.getRandomChar();
                     String tempWaktuAshar = mTextViewWaktuAshar.getText().toString();
-                    addData(tempIDAshar, mWaktuShalatHelper.ASHAR, tempWaktuAshar);
+                    addData(tempIDAshar, Constants.ASHAR, tempWaktuAshar);
                 }
 
                 if (mCheckBoxMaghrib.isChecked()){
                     String tempIDMaghrib = "IDS44" + mMethodHelper.getRandomChar();
                     String tempWaktuMaghrib = mTextViewWaktuMaghrib.getText().toString();
-                    addData(tempIDMaghrib, mWaktuShalatHelper.MAGHRIB, tempWaktuMaghrib);
+                    addData(tempIDMaghrib, Constants.MAGHRIB, tempWaktuMaghrib);
                 }
 
                 if (mCheckBoxIsya.isChecked()){
                     String tempIDIsya = "IDS55" + mMethodHelper.getRandomChar();
                     String tempWaktuIsya = mTextViewWaktuIsya.getText().toString();
-                    addData(tempIDIsya, mWaktuShalatHelper.ISYA, tempWaktuIsya);
+                    addData(tempIDIsya, Constants.ISYA, tempWaktuIsya);
                 }
 
                 Toast.makeText(mContext, "Alhamdulillah Shalat", Toast.LENGTH_LONG).show();
@@ -254,7 +256,7 @@ public class CatatanCustomDialog {
     private void addData(String mId, String mShalat, String mWaktu) {
         try {
             if (isDataNotExistID(mShalat)) {
-                if (!mShalat.equals(mWaktuShalatHelper.BUKAN_WAKTU_SHOLAT)) {
+                if (!mShalat.equals(Constants.BUKAN_WAKTU_SHOLAT)) {
                     insertDataToDatabase(mId, mShalat, mWaktu);
                 }
             } else {
@@ -289,7 +291,7 @@ public class CatatanCustomDialog {
 
     // Mengatur Tombol -----------------------------------------------------------------------------
     public void viewSaveButton(Button mButton, String mShalat){
-        if (mShalat.equalsIgnoreCase(mWaktuShalatHelper.BUKAN_WAKTU_SHOLAT)){
+        if (mShalat.equalsIgnoreCase(Constants.BUKAN_WAKTU_SHOLAT)){
             mButton.setVisibility(View.GONE);
         } else {
             if (isDataNotExistID(mShalat)){

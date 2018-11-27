@@ -94,13 +94,13 @@ public class PrayerTime {
 
 // Time Names
         timeNames = new ArrayList<String>();
-        timeNames.add("Shubuh");
+        timeNames.add("Shubuh"); //0
         timeNames.add("Matahari Terbit");
-        timeNames.add("Dzuhur");
-        timeNames.add("Ashar");
+        timeNames.add("Dzuhur"); //2
+        timeNames.add("Ashar"); //3
         timeNames.add("Matahari Terbenam");
-        timeNames.add("Maghrib");
-        timeNames.add("Isya");
+        timeNames.add("Maghrib"); //5
+        timeNames.add("Isya"); //6
 
         InvalidTime = "-----"; // The string used for invalid times
 

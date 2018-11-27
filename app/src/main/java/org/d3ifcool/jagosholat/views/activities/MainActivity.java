@@ -27,7 +27,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import org.d3ifcool.jagosholat.R;
 import org.d3ifcool.jagosholat.views.fragments.CatatanFragment;
@@ -37,18 +36,13 @@ import org.d3ifcool.jagosholat.views.fragments.StatistikFragment;
 import org.d3ifcool.jagosholat.views.fragments.TataCaraFragment;
 import org.d3ifcool.jagosholat.views.interfaces.ClickHandler;
 
+import static org.d3ifcool.jagosholat.models.constants.VarConstants.Constants;
+
 public class MainActivity extends AppCompatActivity implements ClickHandler {
 
     // ---------------------------------------------------------------------------------------------
     private boolean isTwoPane;
     private String mSelectedMenuTab;
-    // ---------------------------------------------------------------------------------------------
-    private final String STRING_EXTRA_FRAGMENT = "menufragment";
-    private final String TAB_CATATAN = "catatan";
-    private final String TAB_JADWAL = "jadwal";
-    private final String TAB_STATISTIK = "statistik";
-    private final String TAB_KIBLAT = "kiblat";
-    private final String TAB_TATACARA = "tatacara";
     // ---------------------------------------------------------------------------------------------
 
     @Override
@@ -63,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements ClickHandler {
         // -----------------------------------------------------------------------------------------
         if (isTwoPane) {
             mSelectedMenuTab = savedInstanceState!=null ?
-                    savedInstanceState.getString(STRING_EXTRA_FRAGMENT):TAB_CATATAN;
+                    savedInstanceState.getString(Constants.STRING_EXTRA_FRAGMENT):Constants.TAB_CATATAN;
             menuTabClick(mSelectedMenuTab);
         }
         // -----------------------------------------------------------------------------------------
@@ -72,29 +66,29 @@ public class MainActivity extends AppCompatActivity implements ClickHandler {
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        if (isTwoPane) outState.putString(STRING_EXTRA_FRAGMENT, mSelectedMenuTab);
+        if (isTwoPane) outState.putString(Constants.STRING_EXTRA_FRAGMENT, mSelectedMenuTab);
         super.onSaveInstanceState(outState);
     }
 
     @Override
     public void menuTabClick(String menuTab) {
         if (isTwoPane) {
-            mSelectedMenuTab = STRING_EXTRA_FRAGMENT;
+            mSelectedMenuTab = Constants.STRING_EXTRA_FRAGMENT;
             Fragment mFragment;
             switch (menuTab) {
-                case TAB_CATATAN:
+                case Constants.TAB_CATATAN:
                     mFragment = new CatatanFragment();
                     break;
-                case TAB_JADWAL:
+                case Constants.TAB_JADWAL:
                     mFragment = new JadwalFragment();
                     break;
-                case TAB_STATISTIK:
+                case Constants.TAB_STATISTIK:
                     mFragment = new StatistikFragment();
                     break;
-                case TAB_KIBLAT:
+                case Constants.TAB_KIBLAT:
                     mFragment = new KiblatFragment();
                     break;
-                case TAB_TATACARA:
+                case Constants.TAB_TATACARA:
                     mFragment = new TataCaraFragment();
                     break;
                 default:
@@ -105,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements ClickHandler {
         } else {
             // Create a new intent to open the {@link NumbersFragment}
             Intent mIntent = new Intent(this, DetailActivity.class);
-            mIntent.putExtra(STRING_EXTRA_FRAGMENT, menuTab);
+            mIntent.putExtra(Constants.STRING_EXTRA_FRAGMENT, menuTab);
             // Start the new activity
             startActivity(mIntent);
         }

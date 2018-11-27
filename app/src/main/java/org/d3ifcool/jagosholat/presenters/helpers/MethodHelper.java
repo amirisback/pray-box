@@ -2,6 +2,8 @@ package org.d3ifcool.jagosholat.presenters.helpers;
 
 import android.widget.TextView;
 
+import org.d3ifcool.jagosholat.models.constants.VarConstants.Constants;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Random;
@@ -21,16 +23,14 @@ public class MethodHelper {
 
     // Requirement Tanggal dan Waktu ---------------------------------------------------------------
     private Calendar currentTime;
-    private String outputStringTime, dateToday, nilai_jam, nilai_menit, nilai_detik, nol_jam = "", nol_menit = "",nol_detik = "";
+    private String dateToday, nilai_jam, nilai_menit, nilai_detik,
+            nol_jam = "", nol_menit = "",nol_detik = "";
     private int systemJam, systemMenit, systemDetik, sumWaktuDetik, systemYear;
-    private final int jamKeDetik = 3600;
-    private final int menitKeDetik = 60;
-    private final int detikKeMili = 1000;
     // ---------------------------------------------------------------------------------------------
 
     public MethodHelper() {
         this.currentTime = Calendar.getInstance();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd MMMM yyyy");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Constants.FORMAT_DATE);
         this.dateToday = simpleDateFormat.format(currentTime.getTime());
         getSystemRealTime();
         getSumRealTime();
@@ -56,8 +56,7 @@ public class MethodHelper {
 
     // ---------------------------------------------------------------------------------------------
     private String getOutputStringTime() {
-        outputStringTime = nilai_jam + ":" + nilai_menit;
-        return outputStringTime;
+        return nilai_jam + ":" + nilai_menit;
     }
     // ---------------------------------------------------------------------------------------------
 
@@ -162,7 +161,7 @@ public class MethodHelper {
 
     public int getSumWaktuDetik() {
         getSumRealTime();
-        sumWaktuDetik = (systemJam * jamKeDetik) + (systemMenit * menitKeDetik) + systemDetik;
+        sumWaktuDetik = (systemJam * Constants.JAM_KE_DETIK) + (systemMenit * Constants.MENIT_KE_DETIK) + systemDetik;
         return sumWaktuDetik;
     }
 
@@ -178,7 +177,4 @@ public class MethodHelper {
         return systemYear;
     }
 
-    public int getDetikKeMiliDetik() {
-        return detikKeMili;
-    }
 }

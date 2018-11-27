@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import org.d3ifcool.jagosholat.R;
 import org.d3ifcool.jagosholat.views.interfaces.ClickHandler;
+import static org.d3ifcool.jagosholat.models.constants.VarConstants.Constants;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,16 +19,10 @@ import org.d3ifcool.jagosholat.views.interfaces.ClickHandler;
 public class MainTabFragment extends Fragment implements ClickHandler {
 
     private ClickHandler mHandler;
-    public final String TAB_CATATAN = "catatan";
-    public final String TAB_JADWAL = "jadwal";
-    public final String TAB_STATISTIK = "statistik";
-    public final String TAB_KIBLAT = "kiblat";
-    public final String TAB_TATACARA = "tatacara";
 
     public MainTabFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,35 +40,35 @@ public class MainTabFragment extends Fragment implements ClickHandler {
         mTextViewMenuCatatan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mHandler.menuTabClick(TAB_CATATAN);
+                mHandler.menuTabClick(Constants.TAB_CATATAN);
             }
         });
         // -----------------------------------------------------------------------------------------
         mTextViewMenuJadwal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mHandler.menuTabClick(TAB_JADWAL);
+                mHandler.menuTabClick(Constants.TAB_JADWAL);
             }
         });
         // -----------------------------------------------------------------------------------------
         mTextViewMenuStatistik.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mHandler.menuTabClick(TAB_STATISTIK);
+                mHandler.menuTabClick(Constants.TAB_STATISTIK);
             }
         });
         // -----------------------------------------------------------------------------------------
         mTextViewMenuKiblat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mHandler.menuTabClick(TAB_KIBLAT);
+                mHandler.menuTabClick(Constants.TAB_KIBLAT);
             }
         });
         // -----------------------------------------------------------------------------------------
         mTextViewMenuTatacara.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mHandler.menuTabClick(TAB_TATACARA);
+                mHandler.menuTabClick(Constants.TAB_TATACARA);
             }
         });
         // -----------------------------------------------------------------------------------------

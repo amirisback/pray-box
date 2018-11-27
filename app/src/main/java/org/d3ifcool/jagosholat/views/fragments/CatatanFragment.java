@@ -42,7 +42,7 @@ public class CatatanFragment extends Fragment{
     private WaktuShalatHelper waktuShalatHelper = new WaktuShalatHelper();
     private DataOperation crud = new DataOperation();
     // ---------------------------------------------------------------------------------------------
-    // Deklarasi Requirement Variable
+    // Deklarasi Requirement Constants
     private int[] mHadistArab = {R.string.hadis_arab_0, R.string.hadis_arab_1, R.string.hadis_arab_2,
             R.string.hadis_arab_3, R.string.hadis_arab_4, R.string.hadis_arab_5};
     private int[] mHadistText = {R.string.hadis_text_0, R.string.hadis_text_1, R.string.hadis_text_2,
@@ -62,7 +62,7 @@ public class CatatanFragment extends Fragment{
         // -----------------------------------------------------------------------------------------
         // Inisiasi element XML layout
         TextView mTextViewTanggal = rootView.findViewById(R.id.catatan_textview_tanggal);
-        TextView mTextViewSholat = rootView.findViewById(R.id.jadwal_textview_shalat);
+        TextView mTextViewShalat = rootView.findViewById(R.id.jadwal_textview_shalat);
         TextView mTextViewHadistArab = rootView.findViewById(R.id.catatan_textview_hadist_arab);
         TextView mTextViewHadistText = rootView.findViewById(R.id.catatan_textview_hadist_text);
         Button mButtonCatat = rootView.findViewById(R.id.catatan_button_catat_ibadah);
@@ -71,7 +71,7 @@ public class CatatanFragment extends Fragment{
         methodHelper.getSystemTime();
         methodHelper.getSystemRealTime();
         methodHelper.getSumRealTime();
-        waktuShalatHelper.setJadwalShalat(mTextViewSholat);
+        waktuShalatHelper.setJadwalShalat(mTextViewShalat);
         mTextViewTanggal.setText(methodHelper.getDateToday());
         // -----------------------------------------------------------------------------------------
         // Set Data Random Hadist untuk XML Layout
@@ -94,7 +94,7 @@ public class CatatanFragment extends Fragment{
                 methodHelper, getContext(), crud, waktuShalatHelper);
         // -----------------------------------------------------------------------------------------
         // Fungsi untuk menampilkan button simpan
-        String mShalatNow = mTextViewSholat.getText().toString();
+        String mShalatNow = mTextViewShalat.getText().toString();
         mDialogForm.viewSaveButton(mButtonCatat, mShalatNow);
         // -----------------------------------------------------------------------------------------
         // Panggil method untuk mencatat

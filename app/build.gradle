@@ -31,6 +31,9 @@ android {
         implementation 'com.android.support:cardview-v7:28.0.0'
         implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
         implementation 'com.squareup.picasso:picasso:2.71828'
+
+        testImplementation group: 'org.mockito', name: 'mockito-core', version: '2.23.0'
+
     }
 }
 

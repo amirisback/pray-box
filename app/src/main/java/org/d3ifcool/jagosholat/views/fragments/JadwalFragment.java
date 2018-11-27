@@ -11,6 +11,8 @@ import org.d3ifcool.jagosholat.presenters.helpers.MethodHelper;
 import org.d3ifcool.jagosholat.presenters.helpers.WaktuShalatHelper;
 import org.d3ifcool.jagosholat.R;
 
+import static org.d3ifcool.jagosholat.models.constants.VarConstants.Constants;
+
 
 public class JadwalFragment extends Fragment {
 
@@ -33,7 +35,6 @@ public class JadwalFragment extends Fragment {
         MethodHelper mMethodHelper = new MethodHelper();
         // -----------------------------------------------------------------------------------------
         int jumlahDetikSaatIni = mMethodHelper.getSumWaktuDetik();
-        int miliDetik = mMethodHelper.getDetikKeMiliDetik();
         String mJadwal = mWaktuShalatHelper.getJadwalShalat();
         // -----------------------------------------------------------------------------------------
         int detikShubuh = mWaktuShalatHelper.getJmlWaktuShubuh();
@@ -53,41 +54,34 @@ public class JadwalFragment extends Fragment {
         TextView mTextViewWaktuIsya = rootView.findViewById(R.id.jadwal_textview_isya);
         TextView mTextViewShalatMendatang = rootView.findViewById(R.id.jadwal_textview_shalat);
         // -----------------------------------------------------------------------------------------
-        // Deklarasi konstanta
-        final String SHUBUH = "Shalat Shubuh";
-        final String DZUHUR = "Shalat Dzuhur";
-        final String ASHAR = "Shalat Ashar";
-        final String MAGHRIB = "Shalat Maghrib";
-        final String ISYA = "Shalat Isya";
-        // -----------------------------------------------------------------------------------------
         switch (mJadwal) {
-            case SHUBUH:
-                mTextViewShalatMendatang.setText(DZUHUR.substring(7));
-                countTime = (detikDzuhur - jumlahDetikSaatIni) * miliDetik;
+            case Constants.SHUBUH:
+                mTextViewShalatMendatang.setText(Constants.DZUHUR.substring(7));
+                countTime = (detikDzuhur - jumlahDetikSaatIni) * Constants.DETIK_KE_MILI;
                 break;
-            case DZUHUR:
-                mTextViewShalatMendatang.setText(ASHAR.substring(7));
-                countTime = (detikAshar - jumlahDetikSaatIni) * miliDetik;
+            case Constants.DZUHUR:
+                mTextViewShalatMendatang.setText(Constants.ASHAR.substring(7));
+                countTime = (detikAshar - jumlahDetikSaatIni) * Constants.DETIK_KE_MILI;
                 break;
-            case ASHAR:
-                mTextViewShalatMendatang.setText(MAGHRIB.substring(7));
-                countTime = (detikMaghrib - jumlahDetikSaatIni) * miliDetik;
+            case Constants.ASHAR:
+                mTextViewShalatMendatang.setText(Constants.MAGHRIB.substring(7));
+                countTime = (detikMaghrib - jumlahDetikSaatIni) * Constants.DETIK_KE_MILI;
                 break;
-            case MAGHRIB:
-                mTextViewShalatMendatang.setText(ISYA.substring(7));
-                countTime = (detikIsya - jumlahDetikSaatIni) * miliDetik;
+            case Constants.MAGHRIB:
+                mTextViewShalatMendatang.setText(Constants.ISYA.substring(7));
+                countTime = (detikIsya - jumlahDetikSaatIni) * Constants.DETIK_KE_MILI;
                 break;
-            case ISYA:
-                mTextViewShalatMendatang.setText(SHUBUH.substring(7));
+            case Constants.ISYA:
+                mTextViewShalatMendatang.setText(Constants.SHUBUH.substring(7));
                 if ((jumlahDetikSaatIni == detikAfterMid) || (jumlahDetikSaatIni < detikShubuh)) {
-                    countTime = (detikShubuh - jumlahDetikSaatIni) * miliDetik;
+                    countTime = (detikShubuh - jumlahDetikSaatIni) * Constants.DETIK_KE_MILI;
                 } else if ((jumlahDetikSaatIni == detikIsya) || (jumlahDetikSaatIni <= detikBeforeMid)) {
-                    countTime =  (detikShubuh + detikBeforeMid - jumlahDetikSaatIni) * miliDetik;
+                    countTime =  (detikShubuh + detikBeforeMid - jumlahDetikSaatIni) * Constants.DETIK_KE_MILI;
                 }
                 break;
             default:
-                mTextViewShalatMendatang.setText(DZUHUR.substring(7));
-                countTime = (detikDzuhur - jumlahDetikSaatIni) * miliDetik;
+                mTextViewShalatMendatang.setText(Constants.DZUHUR.substring(7));
+                countTime = (detikDzuhur - jumlahDetikSaatIni) * Constants.DETIK_KE_MILI;
                 break;
         }
         // -----------------------------------------------------------------------------------------

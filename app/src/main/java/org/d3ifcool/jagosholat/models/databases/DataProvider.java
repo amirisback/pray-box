@@ -34,7 +34,7 @@ import org.d3ifcool.jagosholat.models.databases.DataContract.DataEntry;
 public class DataProvider extends ContentProvider {
 
     // ---------------------------------------------------------------------------------------------
-    // Deklarasi Kebutuhan Variable
+    // Deklarasi Kebutuhan Constants
     // Setiap Table memiliki alamat sendiri
     public static final String LOG_TAG = DataProvider.class.getSimpleName();
     private static final int DATA = 100; // Projection All
