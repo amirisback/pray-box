@@ -4,5 +4,7 @@
     android:id="@+id/tatacara_listview_text"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/Background_Button"
+    android:clipToPadding="false"
+    android:paddingTop="@dimen/dimen_medium_8dp"
+    android:background="@color/colorBackgroundWhite"
     tools:listitem="@layout/content_tatacara_text_niat" />

@@ -1,24 +1,25 @@
 package com.frogobox.praybox.ui.fragment;
 
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
-import androidx.core.content.ContextCompat;
-import androidx.viewpager.widget.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import androidx.core.content.ContextCompat;
+import androidx.viewpager.widget.ViewPager;
+
 import com.frogobox.praybox.R;
+import com.frogobox.praybox.base.view.ui.BaseFragment;
 import com.frogobox.praybox.view.pager.TataCaraImagePagerAdapter;
 
-public class TataCaraShalatFragment extends Fragment {
+public class TataCaraShalatFragment extends BaseFragment {
 
     // ---------------------------------------------------------------------------------------------
     private int dotscount;
     private ImageView[] dots;
-    private Integer imageResId[] = {R.drawable.sholat_0, R.drawable.sholat_1,R.drawable.sholat_2,
+    private Integer imageResId[] = {R.drawable.sholat_0, R.drawable.sholat_1, R.drawable.sholat_2,
             R.drawable.sholat_3, R.drawable.sholat_4, R.drawable.sholat_5, R.drawable.sholat_6,
             R.drawable.sholat_7, R.drawable.sholat_8, R.drawable.sholat_9, R.drawable.sholat_10};
     // ---------------------------------------------------------------------------------------------
@@ -40,7 +41,7 @@ public class TataCaraShalatFragment extends Fragment {
         dotscount = imagePagerAdapter.getCount();
         dots = new ImageView[dotscount];
         // -----------------------------------------------------------------------------------------
-        for(int i = 0; i < dotscount; i++){
+        for (int i = 0; i < dotscount; i++) {
             // -------------------------------------------------------------------------------------
             dots[i] = new ImageView(getContext());
             dots[i].setImageDrawable(ContextCompat.getDrawable(getContext().getApplicationContext(),
@@ -62,11 +63,12 @@ public class TataCaraShalatFragment extends Fragment {
 
             @Override
             public void onPageSelected(int position) {
-                for(int i = 0; i< dotscount; i++){
+                for (int i = 0; i < dotscount; i++) {
                     dots[i].setImageDrawable(ContextCompat.getDrawable(getContext().getApplicationContext(), R.drawable.ic_tatacara_dot_nonactive));
                 }
                 dots[position].setImageDrawable(ContextCompat.getDrawable(getContext().getApplicationContext(), R.drawable.ic_tatacara_dot_active));
             }
+
             @Override
             public void onPageScrollStateChanged(int state) {
             }

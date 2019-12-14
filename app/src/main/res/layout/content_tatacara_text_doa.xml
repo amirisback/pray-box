@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
  * 
  * FrogoBox Inc License
  * =========================================
@@ -17,35 +16,47 @@
  * id.amirisback.frogobox
  * 
  -->
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/border_button"
+    android:layout_marginStart="@dimen/dimen_big_16dp"
+    android:layout_marginEnd="@dimen/dimen_big_16dp"
+    android:layout_marginBottom="@dimen/dimen_medium_8dp"
+    android:background="@drawable/background_card"
+    android:elevation="@dimen/dimen_elevation_2dp"
     android:orientation="vertical"
-    android:layout_margin="@dimen/dimen_medium_8dp"
-    android:padding="@dimen/dimen_medium_8dp">
+    android:paddingStart="@dimen/dimen_big_16dp"
+    android:paddingTop="@dimen/dimen_medium_8dp"
+    android:paddingEnd="@dimen/dimen_big_16dp"
+    android:paddingBottom="@dimen/dimen_medium_8dp">
 
     <TextView
         android:id="@+id/doa_setelah_shalat_arab"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/dimen_medium_8dp"
+        android:gravity="end"
+        android:textColor="@color/colorTextBlack"
         android:textSize="30sp"
-        android:gravity="right"
-        tools:text="@string/tatacara_text_arab"
-        android:textColor="@color/textColorWhite"/>
+        tools:text="@string/tatacara_text_arab" />
 
     <TextView
         android:id="@+id/doa_setelah_shalat_latin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/dimen_medium_8dp"
-        tools:text="@string/tatacara_text_latin"
-        android:textColor="@color/textColorWhite"
+        android:textSize="@dimen/text_size_medium_16sp"
         android:textStyle="italic"
-        android:textSize="16sp" />
+        android:textColor="@color/colorTextBlack"
+        tools:text="@string/tatacara_text_latin" />
+
+    <View
+        android:id="@+id/view_line2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/dimen_medium_8dp"
+        android:layout_marginBottom="@dimen/dimen_medium_8dp"
+        android:background="@color/colorBackground" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -59,7 +70,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/dimen_medium_8dp"
-        tools:text="@string/tatacara_text_arti"
-        android:textColor="@color/textColorButton"/>
+        tools:text="@string/tatacara_text_arti" />
 
 </LinearLayout>

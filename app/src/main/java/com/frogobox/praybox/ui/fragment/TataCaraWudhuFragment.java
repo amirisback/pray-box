@@ -1,24 +1,25 @@
 package com.frogobox.praybox.ui.fragment;
 
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
-import androidx.core.content.ContextCompat;
-import androidx.viewpager.widget.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import androidx.core.content.ContextCompat;
+import androidx.viewpager.widget.ViewPager;
+
 import com.frogobox.praybox.R;
+import com.frogobox.praybox.base.view.ui.BaseFragment;
 import com.frogobox.praybox.view.pager.TataCaraImagePagerAdapter;
 
-public class TataCaraWudhuFragment extends Fragment {
+public class TataCaraWudhuFragment extends BaseFragment {
 
     // ---------------------------------------------------------------------------------------------
     private int dotscount;
     private ImageView[] dots;
-    private Integer imageResId[] = {R.drawable.wudhu_0, R.drawable.wudhu_1,R.drawable.wudhu_2,
+    private Integer imageResId[] = {R.drawable.wudhu_0, R.drawable.wudhu_1, R.drawable.wudhu_2,
             R.drawable.wudhu_3, R.drawable.wudhu_4, R.drawable.wudhu_5, R.drawable.wudhu_6,
             R.drawable.wudhu_7, R.drawable.wudhu_8, R.drawable.wudhu_9};
     // ---------------------------------------------------------------------------------------------
@@ -41,7 +42,7 @@ public class TataCaraWudhuFragment extends Fragment {
         dotscount = imagePagerAdapter.getCount();
         dots = new ImageView[dotscount];
         // -----------------------------------------------------------------------------------------
-        for(int i = 0; i < dotscount; i++){
+        for (int i = 0; i < dotscount; i++) {
             // -------------------------------------------------------------------------------------
             dots[i] = new ImageView(getContext());
             dots[i].setImageDrawable(ContextCompat.getDrawable(getContext().getApplicationContext(),
@@ -64,7 +65,7 @@ public class TataCaraWudhuFragment extends Fragment {
 
             @Override
             public void onPageSelected(int position) {
-                for(int i = 0; i< dotscount; i++){
+                for (int i = 0; i < dotscount; i++) {
                     dots[i].setImageDrawable(ContextCompat.getDrawable(getContext().getApplicationContext(), R.drawable.ic_tatacara_dot_nonactive));
                 }
                 dots[position].setImageDrawable(ContextCompat.getDrawable(getContext().getApplicationContext(), R.drawable.ic_tatacara_dot_active));

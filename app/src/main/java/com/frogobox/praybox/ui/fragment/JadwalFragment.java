@@ -1,19 +1,19 @@
 package com.frogobox.praybox.ui.fragment;
 
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.frogobox.praybox.R;
+import com.frogobox.praybox.base.view.ui.BaseFragment;
 import com.frogobox.praybox.util.helper.MethodHelper;
 import com.frogobox.praybox.util.helper.VarConstants;
 import com.frogobox.praybox.util.helper.WaktuShalatHelper;
 
 
-public class JadwalFragment extends Fragment {
+public class JadwalFragment extends BaseFragment {
 
     // ---------------------------------------------------------------------------------------------
     private int countTime;
@@ -75,7 +75,7 @@ public class JadwalFragment extends Fragment {
                 if ((jumlahDetikSaatIni == detikAfterMid) || (jumlahDetikSaatIni < detikShubuh)) {
                     countTime = (detikShubuh - jumlahDetikSaatIni) * VarConstants.Constants.DETIK_KE_MILI;
                 } else if ((jumlahDetikSaatIni == detikIsya) || (jumlahDetikSaatIni <= detikBeforeMid)) {
-                    countTime =  (detikShubuh + detikBeforeMid - jumlahDetikSaatIni) * VarConstants.Constants.DETIK_KE_MILI;
+                    countTime = (detikShubuh + detikBeforeMid - jumlahDetikSaatIni) * VarConstants.Constants.DETIK_KE_MILI;
                 }
                 break;
             default:

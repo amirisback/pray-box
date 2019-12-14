@@ -3,11 +3,14 @@ package com.frogobox.praybox.ui.fragment;
 
 import android.database.Cursor;
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.fragment.app.Fragment;
+
+import com.frogobox.praybox.R;
+import com.frogobox.praybox.base.view.ui.BaseFragment;
 import com.frogobox.praybox.source.local.DataContract;
 import com.frogobox.praybox.source.local.DataOperation;
 import com.github.mikephil.charting.charts.BarChart;
@@ -19,14 +22,12 @@ import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
-import com.frogobox.praybox.R;
-
 import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class StatistikGrafikFragment extends Fragment{
+public class StatistikGrafikFragment extends BaseFragment {
 
     private DataOperation mDataOperation = new DataOperation();
 
@@ -52,7 +53,7 @@ public class StatistikGrafikFragment extends Fragment{
         // -----------------------------------------------------------------------------------------
         barLabels.add("");
         Cursor cursor = mDataOperation.getDataSameDate(getContext());
-        int i=1;
+        int i = 1;
         while (cursor.moveToNext()) {
             // -------------------------------------------------------------------------------------
             int tanggalColoumnIndex = cursor.getColumnIndex(DataContract.DataEntry.COLUMN_TANGGAL);
@@ -75,14 +76,14 @@ public class StatistikGrafikFragment extends Fragment{
         return rootView;
     }
 
-    public void CreateBarChart(BarChart mBarchart, XAxis mXAxis, YAxis mLeftAxis, YAxis mRightAxis, BarData mBarData, ArrayList<String> mBarLabels){
+    public void CreateBarChart(BarChart mBarchart, XAxis mXAxis, YAxis mLeftAxis, YAxis mRightAxis, BarData mBarData, ArrayList<String> mBarLabels) {
         mBarchart.setData(mBarData);
         // -----------------------------------------------------------------------------------------
         mBarchart.setScaleEnabled(false);
         mBarchart.getDescription().setEnabled(false);
         mBarchart.animateY(2000);
-        mBarchart.setVisibleXRange(1,3);
-        mBarchart.setVisibleYRange(20,100,YAxis.AxisDependency.LEFT);
+        mBarchart.setVisibleXRange(1, 3);
+        mBarchart.setVisibleYRange(20, 100, YAxis.AxisDependency.LEFT);
         // -----------------------------------------------------------------------------------------
         // Sumbu X
         mXAxis.setValueFormatter(new IndexAxisValueFormatter(mBarLabels));

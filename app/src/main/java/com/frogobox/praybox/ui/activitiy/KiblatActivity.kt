@@ -20,7 +20,7 @@ import com.frogobox.praybox.R
 import com.frogobox.praybox.base.view.ui.BaseActivity
 import com.frogobox.praybox.util.helper.Compass
 import com.frogobox.praybox.util.helper.GPSTracker
-import kotlinx.android.synthetic.main.fragment_kiblat.*
+import kotlinx.android.synthetic.main.activity_kiblat.*
 
 class KiblatActivity : BaseActivity() {
 

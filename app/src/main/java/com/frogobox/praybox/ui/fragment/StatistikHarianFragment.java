@@ -4,16 +4,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.database.Cursor;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.loader.app.LoaderManager;
-import androidx.loader.content.CursorLoader;
-import androidx.loader.content.Loader;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.view.ActionMode;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,8 +12,17 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.ActionMode;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.CursorLoader;
+import androidx.loader.content.Loader;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.frogobox.praybox.R;
+import com.frogobox.praybox.base.view.ui.BaseFragment;
 import com.frogobox.praybox.callback.ClickHandlerActionMode;
 import com.frogobox.praybox.source.local.DataContract;
 import com.frogobox.praybox.source.local.DataOperation;
@@ -36,7 +35,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 
-public class StatistikHarianFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
+public class StatistikHarianFragment extends BaseFragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
     // ---------------------------------------------------------------------------------------------
     // Deklarasi Kebutuhan
@@ -48,6 +47,38 @@ public class StatistikHarianFragment extends Fragment implements LoaderManager.L
     private StatistikHarianCursorRecyclerViewAdapter mCursorAdapter;
     private ActionMode mActionMode;
     // ---------------------------------------------------------------------------------------------
+    private ActionMode.Callback mActionModeCallback = new ActionMode.Callback() {
+        @Override
+        public boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
+            actionMode.getMenuInflater().inflate(R.menu.menu_action, menu);
+            return true;
+        }
+
+        @Override
+        public boolean onPrepareActionMode(ActionMode actionMode, Menu menu) {
+            ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
+            actionMode.setTitle(String.valueOf(mCursorAdapter.selectionCount()));
+            return true;
+        }
+
+        @Override
+        public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem) {
+            switch (menuItem.getItemId()) {
+                case R.id.action_delete:
+                    deleteData();
+                    return true;
+            }
+            return false;
+
+        }
+
+        @Override
+        public void onDestroyActionMode(ActionMode actionMode) {
+            ((AppCompatActivity) getActivity()).getSupportActionBar().show();
+            mActionMode = null;
+            mCursorAdapter.resetSelection();
+        }
+    };
 
     public StatistikHarianFragment() {
         // Required empty public constructor
@@ -73,7 +104,7 @@ public class StatistikHarianFragment extends Fragment implements LoaderManager.L
         String percen = getProgress() + "%";
         mTextViewPercentage.setText(percen);
         mProgressBar.setProgress(getProgress());
-        if (getProgress()!=0) {
+        if (getProgress() != 0) {
             empty_listView.setVisibility(View.GONE);
         } else {
             empty_listView.setVisibility(View.VISIBLE);
@@ -112,47 +143,13 @@ public class StatistikHarianFragment extends Fragment implements LoaderManager.L
         // -----------------------------------------------------------------------------------------
         return rootView;
     }
+    // ---------------------------------------------------------------------------------------------
 
     public int getProgress() {
         Cursor cursor = mDataOperation.getDataToday(getContext(), mMethodHelper.getDateToday());
         int countTable = cursor.getCount();
         return countTable * 20;
     }
-    // ---------------------------------------------------------------------------------------------
-
-    private ActionMode.Callback mActionModeCallback = new ActionMode.Callback() {
-        @Override
-        public boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
-            actionMode.getMenuInflater().inflate(R.menu.menu_action, menu);
-            return true;
-        }
-
-        @Override
-        public boolean onPrepareActionMode(ActionMode actionMode, Menu menu) {
-            ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
-            actionMode.setTitle(String.valueOf(mCursorAdapter.selectionCount()));
-            return true;
-        }
-
-        @Override
-        public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem ) {
-            switch (menuItem.getItemId()) {
-                case R.id.action_delete:
-                    deleteData();
-                    return true;
-            }
-            return false;
-
-        }
-
-        @Override
-        public void onDestroyActionMode(ActionMode actionMode) {
-            ((AppCompatActivity) getActivity()).getSupportActionBar().show();
-            mActionMode = null;
-            mCursorAdapter.resetSelection();
-        }
-    };
-
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -204,7 +201,7 @@ public class StatistikHarianFragment extends Fragment implements LoaderManager.L
         builder.setTitle(R.string.delete_data).setMessage(messages).setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                for (int currentPedId = 0; currentPedId < selectedId.size() ; currentPedId++) {
+                for (int currentPedId = 0; currentPedId < selectedId.size(); currentPedId++) {
                     String databaseID = selectedDataId.get(currentPedId);
                     boolean delete = mDataOperation.deleteDataId(getContext(), databaseID);
                 }

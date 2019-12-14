@@ -2,7 +2,6 @@ package com.frogobox.praybox.ui.fragment;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.frogobox.praybox.R;
+import com.frogobox.praybox.base.view.ui.BaseFragment;
 import com.frogobox.praybox.source.local.DataOperation;
 import com.frogobox.praybox.ui.dialog.CatatanCustomDialog;
 import com.frogobox.praybox.util.helper.MethodHelper;
@@ -35,7 +35,7 @@ import java.util.Random;
  * id.amirisback.frogobox
  */
 
-public class CatatanFragment extends Fragment{
+public class CatatanFragment extends BaseFragment {
     // ---------------------------------------------------------------------------------------------
     // Deklarasi Class helper Buatan Sendiri
     private MethodHelper methodHelper = new MethodHelper();

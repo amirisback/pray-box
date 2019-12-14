@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
  * 
  * FrogoBox Inc License
  * =========================================
@@ -7,88 +6,92 @@
  *
  -->
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/dimen_medium_8dp">
+    android:layout_marginStart="@dimen/dimen_big_16dp"
+    android:layout_marginEnd="@dimen/dimen_big_16dp"
+    android:layout_marginBottom="@dimen/dimen_medium_8dp"
+    android:background="@drawable/background_card"
+    android:elevation="@dimen/dimen_elevation_2dp"
+    android:orientation="vertical"
+    android:paddingStart="@dimen/dimen_big_16dp"
+    android:paddingTop="@dimen/dimen_medium_8dp"
+    android:paddingEnd="@dimen/dimen_big_16dp"
+    android:paddingBottom="@dimen/dimen_medium_8dp">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/border_button"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:paddingLeft="@dimen/dimen_big_16dp"
-            android:paddingRight="@dimen/dimen_big_16dp">
+    <TextView
+        android:id="@+id/niat_textview_shalat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:textSize="@dimen/text_size_medium_16sp"
+        tools:text="@string/tatacara_text_jenis" />
 
-            <TextView
-                android:id="@+id/niat_textview_shalat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                tools:text="@string/tatacara_text_jenis"
-                android:textColor="@color/textColorButton"
-                android:textSize="@dimen/dimen_big_16dp" />
+    <TextView
+        android:id="@+id/niat_textview_rakaat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:text="@string/tatacara_text_rakaat"
+        android:textSize="@dimen/text_size_medium_16sp"
+        android:textStyle="italic" />
 
-            <TextView
-                android:id="@+id/niat_textview_rakaat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tatacara_text_rakaat"
-                android:textStyle="italic"
-                android:textColor="@color/textColorButton"
-                android:textSize="16sp"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"/>
-        </RelativeLayout>
-
-    <LinearLayout
+    <View
+        android:id="@+id/view_line"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/border_button"
-        android:orientation="vertical"
-        android:padding="@dimen/dimen_big_16dp">
+        android:layout_height="1dp"
+        android:layout_below="@id/niat_textview_shalat"
+        android:layout_marginTop="@dimen/dimen_medium_8dp"
+        android:layout_marginBottom="@dimen/dimen_medium_8dp"
+        android:background="@color/colorBackground" />
 
-        <TextView
-            android:id="@+id/niat_textview_arab"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/dimen_medium_8dp"
-            android:gravity="right"
-            tools:text="@string/tatacara_text_arab"
-            android:textColor="@color/textColorWhite"
-            android:textSize="30sp" />
+    <TextView
+        android:id="@+id/niat_textview_arab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/view_line"
+        android:layout_marginBottom="@dimen/dimen_medium_8dp"
+        android:gravity="end"
+        android:textColor="@color/colorTextBlack"
+        android:textSize="30sp"
+        tools:text="@string/tatacara_text_arab" />
 
-        <TextView
-            android:id="@+id/niat_textview_latin_arab"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/dimen_medium_8dp"
-            tools:text="@string/tatacara_text_latin"
-            android:textSize="16sp"
-            android:textColor="@color/textColorButton"
-            android:textStyle="italic" />
+    <TextView
+        android:id="@+id/niat_textview_latin_arab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorTextBlack"
+        android:layout_below="@id/niat_textview_arab"
+        android:textSize="@dimen/text_size_medium_16sp"
+        android:textStyle="italic"
+        tools:text="@string/tatacara_text_latin" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/tatacara_text_artinya"
-            android:textColor="@android:color/darker_gray"
-            android:textStyle="italic" />
+    <View
+        android:id="@+id/view_line2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/niat_textview_latin_arab"
+        android:layout_marginTop="@dimen/dimen_medium_8dp"
+        android:layout_marginBottom="@dimen/dimen_medium_8dp"
+        android:background="@color/colorBackground" />
 
-        <TextView
-            android:id="@+id/niat_textview_arti"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:text="@string/tatacara_text_arti"
-            android:layout_marginLeft="@dimen/dimen_medium_8dp"
-            android:textColor="@color/textColorWhite"/>
-    </LinearLayout>
+    <TextView
+        android:id="@+id/tv_arti"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/view_line2"
+        android:text="@string/tatacara_text_artinya"
+        android:textColor="@android:color/darker_gray"
+        android:textStyle="italic" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/niat_textview_arti"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_arti"
+        android:layout_marginLeft="@dimen/dimen_medium_8dp"
+        tools:text="@string/tatacara_text_arti" />
+
+</RelativeLayout>

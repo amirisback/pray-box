@@ -1,25 +1,25 @@
 package com.frogobox.praybox.ui.fragment;
 
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.frogobox.praybox.R;
+import com.frogobox.praybox.base.view.ui.BaseFragment;
 import com.frogobox.praybox.model.DoaShalat;
 import com.frogobox.praybox.util.helper.TataCaraJSON;
 import com.frogobox.praybox.view.adapter.DoaShalatRecyclerViewAdapter;
 
 import java.util.ArrayList;
 
-public class TataCaraDoaFragment extends Fragment {
+public class DoaFragment extends BaseFragment {
 
-    public TataCaraDoaFragment() {
+    public DoaFragment() {
         // Required empty public constructor
     }
 
@@ -34,9 +34,7 @@ public class TataCaraDoaFragment extends Fragment {
         // -----------------------------------------------------------------------------------------
         DoaShalatRecyclerViewAdapter adapter = new DoaShalatRecyclerViewAdapter(getContext(), arrayDoaShalat);
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
-        DividerItemDecoration divider = new DividerItemDecoration(getContext(), mLayoutManager.getOrientation());
         // -----------------------------------------------------------------------------------------
-        mRecyclerView.addItemDecoration(divider);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(adapter);

@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_logo_jago_sholat"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.activitiy.TataCaraActivity"></activity>
+        <activity android:name=".ui.activitiy.DoaActivity"></activity>
+        <activity android:name=".ui.activitiy.TataCaraActivity" />
         <activity android:name=".ui.activitiy.KiblatActivity" />
         <activity android:name=".ui.activitiy.AboutUsActivity" />
         <activity
