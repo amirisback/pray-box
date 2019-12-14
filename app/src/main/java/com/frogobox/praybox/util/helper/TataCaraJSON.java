@@ -2,8 +2,8 @@ package com.frogobox.praybox.util.helper;
 
 import android.util.Log;
 
-import com.frogobox.praybox.source.model.DoaShalat;
-import com.frogobox.praybox.source.model.NiatShalat;
+import com.frogobox.praybox.model.DoaShalat;
+import com.frogobox.praybox.model.NiatShalat;
 import org.json.JSONArray;
 import org.json.JSONObject;
 

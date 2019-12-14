@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 
 import com.frogobox.praybox.R;
-import com.frogobox.praybox.source.model.DoaShalat;
+import com.frogobox.praybox.model.DoaShalat;
 
 import java.util.ArrayList;
 

@@ -1,10 +1,10 @@
 package com.frogobox.praybox.ui.activitiy
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import com.frogobox.praybox.R
+import com.frogobox.praybox.base.view.ui.BaseActivity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_tentang_kami.*
-import com.frogobox.praybox.R
 
 /**
  * Created by Faisal Amir
@@ -23,14 +23,12 @@ import com.frogobox.praybox.R
  * -----------------------------------------
  * id.amirisback.frogobox
  */
-class TentangKamiActivity : AppCompatActivity() {
+class TentangKamiActivity : BaseActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tentang_kami)
-        // -----------------------------------------------------------------------------------------
-        Picasso.get().load(R.drawable.about_us_amir).into(imageican)
-        Picasso.get().load(R.drawable.about_us_ican).into(imageican)
-        Picasso.get().load(R.drawable.about_us_bryan).into(imagebrian)
-        // -----------------------------------------------------------------------------------------
+        setupDetailActivity("")
     }
+
 }

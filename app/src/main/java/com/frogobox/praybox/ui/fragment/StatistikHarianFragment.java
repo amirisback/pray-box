@@ -106,9 +106,6 @@ public class StatistikHarianFragment extends Fragment implements LoaderManager.L
             }
         });
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext());
-        DividerItemDecoration divider = new DividerItemDecoration(getContext(), mLayoutManager.getOrientation());
-        // -----------------------------------------------------------------------------------------
-        mRecyclerView.addItemDecoration(divider);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mCursorAdapter);

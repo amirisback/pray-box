@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.frogobox.praybox.source.model.NiatShalat;
+import com.frogobox.praybox.model.NiatShalat;
 
 import com.frogobox.praybox.R;
 

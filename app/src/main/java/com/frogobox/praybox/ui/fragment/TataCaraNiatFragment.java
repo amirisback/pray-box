@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 
 
 import com.frogobox.praybox.R;
-import com.frogobox.praybox.source.model.NiatShalat;
+import com.frogobox.praybox.model.NiatShalat;
 import com.frogobox.praybox.util.helper.TataCaraJSON;
 import com.frogobox.praybox.view.adapter.NiatShalatRecyclerViewAdapter;
 
