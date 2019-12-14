@@ -9,7 +9,7 @@
     tools:context="com.frogobox.praybox.ui.fragment.CatatanFragment">
 
     <TextView
-        android:id="@id/catatan_textview_bismillah"
+        android:id="@+id/catatan_textview_bismillah"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
@@ -20,19 +20,19 @@
         android:layout_centerHorizontal="true" />
 
     <LinearLayout
-        android:id="@id/catatan_linearlayout_container"
+        android:id="@+id/catatan_linearlayout_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:background="@drawable/border_button"
         android:gravity="center"
         android:orientation="vertical"
-        android:layout_below="@id/catatan_textview_bismillah"
+        android:layout_below="@+id/catatan_textview_bismillah"
         android:paddingTop="32dp"
         android:paddingBottom="32dp">
 
         <TextView
-            android:id="@id/catatan_textview_tanggal"
+            android:id="@+id/catatan_textview_tanggal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/textColorButton"
@@ -40,7 +40,7 @@
             tools:text="Tanggal" />
 
         <TextView
-            android:id="@id/jadwal_textview_shalat"
+            android:id="@+id/jadwal_textview_shalat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="5dp"
@@ -50,7 +50,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@id/catatan_textview_hadist_arab"
+        android:id="@+id/catatan_textview_hadist_arab"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -61,10 +61,10 @@
         android:textSize="20sp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:layout_below="@id/catatan_linearlayout_container"/>
+        android:layout_below="@+id/catatan_linearlayout_container"/>
 
     <TextView
-        android:id="@id/catatan_textview_hadist_text"
+        android:id="@+id/catatan_textview_hadist_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -72,11 +72,11 @@
         android:textSize="12sp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:layout_below="@id/catatan_textview_hadist_arab"/>
+        android:layout_below="@+id/catatan_textview_hadist_arab"/>
 
     <!--Button-->
     <Button
-        android:id="@id/catatan_button_catat_ibadah"
+        android:id="@+id/catatan_button_catat_ibadah"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

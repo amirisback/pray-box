@@ -15,7 +15,7 @@
         android:paddingTop="@dimen/dimen_primary"
         android:paddingBottom="@dimen/dimen_primary">
         <TextView
-            android:id="@id/textview_arah_kabah"
+            android:id="@+id/textview_arah_kabah"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -27,7 +27,7 @@
             tools:text="@string/kompas_arah_kabah"/>
 
         <ImageView
-            android:id="@id/imageview_kompas"
+            android:id="@+id/imageview_kompas"
             android:layout_width="320dp"
             android:layout_height="320dp"
             android:layout_centerInParent="true"
@@ -35,7 +35,7 @@
             android:src="@drawable/kompas_back" />
 
         <ImageView
-            android:id="@id/imageview_kompas_jarum"
+            android:id="@+id/imageview_kompas_jarum"
             android:layout_width="23dp"
             android:layout_height="270dp"
             android:layout_centerInParent="true"
@@ -44,7 +44,7 @@
             android:src="@drawable/kiblat" />
 
         <TextView
-            android:id="@id/textview_lokasi"
+            android:id="@+id/textview_lokasi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"

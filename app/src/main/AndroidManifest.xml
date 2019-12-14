@@ -16,26 +16,23 @@
         android:roundIcon="@mipmap/ic_logo_jago_sholat"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
-            android:name="com.frogobox.praybox.ui.activitiy.SplashScreenActivity"
-            android:label="@string/app_name"
-            android:noHistory="true"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:name="com.frogobox.praybox.ui.activitiy.TentangKamiActivity" />
+
+        <activity
+            android:name="com.frogobox.praybox.ui.activitiy.MainActivity"
+            android:theme="@style/AppThemeNoToolbar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.frogobox.praybox.ui.activitiy.TentangKamiActivity"
-            android:label="Tentang Kami"
-            android:theme="@style/AppTheme" />
 
-        <activity
-            android:name="com.frogobox.praybox.ui.activitiy.MainActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" />
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="@string/admob_publisher_id" />
 
         <provider
             android:name="com.frogobox.praybox.source.local.DataProvider"

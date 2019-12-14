@@ -31,7 +31,7 @@
         android:layout_weight="1"
         android:background="@color/menu_catatan">
         <TextView
-            android:id="@id/menu_tab_catatan"
+            android:id="@+id/menu_tab_catatan"
             style="@style/MenuStyleText"
             android:background="?android:attr/selectableItemBackground"
             android:text="@string/menu_catatan" />
@@ -47,7 +47,7 @@
         android:layout_weight="1"
         android:background="@color/menu_jadwal">
         <TextView
-            android:id="@id/menu_tab_jadwal"
+            android:id="@+id/menu_tab_jadwal"
             style="@style/MenuStyleText"
             android:background="?android:attr/selectableItemBackground"
             android:text="@string/menu_jadwal" />
@@ -62,7 +62,7 @@
         android:layout_weight="1"
         android:background="@color/menu_statistik">
         <TextView
-            android:id="@id/menu_tab_statistik"
+            android:id="@+id/menu_tab_statistik"
             style="@style/MenuStyleText"
             android:background="?android:attr/selectableItemBackground"
             android:text="@string/menu_statistik" />
@@ -77,7 +77,7 @@
         android:layout_weight="1"
         android:background="@color/menu_kiblat">
         <TextView
-            android:id="@id/menu_tab_kiblat"
+            android:id="@+id/menu_tab_kiblat"
             style="@style/MenuStyleText"
             android:background="?android:attr/selectableItemBackground"
             android:text="@string/menu_kiblat" />
@@ -92,7 +92,7 @@
         android:layout_weight="1"
         android:background="@color/menu_tatacara">
         <TextView
-            android:id="@id/menu_tab_tatacara"
+            android:id="@+id/menu_tab_tatacara"
             style="@style/MenuStyleText"
             android:background="?android:attr/selectableItemBackground"
             android:text="@string/menu_tatacara" />

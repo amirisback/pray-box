@@ -48,81 +48,81 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@id/layout_catatan_button_jam_shubuh"
+        android:id="@+id/layout_catatan_button_jam_shubuh"
         android:visibility="gone"
         style="@style/layoutCatatanButton">
 
         <CheckBox
-            android:id="@id/checkbox_catatan_button_jam_shubuh"
+            android:id="@+id/checkbox_catatan_button_jam_shubuh"
             android:text="@string/shalat_shubuh"
             style="@style/checkboxCatatanButton"/>
 
         <TextView
-            android:id="@id/textview_catatan_button_jam_shubuh"
+            android:id="@+id/textview_catatan_button_jam_shubuh"
             android:text="@string/dialog_jam"
             style="@style/textviewCatatanButton"/>
 
     </LinearLayout>
     <LinearLayout
-        android:id="@id/layout_catatan_button_jam_dzuhur"
+        android:id="@+id/layout_catatan_button_jam_dzuhur"
         android:visibility="gone"
         style="@style/layoutCatatanButton">
 
         <CheckBox
-            android:id="@id/checkbox_catatan_button_jam_dzuhur"
+            android:id="@+id/checkbox_catatan_button_jam_dzuhur"
             android:text="@string/shalat_dzuhur"
             style="@style/checkboxCatatanButton"/>
 
         <TextView
-            android:id="@id/textview_catatan_button_jam_dzuhur"
+            android:id="@+id/textview_catatan_button_jam_dzuhur"
             android:text="@string/dialog_jam"
             style="@style/textviewCatatanButton"/>
 
     </LinearLayout>
     <LinearLayout
-        android:id="@id/layout_catatan_button_jam_ashar"
+        android:id="@+id/layout_catatan_button_jam_ashar"
         android:visibility="gone"
         style="@style/layoutCatatanButton">
 
         <CheckBox
-            android:id="@id/checkbox_catatan_button_jam_ashar"
+            android:id="@+id/checkbox_catatan_button_jam_ashar"
             android:text="@string/shalat_ashar"
             style="@style/checkboxCatatanButton"/>
 
         <TextView
-            android:id="@id/textview_catatan_button_jam_ashar"
+            android:id="@+id/textview_catatan_button_jam_ashar"
             android:text="@string/dialog_jam"
             style="@style/textviewCatatanButton"/>
 
     </LinearLayout>
     <LinearLayout
-        android:id="@id/layout_catatan_button_jam_maghrib"
+        android:id="@+id/layout_catatan_button_jam_maghrib"
         android:visibility="gone"
         style="@style/layoutCatatanButton">
 
         <CheckBox
-            android:id="@id/checkbox_catatan_button_jam_maghrib"
+            android:id="@+id/checkbox_catatan_button_jam_maghrib"
             android:text="@string/shalat_maghrib"
             style="@style/checkboxCatatanButton"/>
 
         <TextView
-            android:id="@id/textview_catatan_button_jam_maghrib"
+            android:id="@+id/textview_catatan_button_jam_maghrib"
             android:text="@string/dialog_jam"
             style="@style/textviewCatatanButton"/>
 
     </LinearLayout>
     <LinearLayout
-        android:id="@id/layout_catatan_button_jam_isya"
+        android:id="@+id/layout_catatan_button_jam_isya"
         android:visibility="gone"
         style="@style/layoutCatatanButton">
 
         <CheckBox
-            android:id="@id/checkbox_catatan_button_jam_isya"
+            android:id="@+id/checkbox_catatan_button_jam_isya"
             android:text="@string/shalat_isya"
             style="@style/checkboxCatatanButton"/>
 
         <TextView
-            android:id="@id/textview_catatan_button_jam_isya"
+            android:id="@+id/textview_catatan_button_jam_isya"
             android:text="@string/dialog_jam"
             style="@style/textviewCatatanButton"/>
 

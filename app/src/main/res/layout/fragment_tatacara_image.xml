@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@id/tatacara_relativelayout"
+    android:id="@+id/tatacara_relativelayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <androidx.viewpager.widget.ViewPager
-        android:id="@id/tatacara_sliderimage_viewpager"
+        android:id="@+id/tatacara_sliderimage_viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
     <LinearLayout
-        android:id="@id/tatacara_sliderdots_linearLayout"
+        android:id="@+id/tatacara_sliderdots_linearLayout"
         android:layout_marginTop="@dimen/dimen_primary"
         android:orientation="horizontal"
         android:gravity="center_vertical|center_horizontal"

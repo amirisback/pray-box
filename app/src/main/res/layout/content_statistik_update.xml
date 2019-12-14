@@ -37,7 +37,7 @@
         android:layout_marginTop="@dimen/dimen_primary"/>
 
     <TextView
-        android:id="@id/textview_statistik_update"
+        android:id="@+id/textview_statistik_update"
         android:layout_marginTop="@dimen/dimen_primary"
         android:layout_marginBottom="@dimen/dimen_primary"
         android:layout_width="wrap_content"
