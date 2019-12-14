@@ -1,11 +1,13 @@
 package org.d3ifcool.jagosholat.views.interfaces;
 
+import java.util.ArrayList;
+
 /**
  * Created by Faisal Amir
  * FrogoBox Inc License
  * =========================================
  * 40-mobpro-4002-jago-sholat
- * Copyright (C) 23/11/2018.
+ * Copyright (C) 28/11/2018.
  * All rights reserved
  * -----------------------------------------
  * Name     : Muhammad Faisal Amir
@@ -17,6 +19,7 @@ package org.d3ifcool.jagosholat.views.interfaces;
  * -----------------------------------------
  * id.amirisback.frogobox
  */
-public interface ClickHandler {
-    void menuTabClick(String menuTab);
+public interface ClickHandlerActionMode {
+    void onItemClick(int position);
+    boolean onItemLongClick(int position);
 }

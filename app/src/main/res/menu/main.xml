@@ -5,6 +5,6 @@
     <item
         android:id="@+id/info_apps"
         android:icon="@drawable/ic_main_info"
-        android:title="Info"
+        android:title="@string/menu_tentang_kami"
         app:showAsAction="ifRoom"/>
 </menu>

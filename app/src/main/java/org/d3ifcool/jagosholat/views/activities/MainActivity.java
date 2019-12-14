@@ -21,10 +21,10 @@ package org.d3ifcool.jagosholat.views.activities;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -34,11 +34,11 @@ import org.d3ifcool.jagosholat.views.fragments.JadwalFragment;
 import org.d3ifcool.jagosholat.views.fragments.KiblatFragment;
 import org.d3ifcool.jagosholat.views.fragments.StatistikFragment;
 import org.d3ifcool.jagosholat.views.fragments.TataCaraFragment;
-import org.d3ifcool.jagosholat.views.interfaces.ClickHandler;
+import org.d3ifcool.jagosholat.views.interfaces.ClickHandlerTabletView;
 
 import static org.d3ifcool.jagosholat.models.constants.VarConstants.Constants;
 
-public class MainActivity extends AppCompatActivity implements ClickHandler {
+public class MainActivity extends AppCompatActivity implements ClickHandlerTabletView {
 
     // ---------------------------------------------------------------------------------------------
     private boolean isTwoPane;

@@ -1,29 +1,19 @@
 package org.d3ifcool.jagosholat.views.activities;
 
 
-import android.support.test.rule.ActivityTestRule;
-import android.support.test.runner.AndroidJUnit4;
-import android.view.View;
-import android.view.ViewGroup;
+import androidx.test.rule.ActivityTestRule;
+import androidx.test.runner.AndroidJUnit4;
 
 import org.d3ifcool.jagosholat.R;
-import org.hamcrest.Description;
-import org.hamcrest.Matcher;
-import org.hamcrest.TypeSafeMatcher;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.action.ViewActions.swipeDown;
-import static android.support.test.espresso.action.ViewActions.swipeLeft;
-import static android.support.test.espresso.action.ViewActions.swipeRight;
-import static android.support.test.espresso.action.ViewActions.swipeUp;
-import static android.support.test.espresso.matcher.ViewMatchers.isDescendantOfA;
-import static android.support.test.espresso.matcher.ViewMatchers.withId;
-import static java.util.EnumSet.allOf;
+import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.swipeLeft;
+import static androidx.test.espresso.action.ViewActions.swipeRight;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
 
 /**
  * Created by Faisal Amir

@@ -1,6 +1,6 @@
 package org.d3ifcool.jagosholat.views.fragments;
 
-import android.support.test.rule.ActivityTestRule;
+import androidx.test.rule.ActivityTestRule;
 
 import org.d3ifcool.jagosholat.views.activities.MainActivity;
 import org.junit.Before;

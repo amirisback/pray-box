@@ -1,17 +1,22 @@
 package org.d3ifcool.jagosholat.views.fragments;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.CursorLoader;
-import android.support.v4.content.Loader;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.CursorLoader;
+import androidx.loader.content.Loader;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.ActionMode;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
@@ -23,9 +28,14 @@ import org.d3ifcool.jagosholat.presenters.helpers.MethodHelper;
 import org.d3ifcool.jagosholat.models.databases.DataContract;
 import org.d3ifcool.jagosholat.models.databases.DataOperation;
 import org.d3ifcool.jagosholat.R;
+import org.d3ifcool.jagosholat.views.interfaces.ClickHandlerActionMode;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 
-public class StatistikHarianFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor>{
+public class StatistikHarianFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
     // ---------------------------------------------------------------------------------------------
     // Deklarasi Kebutuhan
@@ -35,6 +45,7 @@ public class StatistikHarianFragment extends Fragment implements LoaderManager.L
     private MethodHelper mMethodHelper = new MethodHelper();
     private DataOperation mDataOperation = new DataOperation();
     private StatistikHarianCursorRecyclerViewAdapter mCursorAdapter;
+    private ActionMode mActionMode;
     // ---------------------------------------------------------------------------------------------
 
     public StatistikHarianFragment() {
@@ -46,7 +57,6 @@ public class StatistikHarianFragment extends Fragment implements LoaderManager.L
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_statistik_harian, container, false);
-
         // -----------------------------------------------------------------------------------------
         View empty_listView = rootView.findViewById(R.id.statistik_view_emptyview);
         RecyclerView mRecyclerView = rootView.findViewById(R.id.statistik_list_data);
@@ -57,7 +67,7 @@ public class StatistikHarianFragment extends Fragment implements LoaderManager.L
         AlertDialog.Builder mDialogBuilder = new AlertDialog.Builder(getContext());
         View mDialogView = inflater.inflate(R.layout.content_statistik_update, null);
         // -----------------------------------------------------------------------------------------
-        StatistikCustomDialog mDialogForm = new StatistikCustomDialog(mDialogBuilder,mDialogView, mMethodHelper, getContext(), mDataOperation);
+        final StatistikCustomDialog mDialogForm = new StatistikCustomDialog(mDialogBuilder, mDialogView, mMethodHelper, getContext(), mDataOperation);
         // -----------------------------------------------------------------------------------------
         String percen = getProgress() + "%";
         mTextViewPercentage.setText(percen);
@@ -69,7 +79,31 @@ public class StatistikHarianFragment extends Fragment implements LoaderManager.L
         }
         // -----------------------------------------------------------------------------------------
         Cursor cursor = mDataOperation.getDataToday(getContext(), mMethodHelper.getDateToday());
-        mCursorAdapter = new StatistikHarianCursorRecyclerViewAdapter(getContext(), cursor, mDialogForm);
+        mCursorAdapter = new StatistikHarianCursorRecyclerViewAdapter(getContext(), cursor, new ClickHandlerActionMode() {
+            @Override
+            public void onItemClick(int position) {
+                if (mActionMode != null) {
+                    mCursorAdapter.toggleSelection(position);
+                    if (mCursorAdapter.selectionCount() == 0) {
+                        mActionMode.finish();
+                    } else {
+                        mActionMode.invalidate();
+                    }
+                } else {
+                    mDialogForm.DialogForm(mCursorAdapter.getmSelectedDataId().get(0), mCursorAdapter.getmSelectedDataWaktu().get(0));
+                }
+            }
+
+            @Override
+            public boolean onItemLongClick(int position) {
+                if (mActionMode != null) {
+                    return false;
+                }
+                mCursorAdapter.toggleSelection(position);
+                mActionMode = ((AppCompatActivity) getActivity()).startSupportActionMode(mActionModeCallback);
+                return false;
+            }
+        });
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         DividerItemDecoration divider = new DividerItemDecoration(getContext(), mLayoutManager.getOrientation());
         // -----------------------------------------------------------------------------------------
@@ -81,12 +115,46 @@ public class StatistikHarianFragment extends Fragment implements LoaderManager.L
         return rootView;
     }
 
-    public int getProgress(){
+    public int getProgress() {
         Cursor cursor = mDataOperation.getDataToday(getContext(), mMethodHelper.getDateToday());
         int countTable = cursor.getCount();
         return countTable * 20;
     }
     // ---------------------------------------------------------------------------------------------
+
+    private ActionMode.Callback mActionModeCallback = new ActionMode.Callback() {
+        @Override
+        public boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
+            actionMode.getMenuInflater().inflate(R.menu.menu_action, menu);
+            return true;
+        }
+
+        @Override
+        public boolean onPrepareActionMode(ActionMode actionMode, Menu menu) {
+            ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
+            actionMode.setTitle(String.valueOf(mCursorAdapter.selectionCount()));
+            return true;
+        }
+
+        @Override
+        public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem ) {
+            switch (menuItem.getItemId()) {
+                case R.id.action_delete:
+                    deleteData();
+                    return true;
+            }
+            return false;
+
+        }
+
+        @Override
+        public void onDestroyActionMode(ActionMode actionMode) {
+            ((AppCompatActivity) getActivity()).getSupportActionBar().show();
+            mActionMode = null;
+            mCursorAdapter.resetSelection();
+        }
+    };
+
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -115,4 +183,46 @@ public class StatistikHarianFragment extends Fragment implements LoaderManager.L
         mCursorAdapter.swapCursor(null);
     }
 
+    private void deleteData() {
+        // -----------------------------------------------------------------------------------------
+        String messages;
+        final ArrayList<Integer> selectedId = mCursorAdapter.getmSelectedId();
+        final ArrayList<String> selectedDataId = mCursorAdapter.getmSelectedDataId();
+        if (selectedId.size() == 1) {
+            messages = getString(R.string.delete_data);
+        } else {
+            messages = getString(R.string.deletes_data);
+            Collections.sort(selectedId, new Comparator<Integer>() {
+                @Override
+                public int compare(Integer integer, Integer t1) {
+                    return t1.compareTo(integer);
+                }
+            });
+        }
+        // ---------------------------------------------------------------------------------------------
+
+        // -----------------------------------------------------------------------------------------
+        androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(getContext());
+        builder.setTitle(R.string.delete_data).setMessage(messages).setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                for (int currentPedId = 0; currentPedId < selectedId.size() ; currentPedId++) {
+                    String databaseID = selectedDataId.get(currentPedId);
+                    boolean delete = mDataOperation.deleteDataId(getContext(), databaseID);
+                }
+                mCursorAdapter.notifyDataSetChanged();
+                mActionMode.finish();
+            }
+        }).setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+                mActionMode.finish();
+            }
+        });
+        builder.create().show();
+        // -----------------------------------------------------------------------------------------
+
+
+    }
 }

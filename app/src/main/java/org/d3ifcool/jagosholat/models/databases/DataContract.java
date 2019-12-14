@@ -1,5 +1,6 @@
 package org.d3ifcool.jagosholat.models.databases;
 
+import android.content.ContentResolver;
 import android.net.Uri;
 import android.provider.BaseColumns;
 
@@ -43,6 +44,9 @@ public class DataContract {
         public static final String COLUMN_SHALAT = "shalat";
         public static final String COLUMN_WAKTU = "waktu";
         public static final String COLUMN_STATUS = "status";
+        public static final String CONTENT_LIST_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_DATA;
+        public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_DATA;
+
     }
     // ---------------------------------------------------------------------------------------------
 

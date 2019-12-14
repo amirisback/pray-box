@@ -1,8 +1,8 @@
 package org.d3ifcool.jagosholat.views.adapters.viewpagers;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 
 import org.d3ifcool.jagosholat.views.fragments.CatatanFragment;
 import org.d3ifcool.jagosholat.views.fragments.StatistikFragment;

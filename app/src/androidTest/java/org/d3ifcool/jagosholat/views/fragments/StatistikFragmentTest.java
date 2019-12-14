@@ -1,22 +1,17 @@
 package org.d3ifcool.jagosholat.views.fragments;
 
-import android.support.test.rule.ActivityTestRule;
-import android.support.v4.view.ViewPager;
-import android.view.View;
+import androidx.test.rule.ActivityTestRule;
 
 import org.d3ifcool.jagosholat.R;
 import org.d3ifcool.jagosholat.views.activities.MainActivity;
-import org.hamcrest.Description;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
-import java.util.regex.Matcher;
-
-import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.action.ViewActions.swipeLeft;
-import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.action.ViewActions.swipeLeft;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
 
 /**
  * Created by Faisal Amir

@@ -1,14 +1,14 @@
 package org.d3ifcool.jagosholat.views.adapters.recyclerview;
 
 import android.database.Cursor;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.d3ifcool.jagosholat.R;
 import org.d3ifcool.jagosholat.models.databases.DataContract;
-import org.d3ifcool.jagosholat.views.dialogs.StatistikCustomDialog;
+import org.d3ifcool.jagosholat.views.interfaces.ClickHandlerActionMode;
 
 /**
  * Created by Faisal Amir
@@ -27,20 +27,29 @@ import org.d3ifcool.jagosholat.views.dialogs.StatistikCustomDialog;
  * -----------------------------------------
  * id.amirisback.frogobox
  */
-public class StatistikHarianViewHolder extends RecyclerView.ViewHolder {
+public class StatistikHarianViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
 
-    public TextView stat_waktu, stat_shalat;
-    public ImageView img;
+    private TextView stat_waktu, stat_shalat;
+    private ImageView img;
+    private ClickHandlerActionMode mClickHandler;
+    private String id, waktu;
 
-    public StatistikHarianViewHolder(View itemView) {
+    public StatistikHarianViewHolder(View itemView, ClickHandlerActionMode handler) {
         super(itemView);
+        // -----------------------------------------------------------------------------------------
+        this.mClickHandler = handler;
+        // -----------------------------------------------------------------------------------------
         stat_waktu = (TextView)itemView.findViewById(R.id.textview_harian_waktu);
         stat_shalat = (TextView)itemView.findViewById(R.id.textview_harian_shalat);
         img = (ImageView)itemView.findViewById(R.id.imageview_harian_shalat);
-
+        // -----------------------------------------------------------------------------------------
+        itemView.setFocusable(true);
+        itemView.setOnClickListener(this);
+        itemView.setOnLongClickListener(this);
+        // -----------------------------------------------------------------------------------------
     }
 
-    public void setData(Cursor cursor,final StatistikCustomDialog mDialogForm) {
+    public void setData(Cursor cursor) {
         // Mencari index dalam database
         int idColumnIndex = cursor.getColumnIndex(DataContract.DataEntry._ID);
         int waktuColumnIndex = cursor.getColumnIndex(DataContract.DataEntry.COLUMN_WAKTU);
@@ -48,8 +57,8 @@ public class StatistikHarianViewHolder extends RecyclerView.ViewHolder {
         int statusColumnIndex = cursor.getColumnIndex(DataContract.DataEntry.COLUMN_STATUS);
         // -----------------------------------------------------------------------------------------
         // Mendapat data dari database berdasarkan index
-        final String id = cursor.getString(idColumnIndex);
-        final String waktu = cursor.getString(waktuColumnIndex);
+        id = cursor.getString(idColumnIndex);
+        waktu = cursor.getString(waktuColumnIndex);
         String shalat = cursor.getString(shalatColumnIndex);
         String status = cursor.getString(statusColumnIndex);
         // -----------------------------------------------------------------------------------------
@@ -67,13 +76,26 @@ public class StatistikHarianViewHolder extends RecyclerView.ViewHolder {
         stat_waktu.setText(waktu);
         img.setImageResource(resIdImage);
         // -----------------------------------------------------------------------------------------
-
-        itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mDialogForm.DialogForm(id, waktu);
-            }
-        });
-
     }
+
+    // ---------------------------------------------------------------------------------------------
+    public String getId() {
+        return id;
+    }
+
+    public String getWaktu() {
+        return waktu;
+    }
+
+    // ---------------------------------------------------------------------------------------------
+    @Override
+    public boolean onLongClick(View view) {
+        return mClickHandler.onItemLongClick(getAdapterPosition());
+    }
+    // ---------------------------------------------------------------------------------------------
+    @Override
+    public void onClick(View itemView) {
+        mClickHandler.onItemClick(getAdapterPosition());
+    }
+    // ---------------------------------------------------------------------------------------------
 }

@@ -248,7 +248,6 @@ public class CatatanCustomDialog {
         String isi_tanggal = mMethodHelper.getDateToday();
         String isi_status = "Shalat";
         mDataOperation.insertData(mContext, id_ibadah, isi_tanggal, isi_shalat, isi_waktu, isi_status);
-
     }
     // ---------------------------------------------------------------------------------------------
 

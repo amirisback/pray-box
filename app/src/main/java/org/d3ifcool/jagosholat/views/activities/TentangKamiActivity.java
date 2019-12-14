@@ -17,7 +17,7 @@ package org.d3ifcool.jagosholat.views.activities;
  * -----------------------------------------
  * id.amirisback.frogobox
  */
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 

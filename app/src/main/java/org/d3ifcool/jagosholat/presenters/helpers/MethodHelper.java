@@ -36,6 +36,8 @@ public class MethodHelper {
         getSumRealTime();
         getSumWaktuDetik();
 
+
+
     }
 
     // Method Random Character ---------------------------------------------------------------------

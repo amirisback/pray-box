@@ -8,7 +8,7 @@
     android:background="@color/background_app"
     tools:context=".views.fragments.StatistikHarianFragment">
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -24,9 +24,9 @@
             android:background="@color/Judul_statistik"
             android:textColor="@color/textColorWhite" />
 
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -52,14 +52,14 @@
                 tools:hint="20%"/>
         </LinearLayout>
 
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
     <RelativeLayout
         android:layout_marginTop="8dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:scrollbars="none"
             android:id="@id/statistik_list_data"
             android:layout_width="match_parent"

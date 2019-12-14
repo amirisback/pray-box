@@ -7,8 +7,8 @@ import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.util.Log;
 
 import org.d3ifcool.jagosholat.models.databases.DataContract.DataEntry;
@@ -56,36 +56,28 @@ public class DataProvider extends ContentProvider {
 
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
+        SQLiteDatabase database = mDbHelper.getReadableDatabase(); // Get readable database
+        Cursor cursor;
+        int match = sUriMatcher.match(uri);
+        switch (match) {
+            case DATA:
+                cursor = database.query(DataEntry.TABLE_NAME, projection, selection,
+                        selectionArgs, null,null,sortOrder); // Select Semua Data
+                break;
+            case DATA_ID:
 
-            SQLiteDatabase database = mDbHelper.getReadableDatabase(); // Get readable database
-            Cursor cursor; // This cursor will hold the result of the query
+                selection = DataContract.DataEntry._ID + "=?"; // Where ID = "?"
+                selectionArgs = new String[] { String.valueOf(ContentUris.parseId(uri)) };
 
-            // Figure out if the URI matcher can match the URI to a specific code
-            int match = sUriMatcher.match(uri);
-            switch (match) {
-                case DATA:
-                    cursor = database.query(DataEntry.TABLE_NAME, projection, selection,
-                            selectionArgs, null,null,sortOrder); // Select Semua Data
-                    break;
-                case DATA_ID:
+                cursor = database.query(DataContract.DataEntry.TABLE_NAME, projection, selection, selectionArgs,
+                        null, null, sortOrder);
+                break;
+            default:
+                throw new IllegalArgumentException("Cannot query unknown URI " + uri);
+        }
 
-                    selection = DataContract.DataEntry._ID + "=?"; // Where ID = "?"
-                    selectionArgs = new String[] { String.valueOf(ContentUris.parseId(uri)) };
-
-                    cursor = database.query(DataContract.DataEntry.TABLE_NAME, projection, selection, selectionArgs,
-                            null, null, sortOrder);
-                    break;
-                default:
-                    throw new IllegalArgumentException("Cannot query unknown URI " + uri);
-            }
-
-            cursor.setNotificationUri(getContext().getContentResolver(), uri);
-            return cursor;
-    }
-
-    @Override
-    public String getType(@NonNull Uri uri) {
-        return null;
+        cursor.setNotificationUri(getContext().getContentResolver(), uri);
+        return cursor;
     }
 
     @Override
@@ -112,10 +104,6 @@ public class DataProvider extends ContentProvider {
         return ContentUris.withAppendedId(uri, id);
     }
 
-    public int delete(@NonNull Uri uri, @Nullable String selection, @Nullable String[] selectionArgs) {
-        return 0;
-    }
-
     @Override
     public int update(Uri uri, ContentValues contentValues, String selection, String[] selectionArgs) {
 
@@ -136,10 +124,8 @@ public class DataProvider extends ContentProvider {
         if (values.size() == 0){
             return 0;
         }
-
         SQLiteDatabase database = mDbHelper.getWritableDatabase();
         int rowUpdated = database.update(DataEntry.TABLE_NAME, values, selection, selectionArgs);
-
         if (rowUpdated != 0) {
             getContext().getContentResolver().notifyChange(uri, null);
         }
@@ -147,4 +133,37 @@ public class DataProvider extends ContentProvider {
         return rowUpdated;
     }
 
+    @Override
+    public int delete(Uri uri, String selection, String[] selectionArgs) {
+        SQLiteDatabase database = mDbHelper.getWritableDatabase();
+        int rowsDeleted;
+        final int match = sUriMatcher.match(uri);
+        switch (match) {
+            case DATA:
+                rowsDeleted = database.delete(DataEntry.TABLE_NAME, selection, selectionArgs);
+                break;
+            case DATA_ID:
+                selection = DataEntry._ID + "=?";
+                selectionArgs = new String[] { String.valueOf(ContentUris.parseId(uri)) };
+                rowsDeleted = database.delete(DataEntry.TABLE_NAME, selection, selectionArgs);
+                break;
+            default:
+                throw new IllegalArgumentException("Deletion is not supported for " + uri);
+        }
+        if (rowsDeleted != 0) { getContext().getContentResolver().notifyChange(uri, null); }
+        return rowsDeleted;
+    }
+
+    @Override
+    public String getType(Uri uri) {
+        final int match = sUriMatcher.match(uri);
+        switch (match) {
+            case DATA:
+                return DataEntry.CONTENT_LIST_TYPE;
+            case DATA_ID:
+                return DataEntry.CONTENT_ITEM_TYPE;
+            default:
+                throw new IllegalStateException("Unknown URI " + uri + " with match " + match);
+        }
+    }
 }

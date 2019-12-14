@@ -9,7 +9,7 @@
     android:background="@color/background_app"
     tools:context=".views.fragments.JadwalFragment">
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <LinearLayout
@@ -59,7 +59,7 @@
                 tools:text="Hitung Mundur" />
 
         </LinearLayout>
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
     <LinearLayout
         android:layout_marginTop="@dimen/dimen_primary"
@@ -67,7 +67,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginBottom="@dimen/dimen_little">
@@ -82,9 +82,9 @@
                 android:textColor="@color/textColorWhite"
                 android:textSize="18sp"/>
 
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             style="@style/CardView_jadwalShalat">
 
             <LinearLayout
@@ -99,9 +99,9 @@
                     android:id="@id/jadwal_textview_shubuh"
                     style="@style/jadwalWaktu"/>
             </LinearLayout>
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             style="@style/CardView_jadwalShalat">
             <LinearLayout
                 style="@style/LinearLayout_jadwalShalat"
@@ -116,9 +116,9 @@
                     style="@style/jadwalWaktu" />
 
             </LinearLayout>
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             style="@style/CardView_jadwalShalat">
             <LinearLayout
                 style="@style/LinearLayout_jadwalShalat"
@@ -132,9 +132,9 @@
                     android:id="@id/jadwal_textview_ashar"
                     style="@style/jadwalWaktu"/>
             </LinearLayout>
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             style="@style/CardView_jadwalShalat">
 
             <LinearLayout
@@ -149,9 +149,9 @@
                     android:id="@id/jadwal_textview_maghrib"
                     style="@style/jadwalWaktu"/>
             </LinearLayout>
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             style="@style/CardView_jadwalShalat">
 
             <LinearLayout
@@ -166,7 +166,7 @@
                     android:id="@id/jadwal_textview_isya"
                     style="@style/jadwalWaktu"/>
             </LinearLayout>
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
     </LinearLayout>
 

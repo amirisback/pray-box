@@ -59,11 +59,22 @@ public class DataOperation {
     }
     // ---------------------------------------------------------------------------------------------
 
+    public boolean deleteDataId(Context context, String mID) {
+        String selection = DataContract.DataEntry._ID + " = '" + mID + "'";
+        int resultUri = context.getContentResolver().delete(DataEntry.CONTENT_URI, selection, null);
+        if (resultUri == 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 
-    public boolean updateDataTime(Context context, String waktu, String selcetion, String[] selectionArgs) {
+
+    public boolean updateDataTime(Context context, String waktu, String mID) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(DataEntry.COLUMN_WAKTU,waktu);
-        int resultUri = context.getContentResolver().update(DataEntry.CONTENT_URI, contentValues, selcetion, selectionArgs);
+        String selection = DataContract.DataEntry._ID + " = '" + mID + "'";
+        int resultUri = context.getContentResolver().update(DataEntry.CONTENT_URI, contentValues, selection, null);
         if (resultUri == 0) {
             return false;
         } else {
@@ -123,4 +134,7 @@ public class DataOperation {
     public String[] getProjection() {
         return projection;
     }
+
+
+
 }

@@ -3,22 +3,22 @@ package org.d3ifcool.jagosholat.views.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import org.d3ifcool.jagosholat.R;
-import org.d3ifcool.jagosholat.views.interfaces.ClickHandler;
+import org.d3ifcool.jagosholat.views.interfaces.ClickHandlerTabletView;
 import static org.d3ifcool.jagosholat.models.constants.VarConstants.Constants;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MainTabFragment extends Fragment implements ClickHandler {
+public class MainTabFragment extends Fragment implements ClickHandlerTabletView {
 
-    private ClickHandler mHandler;
+    private ClickHandlerTabletView mHandler;
 
     public MainTabFragment() {
         // Required empty public constructor
@@ -79,7 +79,7 @@ public class MainTabFragment extends Fragment implements ClickHandler {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        mHandler = (ClickHandler) context;
+        mHandler = (ClickHandlerTabletView) context;
     }
 
     @Override
