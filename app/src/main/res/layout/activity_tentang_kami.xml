@@ -24,7 +24,7 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:layout_marginTop="@dimen/dimen_primary"
-    tools:context=".views.activities.TentangKamiActivity">
+    tools:context=".ui.activitiy.TentangKamiActivity">
 
     <LinearLayout
         android:id="@+id/layout_desc_jagosholat"

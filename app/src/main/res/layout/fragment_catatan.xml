@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:padding="@dimen/dimen_primary"
     android:background="@color/background_app"
-    tools:context=".views.fragments.CatatanFragment">
+    tools:context=".ui.fragment.CatatanFragment">
 
     <TextView
         android:id="@id/catatan_textview_bismillah"

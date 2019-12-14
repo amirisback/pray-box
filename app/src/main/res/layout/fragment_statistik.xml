@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="org.d3ifcool.jagosholat.views.fragments.StatistikFragment">
+    tools:context="org.d3ifcool.jagosholat.ui.fragment.StatistikFragment">
 
     <LinearLayout
         android:layout_marginVertical="@dimen/dimen_small"

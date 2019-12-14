@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_app"
-    tools:context=".views.fragments.StatistikHarianFragment">
+    tools:context=".ui.fragment.StatistikHarianFragment">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
