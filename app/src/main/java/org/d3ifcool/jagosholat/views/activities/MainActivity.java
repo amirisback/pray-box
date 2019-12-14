@@ -19,31 +19,22 @@ package org.d3ifcool.jagosholat.views.activities;
  */
 
 import android.content.Intent;
-import android.content.res.TypedArray;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+import androidx.viewpager.widget.ViewPager;
+
+import com.google.android.material.tabs.TabLayout;
+
 import org.d3ifcool.jagosholat.R;
-import org.d3ifcool.jagosholat.views.fragments.CatatanFragment;
-import org.d3ifcool.jagosholat.views.fragments.JadwalFragment;
-import org.d3ifcool.jagosholat.views.fragments.KiblatFragment;
-import org.d3ifcool.jagosholat.views.fragments.StatistikFragment;
-import org.d3ifcool.jagosholat.views.fragments.TataCaraFragment;
-import org.d3ifcool.jagosholat.views.interfaces.ClickHandlerTabletView;
+import org.d3ifcool.jagosholat.views.adapters.viewpagers.MainPagerAdapter;
 
-import static org.d3ifcool.jagosholat.models.constants.VarConstants.Constants;
-
-public class MainActivity extends AppCompatActivity implements ClickHandlerTabletView {
-
-    // ---------------------------------------------------------------------------------------------
-    private boolean isTwoPane;
-    private String mSelectedMenuTab;
-    // ---------------------------------------------------------------------------------------------
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,58 +42,51 @@ public class MainActivity extends AppCompatActivity implements ClickHandlerTable
         setContentView(R.layout.activity_main);
 
         // -----------------------------------------------------------------------------------------
-        isTwoPane = findViewById(R.id.detail_frame_layout) != null;
         Toolbar toolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
         // -----------------------------------------------------------------------------------------
-        if (isTwoPane) {
-            mSelectedMenuTab = savedInstanceState!=null ?
-                    savedInstanceState.getString(Constants.STRING_EXTRA_FRAGMENT):Constants.TAB_CATATAN;
-            menuTabClick(mSelectedMenuTab);
+
+        // Deklarasi element XML
+        final TabLayout mTabLayout = findViewById(R.id.main_tablayout);
+        final ViewPager mViewPager = findViewById(R.id.main_viewpager);
+        // -----------------------------------------------------------------------------------------
+        final String[] pageTitle = {"Catatan", "Jadwal", "Statistik", "Kiblat", "Tata Cara"};
+        int[] pageIcon = {R.drawable.ic_main_catat, R.drawable.ic_main_jadwal,
+                R.drawable.ic_main_statistik, R.drawable.ic_main_kompas, R.drawable.ic_main_more};
+        // -----------------------------------------------------------------------------------------
+        // Menjalankan Fungsi
+        for (int i = 0; i < pageTitle.length; i++) {
+            mTabLayout.addTab(mTabLayout.newTab().setIcon(pageIcon[i]));
         }
         // -----------------------------------------------------------------------------------------
-
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        if (isTwoPane) outState.putString(Constants.STRING_EXTRA_FRAGMENT, mSelectedMenuTab);
-        super.onSaveInstanceState(outState);
-    }
-
-    @Override
-    public void menuTabClick(String menuTab) {
-        if (isTwoPane) {
-            mSelectedMenuTab = Constants.STRING_EXTRA_FRAGMENT;
-            Fragment mFragment;
-            switch (menuTab) {
-                case Constants.TAB_CATATAN:
-                    mFragment = new CatatanFragment();
-                    break;
-                case Constants.TAB_JADWAL:
-                    mFragment = new JadwalFragment();
-                    break;
-                case Constants.TAB_STATISTIK:
-                    mFragment = new StatistikFragment();
-                    break;
-                case Constants.TAB_KIBLAT:
-                    mFragment = new KiblatFragment();
-                    break;
-                case Constants.TAB_TATACARA:
-                    mFragment = new TataCaraFragment();
-                    break;
-                default:
-                    throw new IllegalArgumentException();
+        mTabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+        MainPagerAdapter Adatapters = new MainPagerAdapter(getSupportFragmentManager(), mTabLayout.getTabCount());
+        mViewPager.setAdapter(Adatapters);
+        // -----------------------------------------------------------------------------------------
+        mViewPager.setOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
+        mTabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                mViewPager.setCurrentItem(tab.getPosition());
+                setTitle(pageTitle[tab.getPosition()]);
+                int tabIconColor = ContextCompat.getColor(getApplicationContext(), R.color.IconSelect);
+                tab.getIcon().setColorFilter(tabIconColor, PorterDuff.Mode.SRC_IN);
+                // ---------------------------------------------------------------------------------
             }
-            FragmentManager mFragmentManager = getSupportFragmentManager();
-            mFragmentManager.beginTransaction().replace(R.id.detail_frame_layout, mFragment).commit();
-        } else {
-            // Create a new intent to open the {@link NumbersFragment}
-            Intent mIntent = new Intent(this, DetailActivity.class);
-            mIntent.putExtra(Constants.STRING_EXTRA_FRAGMENT, menuTab);
-            // Start the new activity
-            startActivity(mIntent);
-        }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                int tabIconColor = ContextCompat.getColor(getApplicationContext(), R.color.IconUnselect);
+                tab.getIcon().setColorFilter(tabIconColor, PorterDuff.Mode.SRC_IN);
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+        // -----------------------------------------------------------------------------------------
+
     }
 
     @Override
@@ -126,11 +110,5 @@ public class MainActivity extends AppCompatActivity implements ClickHandlerTable
         return super.onOptionsItemSelected(item);
     }
 
-    public int getActionBarSize() {
-        TypedArray styledAttributes = getTheme().obtainStyledAttributes(new int[] { android.R.attr.actionBarSize });
-        int actionBarSize = (int) styledAttributes.getDimension(0, 0);
-        styledAttributes.recycle();
-        return actionBarSize;
-    }
 
 }

@@ -28,34 +28,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@id/main_appbarlayout"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@id/main_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:elevation="6dp">
-        <androidx.appcompat.widget.Toolbar
-            android:id="@id/main_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:background="?attr/colorPrimary"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:elevation="0dp"
-            app:layout_scrollFlags="scroll|enterAlways" />
+        android:layout_alignParentTop="true"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:elevation="0dp"
+        app:layout_scrollFlags="scroll|enterAlways" />
 
-    </com.google.android.material.appbar.AppBarLayout>
+    <com.google.android.material.tabs.TabLayout
+        android:id="@id/main_tablayout"
+        app:tabMode="fixed"
+        android:layout_below="@id/main_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        app:elevation="0dp"
+        app:tabTextColor="#d3d3d3"
+        app:tabSelectedTextColor="#ffffff"
+        app:tabIndicatorColor="@color/colorAccent"
+        android:minHeight="?attr/actionBarSize" />
 
-    <fragment
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@id/main_fragment"
-        android:name="org.d3ifcool.jagosholat.views.fragments.MainFragment"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@id/main_viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/tan_background"
-        android:orientation="vertical"
-        tools:context=".views.activities.MainActivity"/>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 </LinearLayout>
