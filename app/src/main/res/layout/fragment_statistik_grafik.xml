@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragment.StatistikGrafikFragment">
+    tools:context="com.frogobox.praybox.ui.fragment.StatistikGrafikFragment">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"

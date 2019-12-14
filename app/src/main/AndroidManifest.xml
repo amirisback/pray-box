@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.d3ifcool.jagosholat">
+    package="com.frogobox.praybox">
 
     <!-- === Permission Kiblat Dari Bryan === -->
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -17,7 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.activitiy.SplashScreenActivity"
+            android:name="com.frogobox.praybox.ui.activitiy.SplashScreenActivity"
             android:label="@string/app_name"
             android:noHistory="true"
             android:theme="@style/AppTheme.NoActionBar">
@@ -28,18 +28,18 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.activitiy.TentangKamiActivity"
+            android:name="com.frogobox.praybox.ui.activitiy.TentangKamiActivity"
             android:label="Tentang Kami"
             android:theme="@style/AppTheme" />
 
         <activity
-            android:name=".ui.activitiy.MainActivity"
+            android:name="com.frogobox.praybox.ui.activitiy.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <provider
-            android:name=".source.local.DataProvider"
-            android:authorities="org.d3ifcool.jagosholat"
+            android:name="com.frogobox.praybox.source.local.DataProvider"
+            android:authorities="com.frogobox.praybox"
             android:exported="false" />
 
     </application>
