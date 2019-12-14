@@ -21,7 +21,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/toolbar_main"
     android:layout_width="match_parent"
-    android:layout_height="48dp"
+    android:layout_height="@dimen/dimen_height_toolbar"
     android:layout_marginStart="@dimen/dimen_big_16dp"
     android:layout_marginTop="@dimen/dimen_small_4dp"
     android:layout_marginEnd="@dimen/dimen_big_16dp"
@@ -30,4 +30,4 @@
     android:elevation="2dp"
     app:title="@string/app_name"
     app:titleTextAppearance="@style/Toolbar.TitleText"
-    app:titleTextColor="@color/colorTextGrey"/>
+    app:titleTextColor="@color/colorTextGrey" />

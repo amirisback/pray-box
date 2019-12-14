@@ -12,8 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:paddingTop="@dimen/dimen_primary"
-        android:paddingBottom="@dimen/dimen_primary"
+        android:paddingTop="@dimen/dimen_big_16dp"
+        android:paddingBottom="@dimen/dimen_big_16dp"
         android:background="@color/Background_Primary">
 
         <ImageView
@@ -34,12 +34,12 @@
         android:text="@string/dialog_waktu_sentuh"
         android:textSize="16sp"
         android:gravity="center"
-        android:layout_marginTop="@dimen/dimen_primary"/>
+        android:layout_marginTop="@dimen/dimen_big_16dp"/>
 
     <TextView
         android:id="@+id/textview_statistik_update"
-        android:layout_marginTop="@dimen/dimen_primary"
-        android:layout_marginBottom="@dimen/dimen_primary"
+        android:layout_marginTop="@dimen/dimen_big_16dp"
+        android:layout_marginBottom="@dimen/dimen_big_16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="30sp"
@@ -50,7 +50,7 @@
         android:layout_height="wrap_content"
         android:textSize="12sp"
         android:text="@string/dialog_waktu_sentuh"
-        android:layout_marginBottom="@dimen/dimen_primary"/>
+        android:layout_marginBottom="@dimen/dimen_big_16dp"/>
 
 
 </LinearLayout>

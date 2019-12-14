@@ -1,33 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/dimen_primary"
-    android:background="@color/background_app"
+    android:background="@color/colorBackgroundWhite"
+    android:padding="@dimen/dimen_big_16dp"
     tools:context="com.frogobox.praybox.ui.fragment.CatatanFragment">
 
     <TextView
         android:id="@+id/catatan_textview_bismillah"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/dimen_big_16dp"
         android:text="@string/bismillah"
         android:textColor="@color/textColorBlack"
         android:textSize="22sp"
-        android:textStyle="italic"
-        android:layout_centerHorizontal="true" />
+        android:textStyle="italic" />
 
     <LinearLayout
         android:id="@+id/catatan_linearlayout_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_below="@+id/catatan_textview_bismillah"
+        android:layout_marginBottom="@dimen/dimen_medium_8dp"
         android:background="@drawable/border_button"
         android:gravity="center"
         android:orientation="vertical"
-        android:layout_below="@+id/catatan_textview_bismillah"
         android:paddingTop="32dp"
         android:paddingBottom="32dp">
 
@@ -53,26 +52,26 @@
         android:id="@+id/catatan_textview_hadist_arab"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/catatan_linearlayout_container"
         android:layout_marginTop="5dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="@dimen/dimen_medium_8dp"
         android:gravity="center"
+        android:paddingLeft="@dimen/dimen_medium_8dp"
+        android:paddingRight="@dimen/dimen_medium_8dp"
         android:text="@string/hadis_arab_0"
         android:textColor="@color/textColorBlack"
-        android:textSize="20sp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:layout_below="@+id/catatan_linearlayout_container"/>
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/catatan_textview_hadist_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/catatan_textview_hadist_arab"
         android:gravity="center"
+        android:paddingLeft="@dimen/dimen_medium_8dp"
+        android:paddingRight="@dimen/dimen_medium_8dp"
         android:text="@string/hadis_text_0"
-        android:textSize="12sp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:layout_below="@+id/catatan_textview_hadist_arab"/>
+        android:textSize="12sp" />
 
     <!--Button-->
     <Button

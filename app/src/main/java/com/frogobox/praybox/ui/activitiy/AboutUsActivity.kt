@@ -3,8 +3,6 @@ package com.frogobox.praybox.ui.activitiy
 import android.os.Bundle
 import com.frogobox.praybox.R
 import com.frogobox.praybox.base.view.ui.BaseActivity
-import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.activity_tentang_kami.*
 
 /**
  * Created by Faisal Amir
@@ -23,11 +21,11 @@ import kotlinx.android.synthetic.main.activity_tentang_kami.*
  * -----------------------------------------
  * id.amirisback.frogobox
  */
-class TentangKamiActivity : BaseActivity() {
+class AboutUsActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_tentang_kami)
+        setContentView(R.layout.activity_about_us)
         setupDetailActivity("")
     }
 

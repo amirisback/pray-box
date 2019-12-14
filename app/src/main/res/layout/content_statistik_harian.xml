@@ -1,67 +1,42 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="@dimen/dimen_medium_8dp"
-    android:layout_marginEnd="@dimen/dimen_medium_8dp"
+    android:layout_marginStart="@dimen/dimen_big_16dp"
+    android:layout_marginEnd="@dimen/dimen_big_16dp"
     android:layout_marginBottom="@dimen/dimen_medium_8dp"
     android:background="@drawable/background_card"
-    android:elevation="@dimen/dimen_small_4dp"
+    android:elevation="@dimen/dimen_elevation_2dp"
     android:foreground="?android:attr/selectableItemBackground"
-    android:padding="@dimen/dimen_big_16dp">
+    android:paddingStart="@dimen/dimen_big_16dp"
+    android:paddingTop="@dimen/dimen_medium_8dp"
+    android:paddingEnd="@dimen/dimen_big_16dp"
+    android:paddingBottom="@dimen/dimen_medium_8dp">
 
-    <ImageView
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_gravity="center"
-        android:src="@drawable/ic_tatacara_dot_active" />
+    <TextView
+        android:id="@+id/textview_harian_shalat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:textColor="@color/colorTextBlack"
+        android:textSize="@dimen/text_size_medium_16sp"
+        android:textStyle="bold"
+        tools:text="@string/statistik_shalat" />
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_marginHorizontal="@dimen/dimen_primary"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/textview_harian_shalat"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_gravity="bottom"
-            android:layout_weight="1"
-            android:gravity="bottom"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            tools:text="@string/statistik_shalat" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_gravity="top"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginRight="8dp"
-                android:gravity="center"
-                android:src="@drawable/ic_statistik_jam" />
-
-            <TextView
-                android:id="@+id/textview_harian_waktu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                tools:text="@string/statistik_waktu" />
-        </LinearLayout>
-
-    </LinearLayout>
+    <TextView
+        android:id="@+id/textview_harian_waktu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textview_harian_shalat"
+        android:drawableStart="@drawable/ic_statistik_jam"
+        android:drawablePadding="@dimen/dimen_medium_8dp"
+        tools:text="@string/statistik_waktu" />
 
     <ImageView
         android:id="@+id/imageview_harian_shalat"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_gravity="center" />
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true" />
 
-</LinearLayout>
+</RelativeLayout>

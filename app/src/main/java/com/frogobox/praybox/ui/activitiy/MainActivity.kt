@@ -8,6 +8,7 @@ import com.frogobox.praybox.base.view.ui.BaseActivity
 import com.frogobox.praybox.ui.fragment.CatatanFragment
 import com.frogobox.praybox.ui.fragment.JadwalFragment
 import com.frogobox.praybox.ui.fragment.StatistikFragment
+import com.frogobox.praybox.ui.fragment.LainnyaFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar_main.*
 
@@ -56,7 +57,12 @@ class MainActivity : BaseActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.toolbar_menu_about -> {
-                baseStartActivity<TentangKamiActivity>()
+                baseStartActivity<AboutUsActivity>()
+                true
+            }
+
+            R.id.toolbar_menu_kiblat -> {
+                baseStartActivity<KiblatActivity>()
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -82,6 +88,11 @@ class MainActivity : BaseActivity() {
                 R.id.bottom_menu_jadwal -> {
                     setupCustomTitleToolbar(R.string.menu_jadwal)
                     setupChildFragment(frameLayout, JadwalFragment())
+                }
+
+                R.id.bottom_menu_lainnya -> {
+                    setupCustomTitleToolbar(R.string.menu_tatacara)
+                    setupChildFragment(frameLayout, LainnyaFragment())
                 }
 
             }

@@ -27,22 +27,21 @@
     android:background="@color/colorBackgroundWhite"
     tools:context=".ui.activitiy.MainActivity">
 
-    <include layout="@layout/toolbar_main"/>
+    <include layout="@layout/toolbar_main" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav_main_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
         android:background="@color/colorBaseWhite"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:animateLayoutChanges="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/framelayout_main_container"
         app:menu="@menu/main_bottom_navigation" />
 
     <FrameLayout
-        android:paddingTop="@dimen/dimen_medium_8dp"
         android:id="@+id/framelayout_main_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"

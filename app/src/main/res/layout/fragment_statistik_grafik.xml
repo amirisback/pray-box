@@ -1,36 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorBackgroundWhite"
     tools:context="com.frogobox.praybox.ui.fragment.StatistikGrafikFragment">
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginBottom="@dimen/dimen_small"
-        android:background="@color/Judul_statistik"
-        android:minHeight="60dp">
-
-        <TextView
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:text="@string/statistik_judul_grafik"
-            android:textSize="20dp"
-            android:background="@color/Judul_statistik"
-            android:textColor="@color/textColorWhite" />
-
-    </androidx.cardview.widget.CardView>
 
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/chart_id"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="10dp">
-    </com.github.mikephil.charting.charts.BarChart>
+        android:padding="@dimen/dimen_medium_8dp"/>
 
 </LinearLayout>

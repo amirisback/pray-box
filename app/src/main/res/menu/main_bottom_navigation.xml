@@ -23,19 +23,25 @@
     <item
             android:id="@+id/bottom_menu_catatan"
             android:icon="@drawable/ic_main_catat"
-            android:title="@string/menu_catatan"
+            android:title="@string/bottom_menu_catatan"
             app:showAsAction="ifRoom"/>
 
     <item
             android:id="@+id/bottom_menu_statistik"
             android:icon="@drawable/ic_main_statistik"
-            android:title="@string/menu_statistik"
+            android:title="@string/bottom_menu_statistik"
             app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/bottom_menu_jadwal"
         android:icon="@drawable/ic_main_jadwal"
-        android:title="@string/menu_jadwal"
+        android:title="@string/bottom_menu_jadwal"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/bottom_menu_lainnya"
+        android:icon="@drawable/ic_main_more"
+        android:title="@string/bottom_menu_tatacara"
         app:showAsAction="ifRoom"/>
 
 </menu>

@@ -13,7 +13,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/dimen_small">
+    android:padding="@dimen/dimen_medium_8dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -21,8 +21,8 @@
             android:background="@drawable/border_button"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
-            android:paddingLeft="@dimen/dimen_primary"
-            android:paddingRight="@dimen/dimen_primary">
+            android:paddingLeft="@dimen/dimen_big_16dp"
+            android:paddingRight="@dimen/dimen_big_16dp">
 
             <TextView
                 android:id="@+id/niat_textview_shalat"
@@ -33,7 +33,7 @@
                 android:layout_centerVertical="true"
                 tools:text="@string/tatacara_text_jenis"
                 android:textColor="@color/textColorButton"
-                android:textSize="20dp" />
+                android:textSize="@dimen/dimen_big_16dp" />
 
             <TextView
                 android:id="@+id/niat_textview_rakaat"
@@ -53,13 +53,13 @@
         android:layout_marginTop="5dp"
         android:background="@drawable/border_button"
         android:orientation="vertical"
-        android:padding="@dimen/dimen_primary">
+        android:padding="@dimen/dimen_big_16dp">
 
         <TextView
             android:id="@+id/niat_textview_arab"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/dimen_small"
+            android:layout_marginBottom="@dimen/dimen_medium_8dp"
             android:gravity="right"
             tools:text="@string/tatacara_text_arab"
             android:textColor="@color/textColorWhite"
@@ -69,7 +69,7 @@
             android:id="@+id/niat_textview_latin_arab"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/dimen_small"
+            android:layout_marginBottom="@dimen/dimen_medium_8dp"
             tools:text="@string/tatacara_text_latin"
             android:textSize="16sp"
             android:textColor="@color/textColorButton"
@@ -87,7 +87,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:text="@string/tatacara_text_arti"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="@dimen/dimen_medium_8dp"
             android:textColor="@color/textColorWhite"/>
     </LinearLayout>
 

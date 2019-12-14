@@ -1,28 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_app"
-    android:orientation="vertical"
+    android:background="@color/colorBackgroundWhite"
     tools:context="com.frogobox.praybox.ui.fragment.StatistikHarianFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/Judul_statistik"
-        android:gravity="center"
-        android:text="@string/statistik_judul"
-        android:textColor="@color/textColorWhite"
-        android:textSize="20dp" />
-
     <LinearLayout
-        android:background="@color/colorBackgroundWhite"
+        android:id="@+id/container_progress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="@dimen/dimen_big_16dp"
+        android:layout_marginTop="@dimen/dimen_medium_8dp"
+        android:layout_marginEnd="@dimen/dimen_big_16dp"
+        android:background="@drawable/background_card"
+        android:elevation="@dimen/dimen_elevation_2dp"
         android:orientation="horizontal"
-        android:paddingHorizontal="@dimen/dimen_primary"
-        android:paddingVertical="5dp">
+        android:paddingStart="@dimen/dimen_big_16dp"
+        android:paddingTop="@dimen/dimen_small_4dp"
+        android:paddingEnd="@dimen/dimen_big_16dp"
+        android:paddingBottom="@dimen/dimen_small_4dp">
 
         <ProgressBar
             android:id="@+id/statistik_progress_bar"
@@ -30,33 +28,27 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="@dimen/dimen_medium_8dp"
             android:layout_weight="1" />
 
         <TextView
             android:id="@+id/statistik_textview_bar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
+            android:textSize="@dimen/text_size_medium_16sp"
             tools:hint="20%" />
     </LinearLayout>
 
-    <RelativeLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/statistik_list_data"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="8dp">
+        android:layout_height="fill_parent"
+        android:layout_below="@id/container_progress"
+        android:clipToPadding="false"
+        android:paddingTop="@dimen/dimen_medium_8dp"
+        android:scrollbars="none"
+        tools:listitem="@layout/content_statistik_harian" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/statistik_list_data"
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:scrollbars="none"
-            android:clipToPadding="false"
-            android:paddingTop="@dimen/dimen_medium_8dp"
-            tools:listitem="@layout/content_statistik_harian" />
-        <!-- Empty View -->
+    <include layout="@layout/content_statistik_empty" />
 
-        <include layout="@layout/content_statistik_empty" />
-
-    </RelativeLayout>
-</LinearLayout>
+</RelativeLayout>

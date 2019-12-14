@@ -19,119 +19,123 @@
  * 
  -->
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center">
+    android:gravity="center"
+    android:orientation="vertical">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/Background_Primary"
         android:gravity="center"
-        android:paddingTop="@dimen/dimen_primary"
-        android:paddingBottom="@dimen/dimen_primary"
-        android:background="@color/Background_Primary">
+        android:orientation="vertical"
+        android:paddingTop="@dimen/dimen_big_16dp"
+        android:paddingBottom="@dimen/dimen_big_16dp">
 
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/ic_main_catat"/>
+            android:src="@drawable/ic_main_catat" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/dialog_catat_shalat"
-            android:textSize="20sp"
-            android:textColor="@color/textColorWhite"/>
+            android:textColor="@color/textColorWhite"
+            android:textSize="20sp" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/layout_catatan_button_jam_shubuh"
-        android:visibility="gone"
-        style="@style/layoutCatatanButton">
+        style="@style/layoutCatatanButton"
+        android:visibility="gone">
 
         <CheckBox
             android:id="@+id/checkbox_catatan_button_jam_shubuh"
-            android:text="@string/shalat_shubuh"
-            style="@style/checkboxCatatanButton"/>
+            style="@style/checkboxCatatanButton"
+            android:text="@string/shalat_shubuh" />
 
         <TextView
             android:id="@+id/textview_catatan_button_jam_shubuh"
-            android:text="@string/dialog_jam"
-            style="@style/textviewCatatanButton"/>
+            style="@style/textviewCatatanButton"
+            android:text="@string/dialog_jam" />
 
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/layout_catatan_button_jam_dzuhur"
-        android:visibility="gone"
-        style="@style/layoutCatatanButton">
+        style="@style/layoutCatatanButton"
+        android:visibility="gone">
 
         <CheckBox
             android:id="@+id/checkbox_catatan_button_jam_dzuhur"
-            android:text="@string/shalat_dzuhur"
-            style="@style/checkboxCatatanButton"/>
+            style="@style/checkboxCatatanButton"
+            android:text="@string/shalat_dzuhur" />
 
         <TextView
             android:id="@+id/textview_catatan_button_jam_dzuhur"
-            android:text="@string/dialog_jam"
-            style="@style/textviewCatatanButton"/>
+            style="@style/textviewCatatanButton"
+            android:text="@string/dialog_jam" />
 
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/layout_catatan_button_jam_ashar"
-        android:visibility="gone"
-        style="@style/layoutCatatanButton">
+        style="@style/layoutCatatanButton"
+        android:visibility="gone">
 
         <CheckBox
             android:id="@+id/checkbox_catatan_button_jam_ashar"
-            android:text="@string/shalat_ashar"
-            style="@style/checkboxCatatanButton"/>
+            style="@style/checkboxCatatanButton"
+            android:text="@string/shalat_ashar" />
 
         <TextView
             android:id="@+id/textview_catatan_button_jam_ashar"
-            android:text="@string/dialog_jam"
-            style="@style/textviewCatatanButton"/>
+            style="@style/textviewCatatanButton"
+            android:text="@string/dialog_jam" />
 
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/layout_catatan_button_jam_maghrib"
-        android:visibility="gone"
-        style="@style/layoutCatatanButton">
+        style="@style/layoutCatatanButton"
+        android:visibility="gone">
 
         <CheckBox
             android:id="@+id/checkbox_catatan_button_jam_maghrib"
-            android:text="@string/shalat_maghrib"
-            style="@style/checkboxCatatanButton"/>
+            style="@style/checkboxCatatanButton"
+            android:text="@string/shalat_maghrib" />
 
         <TextView
             android:id="@+id/textview_catatan_button_jam_maghrib"
-            android:text="@string/dialog_jam"
-            style="@style/textviewCatatanButton"/>
+            style="@style/textviewCatatanButton"
+            android:text="@string/dialog_jam" />
 
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/layout_catatan_button_jam_isya"
-        android:visibility="gone"
-        style="@style/layoutCatatanButton">
+        style="@style/layoutCatatanButton"
+        android:visibility="gone">
 
         <CheckBox
             android:id="@+id/checkbox_catatan_button_jam_isya"
-            android:text="@string/shalat_isya"
-            style="@style/checkboxCatatanButton"/>
+            style="@style/checkboxCatatanButton"
+            android:text="@string/shalat_isya" />
 
         <TextView
             android:id="@+id/textview_catatan_button_jam_isya"
-            android:text="@string/dialog_jam"
-            style="@style/textviewCatatanButton"/>
+            style="@style/textviewCatatanButton"
+            android:text="@string/dialog_jam" />
 
     </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="12sp"
+        android:layout_marginTop="@dimen/dimen_medium_8dp"
         android:text="@string/dialog_waktu_sentuh"
-        android:layout_marginTop="@dimen/dimen_small"/>
+        android:textSize="12sp" />
 </LinearLayout>

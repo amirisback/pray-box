@@ -24,14 +24,14 @@
     android:layout_height="wrap_content"
     android:background="@drawable/border_button"
     android:orientation="vertical"
-    android:layout_margin="@dimen/dimen_small"
-    android:padding="@dimen/dimen_small">
+    android:layout_margin="@dimen/dimen_medium_8dp"
+    android:padding="@dimen/dimen_medium_8dp">
 
     <TextView
         android:id="@+id/doa_setelah_shalat_arab"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/dimen_small"
+        android:layout_marginBottom="@dimen/dimen_medium_8dp"
         android:textSize="30sp"
         android:gravity="right"
         tools:text="@string/tatacara_text_arab"
@@ -41,7 +41,7 @@
         android:id="@+id/doa_setelah_shalat_latin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/dimen_small"
+        android:layout_marginBottom="@dimen/dimen_medium_8dp"
         tools:text="@string/tatacara_text_latin"
         android:textColor="@color/textColorWhite"
         android:textStyle="italic"
@@ -58,7 +58,7 @@
         android:id="@+id/doa_setelah_shalat_arti"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="@dimen/dimen_medium_8dp"
         tools:text="@string/tatacara_text_arti"
         android:textColor="@color/textColorButton"/>
 

@@ -110,7 +110,14 @@
     <string name="menu_jadwal">Jadwal Shalat</string>
     <string name="menu_statistik">Statistik Shalat</string>
     <string name="menu_kiblat">Kiblat Shalat</string>
-    <string name="menu_tatacara">Tata Cara</string>
+    <string name="menu_tatacara">Lainnya</string>
+
+    <string name="bottom_menu_catatan">Catatan</string>
+    <string name="bottom_menu_jadwal">Jadwal</string>
+    <string name="bottom_menu_statistik">Statistik</string>
+    <string name="bottom_menu_kiblat">Kiblat</string>
+    <string name="bottom_menu_tatacara">Lainnya</string>
+
 
     <string name="action_settings">Settings</string>
     <string name="compass_dial">Compass Dial</string>
