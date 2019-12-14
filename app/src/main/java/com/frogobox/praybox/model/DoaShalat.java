@@ -1,4 +1,4 @@
-package com.frogobox.praybox.source.model;
+package com.frogobox.praybox.model;
 
 /**
  * Created by Bryan on 3/12/2018.

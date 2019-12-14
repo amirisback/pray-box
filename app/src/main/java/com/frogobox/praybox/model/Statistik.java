@@ -1,4 +1,4 @@
-package com.frogobox.praybox.source.model;
+package com.frogobox.praybox.model;
 
 /**
  * Created by Faisal Amir
