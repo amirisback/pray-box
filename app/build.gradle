@@ -3,7 +3,35 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
 
 android {
+
+    // Declaration app name
+    def nameApp = "Pray Box"
+
+    // Declaration apk / aab name
+    def nameAPK = "pray-box"
+
+    def versionPropsFile = file('version.properties')
+    Properties versionProps = new Properties()
+
+    if (versionPropsFile.canRead()) {
+        versionProps.load(new FileInputStream(versionPropsFile))
+    } else {
+        versionProps['VERSION_CODE'] = '0'
+    }
+
+    def code = versionProps['VERSION_CODE'].toInteger()
+
+    versionProps['VERSION_CODE'] = code.toString()
+    versionProps.store(versionPropsFile.newWriter(), null)
+
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+
+
     compileSdkVersion 29
+    buildToolsVersion '29.0.1'
     defaultConfig {
         applicationId "com.frogobox.praybox"
         minSdkVersion 19
@@ -11,43 +39,112 @@ android {
         versionCode 1
         versionName "1.0.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        buildTypes {
-            release {
-                minifyEnabled false
-                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            }
+
+        multiDexEnabled true
+
+        // Declaration apps name debug mode
+        def debugAttribute = " Development"
+        def nameAppDebug = nameApp + debugAttribute
+
+        // Declaration admob id for debug
+        def debugAdmobPublisherId = "ca-app-pub-3940256099942544~3347511713"
+        def debugAdmobBanner = "ca-app-pub-3940256099942544/6300978111"
+        def debugAdmobInterstitial = "ca-app-pub-3940256099942544/1033173712"
+        def debugAdmobInterstitialVideo = "ca-app-pub-3940256099942544/8691691433"
+        def debugAdmobRewardedVideo = "ca-app-pub-3940256099942544/5224354917"
+        def debugAdmobNativeAdvanced = "ca-app-pub-3940256099942544/2247696110"
+        def debugAdmobNativeAdvancedVideo = "ca-app-pub-3940256099942544/1044960115"
+
+        // Naming APK // AAB
+        setProperty("archivesBaseName", nameAPK + versionName + "#" + code + "-"
+                + new Date().format('ddMMyy'))
+
+        resConfigs "en", "id"
+        vectorDrawables.useSupportLibrary = true
+
+        // Inject app name for debug
+        resValue "string", "app_name", nameAppDebug
+
+        // Inject admob id for debug
+        resValue "string", "admob_publisher_id", debugAdmobPublisherId
+        resValue "string", "admob_banner", debugAdmobBanner
+        resValue "string", "admob_interstitial", debugAdmobInterstitial
+        resValue "string", "admob_interstitial_video", debugAdmobInterstitialVideo
+        resValue "string", "admob_rewarded_video", debugAdmobRewardedVideo
+        resValue "string", "admob_native_advanced", debugAdmobNativeAdvanced
+        resValue "string", "admob_native_advanced_video", debugAdmobNativeAdvancedVideo
+
+    }
+
+    signingConfigs {
+        release {
+            // You need to specify either an absolute path or include the
+            // keystore file in the same directory as the build.gradle file.
+            // [PROJECT FOLDER NAME/app/[COPY YOUT KEY STORE] .jks in here
+            storeFile file("frogoboxdev.jks")
+            storePassword "cronoclez"
+            keyAlias "frogobox"
+            keyPassword "xeonranger"
         }
     }
-    compileOptions {
-        sourceCompatibility = 1.8
-        targetCompatibility = 1.8
+
+    buildTypes {
+
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            // Generated Signed APK / AAB
+            signingConfig signingConfigs.release
+
+            // Declaration admob id for release
+            def releaseAdmobPublisherId = "ca-app-pub-5472340099809711~5221027549"
+            def releaseAdmobBanner = "ca-app-pub-5472340099809711/7689965132"
+            def releaseAdmobInterstitial = "ca-app-pub-5472340099809711/5063801791"
+            def releaseAdmobInterstitialVideo = ""
+            def releaseAdmobRewardedVideo = ""
+            def releaseAdmobNativeAdvanced = ""
+            def releaseAdmobNativeAdvancedVideo = ""
+
+            // Inject app name for release
+            resValue "string", "app_name", nameApp
+
+            // Inject admob id for release
+            resValue "string", "admob_publisher_id", releaseAdmobPublisherId
+            resValue "string", "admob_banner", releaseAdmobBanner
+            resValue "string", "admob_interstitial", releaseAdmobInterstitial
+            resValue "string", "admob_interstitial_video", releaseAdmobInterstitialVideo
+            resValue "string", "admob_rewarded_video", releaseAdmobRewardedVideo
+            resValue "string", "admob_native_advanced", releaseAdmobNativeAdvanced
+            resValue "string", "admob_native_advanced_video", releaseAdmobNativeAdvancedVideo
+        }
     }
-    buildToolsVersion = '29.0.1'
 
-    dependencies {
-        implementation fileTree(dir: 'libs', include: ['*.jar'])
-        implementation 'androidx.appcompat:appcompat:1.1.0'
-        implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-        implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-        implementation "androidx.core:core-ktx:1.1.0"
-        implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
 
-        implementation 'com.google.android.material:material:1.0.0'
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation "androidx.core:core-ktx:1.1.0"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-        implementation 'org.jbundle.util.osgi.wrapped:org.jbundle.util.osgi.wrapped.org.apache.http.client:4.1.2'
-        implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
-        implementation 'com.squareup.picasso:picasso:2.71828'
-        implementation 'com.android.support.test.espresso:espresso-idling-resource:3.0.2'
+    implementation 'com.google.android.material:material:1.0.0'
 
-        androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-        androidTestImplementation 'com.android.support.test.espresso:espresso-intents:3.0.2'
-        androidTestImplementation 'com.android.support.test:runner:1.0.2'
-        androidTestImplementation 'com.android.support.test:rules:1.0.2'
+    implementation 'org.jbundle.util.osgi.wrapped:org.jbundle.util.osgi.wrapped.org.apache.http.client:4.1.2'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.android.support.test.espresso:espresso-idling-resource:3.0.2'
 
-        testImplementation 'junit:junit:4.12'
-        testImplementation group: 'org.mockito', name: 'mockito-core', version: '2.28.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-intents:3.0.2'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test:rules:1.0.2'
 
-    }
+    testImplementation 'junit:junit:4.12'
+    testImplementation group: 'org.mockito', name: 'mockito-core', version: '2.28.2'
+
 }
 
 repositories {
