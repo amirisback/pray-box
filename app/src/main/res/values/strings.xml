@@ -135,5 +135,6 @@
     <string name="cancel">Cancel</string>
     <string name="delete_data">Delete selected data?</string>
     <string name="deletes_data">Delete selected data?</string>
+    <string name="about_dug_legir">Contributed in making this application :   M. Ikhsan Ramadhan and Bryan Rafsanzani   Dug Legir Team 2018</string>
 
 </resources>

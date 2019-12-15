@@ -48,6 +48,20 @@
     </LinearLayout>
 
     <TextView
+        android:layout_above="@id/copyright"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/dimen_big_16dp"
+        android:paddingEnd="@dimen/dimen_big_16dp"
+        android:gravity="center"
+        android:text="@string/about_dug_legir"
+        android:textColor="@color/colorTextBlack"
+        android:layout_centerHorizontal="true"
+        android:textSize="@dimen/text_size_small_10sp"
+        android:layout_marginBottom="@dimen/dimen_big_16dp" />
+
+    <TextView
+        android:id="@+id/copyright"
         android:layout_alignParentBottom="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
