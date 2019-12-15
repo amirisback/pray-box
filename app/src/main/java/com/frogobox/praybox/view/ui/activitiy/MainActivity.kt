@@ -63,6 +63,7 @@ class MainActivity : BaseActivity() {
 
             R.id.toolbar_menu_kiblat -> {
                 baseStartActivity<KiblatActivity>()
+                setupShowAdsInterstitial()
                 true
             }
             else -> super.onOptionsItemSelected(item)

@@ -17,8 +17,14 @@
             <RelativeLayout
                 android:id="@+id/btn_doa_activity"
                 android:layout_width="match_parent"
-                android:layout_height="160dp"
-                android:background="@color/colorTextGreen">
+                android:layout_height="160dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:foreground="#5C000000"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_image_doa" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -36,9 +42,16 @@
             <RelativeLayout
                 android:id="@+id/btn_tata_cara_activity"
                 android:layout_width="match_parent"
-               android:layout_height="160dp"
+                android:layout_height="160dp"
                 android:layout_marginTop="@dimen/dimen_big_16dp"
                 android:background="@color/colorBottomNavOff">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:foreground="#5C000000"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_image_masjid" />
 
                 <TextView
                     android:layout_width="wrap_content"

@@ -8,6 +8,7 @@ import com.frogobox.praybox.R
 import com.frogobox.praybox.base.view.ui.BaseFragment
 import com.frogobox.praybox.view.ui.activitiy.DoaActivity
 import com.frogobox.praybox.view.ui.activitiy.TataCaraActivity
+import kotlinx.android.synthetic.main.ads_phone_tab_banner.*
 import kotlinx.android.synthetic.main.fragment_lainnya.*
 
 class LainnyaFragment : BaseFragment() {
@@ -19,13 +20,21 @@ class LainnyaFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setupShowAdsBanner(ads_phone_tab_banner)
+        setupButtonClick()
+
+    }
+
+    private fun setupButtonClick(){
         btn_doa_activity.setOnClickListener {
             baseStartActivity<DoaActivity>()
-
+            setupShowAdsInterstitial()
         }
 
         btn_tata_cara_activity.setOnClickListener {
             baseStartActivity<TataCaraActivity>()
+            setupShowAdsInterstitial()
         }
     }
 

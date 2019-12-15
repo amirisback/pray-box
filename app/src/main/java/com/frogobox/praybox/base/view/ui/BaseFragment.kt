@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.frogobox.praybox.base.util.BaseHelper
 import com.frogobox.praybox.util.helper.AdmobHelper.Interstitial.showInterstitial
+import com.google.android.gms.ads.AdView
 
 /**
  * Created by Faisal Amir
@@ -39,6 +40,10 @@ abstract class BaseFragment : Fragment() {
             replace(frameId, fragment)
             commit()
         }
+    }
+
+    protected fun setupShowAdsBanner(ads: AdView){
+        mActivity.setupShowAdsBanner(ads)
     }
 
     protected fun setupShowAdsInterstitial() {
