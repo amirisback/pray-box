@@ -39,7 +39,7 @@
             tools:text="Tanggal" />
 
         <TextView
-            android:id="@+id/jadwal_textview_shalat"
+            android:id="@+id/tv_jadwal_shalat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="5dp"
