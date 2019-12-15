@@ -1,4 +1,4 @@
-package com.frogobox.praybox.ui.fragment;
+package com.frogobox.praybox.view.ui.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,32 +12,28 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.frogobox.praybox.R;
 import com.frogobox.praybox.base.view.ui.BaseFragment;
-import com.frogobox.praybox.view.pager.TataCaraImagePagerAdapter;
+import com.frogobox.praybox.view.pager.ImagePager;
 
-public class TataCaraWudhuFragment extends BaseFragment {
+public class TataCaraShalatFragment extends BaseFragment {
 
     // ---------------------------------------------------------------------------------------------
     private int dotscount;
     private ImageView[] dots;
-    private Integer imageResId[] = {R.drawable.wudhu_0, R.drawable.wudhu_1, R.drawable.wudhu_2,
-            R.drawable.wudhu_3, R.drawable.wudhu_4, R.drawable.wudhu_5, R.drawable.wudhu_6,
-            R.drawable.wudhu_7, R.drawable.wudhu_8, R.drawable.wudhu_9};
+    private Integer imageResId[] = {R.drawable.sholat_0, R.drawable.sholat_1, R.drawable.sholat_2,
+            R.drawable.sholat_3, R.drawable.sholat_4, R.drawable.sholat_5, R.drawable.sholat_6,
+            R.drawable.sholat_7, R.drawable.sholat_8, R.drawable.sholat_9, R.drawable.sholat_10};
     // ---------------------------------------------------------------------------------------------
-
-    public TataCaraWudhuFragment() {
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
         // -----------------------------------------------------------------------------------------
         View rootView = inflater.inflate(R.layout.fragment_tatacara_image, container, false);
         ViewPager mViewPager = rootView.findViewById(R.id.tatacara_sliderimage_viewpager);
         LinearLayout sliderDotspanel = (LinearLayout) rootView.findViewById(R.id.tatacara_sliderdots_linearLayout);
         // -----------------------------------------------------------------------------------------
-        TataCaraImagePagerAdapter imagePagerAdapter = new TataCaraImagePagerAdapter(getContext(), imageResId);
+        ImagePager imagePagerAdapter = new ImagePager(getContext(), imageResId);
         mViewPager.setAdapter(imagePagerAdapter);
         dotscount = imagePagerAdapter.getCount();
         dots = new ImageView[dotscount];
@@ -60,7 +56,6 @@ public class TataCaraWudhuFragment extends BaseFragment {
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
             }
 
             @Override
@@ -73,7 +68,6 @@ public class TataCaraWudhuFragment extends BaseFragment {
 
             @Override
             public void onPageScrollStateChanged(int state) {
-
             }
         });
         return rootView;

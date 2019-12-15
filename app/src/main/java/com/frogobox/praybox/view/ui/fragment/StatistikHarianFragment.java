@@ -1,4 +1,4 @@
-package com.frogobox.praybox.ui.fragment;
+package com.frogobox.praybox.view.ui.fragment;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -25,7 +25,7 @@ import com.frogobox.praybox.R;
 import com.frogobox.praybox.base.view.ui.BaseFragment;
 import com.frogobox.praybox.source.local.DataContract;
 import com.frogobox.praybox.source.local.DataOperation;
-import com.frogobox.praybox.ui.dialog.StatistikCustomDialog;
+import com.frogobox.praybox.view.ui.dialog.StatistikCustomDialog;
 import com.frogobox.praybox.util.helper.MethodHelper;
 import com.frogobox.praybox.view.adapter.StatistikViewAdapter;
 

@@ -1,4 +1,4 @@
-package com.frogobox.praybox.ui.fragment
+package com.frogobox.praybox.view.ui.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater

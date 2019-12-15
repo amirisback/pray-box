@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorBackgroundWhite"
     android:padding="@dimen/dimen_big_16dp"
-    tools:context="com.frogobox.praybox.ui.fragment.CatatanFragment">
+    tools:context="com.frogobox.praybox.view.ui.fragment.CatatanFragment">
 
     <TextView
         android:id="@+id/catatan_textview_bismillah"

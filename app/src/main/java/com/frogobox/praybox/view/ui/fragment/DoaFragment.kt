@@ -1,4 +1,4 @@
-package com.frogobox.praybox.ui.fragment
+package com.frogobox.praybox.view.ui.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,15 +8,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.frogobox.praybox.R
 import com.frogobox.praybox.base.view.BaseViewListener
 import com.frogobox.praybox.base.view.ui.BaseFragment
-import com.frogobox.praybox.model.NiatShalat
+import com.frogobox.praybox.model.DoaShalat
 import com.frogobox.praybox.util.helper.TataCaraJSON
-import com.frogobox.praybox.view.adapter.NiatViewAdapter
+import com.frogobox.praybox.view.adapter.DoaViewAdapter
 import kotlinx.android.synthetic.main.fragment_tatacara_text.*
 
-class NiatFragment : BaseFragment(), BaseViewListener<NiatShalat> {
-
+class DoaFragment : BaseFragment(), BaseViewListener<DoaShalat> {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? { // Inflate the layout for this fragment
+                              savedInstanceState: Bundle?): View? {
+        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_tatacara_text, container, false)
     }
 
@@ -26,18 +26,16 @@ class NiatFragment : BaseFragment(), BaseViewListener<NiatShalat> {
     }
 
     private fun setupRecyclerView() {
-        val arrayNiatShalat = TataCaraJSON.extractNiatShalat()
-        val adapter = NiatViewAdapter()
-        adapter.setupRequirement(this, arrayNiatShalat, R.layout.content_tatacara_text_niat)
+        val arrayDoaShalat = TataCaraJSON.extractDoaShalat()
+        val adapter = DoaViewAdapter()
+        adapter.setupRequirement(this, arrayDoaShalat, R.layout.content_tatacara_text_doa)
         tatacara_listview_text.setHasFixedSize(true)
         tatacara_listview_text.layoutManager = LinearLayoutManager(activity)
         tatacara_listview_text.adapter = adapter
     }
 
-    override fun onItemClicked(data: NiatShalat) {
-    }
+    override fun onItemClicked(data: DoaShalat) {}
 
-    override fun onItemLongClicked(data: NiatShalat) {
-    }
+    override fun onItemLongClicked(data: DoaShalat) {}
 
 }

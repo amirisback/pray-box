@@ -1,4 +1,4 @@
-package com.frogobox.praybox.ui.fragment
+package com.frogobox.praybox.view.ui.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.frogobox.praybox.R
 import com.frogobox.praybox.base.view.ui.BaseFragment
-import com.frogobox.praybox.ui.activitiy.DoaActivity
-import com.frogobox.praybox.ui.activitiy.TataCaraActivity
+import com.frogobox.praybox.view.ui.activitiy.DoaActivity
+import com.frogobox.praybox.view.ui.activitiy.TataCaraActivity
 import kotlinx.android.synthetic.main.fragment_lainnya.*
 
 class LainnyaFragment : BaseFragment() {

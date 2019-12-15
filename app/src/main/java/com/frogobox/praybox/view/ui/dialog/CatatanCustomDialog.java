@@ -1,4 +1,4 @@
-package com.frogobox.praybox.ui.dialog;
+package com.frogobox.praybox.view.ui.dialog;
 
 import android.app.AlertDialog;
 import android.app.TimePickerDialog;

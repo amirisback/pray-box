@@ -1,14 +1,14 @@
-package com.frogobox.praybox.ui.activitiy
+package com.frogobox.praybox.view.ui.activitiy
 
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import com.frogobox.praybox.R
 import com.frogobox.praybox.base.view.ui.BaseActivity
-import com.frogobox.praybox.ui.fragment.CatatanFragment
-import com.frogobox.praybox.ui.fragment.JadwalFragment
-import com.frogobox.praybox.ui.fragment.StatistikFragment
-import com.frogobox.praybox.ui.fragment.LainnyaFragment
+import com.frogobox.praybox.view.ui.fragment.CatatanFragment
+import com.frogobox.praybox.view.ui.fragment.JadwalFragment
+import com.frogobox.praybox.view.ui.fragment.StatistikFragment
+import com.frogobox.praybox.view.ui.fragment.LainnyaFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar_main.*
 

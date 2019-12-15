@@ -29,13 +29,13 @@ import com.frogobox.praybox.R;
  * -----------------------------------------
  * id.amirisback.frogobox
  */
-public class TataCaraImagePagerAdapter extends PagerAdapter {
+public class ImagePager extends PagerAdapter {
 
     private Context context;
     private LayoutInflater layoutInflater;
     private Integer[] images;
 
-    public TataCaraImagePagerAdapter(Context context, Integer[] images) {
+    public ImagePager(Context context, Integer[] images) {
         this.context = context;
         this.images = images;
     }

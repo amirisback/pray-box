@@ -1,4 +1,4 @@
-package com.frogobox.praybox.ui.activitiy
+package com.frogobox.praybox.view.ui.activitiy
 
 import android.Manifest
 import android.annotation.SuppressLint

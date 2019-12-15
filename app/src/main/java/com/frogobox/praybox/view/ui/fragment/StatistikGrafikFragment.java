@@ -1,5 +1,4 @@
-package com.frogobox.praybox.ui.fragment;
-
+package com.frogobox.praybox.view.ui.fragment;
 
 import android.database.Cursor;
 import android.os.Bundle;
@@ -7,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.frogobox.praybox.R;
@@ -24,26 +25,22 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+
 public class StatistikGrafikFragment extends BaseFragment {
-
-    private DataOperation mDataOperation = new DataOperation();
-
-    public StatistikGrafikFragment() {
-        // Required empty public constructor
-    }
-
-
+    
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_statistik_grafik, container, false);
+    }
 
-        View rootView = inflater.inflate(R.layout.fragment_statistik_grafik, container, false);
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
         // -----------------------------------------------------------------------------------------
-        BarChart mBarChart = rootView.findViewById(R.id.chart_id); // Diagram Batang
+        BarChart mBarChart = view.findViewById(R.id.chart_id); // Diagram Batang
         YAxis leftAxis = mBarChart.getAxis(YAxis.AxisDependency.LEFT); // Inisiasi Sumbu Y kiri
         YAxis rightAxis = mBarChart.getAxis(YAxis.AxisDependency.RIGHT); // Inisiasi Sumbu Y kanan
         XAxis xAxis = mBarChart.getXAxis(); // Inisiasi Sumbu X
@@ -52,6 +49,7 @@ public class StatistikGrafikFragment extends BaseFragment {
         ArrayList<String> barLabels = new ArrayList<>();
         // -----------------------------------------------------------------------------------------
         barLabels.add("");
+        DataOperation mDataOperation = new DataOperation();
         Cursor cursor = mDataOperation.getDataSameDate(getContext());
         int i = 1;
         while (cursor.moveToNext()) {
@@ -73,10 +71,10 @@ public class StatistikGrafikFragment extends BaseFragment {
         BarData barData = new BarData(barDataSet);
         // -----------------------------------------------------------------------------------------
         CreateBarChart(mBarChart, xAxis, leftAxis, rightAxis, barData, barLabels);
-        return rootView;
+
     }
 
-    public void CreateBarChart(BarChart mBarchart, XAxis mXAxis, YAxis mLeftAxis, YAxis mRightAxis, BarData mBarData, ArrayList<String> mBarLabels) {
+    private void CreateBarChart(BarChart mBarchart, XAxis mXAxis, YAxis mLeftAxis, YAxis mRightAxis, BarData mBarData, ArrayList<String> mBarLabels) {
         mBarchart.setData(mBarData);
         // -----------------------------------------------------------------------------------------
         mBarchart.setScaleEnabled(false);
