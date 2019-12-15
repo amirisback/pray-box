@@ -55,7 +55,7 @@ public class TataCaraImagePagerAdapter extends PagerAdapter {
 
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.content_tatacara_image, null);
-        ImageView imageView = (ImageView) view.findViewById(R.id.tatacara_imageview);
+        ImageView imageView = view.findViewById(R.id.tatacara_imageview);
         Picasso.get().load(images[position]).into(imageView);
 
         ViewPager vp = (ViewPager) container;

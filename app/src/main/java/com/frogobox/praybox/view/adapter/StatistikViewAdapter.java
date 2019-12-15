@@ -2,31 +2,26 @@ package com.frogobox.praybox.view.adapter;
 
 import android.content.Context;
 import android.database.Cursor;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.frogobox.praybox.callback.ClickHandlerActionMode;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.frogobox.praybox.R;
-import com.frogobox.praybox.ui.dialog.StatistikCustomDialog;
 
 import java.util.ArrayList;
 
-public class StatistikHarianCursorRecyclerViewAdapter extends CursorRecyclerViewAdapter {
+public class StatistikViewAdapter extends CursorViewAdapter {
 
-    private StatistikCustomDialog mDialogForm;
-    private ClickHandlerActionMode mClickHandler;
     private ArrayList<Integer> mSelectedId;
     private ArrayList<String> mSelectedDataId;
     private ArrayList<String> mSelectedDataWaktu;
-    private StatistikHarianViewHolder holder;
+    private StatistikViewHolder holder;
 
 
-    public StatistikHarianCursorRecyclerViewAdapter(Context context, Cursor cursor, ClickHandlerActionMode handler) {
+    public StatistikViewAdapter(Context context, Cursor cursor) {
         super(context, cursor);
-        this.mClickHandler = handler;
         this.mSelectedId = new ArrayList<>();
         this.mSelectedDataId = new ArrayList<>();
         this.mSelectedDataWaktu = new ArrayList<>();
@@ -40,12 +35,12 @@ public class StatistikHarianCursorRecyclerViewAdapter extends CursorRecyclerView
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(mContext).inflate(R.layout.content_statistik_harian, parent, false);
-        return new StatistikHarianViewHolder(v, mClickHandler);
+        return new StatistikViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, Cursor cursor) {
-        holder = (StatistikHarianViewHolder) viewHolder;
+        holder = (StatistikViewHolder) viewHolder;
         cursor.moveToPosition(cursor.getPosition());
         holder.setData(cursor);
     }
@@ -61,8 +56,8 @@ public class StatistikHarianCursorRecyclerViewAdapter extends CursorRecyclerView
     }
 
     // ---------------------------------------------------------------------------------------------
-    public void toggleSelection(int dataId){
-        if (mSelectedId.contains(dataId)){
+    public void toggleSelection(int dataId) {
+        if (mSelectedId.contains(dataId)) {
             mSelectedId.remove(Integer.valueOf(dataId));
         } else {
             mSelectedId.add(dataId);
@@ -74,13 +69,13 @@ public class StatistikHarianCursorRecyclerViewAdapter extends CursorRecyclerView
     // ---------------------------------------------------------------------------------------------
 
     // ---------------------------------------------------------------------------------------------
-    public int selectionCount(){
+    public int selectionCount() {
         return mSelectedId.size();
     }
     // ---------------------------------------------------------------------------------------------
 
     // ---------------------------------------------------------------------------------------------'
-    public void resetSelection(){
+    public void resetSelection() {
         mSelectedId = new ArrayList<>();
         mSelectedDataId = new ArrayList<>();
         notifyDataSetChanged();
@@ -100,7 +95,6 @@ public class StatistikHarianCursorRecyclerViewAdapter extends CursorRecyclerView
         return mSelectedDataWaktu;
     }
 
-    // ---------------------------------------------------------------------------------------------
 
 
 

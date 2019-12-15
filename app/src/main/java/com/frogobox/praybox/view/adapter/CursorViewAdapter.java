@@ -23,7 +23,7 @@ import android.view.ViewGroup;
  * -----------------------------------------
  * id.amirisback.frogobox
  */
-public abstract class CursorRecyclerViewAdapter<VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<VH> {
+public abstract class CursorViewAdapter<VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<VH> {
 
     protected Context mContext;
     private Cursor mCursor;
@@ -31,7 +31,7 @@ public abstract class CursorRecyclerViewAdapter<VH extends RecyclerView.ViewHold
     private int mRowIdColumn;
     private DataSetObserver mDataSetObserver;
 
-    public CursorRecyclerViewAdapter(Context context, Cursor cursor) {
+    public CursorViewAdapter(Context context, Cursor cursor) {
         mContext = context;
         mCursor = cursor;
         mDataValid = cursor != null;
@@ -67,7 +67,7 @@ public abstract class CursorRecyclerViewAdapter<VH extends RecyclerView.ViewHold
         super.setHasStableIds(true);
     }
 
-    public static final String TAG = CursorRecyclerViewAdapter.class.getSimpleName();
+    public static final String TAG = CursorViewAdapter.class.getSimpleName();
 
     public abstract void onBindViewHolder(VH viewHolder, Cursor cursor);
 
@@ -137,14 +137,14 @@ public abstract class CursorRecyclerViewAdapter<VH extends RecyclerView.ViewHold
         @Override
         public void onChanged() {
             super.onChanged();
-            ((CursorRecyclerViewAdapter) adapter).setDataValid(true);
+            ((CursorViewAdapter) adapter).setDataValid(true);
             adapter.notifyDataSetChanged();
         }
 
         @Override
         public void onInvalidated() {
             super.onInvalidated();
-            ((CursorRecyclerViewAdapter) adapter).setDataValid(false);
+            ((CursorViewAdapter) adapter).setDataValid(false);
         }
     }
 }

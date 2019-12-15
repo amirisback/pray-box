@@ -23,12 +23,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.frogobox.praybox.R;
 import com.frogobox.praybox.base.view.ui.BaseFragment;
-import com.frogobox.praybox.callback.ClickHandlerActionMode;
 import com.frogobox.praybox.source.local.DataContract;
 import com.frogobox.praybox.source.local.DataOperation;
 import com.frogobox.praybox.ui.dialog.StatistikCustomDialog;
 import com.frogobox.praybox.util.helper.MethodHelper;
-import com.frogobox.praybox.view.adapter.StatistikHarianCursorRecyclerViewAdapter;
+import com.frogobox.praybox.view.adapter.StatistikViewAdapter;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -44,7 +43,7 @@ public class StatistikHarianFragment extends BaseFragment implements LoaderManag
     // Deklarasi Class helper yang diperlukan
     private MethodHelper mMethodHelper = new MethodHelper();
     private DataOperation mDataOperation = new DataOperation();
-    private StatistikHarianCursorRecyclerViewAdapter mCursorAdapter;
+    private StatistikViewAdapter mCursorAdapter;
     private ActionMode mActionMode;
     // ---------------------------------------------------------------------------------------------
     private ActionMode.Callback mActionModeCallback = new ActionMode.Callback() {
@@ -111,31 +110,7 @@ public class StatistikHarianFragment extends BaseFragment implements LoaderManag
         }
         // -----------------------------------------------------------------------------------------
         Cursor cursor = mDataOperation.getDataToday(getContext(), mMethodHelper.getDateToday());
-        mCursorAdapter = new StatistikHarianCursorRecyclerViewAdapter(getContext(), cursor, new ClickHandlerActionMode() {
-            @Override
-            public void onItemClick(int position) {
-                if (mActionMode != null) {
-                    mCursorAdapter.toggleSelection(position);
-                    if (mCursorAdapter.selectionCount() == 0) {
-                        mActionMode.finish();
-                    } else {
-                        mActionMode.invalidate();
-                    }
-                } else {
-                    mDialogForm.DialogForm(mCursorAdapter.getmSelectedDataId().get(0), mCursorAdapter.getmSelectedDataWaktu().get(0));
-                }
-            }
-
-            @Override
-            public boolean onItemLongClick(int position) {
-                if (mActionMode != null) {
-                    return false;
-                }
-                mCursorAdapter.toggleSelection(position);
-                mActionMode = ((AppCompatActivity) getActivity()).startSupportActionMode(mActionModeCallback);
-                return false;
-            }
-        });
+        mCursorAdapter = new StatistikViewAdapter(getContext(), cursor);
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(mLayoutManager);
