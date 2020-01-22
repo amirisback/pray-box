@@ -37,7 +37,7 @@
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/ic_main_catat" />
+            android:src="@drawable/ic_dialog_catat" />
 
         <TextView
             android:layout_width="wrap_content"

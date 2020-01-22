@@ -35,6 +35,7 @@
             android:id="@+id/statistik_textview_bar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/colorTextBlack"
             android:textSize="@dimen/text_size_medium_16sp"
             tools:hint="20%" />
     </LinearLayout>

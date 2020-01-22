@@ -27,6 +27,7 @@
         android:id="@+id/textview_harian_waktu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/colorTextBlack"
         android:layout_below="@id/textview_harian_shalat"
         android:drawableStart="@drawable/ic_statistik_jam"
         android:drawablePadding="@dimen/dimen_medium_8dp"
