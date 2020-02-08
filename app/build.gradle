@@ -38,8 +38,8 @@ android {
         applicationId "com.frogobox.praybox"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 2
-        versionName "1.0.1"
+        versionCode 3
+        versionName "1.0.3"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         multiDexEnabled true
@@ -100,9 +100,9 @@ android {
             signingConfig signingConfigs.release
 
             // Declaration admob id for release
-            def releaseAdmobPublisherId = "ca-app-pub-5472340099809711~2263228694"
-            def releaseAdmobBanner = "ca-app-pub-5472340099809711/8637065353"
-            def releaseAdmobInterstitial = "ca-app-pub-5472340099809711/6010902016"
+            def releaseAdmobPublisherId = "ca-app-pub-2963185309167575~7208187161"
+            def releaseAdmobBanner = "ca-app-pub-2963185309167575/4582023823"
+            def releaseAdmobInterstitial = "ca-app-pub-2963185309167575/4900560358"
             def releaseAdmobInterstitialVideo = ""
             def releaseAdmobRewardedVideo = ""
             def releaseAdmobNativeAdvanced = ""
