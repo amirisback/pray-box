@@ -15,18 +15,21 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.frogobox.praybox.R
 import com.frogobox.praybox.core.BaseFragment
+import com.frogobox.praybox.databinding.ContentStatistikUpdateBinding
+import com.frogobox.praybox.databinding.FragmentStatistikHarianBinding
 import com.frogobox.praybox.source.local.DataContract
 import com.frogobox.praybox.source.local.DataOperation
 import com.frogobox.praybox.util.SingleFunc
 import java.util.*
 
-class StatistikHarianFragment : BaseFragment(), LoaderManager.LoaderCallbacks<Cursor> {
+class StatistikHarianFragment : BaseFragment<FragmentStatistikHarianBinding>(), LoaderManager.LoaderCallbacks<Cursor> {
     // ---------------------------------------------------------------------------------------------
     // Deklarasi Class helper yang diperlukan
     private val mMethodHelper = SingleFunc.Controller
     private val mDataOperation = DataOperation()
     private var mCursorAdapter: StatistikViewAdapter? = null
     private var mActionMode: ActionMode? = null
+    private lateinit var mDialogView : ContentStatistikUpdateBinding
 
     // ---------------------------------------------------------------------------------------------
     private val mActionModeCallback: ActionMode.Callback = object : ActionMode.Callback {
@@ -58,42 +61,55 @@ class StatistikHarianFragment : BaseFragment(), LoaderManager.LoaderCallbacks<Cu
         }
     }
 
+    override fun setupViewBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup
+    ): FragmentStatistikHarianBinding {
+        return FragmentStatistikHarianBinding.inflate(inflater, container, false)
+    }
+
+    override fun setupViewModel() {
+    }
+
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        val rootView = inflater.inflate(R.layout.fragment_statistik_harian, container, false)
-        // -----------------------------------------------------------------------------------------
-        val empty_listView = rootView.findViewById<View>(R.id.statistik_view_emptyview)
-        val mRecyclerView: RecyclerView = rootView.findViewById(R.id.statistik_list_data)
-        val mProgressBar = rootView.findViewById<ProgressBar>(R.id.statistik_progress_bar)
-        val mTextViewPercentage = rootView.findViewById<TextView>(R.id.statistik_textview_bar)
-        // -----------------------------------------------------------------------------------------
-        // Deklarasi Element XML Update View
-        val mDialogBuilder = AlertDialog.Builder(context)
-        val mDialogView = inflater.inflate(R.layout.content_statistik_update, null)
-        // -----------------------------------------------------------------------------------------
-        val mDialogForm =
-            StatistikDialog(mDialogBuilder, mDialogView, mMethodHelper, context, mDataOperation)
-        // -----------------------------------------------------------------------------------------
-        val percen = "$progress%"
-        mTextViewPercentage.text = percen
-        mProgressBar.progress = progress
-        if (progress != 0) {
-            empty_listView.visibility = View.GONE
-        } else {
-            empty_listView.visibility = View.VISIBLE
+        mDialogView = ContentStatistikUpdateBinding.inflate(inflater, null, false)
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
+
+    override fun setupUI(savedInstanceState: Bundle?) {
+        binding?.apply {
+            // -----------------------------------------------------------------------------------------
+            val empty_listView = empty.statistikViewEmptyview
+            val mRecyclerView: RecyclerView = statistikListData
+            val mProgressBar = statistikProgressBar
+            val mTextViewPercentage = statistikTextviewBar
+            // -----------------------------------------------------------------------------------------
+            // Deklarasi Element XML Update View
+            val mDialogBuilder = AlertDialog.Builder(context)
+            // -----------------------------------------------------------------------------------------
+            val mDialogForm = StatistikDialog(mDialogBuilder, mDialogView.root, mMethodHelper, context, mDataOperation)
+            // -----------------------------------------------------------------------------------------
+            val percen = "$progress%"
+            mTextViewPercentage.text = percen
+            mProgressBar.progress = progress
+            if (progress != 0) {
+                empty_listView.visibility = View.GONE
+            } else {
+                empty_listView.visibility = View.VISIBLE
+            }
+            // -----------------------------------------------------------------------------------------
+            val cursor = mDataOperation.getDataToday(context, mMethodHelper.dateToday)
+            mCursorAdapter = StatistikViewAdapter(context, cursor)
+            val mLayoutManager = LinearLayoutManager(context)
+            mRecyclerView.setHasFixedSize(true)
+            mRecyclerView.layoutManager = mLayoutManager
+            mRecyclerView.adapter = mCursorAdapter
+            // -----------------------------------------------------------------------------------------
         }
-        // -----------------------------------------------------------------------------------------
-        val cursor = mDataOperation.getDataToday(context, mMethodHelper.dateToday)
-        mCursorAdapter = StatistikViewAdapter(context, cursor)
-        val mLayoutManager = LinearLayoutManager(context)
-        mRecyclerView.setHasFixedSize(true)
-        mRecyclerView.layoutManager = mLayoutManager
-        mRecyclerView.adapter = mCursorAdapter
-        // -----------------------------------------------------------------------------------------
-        return rootView
     }
 
     // ---------------------------------------------------------------------------------------------
@@ -169,4 +185,5 @@ class StatistikHarianFragment : BaseFragment(), LoaderManager.LoaderCallbacks<Cu
         // Deklarasi Kebutuhan
         private const val DATA_LOADER = 0
     }
+
 }

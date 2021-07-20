@@ -7,9 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.frogobox.praybox.R
 import com.frogobox.praybox.core.BaseFragment
+import com.frogobox.praybox.databinding.ContentCatatanButtonBinding
+import com.frogobox.praybox.databinding.FragmentCatatanBinding
 import com.frogobox.praybox.source.local.DataOperation
 import com.frogobox.praybox.util.SingleFunc
-import kotlinx.android.synthetic.main.fragment_catatan.*
 import java.util.*
 
 /**
@@ -29,7 +30,7 @@ import java.util.*
  * -----------------------------------------
  * id.amirisback.frogobox
  */
-class CatatanFragment : BaseFragment() {
+class CatatanFragment : BaseFragment<FragmentCatatanBinding>() {
 
     // Deklarasi Requirement Constants
     private val mHadistArab = intArrayOf(R.string.hadis_arab_0, R.string.hadis_arab_1, R.string.hadis_arab_2,
@@ -37,17 +38,28 @@ class CatatanFragment : BaseFragment() {
     private val mHadistText = intArrayOf(R.string.hadis_text_0, R.string.hadis_text_1, R.string.hadis_text_2,
             R.string.hadis_text_3, R.string.hadis_text_4, R.string.hadis_text_5)
 
-    private lateinit var mDialogView : View
+    private lateinit var mDialogView : ContentCatatanButtonBinding
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? { // Inflate the layout for this fragment
-        mDialogView = inflater.inflate(R.layout.content_catatan_button, null)
-        return inflater.inflate(R.layout.fragment_catatan, container, false)
+    override fun setupViewBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup
+    ): FragmentCatatanBinding {
+        return FragmentCatatanBinding.inflate(inflater, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        mDialogView = ContentCatatanButtonBinding.inflate(inflater,null,false)
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
 
+    override fun setupViewModel() {
+    }
+
+    override fun setupUI(savedInstanceState: Bundle?) {
         val methodHelper = SingleFunc.Controller
         val mWaktuHelper = SingleFunc.WaktuShalat
         val crud = DataOperation()
@@ -56,38 +68,40 @@ class CatatanFragment : BaseFragment() {
         methodHelper.systemTime
         methodHelper.systemRealTime
         methodHelper.sumRealTime
-        mWaktuHelper.setJadwalShalat(tv_jadwal_shalat)
-        catatan_textview_tanggal.text = methodHelper.dateToday
+        binding?.apply {
+            mWaktuHelper.setJadwalShalat(tvJadwalShalat)
+            catatanTextviewTanggal.text = methodHelper.dateToday
 
-        // Set Data Random Hadist untuk XML Layout
-        val randomInt = Random()
-        val maxRandom = mHadistArab.size - 1
-        val minRandom = 0
-        val getIndexArrayHadis = randomInt.nextInt(maxRandom - minRandom + 1) + minRandom
+            // Set Data Random Hadist untuk XML Layout
+            val randomInt = Random()
+            val maxRandom = mHadistArab.size - 1
+            val minRandom = 0
+            val getIndexArrayHadis = randomInt.nextInt(maxRandom - minRandom + 1) + minRandom
 
-        val mResIdHadistArab = mHadistArab[getIndexArrayHadis]
-        val mResIdHadistText = mHadistText[getIndexArrayHadis]
-        catatan_textview_hadist_arab.setText(mResIdHadistArab)
-        catatan_textview_hadist_text.setText(mResIdHadistText)
+            val mResIdHadistArab = mHadistArab[getIndexArrayHadis]
+            val mResIdHadistText = mHadistText[getIndexArrayHadis]
+            catatanTextviewHadistArab.setText(mResIdHadistArab)
+            catatanTextviewHadistText.setText(mResIdHadistText)
 
-        // Deklarasi Element XML Update View
-        val mDialogBuilder = AlertDialog.Builder(context)
-
-
-        // Deklarasi custom dialog
-        val mDialogForm = CatatanDialog(
-            mDialogBuilder, mDialogView,
-            methodHelper, context, crud, mWaktuHelper
-        )
-
-        // Fungsi untuk menampilkan button simpan
-        val mShalatNow = tv_jadwal_shalat.text.toString()
-        mDialogForm.viewSaveButton(catatan_button_catat_ibadah, mShalatNow)
-
-        // Panggil method untuk mencatat
-        catatan_button_catat_ibadah.setOnClickListener { mDialogForm.DialogForm() }
+            // Deklarasi Element XML Update View
+            val mDialogBuilder = AlertDialog.Builder(context)
 
 
+            // Deklarasi custom dialog
+            val mDialogForm = CatatanDialog(
+                mDialogBuilder, mDialogView.root,
+                methodHelper, context, crud, mWaktuHelper
+            )
+
+            // Fungsi untuk menampilkan button simpan
+            val mShalatNow = tvJadwalShalat.text.toString()
+            mDialogForm.viewSaveButton(catatanButtonCatatIbadah, mShalatNow)
+
+            // Panggil method untuk mencatat
+            catatanButtonCatatIbadah.setOnClickListener { mDialogForm.DialogForm() }
+        }
     }
+
+
 
 }

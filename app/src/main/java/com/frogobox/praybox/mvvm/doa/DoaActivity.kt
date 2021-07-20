@@ -5,7 +5,6 @@ import com.frogobox.praybox.R
 import com.frogobox.praybox.core.BaseActivity
 import com.frogobox.praybox.databinding.ActivityDoaBinding
 import com.frogobox.praybox.util.PagerHelper
-import kotlinx.android.synthetic.main.activity_doa.*
 
 class DoaActivity : BaseActivity<ActivityDoaBinding>() {
 
@@ -23,11 +22,16 @@ class DoaActivity : BaseActivity<ActivityDoaBinding>() {
     }
 
     private fun setupViewPager() {
-        val pagerAdapter = PagerHelper(supportFragmentManager)
-        pagerAdapter.setupPagerFragment(NiatFragment(), resources.getString(R.string.btn_niat_sholat))
-        pagerAdapter.setupPagerFragment(DoaFragment(), resources.getString(R.string.btn_doa))
-        viewpager.adapter = pagerAdapter
-        tablayout.setupWithViewPager(viewpager)
+        binding.apply {
+            val pagerAdapter = PagerHelper(supportFragmentManager)
+            pagerAdapter.setupPagerFragment(
+                NiatFragment(),
+                resources.getString(R.string.btn_niat_sholat)
+            )
+            pagerAdapter.setupPagerFragment(DoaFragment(), resources.getString(R.string.btn_doa))
+            viewpager.adapter = pagerAdapter
+            tablayout.setupWithViewPager(viewpager)
+        }
     }
 
 }

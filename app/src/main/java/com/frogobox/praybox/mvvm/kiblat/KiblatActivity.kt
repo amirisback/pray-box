@@ -21,7 +21,6 @@ import com.frogobox.praybox.core.BaseActivity
 import com.frogobox.praybox.databinding.ActivityKiblatBinding
 import com.frogobox.praybox.util.Compass
 import com.frogobox.praybox.util.GPSTracker
-import kotlinx.android.synthetic.main.activity_kiblat.*
 
 class KiblatActivity : BaseActivity<ActivityKiblatBinding>() {
 
@@ -48,16 +47,16 @@ class KiblatActivity : BaseActivity<ActivityKiblatBinding>() {
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         // -----------------------------------------------------------------------------------------
         setupCompass()
-        swipeToRefresh.setOnRefreshListener {
-            fetch_GPS(gps, imageview_kompas_jarum, textview_arah_kabah, textview_lokasi)
-            swipeToRefresh.setRefreshing(false)
+        binding.swipeToRefresh.setOnRefreshListener {
+            fetch_GPS(gps, binding.imageviewKompasJarum, binding.textviewArahKabah, binding.textviewLokasi)
+            binding.swipeToRefresh.setRefreshing(false)
         }
     }
 
     private fun setupCompass() {
-        getBearing(textview_arah_kabah, textview_lokasi)
+        getBearing(binding.textviewArahKabah, binding.textviewLokasi)
         val cl = Compass.CompassListener { azimuth ->
-            adjustGambarDial(azimuth, imageview_kompas)
+            adjustGambarDial(azimuth, binding.imageviewKompas)
             adjustArrowQiblat(azimuth)
         }
         compass.setListener(cl)
@@ -83,7 +82,7 @@ class KiblatActivity : BaseActivity<ActivityKiblatBinding>() {
         an.duration = 500
         an.repeatCount = 0
         an.fillAfter = true
-        imageview_kompas_jarum!!.startAnimation(an)
+        binding.imageviewKompasJarum.startAnimation(an)
     }
 
     @SuppressLint("MissingPermission")
@@ -97,11 +96,12 @@ class KiblatActivity : BaseActivity<ActivityKiblatBinding>() {
             lokasi!!.text = "Lokasi anda : \nmenggunakan lokasi terakhir "
             arahKiblat!!.text = "Arah Ka'bah : \n$kiblat_derajat derajat dari utara"
         } else {
-            fetch_GPS(gps, imageview_kompas_jarum, arahKiblat, lokasi)
+            fetch_GPS(gps, binding.imageviewKompasJarum, arahKiblat, lokasi)
         }
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         when (requestCode) {
             1 -> {
                 // If request is cancelled, the result arrays are empty.
@@ -116,13 +116,13 @@ class KiblatActivity : BaseActivity<ActivityKiblatBinding>() {
     }
 
     private fun SaveFloat(Judul: String?, bbb: Float?) {
-        val edit = prefs!!.edit()
+        val edit = prefs.edit()
         edit.putFloat(Judul, bbb!!)
         edit.apply()
     }
 
     private fun GetFloat(Judul: String?): Float {
-        return prefs!!.getFloat(Judul, 0f)
+        return prefs.getFloat(Judul, 0f)
     }
 
     private fun fetch_GPS(gps: GPSTracker?, jarum: ImageView?, arahKiblat: TextView?, lokasi: TextView?) {

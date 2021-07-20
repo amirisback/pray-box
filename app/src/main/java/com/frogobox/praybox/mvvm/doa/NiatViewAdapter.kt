@@ -2,10 +2,11 @@ package com.frogobox.praybox.mvvm.doa
 
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import com.frogobox.praybox.R
 import com.frogobox.praybox.model.NiatShalat
 import com.frogobox.recycler.core.FrogoRecyclerViewAdapter
 import com.frogobox.recycler.core.FrogoRecyclerViewHolder
-import kotlinx.android.synthetic.main.content_tatacara_text_niat.view.*
 
 /**
  * Created by Faisal Amir
@@ -25,17 +26,20 @@ import kotlinx.android.synthetic.main.content_tatacara_text_niat.view.*
  *
  */
 class NiatViewAdapter : FrogoRecyclerViewAdapter<NiatShalat>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FrogoRecyclerViewHolder<NiatShalat> {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): FrogoRecyclerViewHolder<NiatShalat> {
         return NiatViewHolder(viewLayout(parent))
     }
 
     inner class NiatViewHolder(view: View) : FrogoRecyclerViewHolder<NiatShalat>(view) {
 
-        private val txt_rakaat = view.niat_textview_rakaat
-        private val txt_shalat = view.niat_textview_shalat
-        private val txt_arab = view.niat_textview_arab
-        private val txt_latin = view.niat_textview_latin_arab
-        private val txt_terjemah = view.niat_textview_arti
+        private val txt_rakaat = view.findViewById<TextView>(R.id.niat_textview_rakaat)
+        private val txt_shalat = view.findViewById<TextView>(R.id.niat_textview_shalat)
+        private val txt_arab = view.findViewById<TextView>(R.id.niat_textview_arab)
+        private val txt_latin = view.findViewById<TextView>(R.id.niat_textview_latin_arab)
+        private val txt_terjemah = view.findViewById<TextView>(R.id.niat_textview_arti)
 
         override fun initComponent(data: NiatShalat) {
 

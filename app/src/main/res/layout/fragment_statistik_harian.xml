@@ -50,6 +50,8 @@
         android:scrollbars="none"
         tools:listitem="@layout/content_statistik_harian" />
 
-    <include layout="@layout/content_statistik_empty" />
+    <include
+        android:id="@+id/empty"
+        layout="@layout/content_statistik_empty" />
 
 </RelativeLayout>

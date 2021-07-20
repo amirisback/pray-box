@@ -34,7 +34,7 @@ public class StatistikViewAdapter extends CursorViewAdapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(mContext).inflate(R.layout.content_statistik_harian, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.content_statistik_harian, parent, false);
         return new StatistikViewHolder(v);
     }
 

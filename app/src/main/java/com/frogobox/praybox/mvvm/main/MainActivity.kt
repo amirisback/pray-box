@@ -8,9 +8,6 @@ import com.frogobox.praybox.core.BaseActivity
 import com.frogobox.praybox.databinding.ActivityMainBinding
 import com.frogobox.praybox.mvvm.statistik.StatistikFragment
 import com.frogobox.praybox.mvvm.kiblat.KiblatActivity
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.toolbar_main.*
-
 /*
  * Created by Faisal Amir
  * FrogoBox Inc License
@@ -40,18 +37,18 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun setupUI(savedInstanceState: Bundle?) {
         setupToolbar()
-        setupBottomNav(R.id.framelayout_main_container)
+        setupBottomNav(binding.framelayoutMainContainer.id)
         setupFragment(savedInstanceState)
     }
 
     private fun setupFragment(savedInstanceState: Bundle?) {
         if (savedInstanceState == null) {
-            bottom_nav_main_menu.selectedItemId = R.id.bottom_menu_catatan
+            binding.bottomNavMainMenu.selectedItemId = R.id.bottom_menu_catatan
         }
     }
 
     private fun setupToolbar() {
-        setSupportActionBar(toolbar_main)
+        setSupportActionBar(binding.toolbar.toolbarMain)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -76,35 +73,37 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     private fun setupBottomNav(frameLayout: Int) {
-        bottom_nav_main_menu.clearAnimation()
-        bottom_nav_main_menu.itemIconTintList = null
-        bottom_nav_main_menu.setOnNavigationItemSelectedListener {
+        binding.bottomNavMainMenu.apply {
+            clearAnimation()
+            itemIconTintList = null
+            setOnNavigationItemSelectedListener {
 
-            when (it.itemId) {
-                R.id.bottom_menu_catatan -> {
-                    setupCustomTitleToolbar(R.string.menu_catatan)
-                    setupChildFragment(frameLayout, CatatanFragment())
+                when (it.itemId) {
+                    R.id.bottom_menu_catatan -> {
+                        setupCustomTitleToolbar(R.string.menu_catatan)
+                        setupChildFragment(frameLayout, CatatanFragment())
+                    }
+
+                    R.id.bottom_menu_statistik -> {
+                        setupCustomTitleToolbar(R.string.menu_statistik)
+                        setupChildFragment(frameLayout, StatistikFragment())
+                    }
+
+                    R.id.bottom_menu_jadwal -> {
+                        setupCustomTitleToolbar(R.string.menu_jadwal)
+                        setupChildFragment(frameLayout, JadwalFragment())
+                    }
+
+                    R.id.bottom_menu_lainnya -> {
+                        setupCustomTitleToolbar(R.string.menu_tatacara)
+                        setupChildFragment(frameLayout, LainnyaFragment())
+                    }
+
                 }
 
-                R.id.bottom_menu_statistik -> {
-                    setupCustomTitleToolbar(R.string.menu_statistik)
-                    setupChildFragment(frameLayout, StatistikFragment())
-                }
-
-                R.id.bottom_menu_jadwal -> {
-                    setupCustomTitleToolbar(R.string.menu_jadwal)
-                    setupChildFragment(frameLayout, JadwalFragment())
-                }
-
-                R.id.bottom_menu_lainnya -> {
-                    setupCustomTitleToolbar(R.string.menu_tatacara)
-                    setupChildFragment(frameLayout, LainnyaFragment())
-                }
-
+                true
             }
 
-            true
         }
-
     }
 }

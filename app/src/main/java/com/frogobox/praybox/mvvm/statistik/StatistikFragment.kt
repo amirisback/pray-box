@@ -7,29 +7,32 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.frogobox.praybox.R
 import com.frogobox.praybox.core.BaseFragment
+import com.frogobox.praybox.databinding.FragmentStatistikBinding
 import com.frogobox.praybox.util.PagerHelper
-import kotlinx.android.synthetic.main.fragment_statistik.*
 
 /**
  * A simple [Fragment] subclass.
  */
-class StatistikFragment : BaseFragment() {
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? { // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_statistik, container, false)
+class StatistikFragment : BaseFragment<FragmentStatistikBinding>() {
+
+    override fun setupViewBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup
+    ): FragmentStatistikBinding {
+        return FragmentStatistikBinding.inflate(inflater, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        setupViewPager()
+    override fun setupViewModel() {
     }
 
-    private fun setupViewPager(){
-        val pagerAdapter = PagerHelper(childFragmentManager)
-        pagerAdapter.setupPagerFragment(StatistikHarianFragment(), resources.getString(R.string.statistik_harian))
-        pagerAdapter.setupPagerFragment(StatistikGrafikFragment(), resources.getString(R.string.statistik_grafik))
-        viewpager.adapter = pagerAdapter
-        tablayout.setupWithViewPager(viewpager)
+    override fun setupUI(savedInstanceState: Bundle?) {
+        binding?.apply {
+            val pagerAdapter = PagerHelper(childFragmentManager)
+            pagerAdapter.setupPagerFragment(StatistikHarianFragment(), resources.getString(R.string.statistik_harian))
+            pagerAdapter.setupPagerFragment(StatistikGrafikFragment(), resources.getString(R.string.statistik_grafik))
+            viewpager.adapter = pagerAdapter
+            tablayout.setupWithViewPager(viewpager)
+        }
     }
 
 }
