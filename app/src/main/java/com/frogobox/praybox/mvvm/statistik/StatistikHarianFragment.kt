@@ -1,196 +1,172 @@
-package com.frogobox.praybox.mvvm.statistik;
+package com.frogobox.praybox.mvvm.statistik
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.database.Cursor;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.app.AlertDialog
+import android.database.Cursor
+import android.os.Bundle
+import android.view.*
+import android.widget.ProgressBar
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.view.ActionMode
+import androidx.loader.app.LoaderManager
+import androidx.loader.content.CursorLoader
+import androidx.loader.content.Loader
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.frogobox.praybox.R
+import com.frogobox.praybox.core.BaseFragment
+import com.frogobox.praybox.source.local.DataContract
+import com.frogobox.praybox.source.local.DataOperation
+import com.frogobox.praybox.util.SingleFunc
+import java.util.*
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.view.ActionMode;
-import androidx.loader.app.LoaderManager;
-import androidx.loader.content.CursorLoader;
-import androidx.loader.content.Loader;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.frogobox.praybox.R;
-import com.frogobox.praybox.core.BaseFragment;
-import com.frogobox.praybox.source.local.DataContract;
-import com.frogobox.praybox.source.local.DataOperation;
-import com.frogobox.praybox.util.SingleFunc;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-
-
-public class StatistikHarianFragment extends BaseFragment implements LoaderManager.LoaderCallbacks<Cursor> {
-
-    // ---------------------------------------------------------------------------------------------
-    // Deklarasi Kebutuhan
-    private static final int DATA_LOADER = 0;
+class StatistikHarianFragment : BaseFragment(), LoaderManager.LoaderCallbacks<Cursor> {
     // ---------------------------------------------------------------------------------------------
     // Deklarasi Class helper yang diperlukan
-    private SingleFunc.Controller mMethodHelper = SingleFunc.Controller.INSTANCE;
-    private DataOperation mDataOperation = new DataOperation();
-    private StatistikViewAdapter mCursorAdapter;
-    private ActionMode mActionMode;
+    private val mMethodHelper = SingleFunc.Controller
+    private val mDataOperation = DataOperation()
+    private var mCursorAdapter: StatistikViewAdapter? = null
+    private var mActionMode: ActionMode? = null
+
     // ---------------------------------------------------------------------------------------------
-    private ActionMode.Callback mActionModeCallback = new ActionMode.Callback() {
-        @Override
-        public boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
-            actionMode.getMenuInflater().inflate(R.menu.menu_action, menu);
-            return true;
+    private val mActionModeCallback: ActionMode.Callback = object : ActionMode.Callback {
+        override fun onCreateActionMode(actionMode: ActionMode, menu: Menu): Boolean {
+            actionMode.menuInflater.inflate(R.menu.menu_action, menu)
+            return true
         }
 
-        @Override
-        public boolean onPrepareActionMode(ActionMode actionMode, Menu menu) {
-            ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
-            actionMode.setTitle(String.valueOf(mCursorAdapter.selectionCount()));
-            return true;
+        override fun onPrepareActionMode(actionMode: ActionMode, menu: Menu): Boolean {
+            (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
+            actionMode.title = mCursorAdapter!!.selectionCount().toString()
+            return true
         }
 
-        @Override
-        public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem) {
-            switch (menuItem.getItemId()) {
-                case R.id.action_delete:
-                    deleteData();
-                    return true;
+        override fun onActionItemClicked(actionMode: ActionMode, menuItem: MenuItem): Boolean {
+            when (menuItem.itemId) {
+                R.id.action_delete -> {
+                    deleteData()
+                    return true
+                }
             }
-            return false;
-
+            return false
         }
 
-        @Override
-        public void onDestroyActionMode(ActionMode actionMode) {
-            ((AppCompatActivity) getActivity()).getSupportActionBar().show();
-            mActionMode = null;
-            mCursorAdapter.resetSelection();
+        override fun onDestroyActionMode(actionMode: ActionMode) {
+            (activity as AppCompatActivity?)!!.supportActionBar!!.show()
+            mActionMode = null
+            mCursorAdapter!!.resetSelection()
         }
-    };
-
-    public StatistikHarianFragment() {
-        // Required empty public constructor
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_statistik_harian, container, false);
+        val rootView = inflater.inflate(R.layout.fragment_statistik_harian, container, false)
         // -----------------------------------------------------------------------------------------
-        View empty_listView = rootView.findViewById(R.id.statistik_view_emptyview);
-        RecyclerView mRecyclerView = rootView.findViewById(R.id.statistik_list_data);
-        ProgressBar mProgressBar = rootView.findViewById(R.id.statistik_progress_bar);
-        TextView mTextViewPercentage = rootView.findViewById(R.id.statistik_textview_bar);
+        val empty_listView = rootView.findViewById<View>(R.id.statistik_view_emptyview)
+        val mRecyclerView: RecyclerView = rootView.findViewById(R.id.statistik_list_data)
+        val mProgressBar = rootView.findViewById<ProgressBar>(R.id.statistik_progress_bar)
+        val mTextViewPercentage = rootView.findViewById<TextView>(R.id.statistik_textview_bar)
         // -----------------------------------------------------------------------------------------
         // Deklarasi Element XML Update View
-        AlertDialog.Builder mDialogBuilder = new AlertDialog.Builder(getContext());
-        View mDialogView = inflater.inflate(R.layout.content_statistik_update, null);
+        val mDialogBuilder = AlertDialog.Builder(context)
+        val mDialogView = inflater.inflate(R.layout.content_statistik_update, null)
         // -----------------------------------------------------------------------------------------
-        final StatistikDialog mDialogForm = new StatistikDialog(mDialogBuilder, mDialogView, mMethodHelper, getContext(), mDataOperation);
+        val mDialogForm =
+            StatistikDialog(mDialogBuilder, mDialogView, mMethodHelper, context, mDataOperation)
         // -----------------------------------------------------------------------------------------
-        String percen = getProgress() + "%";
-        mTextViewPercentage.setText(percen);
-        mProgressBar.setProgress(getProgress());
-        if (getProgress() != 0) {
-            empty_listView.setVisibility(View.GONE);
+        val percen = "$progress%"
+        mTextViewPercentage.text = percen
+        mProgressBar.progress = progress
+        if (progress != 0) {
+            empty_listView.visibility = View.GONE
         } else {
-            empty_listView.setVisibility(View.VISIBLE);
+            empty_listView.visibility = View.VISIBLE
         }
         // -----------------------------------------------------------------------------------------
-        Cursor cursor = mDataOperation.getDataToday(getContext(), mMethodHelper.getDateToday());
-        mCursorAdapter = new StatistikViewAdapter(getContext(), cursor);
-        LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext());
-        mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        mRecyclerView.setAdapter(mCursorAdapter);
+        val cursor = mDataOperation.getDataToday(context, mMethodHelper.dateToday)
+        mCursorAdapter = StatistikViewAdapter(context, cursor)
+        val mLayoutManager = LinearLayoutManager(context)
+        mRecyclerView.setHasFixedSize(true)
+        mRecyclerView.layoutManager = mLayoutManager
+        mRecyclerView.adapter = mCursorAdapter
         // -----------------------------------------------------------------------------------------
-        return rootView;
+        return rootView
     }
+
     // ---------------------------------------------------------------------------------------------
+    val progress: Int
+        get() {
+            val cursor = mDataOperation.getDataToday(context, mMethodHelper.dateToday)
+            val countTable = cursor.count
+            return countTable * 20
+        }
 
-    public int getProgress() {
-        Cursor cursor = mDataOperation.getDataToday(getContext(), mMethodHelper.getDateToday());
-        int countTable = cursor.getCount();
-        return countTable * 20;
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        loaderManager.initLoader(DATA_LOADER, null, this)
+        super.onActivityCreated(savedInstanceState)
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        getLoaderManager().initLoader(DATA_LOADER, null, this);
-        super.onActivityCreated(savedInstanceState);
+    override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
+        val selection =
+            DataContract.DataEntry.COLUMN_TANGGAL + " = '" + mMethodHelper.dateToday + "'"
+        return CursorLoader(
+            requireContext(),  // getContext disini menggantikan this
+            DataContract.DataEntry.CONTENT_URI,
+            mDataOperation.projection,
+            selection,
+            null,
+            null
+        )
     }
 
-    @Override
-    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        String selection = DataContract.DataEntry.COLUMN_TANGGAL + " = '" + mMethodHelper.getDateToday() + "'";
-        return new CursorLoader(getContext(), // getContext disini menggantikan this
-                DataContract.DataEntry.CONTENT_URI,
-                mDataOperation.getProjection(),
-                selection,
-                null,
-                null);
+    override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor) {
+        mCursorAdapter!!.swapCursor(data)
     }
 
-    @Override
-    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-        mCursorAdapter.swapCursor(data);
+    override fun onLoaderReset(loader: Loader<Cursor>) {
+        mCursorAdapter!!.swapCursor(null)
     }
 
-    @Override
-    public void onLoaderReset(Loader<Cursor> loader) {
-        mCursorAdapter.swapCursor(null);
-    }
-
-    private void deleteData() {
+    private fun deleteData() {
         // -----------------------------------------------------------------------------------------
-        String messages;
-        final ArrayList<Integer> selectedId = mCursorAdapter.getmSelectedId();
-        final ArrayList<String> selectedDataId = mCursorAdapter.getmSelectedDataId();
-        if (selectedId.size() == 1) {
-            messages = getString(R.string.delete_data);
+        val messages: String
+        val selectedId = mCursorAdapter!!.getmSelectedId()
+        val selectedDataId = mCursorAdapter!!.getmSelectedDataId()
+        if (selectedId.size == 1) {
+            messages = getString(R.string.delete_data)
         } else {
-            messages = getString(R.string.deletes_data);
-            Collections.sort(selectedId, new Comparator<Integer>() {
-                @Override
-                public int compare(Integer integer, Integer t1) {
-                    return t1.compareTo(integer);
-                }
-            });
+            messages = getString(R.string.deletes_data)
+            Collections.sort(selectedId) { integer, t1 -> t1.compareTo(integer) }
         }
         // ---------------------------------------------------------------------------------------------
 
         // -----------------------------------------------------------------------------------------
-        androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(getContext());
-        builder.setTitle(R.string.delete_data).setMessage(messages).setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                for (int currentPedId = 0; currentPedId < selectedId.size(); currentPedId++) {
-                    String databaseID = selectedDataId.get(currentPedId);
-                    boolean delete = mDataOperation.deleteDataId(getContext(), databaseID);
+        val builder = androidx.appcompat.app.AlertDialog.Builder(
+            requireContext()
+        )
+        builder.setTitle(R.string.delete_data).setMessage(messages)
+            .setPositiveButton(R.string.delete) { dialogInterface, i ->
+                for (currentPedId in selectedId.indices) {
+                    val databaseID = selectedDataId[currentPedId]
+                    val delete = mDataOperation.deleteDataId(context, databaseID)
                 }
-                mCursorAdapter.notifyDataSetChanged();
-                mActionMode.finish();
+                mCursorAdapter!!.notifyDataSetChanged()
+                mActionMode!!.finish()
             }
-        }).setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.dismiss();
-                mActionMode.finish();
+            .setNegativeButton(R.string.cancel) { dialogInterface, i ->
+                dialogInterface.dismiss()
+                mActionMode!!.finish()
             }
-        });
-        builder.create().show();
+        builder.create().show()
         // -----------------------------------------------------------------------------------------
+    }
 
-
+    companion object {
+        // ---------------------------------------------------------------------------------------------
+        // Deklarasi Kebutuhan
+        private const val DATA_LOADER = 0
     }
 }
