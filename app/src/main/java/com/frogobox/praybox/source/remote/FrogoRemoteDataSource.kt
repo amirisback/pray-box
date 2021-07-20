@@ -4,7 +4,7 @@ import android.content.Context
 import com.frogobox.praybox.model.Fashion
 import com.frogobox.praybox.model.Favorite
 import com.frogobox.praybox.source.FrogoDataSource
-import com.frogobox.praybox.util.helper.FunHelper.Func.noAction
+import com.frogobox.praybox.util.SingleFunc.Func.noAction
 
 /**
  * Created by Faisal Amir

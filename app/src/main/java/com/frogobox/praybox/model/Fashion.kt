@@ -3,7 +3,7 @@ package com.frogobox.praybox.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.frogobox.praybox.util.helper.ConstHelper.RoomDatabase.TABLE_NAME_DATA
+import com.frogobox.praybox.util.SingleConstant.RoomDatabase.TABLE_NAME_DATA
 
 /**
  * Created by Faisal Amir

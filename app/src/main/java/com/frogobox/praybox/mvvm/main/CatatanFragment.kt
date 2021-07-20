@@ -8,8 +8,7 @@ import android.view.ViewGroup
 import com.frogobox.praybox.R
 import com.frogobox.praybox.core.BaseFragment
 import com.frogobox.praybox.source.local.DataOperation
-import com.frogobox.praybox.util.helper.MethodHelper
-import com.frogobox.praybox.util.helper.WaktuShalatHelper
+import com.frogobox.praybox.util.SingleFunc
 import kotlinx.android.synthetic.main.fragment_catatan.*
 import java.util.*
 
@@ -49,14 +48,14 @@ class CatatanFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val methodHelper = MethodHelper()
-        val mWaktuHelper = WaktuShalatHelper()
+        val methodHelper = SingleFunc.Controller
+        val mWaktuHelper = SingleFunc.WaktuShalat
         val crud = DataOperation()
 
         // Set tampilan tanggal dan waktu
-        methodHelper.getSystemTime()
-        methodHelper.getSystemRealTime()
-        methodHelper.getSumRealTime()
+        methodHelper.systemTime
+        methodHelper.systemRealTime
+        methodHelper.sumRealTime
         mWaktuHelper.setJadwalShalat(tv_jadwal_shalat)
         catatan_textview_tanggal.text = methodHelper.dateToday
 

@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import com.frogobox.praybox.R;
 import com.frogobox.praybox.source.local.DataOperation;
-import com.frogobox.praybox.util.helper.MethodHelper;
+import com.frogobox.praybox.util.SingleFunc;
 
 /**
  * Created by Faisal Amir
@@ -38,14 +38,14 @@ public class StatistikDialog {
     // Deklarasi XML Alert Dialog
     private AlertDialog.Builder mDialog;
     private View mDialogView;
-    private MethodHelper mMethodHelper;
+    private SingleFunc.Controller mMethodHelper;
     private Context mContext;
     private DataOperation mDataOperation;
     // ---------------------------------------------------------------------------------------------
 
     // ---------------------------------------------------------------------------------------------
     // Constructor
-    public StatistikDialog(AlertDialog.Builder mDialog, View mDialogView, MethodHelper mMethodHelper, Context mContext, DataOperation mDataOperation) {
+    public StatistikDialog(AlertDialog.Builder mDialog, View mDialogView, SingleFunc.Controller mMethodHelper, Context mContext, DataOperation mDataOperation) {
         this.mDialog = mDialog;
         this.mDialogView = mDialogView;
         this.mMethodHelper = mMethodHelper;

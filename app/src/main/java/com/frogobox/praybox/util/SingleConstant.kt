@@ -1,4 +1,4 @@
-package com.frogobox.praybox.util.helper
+package com.frogobox.praybox.util
 
 import android.Manifest
 import android.os.Environment
@@ -20,7 +20,7 @@ import android.os.Environment
  * com.frogobox.publicspeakingbooster.helper
  *
  */
-object ConstHelper {
+object SingleConstant {
 
     object ApiUrl {
 

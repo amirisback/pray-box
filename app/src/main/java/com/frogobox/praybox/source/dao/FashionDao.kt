@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import com.frogobox.praybox.model.Fashion
-import com.frogobox.praybox.util.helper.ConstHelper.RoomDatabase.TABLE_NAME_DATA
+import com.frogobox.praybox.util.SingleConstant.RoomDatabase.TABLE_NAME_DATA
 import io.reactivex.Single
 /**
  * Created by Faisal Amir

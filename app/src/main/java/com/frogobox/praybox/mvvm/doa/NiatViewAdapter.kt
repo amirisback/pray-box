@@ -2,9 +2,9 @@ package com.frogobox.praybox.mvvm.doa
 
 import android.view.View
 import android.view.ViewGroup
-import com.frogobox.praybox.core.BaseViewAdapter
-import com.frogobox.praybox.core.BaseViewHolder
 import com.frogobox.praybox.model.NiatShalat
+import com.frogobox.recycler.core.FrogoRecyclerViewAdapter
+import com.frogobox.recycler.core.FrogoRecyclerViewHolder
 import kotlinx.android.synthetic.main.content_tatacara_text_niat.view.*
 
 /**
@@ -24,12 +24,12 @@ import kotlinx.android.synthetic.main.content_tatacara_text_niat.view.*
  * com.frogobox.praybox.view.adapter
  *
  */
-class NiatViewAdapter : BaseViewAdapter<NiatShalat>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<NiatShalat> {
+class NiatViewAdapter : FrogoRecyclerViewAdapter<NiatShalat>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FrogoRecyclerViewHolder<NiatShalat> {
         return NiatViewHolder(viewLayout(parent))
     }
 
-    inner class NiatViewHolder(view: View) : BaseViewHolder<NiatShalat>(view) {
+    inner class NiatViewHolder(view: View) : FrogoRecyclerViewHolder<NiatShalat>(view) {
 
         private val txt_rakaat = view.niat_textview_rakaat
         private val txt_shalat = view.niat_textview_shalat
@@ -38,7 +38,6 @@ class NiatViewAdapter : BaseViewAdapter<NiatShalat>() {
         private val txt_terjemah = view.niat_textview_arti
 
         override fun initComponent(data: NiatShalat) {
-            super.initComponent(data)
 
             txt_rakaat.text = data.rakaat
             txt_shalat.text = data.shalat

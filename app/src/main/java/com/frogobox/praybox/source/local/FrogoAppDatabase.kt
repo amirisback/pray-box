@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.frogobox.praybox.BuildConfig
-import com.frogobox.praybox.util.helper.ConstHelper.RoomDatabase.DATABASE_NAME
+import com.frogobox.praybox.util.SingleConstant.RoomDatabase.DATABASE_NAME
 import com.frogobox.praybox.model.Favorite
 import com.frogobox.praybox.model.Fashion
 import com.frogobox.praybox.source.dao.FavoriteDao

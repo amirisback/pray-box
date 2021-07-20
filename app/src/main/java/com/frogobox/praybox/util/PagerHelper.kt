@@ -1,4 +1,4 @@
-package com.frogobox.praybox.util.helper
+package com.frogobox.praybox.util
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

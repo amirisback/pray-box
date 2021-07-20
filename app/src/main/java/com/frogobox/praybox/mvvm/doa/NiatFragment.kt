@@ -6,16 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.frogobox.praybox.R
-import com.frogobox.praybox.core.BaseViewListener
 import com.frogobox.praybox.core.BaseFragment
 import com.frogobox.praybox.model.NiatShalat
-import com.frogobox.praybox.util.helper.TataCaraJSON
+import com.frogobox.praybox.util.TataCaraJSON
+import com.frogobox.recycler.core.FrogoRecyclerViewListener
 import kotlinx.android.synthetic.main.fragment_tatacara_text.*
 
-class NiatFragment : BaseFragment(), BaseViewListener<NiatShalat> {
+class NiatFragment : BaseFragment() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? { // Inflate the layout for this fragment
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? { // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_tatacara_text, container, false)
     }
 
@@ -27,16 +29,14 @@ class NiatFragment : BaseFragment(), BaseViewListener<NiatShalat> {
     private fun setupRecyclerView() {
         val arrayNiatShalat = TataCaraJSON.extractNiatShalat()
         val adapter = NiatViewAdapter()
-        adapter.setupRequirement(this, arrayNiatShalat, R.layout.content_tatacara_text_niat)
+        adapter.setupRequirement(R.layout.content_tatacara_text_niat, arrayNiatShalat,
+            object : FrogoRecyclerViewListener<NiatShalat> {
+                override fun onItemClicked(data: NiatShalat) {}
+                override fun onItemLongClicked(data: NiatShalat) {}
+            })
         tatacara_listview_text.setHasFixedSize(true)
         tatacara_listview_text.layoutManager = LinearLayoutManager(activity)
         tatacara_listview_text.adapter = adapter
-    }
-
-    override fun onItemClicked(data: NiatShalat) {
-    }
-
-    override fun onItemLongClicked(data: NiatShalat) {
     }
 
 }

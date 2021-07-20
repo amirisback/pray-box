@@ -25,7 +25,7 @@ import com.frogobox.praybox.R;
 import com.frogobox.praybox.core.BaseFragment;
 import com.frogobox.praybox.source.local.DataContract;
 import com.frogobox.praybox.source.local.DataOperation;
-import com.frogobox.praybox.util.helper.MethodHelper;
+import com.frogobox.praybox.util.SingleFunc;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -39,7 +39,7 @@ public class StatistikHarianFragment extends BaseFragment implements LoaderManag
     private static final int DATA_LOADER = 0;
     // ---------------------------------------------------------------------------------------------
     // Deklarasi Class helper yang diperlukan
-    private MethodHelper mMethodHelper = new MethodHelper();
+    private SingleFunc.Controller mMethodHelper = SingleFunc.Controller.INSTANCE;
     private DataOperation mDataOperation = new DataOperation();
     private StatistikViewAdapter mCursorAdapter;
     private ActionMode mActionMode;

@@ -1,4 +1,4 @@
-package com.frogobox.praybox.util.lib;
+package com.frogobox.praybox.util;
 
 import java.util.ArrayList;
 import java.util.Calendar;

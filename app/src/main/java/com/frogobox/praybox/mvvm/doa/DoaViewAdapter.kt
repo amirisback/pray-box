@@ -2,9 +2,9 @@ package com.frogobox.praybox.mvvm.doa
 
 import android.view.View
 import android.view.ViewGroup
-import com.frogobox.praybox.core.BaseViewAdapter
-import com.frogobox.praybox.core.BaseViewHolder
 import com.frogobox.praybox.model.DoaShalat
+import com.frogobox.recycler.core.FrogoRecyclerViewAdapter
+import com.frogobox.recycler.core.FrogoRecyclerViewHolder
 import kotlinx.android.synthetic.main.content_tatacara_text_doa.view.*
 
 /**
@@ -24,21 +24,19 @@ import kotlinx.android.synthetic.main.content_tatacara_text_doa.view.*
  * com.frogobox.praybox.view.adapter
  *
  */
-class DoaViewAdapter : BaseViewAdapter<DoaShalat>() {
+class DoaViewAdapter : FrogoRecyclerViewAdapter<DoaShalat>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<DoaShalat> {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FrogoRecyclerViewHolder<DoaShalat> {
         return DoaViewHolder(viewLayout(parent))
     }
 
-    inner class DoaViewHolder(view: View) : BaseViewHolder<DoaShalat>(view) {
+    inner class DoaViewHolder(view: View) : FrogoRecyclerViewHolder<DoaShalat>(view) {
 
         private val mTextViewDoaArab = view.doa_setelah_shalat_arab
         private val mTextViewDoaLatin = view.doa_setelah_shalat_latin
         private val mTextViewDoaTerjemahan = view.doa_setelah_shalat_arti
 
         override fun initComponent(data: DoaShalat) {
-            super.initComponent(data)
-
             mTextViewDoaArab.text = data.arabDoa
             mTextViewDoaLatin.text = data.latinDoa
             mTextViewDoaTerjemahan.text = data.terjemahDoa

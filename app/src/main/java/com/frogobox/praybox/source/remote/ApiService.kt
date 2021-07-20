@@ -1,11 +1,11 @@
-package com.frogobox.praybox.core
+package com.frogobox.praybox.source.remote
 
 /**
  * Created by Faisal Amir
  * FrogoBox Inc License
  * =========================================
- * PregnantFashsion
- * Copyright (C) 18/08/2019.
+ * PublicSpeakingBooster
+ * Copyright (C) 16/08/2019.
  * All rights reserved
  * -----------------------------------------
  * Name     : Muhammad Faisal Amir
@@ -14,10 +14,7 @@ package com.frogobox.praybox.core
  * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
  * FrogoBox Software Industries
- * com.frogobox.praybox.base
+ * com.frogobox.publicspeakingbooster.source.remote.network
  *
  */
-interface BaseViewListener<T> {
-    fun onItemClicked(data: T)
-    fun onItemLongClicked(data: T)
-}
+object ApiService {}

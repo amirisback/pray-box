@@ -6,13 +6,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import com.frogobox.praybox.util.helper.ConstHelper.Extra.EXTRA_OPTION
-import com.frogobox.praybox.util.helper.ConstHelper.TypeData.TYPE_BOOLEAN
-import com.frogobox.praybox.util.helper.ConstHelper.TypeData.TYPE_FLOAT
-import com.frogobox.praybox.util.helper.ConstHelper.TypeData.TYPE_INT
-import com.frogobox.praybox.util.helper.ConstHelper.TypeData.TYPE_OBJECT
-import com.frogobox.praybox.util.helper.ConstHelper.TypeData.TYPE_STRING
-import com.frogobox.praybox.util.helper.FunHelper
+import com.frogobox.praybox.util.SingleConstant.Extra.EXTRA_OPTION
+import com.frogobox.praybox.util.SingleConstant.TypeData.TYPE_BOOLEAN
+import com.frogobox.praybox.util.SingleConstant.TypeData.TYPE_FLOAT
+import com.frogobox.praybox.util.SingleConstant.TypeData.TYPE_INT
+import com.frogobox.praybox.util.SingleConstant.TypeData.TYPE_OBJECT
+import com.frogobox.praybox.util.SingleConstant.TypeData.TYPE_STRING
 import com.google.gson.Gson
 
 /**

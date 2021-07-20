@@ -19,8 +19,8 @@ import androidx.core.app.ActivityCompat
 import com.frogobox.praybox.R
 import com.frogobox.praybox.core.BaseActivity
 import com.frogobox.praybox.databinding.ActivityKiblatBinding
-import com.frogobox.praybox.util.helper.Compass
-import com.frogobox.praybox.util.helper.GPSTracker
+import com.frogobox.praybox.util.Compass
+import com.frogobox.praybox.util.GPSTracker
 import kotlinx.android.synthetic.main.activity_kiblat.*
 
 class KiblatActivity : BaseActivity<ActivityKiblatBinding>() {

@@ -1,4 +1,4 @@
-package com.frogobox.praybox.util.helper;
+package com.frogobox.praybox.util;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;

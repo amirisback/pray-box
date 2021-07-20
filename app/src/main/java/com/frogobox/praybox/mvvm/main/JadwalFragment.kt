@@ -6,9 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.frogobox.praybox.R
 import com.frogobox.praybox.core.BaseFragment
-import com.frogobox.praybox.util.helper.ConstHelper
-import com.frogobox.praybox.util.helper.MethodHelper
-import com.frogobox.praybox.util.helper.WaktuShalatHelper
+import com.frogobox.praybox.util.SingleConstant
+import com.frogobox.praybox.util.SingleFunc
 import kotlinx.android.synthetic.main.fragment_jadwal.*
 
 class JadwalFragment : BaseFragment() {
@@ -24,8 +23,8 @@ class JadwalFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Deklarasi Class helper
-        val mWaktuShalatHelper = WaktuShalatHelper()
-        val mMethodHelper = MethodHelper()
+        val mWaktuShalatHelper = SingleFunc.WaktuShalat
+        val mMethodHelper = SingleFunc.Controller
 
         val jumlahDetikSaatIni = mMethodHelper.sumWaktuDetik
         val mJadwal = mWaktuShalatHelper.jadwalShalat
@@ -39,33 +38,33 @@ class JadwalFragment : BaseFragment() {
         val detikBeforeMid = mWaktuShalatHelper.jmlBeMidnight
 
         when (mJadwal) {
-            ConstHelper.Const.SHUBUH -> {
-                jadwal_textview_shalat.text = ConstHelper.Const.DZUHUR.substring(7)
-                countTime = (detikDzuhur - jumlahDetikSaatIni) * ConstHelper.Const.DETIK_KE_MILI
+            SingleConstant.Const.SHUBUH -> {
+                jadwal_textview_shalat.text = SingleConstant.Const.DZUHUR.substring(7)
+                countTime = (detikDzuhur - jumlahDetikSaatIni) * SingleConstant.Const.DETIK_KE_MILI
             }
-            ConstHelper.Const.DZUHUR -> {
-                jadwal_textview_shalat.text = ConstHelper.Const.ASHAR.substring(7)
-                countTime = (detikAshar - jumlahDetikSaatIni) * ConstHelper.Const.DETIK_KE_MILI
+            SingleConstant.Const.DZUHUR -> {
+                jadwal_textview_shalat.text = SingleConstant.Const.ASHAR.substring(7)
+                countTime = (detikAshar - jumlahDetikSaatIni) * SingleConstant.Const.DETIK_KE_MILI
             }
-            ConstHelper.Const.ASHAR -> {
-                jadwal_textview_shalat.text = ConstHelper.Const.MAGHRIB.substring(7)
-                countTime = (detikMaghrib - jumlahDetikSaatIni) * ConstHelper.Const.DETIK_KE_MILI
+            SingleConstant.Const.ASHAR -> {
+                jadwal_textview_shalat.text = SingleConstant.Const.MAGHRIB.substring(7)
+                countTime = (detikMaghrib - jumlahDetikSaatIni) * SingleConstant.Const.DETIK_KE_MILI
             }
-            ConstHelper.Const.MAGHRIB -> {
-                jadwal_textview_shalat.text = ConstHelper.Const.ISYA.substring(7)
-                countTime = (detikIsya - jumlahDetikSaatIni) * ConstHelper.Const.DETIK_KE_MILI
+            SingleConstant.Const.MAGHRIB -> {
+                jadwal_textview_shalat.text = SingleConstant.Const.ISYA.substring(7)
+                countTime = (detikIsya - jumlahDetikSaatIni) * SingleConstant.Const.DETIK_KE_MILI
             }
-            ConstHelper.Const.ISYA -> {
-                jadwal_textview_shalat.text = ConstHelper.Const.SHUBUH.substring(7)
+            SingleConstant.Const.ISYA -> {
+                jadwal_textview_shalat.text = SingleConstant.Const.SHUBUH.substring(7)
                 if (jumlahDetikSaatIni == detikAfterMid || jumlahDetikSaatIni < detikShubuh) {
-                    countTime = (detikShubuh - jumlahDetikSaatIni) * ConstHelper.Const.DETIK_KE_MILI
+                    countTime = (detikShubuh - jumlahDetikSaatIni) * SingleConstant.Const.DETIK_KE_MILI
                 } else if (jumlahDetikSaatIni == detikIsya || jumlahDetikSaatIni <= detikBeforeMid) {
-                    countTime = (detikShubuh + detikBeforeMid - jumlahDetikSaatIni) * ConstHelper.Const.DETIK_KE_MILI
+                    countTime = (detikShubuh + detikBeforeMid - jumlahDetikSaatIni) * SingleConstant.Const.DETIK_KE_MILI
                 }
             }
             else -> {
-                jadwal_textview_shalat.text = ConstHelper.Const.DZUHUR.substring(7)
-                countTime = (detikDzuhur - jumlahDetikSaatIni) * ConstHelper.Const.DETIK_KE_MILI
+                jadwal_textview_shalat.text = SingleConstant.Const.DZUHUR.substring(7)
+                countTime = (detikDzuhur - jumlahDetikSaatIni) * SingleConstant.Const.DETIK_KE_MILI
             }
         }
         // -----------------------------------------------------------------------------------------

@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.frogobox.praybox.R
 import com.frogobox.praybox.core.BaseFragment
-import com.frogobox.praybox.util.helper.PagerHelper
+import com.frogobox.praybox.util.PagerHelper
 import kotlinx.android.synthetic.main.fragment_statistik.*
 
 /**

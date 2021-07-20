@@ -4,7 +4,7 @@ import android.os.Bundle
 import com.frogobox.praybox.R
 import com.frogobox.praybox.core.BaseActivity
 import com.frogobox.praybox.databinding.ActivityTataCaraBinding
-import com.frogobox.praybox.util.helper.PagerHelper
+import com.frogobox.praybox.util.PagerHelper
 import kotlinx.android.synthetic.main.activity_tata_cara.*
 
 class TataCaraActivity : BaseActivity<ActivityTataCaraBinding>() {

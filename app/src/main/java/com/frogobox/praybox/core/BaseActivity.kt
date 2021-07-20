@@ -16,7 +16,7 @@ import com.frogobox.admob.ui.FrogoAdmobActivity
 import com.frogobox.praybox.R
 import com.frogobox.praybox.util.Navigation.BundleHelper.getOptionBundle
 import com.frogobox.praybox.util.ViewModelFactory
-import com.frogobox.praybox.util.helper.ConstHelper
+import com.frogobox.praybox.util.SingleConstant
 import com.google.gson.Gson
 
 
@@ -84,7 +84,7 @@ abstract class BaseActivity<VB : ViewBinding> : FrogoAdmobActivity() {
                 this@BaseActivity.finish()
             }
 
-        }, ConstHelper.Const.SPLASH_INTERVAL.toLong())
+        }, SingleConstant.Const.SPLASH_INTERVAL.toLong())
     }
 
     protected fun setupFullScreen() {

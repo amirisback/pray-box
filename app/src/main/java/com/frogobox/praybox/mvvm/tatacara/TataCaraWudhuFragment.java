@@ -33,9 +33,9 @@ public class TataCaraWudhuFragment extends BaseFragment {
         ViewPager mViewPager = rootView.findViewById(R.id.tatacara_sliderimage_viewpager);
         LinearLayout sliderDotspanel = (LinearLayout) rootView.findViewById(R.id.tatacara_sliderdots_linearLayout);
         // -----------------------------------------------------------------------------------------
-        ImagePager imagePagerAdapter = new ImagePager(getContext(), imageResId);
-        mViewPager.setAdapter(imagePagerAdapter);
-        dotscount = imagePagerAdapter.getCount();
+        TataCaraPager tataCaraPagerAdapter = new TataCaraPager(getContext(), imageResId);
+        mViewPager.setAdapter(tataCaraPagerAdapter);
+        dotscount = tataCaraPagerAdapter.getCount();
         dots = new ImageView[dotscount];
         // -----------------------------------------------------------------------------------------
         for (int i = 0; i < dotscount; i++) {

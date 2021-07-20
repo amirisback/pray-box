@@ -1,4 +1,4 @@
-package com.frogobox.praybox.util.helper;
+package com.frogobox.praybox.util;
 
 import android.content.Context;
 import android.hardware.Sensor;
