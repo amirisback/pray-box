@@ -9,7 +9,6 @@ import android.net.NetworkInfo
 import android.os.Environment
 import com.frogobox.praybox.BuildConfig
 import com.frogobox.praybox.R
-import com.frogobox.praybox.base.util.BaseHelper
 import com.frogobox.praybox.util.helper.ConstHelper.Dir.DIR_NAME
 import com.frogobox.praybox.util.helper.ConstHelper.Dir.VIDEO_FILE_NAME
 import com.frogobox.praybox.util.helper.ConstHelper.Pref.PREF_NAME
@@ -33,18 +32,6 @@ import com.frogobox.praybox.util.helper.ConstHelper.Pref.PREF_NAME
  *
  */
 class FunHelper{
-
-    object ConverterJson : BaseHelper() {
-
-        fun <T> toJson(model: T) : String? {
-            return baseToJson(model)
-        }
-
-        inline fun <reified T> fromJson(word: String?) : T {
-            return baseFromJson(word)
-        }
-
-    }
 
     object Func {
 

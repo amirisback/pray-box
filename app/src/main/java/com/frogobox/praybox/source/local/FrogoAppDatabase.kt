@@ -35,7 +35,6 @@ import com.frogobox.praybox.source.dao.FashionDao
     (Favorite::class)
 ], version = 1)
 
-
 abstract class FrogoAppDatabase : RoomDatabase() {
 
     abstract fun fashionDao(): FashionDao

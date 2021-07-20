@@ -14,12 +14,12 @@
         android:roundIcon="@drawable/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.ui.activitiy.DoaActivity"></activity>
-        <activity android:name=".view.ui.activitiy.TataCaraActivity" />
-        <activity android:name=".view.ui.activitiy.KiblatActivity" />
-        <activity android:name=".view.ui.activitiy.AboutUsActivity" />
+        <activity android:name=".mvvm.doa.DoaActivity"></activity>
+        <activity android:name=".mvvm.tatacara.TataCaraActivity" />
+        <activity android:name=".mvvm.kiblat.KiblatActivity" />
+        <activity android:name=".mvvm.main.AboutUsActivity" />
         <activity
-            android:name=".view.ui.activitiy.MainActivity"
+            android:name=".mvvm.main.MainActivity"
             android:theme="@style/AppThemeNoToolbar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

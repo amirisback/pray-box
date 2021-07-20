@@ -13,6 +13,7 @@ import com.frogobox.praybox.util.helper.ConstHelper.TypeData.TYPE_INT
 import com.frogobox.praybox.util.helper.ConstHelper.TypeData.TYPE_OBJECT
 import com.frogobox.praybox.util.helper.ConstHelper.TypeData.TYPE_STRING
 import com.frogobox.praybox.util.helper.FunHelper
+import com.google.gson.Gson
 
 /**
  * Created by Faisal Amir
@@ -47,7 +48,7 @@ object Navigation {
             } else if (typeKey.equals(TYPE_FLOAT)) {
                 extraBundle.putFloat(extraKey, data as Float)
             } else if (typeKey.equals(TYPE_OBJECT)) {
-                val extraData = FunHelper.ConverterJson.toJson(data)
+                val extraData = Gson().toJson(data)
                 extraBundle.putString(extraKey, extraData)
             } else if (typeKey.equals(TYPE_BOOLEAN)) {
                 extraBundle.putBoolean(extraKey, data as Boolean)
@@ -68,7 +69,7 @@ object Navigation {
                 bundle = activity.intent.extras?.getFloat(extraKey)!!
             } else if (typeKey.equals(TYPE_OBJECT)) {
                 val extraBundle = activity.intent.extras?.getString(extraKey)
-                bundle = FunHelper.ConverterJson.fromJson<T>(extraBundle)!!
+                bundle = Gson().fromJson(extraBundle, T::class.java)!!
             } else if (typeKey.equals(TYPE_BOOLEAN)) {
                 bundle = activity.intent.extras?.getBoolean(extraKey)!!
             }

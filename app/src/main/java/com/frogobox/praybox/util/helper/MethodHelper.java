@@ -2,8 +2,6 @@ package com.frogobox.praybox.util.helper;
 
 import android.widget.TextView;
 
-import com.frogobox.praybox.util.helper.VarConstants.Constants;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Random;
@@ -30,14 +28,11 @@ public class MethodHelper {
 
     public MethodHelper() {
         this.currentTime = Calendar.getInstance();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Constants.FORMAT_DATE);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(ConstHelper.Const.FORMAT_DATE);
         this.dateToday = simpleDateFormat.format(currentTime.getTime());
         getSystemRealTime();
         getSumRealTime();
         getSumWaktuDetik();
-
-
-
     }
 
     // Method Random Character ---------------------------------------------------------------------
@@ -163,7 +158,7 @@ public class MethodHelper {
 
     public int getSumWaktuDetik() {
         getSumRealTime();
-        sumWaktuDetik = (systemJam * Constants.JAM_KE_DETIK) + (systemMenit * Constants.MENIT_KE_DETIK) + systemDetik;
+        sumWaktuDetik = (systemJam * ConstHelper.Const.JAM_KE_DETIK) + (systemMenit * ConstHelper.Const.MENIT_KE_DETIK) + systemDetik;
         return sumWaktuDetik;
     }
 

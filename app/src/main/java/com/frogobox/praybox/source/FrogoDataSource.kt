@@ -1,6 +1,6 @@
 package com.frogobox.praybox.source
 
-import com.frogobox.praybox.base.data.BaseDataSource
+import com.frogobox.praybox.core.BaseDataSource
 import com.frogobox.praybox.model.Favorite
 import com.frogobox.praybox.model.Fashion
 

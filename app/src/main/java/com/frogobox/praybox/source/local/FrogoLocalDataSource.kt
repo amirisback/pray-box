@@ -2,7 +2,7 @@ package com.frogobox.praybox.source.local
 
 import android.content.SharedPreferences
 import androidx.annotation.VisibleForTesting
-import com.frogobox.praybox.base.view.BaseCallback
+import com.frogobox.praybox.core.BaseCallback
 import com.frogobox.praybox.model.Favorite
 import com.frogobox.praybox.model.Fashion
 import com.frogobox.praybox.source.FrogoDataSource
@@ -38,15 +38,13 @@ class FrogoLocalDataSource private constructor(
     private val favoriteDao: FavoriteDao
 ) : FrogoDataSource {
     override fun saveRoomFavorite(data: Favorite): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return false
     }
 
     override fun getRoomData(callback: FrogoDataSource.GetRoomDataCallBack<List<Fashion>>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun getRoomFavorite(callback: FrogoDataSource.GetRoomDataCallBack<List<Favorite>>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun updateRoomFavorite(
@@ -55,7 +53,7 @@ class FrogoLocalDataSource private constructor(
         description: String,
         dateTime: String
     ): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return false
     }
 
     override fun searchRoomFavorite(
@@ -93,11 +91,11 @@ class FrogoLocalDataSource private constructor(
     }
 
     override fun deleteRoomFavorite(tableId: Int): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return false
     }
 
     override fun nukeRoomFavorite(): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return false
     }
 
 

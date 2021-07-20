@@ -20,7 +20,7 @@ import android.os.Environment
  * com.frogobox.publicspeakingbooster.helper
  *
  */
-class ConstHelper {
+object ConstHelper {
 
     object ApiUrl {
 
@@ -146,6 +146,32 @@ class ConstHelper {
         const val BASE_PATH_RAW = "src/com/frogobox/raw"
         const val PATH_DATA_CSV = "/influencers$EXTENSION_CSV"
         const val PATH_RAW_CSV_DATA = BASE_PATH_RAW + PATH_DATA_CSV
+
+        // -----------------------------------------------------------------------------------------
+        const val JAM_KE_DETIK = 3600
+        const val MENIT_KE_DETIK = 60
+        const val DETIK_KE_MILI = 1000
+        // -----------------------------------------------------------------------------------------
+        const val FORMAT_COUNTDOWN = "%02d : %02d : %02d"
+        const val FORMAT_DATE = "dd MMMM yyyy"
+        // -----------------------------------------------------------------------------------------
+        const val MATAHARI_TERBIT = "Matahari Terbit"
+        const val MATAHARI_TERBENAM = "Matahari Terbenam"
+        const val BUKAN_WAKTU_SHOLAT = "Belum Masuk Waktu Sholat"
+        // -----------------------------------------------------------------------------------------
+        const val SHUBUH = "Shalat Shubuh"
+        const val DZUHUR = "Shalat Dzuhur"
+        const val ASHAR = "Shalat Ashar"
+        const val MAGHRIB = "Shalat Maghrib"
+        const val ISYA = "Shalat Isya"
+        // -----------------------------------------------------------------------------------------
+        const val STRING_EXTRA_FRAGMENT = "menufragment"
+        const val TAB_CATATAN = "catatan"
+        const val TAB_JADWAL = "jadwal"
+        const val TAB_STATISTIK = "statistik"
+        const val TAB_KIBLAT = "kiblat"
+        const val TAB_TATACARA = "tatacara"
+        // -----------------------------------------------------------------------------------------
 
     }
 

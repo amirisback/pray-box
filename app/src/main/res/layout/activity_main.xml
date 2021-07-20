@@ -25,7 +25,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackgroundWhite"
-    tools:context=".view.ui.activitiy.MainActivity">
+    tools:context=".mvvm.main.MainActivity">
 
     <include layout="@layout/toolbar_main" />
 

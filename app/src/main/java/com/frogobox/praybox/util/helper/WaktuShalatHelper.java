@@ -12,8 +12,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-import static com.frogobox.praybox.util.helper.VarConstants.Constants;
-
 /**
  * Created by Faisal Amir
  * FrogoBox Inc License
@@ -41,20 +39,20 @@ public class WaktuShalatHelper {
 
     // Deklarasi Requirement Kebutuhan -------------------------------------------------------------
     private int waktuSaatIni,
-                jmlWaktuShubuh,
-                jmlWaktuTerbit,
-                jmlWaktuTerbenam,
-                jmlWaktuDzuhur,
-                jmlWaktuAshar,
-                jmlWaktuMaghrib,
-                jmlWaktuIsya,
-                jmlBeMidnight,
-                jmlAftMidnight;
+            jmlWaktuShubuh,
+            jmlWaktuTerbit,
+            jmlWaktuTerbenam,
+            jmlWaktuDzuhur,
+            jmlWaktuAshar,
+            jmlWaktuMaghrib,
+            jmlWaktuIsya,
+            jmlBeMidnight,
+            jmlAftMidnight;
     private String jamWaktuShubuh,
-                jamWaktuDzuhur,
-                jamWaktuAshar,
-                jamWaktuMaghrib,
-                jamWaktuIsya;
+            jamWaktuDzuhur,
+            jamWaktuAshar,
+            jamWaktuMaghrib,
+            jamWaktuIsya;
     // ---------------------------------------------------------------------------------------------
 
     // ---------------------------------------------------------------------------------------------
@@ -62,19 +60,18 @@ public class WaktuShalatHelper {
     // ---------------------------------------------------------------------------------------------
 
     // ---------------------------------------------------------------------------------------------
-    private int offsets [] = { 0, 0, 0, 0, 0, 0, 0 }; // {Fajr,Sunrise,Dhuhr,Asr,Sunset,Maghrib,Isha}
+    private int offsets[] = {0, 0, 0, 0, 0, 0, 0}; // {Fajr,Sunrise,Dhuhr,Asr,Sunset,Maghrib,Isha}
     private ArrayList prayerTimes, prayerNames;
     // ---------------------------------------------------------------------------------------------
 
     public WaktuShalatHelper() {
         MethodHelper methodHelper = new MethodHelper();
-        this.jmlBeMidnight = (23 * Constants.JAM_KE_DETIK) + (59 * Constants.MENIT_KE_DETIK); // 86.340
+        this.jmlBeMidnight = (23 * ConstHelper.Const.JAM_KE_DETIK) + (59 * ConstHelper.Const.MENIT_KE_DETIK); // 86.340
         this.jmlAftMidnight = 0; // 0
         setJmlWaktu();
         methodHelper.getSystemRealTime();
         this.waktuSaatIni = methodHelper.getSumWaktuDetik();
     }
-
 
     // ---------------------------------------------------------------------------------------------
 
@@ -82,79 +79,79 @@ public class WaktuShalatHelper {
         return (waktuSaatIni == jmlWaktuShubuh) || (waktuSaatIni < jmlWaktuTerbit);
     }
 
-    public boolean saatWaktunyaDzuhur(){
+    public boolean saatWaktunyaDzuhur() {
         return (waktuSaatIni == jmlWaktuDzuhur) || (waktuSaatIni < jmlWaktuAshar);
     }
 
-    public boolean saatWaktunyaAshar(){
+    public boolean saatWaktunyaAshar() {
         return (waktuSaatIni == jmlWaktuAshar) || (waktuSaatIni < jmlWaktuMaghrib);
     }
 
-    public boolean saatWaktunyaMaghrib(){
+    public boolean saatWaktunyaMaghrib() {
         return (waktuSaatIni == jmlWaktuMaghrib) || (waktuSaatIni < jmlWaktuIsya);
     }
 
-    public boolean saatWaktunyaIsyaPagi(){
+    public boolean saatWaktunyaIsyaPagi() {
         return (waktuSaatIni == jmlAftMidnight) || (waktuSaatIni < jmlWaktuShubuh);
     }
 
-    public boolean saatWaktunyaIsyaMalam(){
+    public boolean saatWaktunyaIsyaMalam() {
         return (waktuSaatIni == jmlWaktuIsya) || (waktuSaatIni <= jmlBeMidnight);
     }
 
-    public boolean saatWaktunyaBukan(){
+    public boolean saatWaktunyaBukan() {
         return (waktuSaatIni == jmlWaktuTerbit) || (waktuSaatIni < jmlWaktuDzuhur);
     }
 
-    public void setJadwalShalat(TextView txt){
+    public void setJadwalShalat(TextView txt) {
         if (saatWaktunyaIsyaPagi()) {
-            txt.setText(Constants.ISYA); // isya
+            txt.setText(ConstHelper.Const.ISYA); // isya
         } else if (saatWaktunyaShubuh()) {
-            txt.setText(Constants.SHUBUH); // shubuh
+            txt.setText(ConstHelper.Const.SHUBUH); // shubuh
         } else if (saatWaktunyaBukan()) {
-            txt.setText(Constants.BUKAN_WAKTU_SHOLAT); // bukan waktu shalat
+            txt.setText(ConstHelper.Const.BUKAN_WAKTU_SHOLAT); // bukan waktu shalat
             txt.setTextSize(20);
         } else if (saatWaktunyaDzuhur()) {
-            txt.setText(Constants.DZUHUR); // dzuhur
+            txt.setText(ConstHelper.Const.DZUHUR); // dzuhur
         } else if (saatWaktunyaAshar()) {
-            txt.setText(Constants.ASHAR); // ashar
+            txt.setText(ConstHelper.Const.ASHAR); // ashar
         } else if (saatWaktunyaMaghrib()) {
-            txt.setText(Constants.MAGHRIB); // maghrib
+            txt.setText(ConstHelper.Const.MAGHRIB); // maghrib
         } else if (saatWaktunyaIsyaMalam()) {
-            txt.setText(Constants.ISYA); // isya
-        }  else {
-            txt.setText(Constants.BUKAN_WAKTU_SHOLAT);
+            txt.setText(ConstHelper.Const.ISYA); // isya
+        } else {
+            txt.setText(ConstHelper.Const.BUKAN_WAKTU_SHOLAT);
             txt.setTextSize(20);
         }
     }
 
     public String getJadwalShalat() {
-        if (saatWaktunyaIsyaPagi()){
-            return Constants.ISYA; // isya
-        }else if (saatWaktunyaShubuh()) {
-            return Constants.SHUBUH; // shubuh
-        }else if (saatWaktunyaBukan()) {
-            return Constants.BUKAN_WAKTU_SHOLAT; // bukan waktu shalat
+        if (saatWaktunyaIsyaPagi()) {
+            return ConstHelper.Const.ISYA; // isya
+        } else if (saatWaktunyaShubuh()) {
+            return ConstHelper.Const.SHUBUH; // shubuh
+        } else if (saatWaktunyaBukan()) {
+            return ConstHelper.Const.BUKAN_WAKTU_SHOLAT; // bukan waktu shalat
         } else if (saatWaktunyaDzuhur()) {
-            return Constants.DZUHUR; // dzuhur
+            return ConstHelper.Const.DZUHUR; // dzuhur
         } else if (saatWaktunyaAshar()) {
-            return Constants.ASHAR; // ashar
+            return ConstHelper.Const.ASHAR; // ashar
         } else if (saatWaktunyaMaghrib()) {
-            return Constants.MAGHRIB; // maghrib
+            return ConstHelper.Const.MAGHRIB; // maghrib
         } else if (saatWaktunyaIsyaMalam()) {
-            return Constants.ISYA; // isya
-        }  else {
-            return Constants.BUKAN_WAKTU_SHOLAT; // bukan waktu shalat
+            return ConstHelper.Const.ISYA; // isya
+        } else {
+            return ConstHelper.Const.BUKAN_WAKTU_SHOLAT; // bukan waktu shalat
         }
     }
 
 
     // ---------------------------------------------------------------------------------------------
-    public void CoundownTime(int waktu, final TextView mTextView){
+    public void CoundownTime(int waktu, final TextView mTextView) {
         new CountDownTimer(waktu, 1000) { // adjust the milli seconds here
 
             public void onTick(long millisUntilFinished) {
-                mTextView.setText("- "+ String.format(Constants.FORMAT_COUNTDOWN,
+                mTextView.setText("- " + String.format(ConstHelper.Const.FORMAT_COUNTDOWN,
                         TimeUnit.MILLISECONDS.toHours(millisUntilFinished),
                         TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millisUntilFinished)),
                         TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
@@ -169,7 +166,7 @@ public class WaktuShalatHelper {
     // ---------------------------------------------------------------------------------------------
 
 
-    private void MethodWaktuShalatHelper(){
+    private void MethodWaktuShalatHelper() {
         double latitude = -6.1744;
         double longitude = 106.8294;
         // -----------------------------------------------------------------------------------------
@@ -185,7 +182,7 @@ public class WaktuShalatHelper {
         // -----------------------------------------------------------------------------------------
     }
 
-    private void setJmlWaktu(){
+    private void setJmlWaktu() {
         // -----------------------------------------------------------------------------------------
         MethodWaktuShalatHelper();
         // -----------------------------------------------------------------------------------------
@@ -199,21 +196,21 @@ public class WaktuShalatHelper {
             int jam = Integer.parseInt(hours);
             int menit = Integer.parseInt(minutes);
             // -------------------------------------------------------------------------------------
-            int total = (jam * Constants.JAM_KE_DETIK) + (menit * Constants.MENIT_KE_DETIK);
+            int total = (jam * ConstHelper.Const.JAM_KE_DETIK) + (menit * ConstHelper.Const.MENIT_KE_DETIK);
             // -------------------------------------------------------------------------------------
-            if (prayerNames.get(i).equals(Constants.SHUBUH.substring(7))) {
+            if (prayerNames.get(i).equals(ConstHelper.Const.SHUBUH.substring(7))) {
                 this.jmlWaktuShubuh = total;
-            } else if (prayerNames.get(i).equals(Constants.DZUHUR.substring(7))){
+            } else if (prayerNames.get(i).equals(ConstHelper.Const.DZUHUR.substring(7))) {
                 this.jmlWaktuDzuhur = total;
-            } else if (prayerNames.get(i).equals(Constants.ASHAR.substring(7))) {
+            } else if (prayerNames.get(i).equals(ConstHelper.Const.ASHAR.substring(7))) {
                 this.jmlWaktuAshar = total;
-            } else if (prayerNames.get(i).equals(Constants.MAGHRIB.substring(7))) {
+            } else if (prayerNames.get(i).equals(ConstHelper.Const.MAGHRIB.substring(7))) {
                 this.jmlWaktuMaghrib = total;
-            } else if (prayerNames.get(i).equals(Constants.ISYA.substring(7))) {
+            } else if (prayerNames.get(i).equals(ConstHelper.Const.ISYA.substring(7))) {
                 this.jmlWaktuIsya = total;
-            }  else if (prayerNames.get(i).equals(Constants.MATAHARI_TERBIT)){
+            } else if (prayerNames.get(i).equals(ConstHelper.Const.MATAHARI_TERBIT)) {
                 this.jmlWaktuTerbit = total;
-            } else if (prayerNames.get(i).equals(Constants.MATAHARI_TERBENAM)) {
+            } else if (prayerNames.get(i).equals(ConstHelper.Const.MATAHARI_TERBENAM)) {
                 this.jmlWaktuTerbenam = total;
             }
             // -------------------------------------------------------------------------------------
@@ -228,23 +225,23 @@ public class WaktuShalatHelper {
         // -----------------------------------------------------------------------------------------
         // Menset Waktu Sholat
         for (int i = 0; i < prayerTimes.size(); i++) {
-            if (prayerNames.get(i).equals(Constants.SHUBUH.substring(7))) {
+            if (prayerNames.get(i).equals(ConstHelper.Const.SHUBUH.substring(7))) {
                 mTextViewWaktuShubuh.setText(prayerTimes.get(i).toString());
                 this.jamWaktuShubuh = prayerTimes.get(i).toString();
 
-            } else if (prayerNames.get(i).equals(Constants.DZUHUR.substring(7))){
+            } else if (prayerNames.get(i).equals(ConstHelper.Const.DZUHUR.substring(7))) {
                 mTextViewWaktuDzuhur.setText(prayerTimes.get(i).toString());
                 this.jamWaktuDzuhur = prayerTimes.get(i).toString();
 
-            } else if (prayerNames.get(i).equals(Constants.ASHAR.substring(7))) {
+            } else if (prayerNames.get(i).equals(ConstHelper.Const.ASHAR.substring(7))) {
                 mTextViewWaktuAshar.setText(prayerTimes.get(i).toString());
                 this.jamWaktuAshar = prayerTimes.get(i).toString();
 
-            } else if (prayerNames.get(i).equals(Constants.MAGHRIB.substring(7))) {
+            } else if (prayerNames.get(i).equals(ConstHelper.Const.MAGHRIB.substring(7))) {
                 mTextViewWaktuMaghrib.setText(prayerTimes.get(i).toString());
                 this.jamWaktuMaghrib = prayerTimes.get(i).toString();
 
-            } else if (prayerNames.get(i).equals(Constants.ISYA.substring(7))) {
+            } else if (prayerNames.get(i).equals(ConstHelper.Const.ISYA.substring(7))) {
                 mTextViewWaktuIsya.setText(prayerTimes.get(i).toString());
                 this.jamWaktuIsya = prayerTimes.get(i).toString();
             }
