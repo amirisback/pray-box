@@ -21,12 +21,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/toolbar_menu_kiblat"
-        android:icon="@drawable/ic_main_kompas"
-        android:title="@string/menu_kiblat"
-        app:showAsAction="ifRoom" />
-
-    <item
         android:id="@+id/toolbar_menu_about"
         android:icon="@drawable/ic_toolbar_about_us"
         android:title="@string/title_about_us"

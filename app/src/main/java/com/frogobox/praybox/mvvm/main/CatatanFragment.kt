@@ -9,7 +9,7 @@ import com.frogobox.praybox.R
 import com.frogobox.praybox.core.BaseFragment
 import com.frogobox.praybox.databinding.ContentCatatanButtonBinding
 import com.frogobox.praybox.databinding.FragmentCatatanBinding
-import com.frogobox.praybox.source.local.DataOperation
+import com.frogobox.praybox.source.DataOperation
 import com.frogobox.praybox.util.SingleFunc
 import java.util.*
 

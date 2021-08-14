@@ -1,4 +1,4 @@
-package com.frogobox.praybox.source.local;
+package com.frogobox.praybox.source;
 
 /*
  * Created by Ikhsan Ramadhan on 11/03/2018.

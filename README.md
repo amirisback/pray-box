@@ -18,15 +18,15 @@ Pray Box adalah aplikasi berbasis android yang di khususkan untuk pencatatan sho
 
 | UI 1 | UI 2 | UI 3 |
 |:----:|:----:|:----:|
-|<span align="center"><img width="200px" height="360px" src="docs/image/ss_1.png"></span> | <span align="center"><img width="200px" height="360px" src="docs/image/ss_2.png"></span> | <span align="center"><img width="200px" height="360px" src="docs/image/ss_3.png"></span> |
+|<img width="200px" height="360px" src="docs/image/ss_1.png"> | <img width="200px" height="360px" src="docs/image/ss_2.png"> | <img width="200px" height="360px" src="docs/image/ss_3.png"> |
 
 | UI 4 | UI 5 | UI 6 |
 |:----:|:----:|:----:|
-|<span align="center"><img width="200px" height="360px" src="docs/image/ss_4.png"></span> | <span align="center"><img width="200px" height="360px" src="docs/image/ss_5.png"></span> | <span align="center"><img width="200px" height="360px" src="docs/image/ss_6.png"></span> |
+|<img width="200px" height="360px" src="docs/image/ss_4.png"> | <img width="200px" height="360px" src="docs/image/ss_5.png"> | <img width="200px" height="360px" src="docs/image/ss_6.png"> |
 
 | UI 7 | UI 8 | UI 9 |
 |:----:|:----:|:----:|
-|<span align="center"><img width="200px" height="360px" src="docs/image/ss_7.png"></span> | <span align="center"><img width="200px" height="360px" src="docs/image/ss_8.png"></span> | <span align="center"><img width="200px" height="360px" src="docs/image/ss_9.png"></span> |
+|<img width="200px" height="360px" src="docs/image/ss_7.png"> | <img width="200px" height="360px" src="docs/image/ss_8.png"> | <img width="200px" height="360px" src="docs/image/ss_9.png"> |
 
 
 ## Version Release

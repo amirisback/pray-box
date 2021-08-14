@@ -14,8 +14,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
 import com.frogobox.admob.ui.FrogoAdmobActivity
 import com.frogobox.praybox.R
-import com.frogobox.praybox.util.Navigation.BundleHelper.getOptionBundle
-import com.frogobox.praybox.util.ViewModelFactory
 import com.frogobox.praybox.util.SingleConstant
 import com.google.gson.Gson
 
@@ -133,10 +131,6 @@ abstract class BaseActivity<VB : ViewBinding> : FrogoAdmobActivity() {
         fragment.baseNewInstance(argumentKey, extraDataResult)
     }
 
-    protected fun tagOption(): Int {
-        return getOptionBundle(this)
-    }
-
     protected fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
@@ -155,9 +149,6 @@ abstract class BaseActivity<VB : ViewBinding> : FrogoAdmobActivity() {
             )
         )
     }
-
-    fun <T : ViewModel> obtainViewModel(viewModelClass: Class<T>) =
-        ViewModelProvider(this, ViewModelFactory.getInstance(application)).get(viewModelClass)
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         return true

@@ -1,4 +1,4 @@
-package com.frogobox.praybox.source.local;
+package com.frogobox.praybox.source;
 
 import android.content.ContentValues;
 import android.content.Context;

@@ -4,8 +4,6 @@ import android.app.AlertDialog
 import android.database.Cursor
 import android.os.Bundle
 import android.view.*
-import android.widget.ProgressBar
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.view.ActionMode
 import androidx.loader.app.LoaderManager
@@ -17,8 +15,8 @@ import com.frogobox.praybox.R
 import com.frogobox.praybox.core.BaseFragment
 import com.frogobox.praybox.databinding.ContentStatistikUpdateBinding
 import com.frogobox.praybox.databinding.FragmentStatistikHarianBinding
-import com.frogobox.praybox.source.local.DataContract
-import com.frogobox.praybox.source.local.DataOperation
+import com.frogobox.praybox.source.DataContract
+import com.frogobox.praybox.source.DataOperation
 import com.frogobox.praybox.util.SingleFunc
 import java.util.*
 

@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.frogobox.praybox.core.BaseFragment
 import com.frogobox.praybox.databinding.FragmentStatistikGrafikBinding
-import com.frogobox.praybox.source.local.DataContract
-import com.frogobox.praybox.source.local.DataOperation
+import com.frogobox.praybox.source.DataContract
+import com.frogobox.praybox.source.DataOperation
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.YAxis

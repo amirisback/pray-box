@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.frogobox.praybox">
-    <!-- === Permission Kiblat Dari Bryan === -->
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -14,13 +11,15 @@
         android:roundIcon="@drawable/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".mvvm.doa.DoaActivity"></activity>
+
+        <activity android:name=".mvvm.doa.DoaActivity" />
         <activity android:name=".mvvm.tatacara.TataCaraActivity" />
-        <activity android:name=".mvvm.kiblat.KiblatActivity" />
         <activity android:name=".mvvm.main.AboutUsActivity" />
+
         <activity
             android:name=".mvvm.main.MainActivity"
-            android:theme="@style/AppThemeNoToolbar">
+            android:theme="@style/AppThemeNoToolbar"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -33,7 +32,7 @@
             android:value="@string/admob_publisher_id" />
 
         <provider
-            android:name=".source.local.DataProvider"
+            android:name=".source.DataProvider"
             android:authorities="com.frogobox.praybox"
             android:exported="false" />
     </application>

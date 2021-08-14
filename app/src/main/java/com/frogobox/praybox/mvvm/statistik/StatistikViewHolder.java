@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.frogobox.praybox.R;
-import com.frogobox.praybox.source.local.DataContract;
+import com.frogobox.praybox.source.DataContract;
 
 /**
  * Created by Faisal Amir

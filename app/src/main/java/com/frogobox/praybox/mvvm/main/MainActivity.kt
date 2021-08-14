@@ -7,7 +7,7 @@ import com.frogobox.praybox.R
 import com.frogobox.praybox.core.BaseActivity
 import com.frogobox.praybox.databinding.ActivityMainBinding
 import com.frogobox.praybox.mvvm.statistik.StatistikFragment
-import com.frogobox.praybox.mvvm.kiblat.KiblatActivity
+
 /*
  * Created by Faisal Amir
  * FrogoBox Inc License
@@ -60,12 +60,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         return when (item.itemId) {
             R.id.toolbar_menu_about -> {
                 baseStartActivity<AboutUsActivity>()
-                true
-            }
-
-            R.id.toolbar_menu_kiblat -> {
-                baseStartActivity<KiblatActivity>()
-                setupShowAdsInterstitial()
                 true
             }
             else -> super.onOptionsItemSelected(item)

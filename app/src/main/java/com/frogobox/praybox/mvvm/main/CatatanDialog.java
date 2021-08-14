@@ -14,7 +14,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.frogobox.praybox.R;
-import com.frogobox.praybox.source.local.DataOperation;
+import com.frogobox.praybox.source.DataOperation;
 import com.frogobox.praybox.util.SingleConstant;
 import com.frogobox.praybox.util.SingleFunc;
 
