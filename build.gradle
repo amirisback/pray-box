@@ -3,6 +3,28 @@
 buildscript {
 
     ext {
+
+        // project settings
+        nameApp = "Pray Box"
+
+        def appDomain = "com"
+        def appDevConsole = "frogobox"
+        def appName = "praybox"
+
+        def versionMajor = 1
+        def versionMinor = 0
+        def versionPatch = 4
+
+        projectCompileSdk = 31
+        projectMinSdk = 21
+        projectTargetSdk = projectCompileSdk
+
+        projectApplicationId = "$appDomain.$appDevConsole.$appName"
+        projectVersionCode = (versionMajor * 100) + (versionMinor * 10) + (versionPatch * 1)
+        projectVersionName = "$versionMajor.$versionMinor.$versionPatch"
+
+        nameAPK = nameApp.toLowerCase().replace(" ", "-")
+
         kotlin_version = '1.5.20'
         koin_version = "3.1.1"
     }
@@ -13,7 +35,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.2.2'
+        classpath 'com.android.tools.build:gradle:7.0.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
 

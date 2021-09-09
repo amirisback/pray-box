@@ -6,33 +6,15 @@ plugins {
 
 android {
 
-    def versionMajor = 1
-    def versionMinor = 0
-    def versionPatch = 4
-
-    def appDomain = "com"
-    def appDevConsole = "frogobox"
-    def appName = "praybox"
-
-    def projectApplicationId = "$appDomain.$appDevConsole.$appName"
-    def projectVersionCode = (versionMajor * 100) + (versionMinor * 10) + (versionPatch * 1)
-    def projectVersionName = "$versionMajor.$versionMinor.$versionPatch"
-
-    // Declaration app name
-    def nameApp = "Pray Box"
-
-    // Declaration apk / aab name
-    def nameAPK = nameApp.toLowerCase().replace(" ", "-")
-
-    compileSdkVersion 30
-    buildToolsVersion "30.0.3"
+    compileSdk projectCompileSdk
 
     defaultConfig {
         applicationId projectApplicationId
-        minSdkVersion 21
-        targetSdkVersion 30
+        minSdk projectMinSdk
+        targetSdk projectTargetSdk
         versionCode projectVersionCode
         versionName projectVersionName
+
         multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -115,17 +97,24 @@ android {
         }
     }
 
+    buildFeatures {
+        viewBinding true
+    }
+
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
 
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = JavaVersion.VERSION_11.toString()
+        useIR = true
     }
 
-    buildFeatures {
-        viewBinding = true
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
     }
 
 }
@@ -146,27 +135,28 @@ dependencies {
 
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation 'com.google.android.material:material:1.4.0'
-    implementation 'com.google.android.gms:play-services-ads:20.2.0'
+    implementation 'com.google.android.gms:play-services-ads:20.3.0'
 
     implementation 'org.jbundle.util.osgi.wrapped:org.jbundle.util.osgi.wrapped.org.apache.http.client:4.1.2'
 
     implementation 'com.github.PhilJay:MPAndroidChart:3.1.0'
 
-    implementation 'com.github.frogobox:frogo-android-sdk:1.0.6'
-    implementation 'com.github.amirisback:frogo-recycler-view:3.8.1'
-    implementation 'com.github.amirisback:frogo-log:2.0.2'
-    implementation 'com.github.amirisback:frogo-admob:4.0.6'
-    implementation 'com.github.amirisback:frogo-ui-kit:2.1.0'
-    implementation 'com.github.amirisback:frogo-notification:1.0.5'
-    implementation 'com.github.frogobox:frogo-consume-api:1.0.1'
+    implementation 'com.github.amirisback:frogo-recycler-view:3.8.6'
+    implementation 'com.github.amirisback:frogo-log:2.0.4'
+    implementation 'com.github.amirisback:frogo-admob:4.1.2'
+    implementation 'com.github.amirisback:frogo-notification:1.0.7'
+
+    implementation 'com.github.frogobox:frogo-android-sdk:2.0.4'
+    implementation 'com.github.frogobox:frogo-android-ui-kit:1.0.4'
+    implementation 'com.github.frogobox:frogo-consume-api:1.0.5'
 
     implementation 'com.github.bumptech.glide:glide:4.12.0'
 
-    api "com.google.dagger:dagger:2.28.3"
+    api "com.google.dagger:dagger:2.37"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0"
 
-    kapt "androidx.lifecycle:lifecycle-compiler:2.4.0-alpha02"
+    kapt "androidx.lifecycle:lifecycle-compiler:2.4.0-alpha03"
     kapt 'com.github.bumptech.glide:compiler:4.11.0'
 
     implementation "io.insert-koin:koin-core:$koin_version" // Koin core features
