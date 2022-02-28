@@ -10,6 +10,7 @@ import com.frogobox.praybox.core.BaseFragment
 import com.frogobox.praybox.databinding.FragmentTatacaraTextBinding
 import com.frogobox.praybox.model.DoaShalat
 import com.frogobox.praybox.util.TataCaraJSON
+import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
 import com.frogobox.recycler.core.FrogoRecyclerViewListener
 
 class DoaFragment : BaseFragment<FragmentTatacaraTextBinding>() {
@@ -34,8 +35,18 @@ class DoaFragment : BaseFragment<FragmentTatacaraTextBinding>() {
             val adapter = DoaViewAdapter()
             adapter.setupRequirement(R.layout.content_tatacara_text_doa, arrayDoaShalat,
                 object : FrogoRecyclerViewListener<DoaShalat> {
-                    override fun onItemClicked(data: DoaShalat) {}
-                    override fun onItemLongClicked(data: DoaShalat) {}
+                    override fun onItemClicked(
+                        view: View,
+                        data: DoaShalat,
+                        position: Int,
+                        notifyListener: FrogoRecyclerNotifyListener<DoaShalat>
+                    ) {}
+                    override fun onItemLongClicked(
+                        view: View,
+                        data: DoaShalat,
+                        position: Int,
+                        notifyListener: FrogoRecyclerNotifyListener<DoaShalat>
+                    ) {}
                 })
             tatacaraListviewText.setHasFixedSize(true)
             tatacaraListviewText.layoutManager = LinearLayoutManager(activity)

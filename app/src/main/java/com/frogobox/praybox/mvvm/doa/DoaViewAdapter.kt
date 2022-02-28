@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.frogobox.praybox.R
 import com.frogobox.praybox.model.DoaShalat
+import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
 import com.frogobox.recycler.core.FrogoRecyclerViewAdapter
 import com.frogobox.recycler.core.FrogoRecyclerViewHolder
 
@@ -41,7 +42,11 @@ class DoaViewAdapter : FrogoRecyclerViewAdapter<DoaShalat>() {
         private val mTextViewDoaTerjemahan =
             view.findViewById<TextView>(R.id.doa_setelah_shalat_arti)
 
-        override fun initComponent(data: DoaShalat) {
+        override fun initComponent(
+            data: DoaShalat,
+            position: Int,
+            notifyListener: FrogoRecyclerNotifyListener<DoaShalat>
+        ) {
             mTextViewDoaArab.text = data.arabDoa
             mTextViewDoaLatin.text = data.latinDoa
             mTextViewDoaTerjemahan.text = data.terjemahDoa

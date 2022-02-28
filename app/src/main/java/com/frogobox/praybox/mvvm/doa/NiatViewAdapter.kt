@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.frogobox.praybox.R
 import com.frogobox.praybox.model.NiatShalat
+import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
 import com.frogobox.recycler.core.FrogoRecyclerViewAdapter
 import com.frogobox.recycler.core.FrogoRecyclerViewHolder
 
@@ -41,7 +42,11 @@ class NiatViewAdapter : FrogoRecyclerViewAdapter<NiatShalat>() {
         private val txt_latin = view.findViewById<TextView>(R.id.niat_textview_latin_arab)
         private val txt_terjemah = view.findViewById<TextView>(R.id.niat_textview_arti)
 
-        override fun initComponent(data: NiatShalat) {
+        override fun initComponent(
+            data: NiatShalat,
+            position: Int,
+            notifyListener: FrogoRecyclerNotifyListener<NiatShalat>
+        ) {
 
             txt_rakaat.text = data.rakaat
             txt_shalat.text = data.shalat
