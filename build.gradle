@@ -25,7 +25,7 @@ buildscript {
 
         nameAPK = nameApp.toLowerCase().replace(" ", "-")
 
-        kotlin_version = "1.5.30"
+        kotlin_version = "1.6.10"
         koin_version = "3.1.5"
     }
 

@@ -61,7 +61,7 @@ class StatistikHarianFragment : BaseFragment<FragmentStatistikHarianBinding>(), 
 
     override fun setupViewBinding(
         inflater: LayoutInflater,
-        container: ViewGroup
+        container: ViewGroup?
     ): FragmentStatistikHarianBinding {
         return FragmentStatistikHarianBinding.inflate(inflater, container, false)
     }
@@ -78,8 +78,8 @@ class StatistikHarianFragment : BaseFragment<FragmentStatistikHarianBinding>(), 
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
-    override fun setupUI(savedInstanceState: Bundle?) {
-        binding?.apply {
+    override fun setupOnViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding.apply {
             // -----------------------------------------------------------------------------------------
             val empty_listView = empty.statistikViewEmptyview
             val mRecyclerView: RecyclerView = statistikListData

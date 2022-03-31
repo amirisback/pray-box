@@ -2,6 +2,7 @@ package com.frogobox.praybox.mvvm.statistik
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import com.frogobox.praybox.core.BaseFragment
 import com.frogobox.praybox.databinding.FragmentStatistikGrafikBinding
@@ -21,7 +22,7 @@ class StatistikGrafikFragment : BaseFragment<FragmentStatistikGrafikBinding>() {
 
     override fun setupViewBinding(
         inflater: LayoutInflater,
-        container: ViewGroup
+        container: ViewGroup?
     ): FragmentStatistikGrafikBinding {
         return FragmentStatistikGrafikBinding.inflate(inflater, container, false)
     }
@@ -29,8 +30,8 @@ class StatistikGrafikFragment : BaseFragment<FragmentStatistikGrafikBinding>() {
     override fun setupViewModel() {
     }
 
-    override fun setupUI(savedInstanceState: Bundle?) {
-        binding?.apply {
+    override fun setupOnViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding.apply {
 
             // -----------------------------------------------------------------------------------------
             val mBarChart: BarChart = chartId // Diagram Batang

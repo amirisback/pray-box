@@ -2,6 +2,7 @@ package com.frogobox.praybox.mvvm.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import com.frogobox.praybox.core.BaseFragment
 import com.frogobox.praybox.databinding.FragmentJadwalBinding
@@ -13,7 +14,7 @@ class JadwalFragment : BaseFragment<FragmentJadwalBinding>() {
 
     override fun setupViewBinding(
         inflater: LayoutInflater,
-        container: ViewGroup
+        container: ViewGroup?
     ): FragmentJadwalBinding {
         return FragmentJadwalBinding.inflate(inflater, container, false)
     }
@@ -21,7 +22,7 @@ class JadwalFragment : BaseFragment<FragmentJadwalBinding>() {
     override fun setupViewModel() {
     }
 
-    override fun setupUI(savedInstanceState: Bundle?) {
+    override fun setupOnViewCreated(view: View, savedInstanceState: Bundle?) {
 
         // Deklarasi Class helper
         val mWaktuShalatHelper = SingleFunc.WaktuShalat

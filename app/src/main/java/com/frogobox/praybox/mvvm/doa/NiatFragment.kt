@@ -17,7 +17,7 @@ class NiatFragment : BaseFragment<FragmentTatacaraTextBinding>() {
 
     override fun setupViewBinding(
         inflater: LayoutInflater,
-        container: ViewGroup
+        container: ViewGroup?
     ): FragmentTatacaraTextBinding {
         return FragmentTatacaraTextBinding.inflate(inflater, container, false)
     }
@@ -25,8 +25,8 @@ class NiatFragment : BaseFragment<FragmentTatacaraTextBinding>() {
     override fun setupViewModel() {
     }
 
-    override fun setupUI(savedInstanceState: Bundle?) {
-        binding?.apply {
+    override fun setupOnViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding.apply {
 
             val arrayNiatShalat = TataCaraJSON.extractNiatShalat()
             val adapter = NiatViewAdapter()

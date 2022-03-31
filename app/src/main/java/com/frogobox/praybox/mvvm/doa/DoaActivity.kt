@@ -15,7 +15,7 @@ class DoaActivity : BaseActivity<ActivityDoaBinding>() {
     override fun setupViewModel() {
     }
 
-    override fun setupUI(savedInstanceState: Bundle?) {
+    override fun setupOnCreate(savedInstanceState: Bundle?) {
         setupDetailActivity("")
         supportActionBar?.elevation = 0f
         setupViewPager()

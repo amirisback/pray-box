@@ -17,7 +17,7 @@ class StatistikFragment : BaseFragment<FragmentStatistikBinding>() {
 
     override fun setupViewBinding(
         inflater: LayoutInflater,
-        container: ViewGroup
+        container: ViewGroup?
     ): FragmentStatistikBinding {
         return FragmentStatistikBinding.inflate(inflater, container, false)
     }
@@ -25,8 +25,8 @@ class StatistikFragment : BaseFragment<FragmentStatistikBinding>() {
     override fun setupViewModel() {
     }
 
-    override fun setupUI(savedInstanceState: Bundle?) {
-        binding?.apply {
+    override fun setupOnViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding.apply {
             val pagerAdapter = PagerHelper(childFragmentManager)
             pagerAdapter.setupPagerFragment(StatistikHarianFragment(), resources.getString(R.string.statistik_harian))
             pagerAdapter.setupPagerFragment(StatistikGrafikFragment(), resources.getString(R.string.statistik_grafik))

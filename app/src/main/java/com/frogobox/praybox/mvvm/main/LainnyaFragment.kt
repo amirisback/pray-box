@@ -2,6 +2,7 @@ package com.frogobox.praybox.mvvm.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import com.frogobox.praybox.core.BaseFragment
 import com.frogobox.praybox.databinding.FragmentLainnyaBinding
@@ -12,7 +13,7 @@ class LainnyaFragment : BaseFragment<FragmentLainnyaBinding>() {
 
     override fun setupViewBinding(
         inflater: LayoutInflater,
-        container: ViewGroup
+        container: ViewGroup?
     ): FragmentLainnyaBinding {
         return FragmentLainnyaBinding.inflate(inflater, container, false)
     }
@@ -20,20 +21,20 @@ class LainnyaFragment : BaseFragment<FragmentLainnyaBinding>() {
     override fun setupViewModel() {
     }
 
-    override fun setupUI(savedInstanceState: Bundle?) {
-        binding?.ads?.adsPhoneTabBanner?.let { setupShowAdsBanner(it) }
+    override fun setupOnViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding.ads.adsPhoneTabBanner?.let { setupShowAdsBanner(it) }
         setupButtonClick()
     }
 
     private fun setupButtonClick() {
-        binding?.apply {
+        binding.apply {
             btnDoaActivity.setOnClickListener {
-                baseStartActivity<DoaActivity>()
+                frogoStartActivity<DoaActivity>()
                 setupShowAdsInterstitial()
             }
 
             btnTataCaraActivity.setOnClickListener {
-                baseStartActivity<TataCaraActivity>()
+                frogoStartActivity<TataCaraActivity>()
                 setupShowAdsInterstitial()
             }
         }

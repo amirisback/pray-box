@@ -42,7 +42,7 @@ class CatatanFragment : BaseFragment<FragmentCatatanBinding>() {
 
     override fun setupViewBinding(
         inflater: LayoutInflater,
-        container: ViewGroup
+        container: ViewGroup?
     ): FragmentCatatanBinding {
         return FragmentCatatanBinding.inflate(inflater, container, false)
     }
@@ -59,7 +59,7 @@ class CatatanFragment : BaseFragment<FragmentCatatanBinding>() {
     override fun setupViewModel() {
     }
 
-    override fun setupUI(savedInstanceState: Bundle?) {
+    override fun setupOnViewCreated(view: View, savedInstanceState: Bundle?) {
         val methodHelper = SingleFunc.Controller
         val mWaktuHelper = SingleFunc.WaktuShalat
         val crud = DataOperation()
@@ -68,7 +68,7 @@ class CatatanFragment : BaseFragment<FragmentCatatanBinding>() {
         methodHelper.systemTime
         methodHelper.systemRealTime
         methodHelper.sumRealTime
-        binding?.apply {
+        binding.apply {
             mWaktuHelper.setJadwalShalat(tvJadwalShalat)
             catatanTextviewTanggal.text = methodHelper.dateToday
 

@@ -17,7 +17,7 @@ class DoaFragment : BaseFragment<FragmentTatacaraTextBinding>() {
 
     override fun setupViewBinding(
         inflater: LayoutInflater,
-        container: ViewGroup
+        container: ViewGroup?
     ): FragmentTatacaraTextBinding {
         return FragmentTatacaraTextBinding.inflate(inflater, container, false)
     }
@@ -25,12 +25,12 @@ class DoaFragment : BaseFragment<FragmentTatacaraTextBinding>() {
     override fun setupViewModel() {
     }
 
-    override fun setupUI(savedInstanceState: Bundle?) {
+    override fun setupOnViewCreated(view: View, savedInstanceState: Bundle?) {
         setupRecyclerView()
     }
 
     private fun setupRecyclerView() {
-        binding?.apply {
+        binding.apply {
             val arrayDoaShalat = TataCaraJSON.extractDoaShalat()
             val adapter = DoaViewAdapter()
             adapter.setupRequirement(R.layout.content_tatacara_text_doa, arrayDoaShalat,
@@ -41,6 +41,7 @@ class DoaFragment : BaseFragment<FragmentTatacaraTextBinding>() {
                         position: Int,
                         notifyListener: FrogoRecyclerNotifyListener<DoaShalat>
                     ) {}
+
                     override fun onItemLongClicked(
                         view: View,
                         data: DoaShalat,

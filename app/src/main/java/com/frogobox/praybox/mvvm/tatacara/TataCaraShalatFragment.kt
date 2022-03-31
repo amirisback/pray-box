@@ -2,6 +2,7 @@ package com.frogobox.praybox.mvvm.tatacara
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -24,7 +25,7 @@ class TataCaraShalatFragment : BaseFragment<FragmentTatacaraImageBinding>() {
 
     override fun setupViewBinding(
         inflater: LayoutInflater,
-        container: ViewGroup
+        container: ViewGroup?
     ): FragmentTatacaraImageBinding {
         return FragmentTatacaraImageBinding.inflate(inflater, container, false)
     }
@@ -32,8 +33,8 @@ class TataCaraShalatFragment : BaseFragment<FragmentTatacaraImageBinding>() {
     override fun setupViewModel() {
     }
 
-    override fun setupUI(savedInstanceState: Bundle?) {
-        binding?.apply {
+    override fun setupOnViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding.apply {
             val mViewPager: ViewPager = tatacaraSliderimageViewpager
             val sliderDotspanel = tatacaraSliderdotsLinearLayout
             // -----------------------------------------------------------------------------------------

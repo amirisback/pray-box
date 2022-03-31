@@ -35,7 +35,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun setupViewModel() {
     }
 
-    override fun setupUI(savedInstanceState: Bundle?) {
+    override fun setupOnCreate(savedInstanceState: Bundle?) {
         setupToolbar()
         setupBottomNav(binding.framelayoutMainContainer.id)
         setupFragment(savedInstanceState)
@@ -59,7 +59,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.toolbar_menu_about -> {
-                baseStartActivity<AboutUsActivity>()
+                frogoStartActivity<AboutUsActivity>()
                 true
             }
             else -> super.onOptionsItemSelected(item)
