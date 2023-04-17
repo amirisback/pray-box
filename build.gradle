@@ -25,7 +25,7 @@ buildscript {
 
         nameAPK = nameApp.toLowerCase().replace(" ", "-")
 
-        kotlin_version = "1.6.10"
+        kotlin_version = '1.6.21'
         koin_version = "3.1.5"
     }
 
@@ -35,7 +35,7 @@ buildscript {
     }
 
     dependencies {
-        classpath "com.android.tools.build:gradle:7.1.2"
+        classpath 'com.android.tools.build:gradle:8.0.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
 
@@ -45,13 +45,6 @@ buildscript {
 
 }
 
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-        maven { url "https://jitpack.io" }
-    }
-}
 
 task clean(type: Delete) {
     delete rootProject.buildDir
