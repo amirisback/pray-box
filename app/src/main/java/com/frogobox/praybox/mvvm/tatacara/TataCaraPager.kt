@@ -20,14 +20,18 @@ import com.frogobox.praybox.R
  * -----------------------------------------
  * Name     : Muhammad Faisal Amir
  * E-mail   : faisalamircs@gmail.com
- * Line     : bullbee117
- * Phone    : 081357108568
+
+
  * Majors   : D3 Teknik Informatika 2016
  * Campus   : Telkom University
  * -----------------------------------------
  * id.amirisback.frogobox
  */
-class TataCaraPager(private val context: Context, private val images: Array<Int>) : PagerAdapter() {
+class TataCaraPager(
+    private val context: Context,
+    private val images: Array<Int>
+) : PagerAdapter() {
+
     private var layoutInflater: LayoutInflater? = null
     override fun getCount(): Int {
         return images.size

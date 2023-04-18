@@ -21,8 +21,8 @@ import android.util.Log;
  * -----------------------------------------
  * Name     : Muhammad Faisal Amir
  * E-mail   : f.miir117@gmail.com
- * Line     : bullbee117
- * Phone    : 081357108568
+
+
  * Majors   : D3 Teknik Informatika 2016
  * Campus   : Telkom University
  * -----------------------------------------

@@ -25,7 +25,8 @@ class NiatFragment : BaseFragment<FragmentTatacaraTextBinding>() {
     override fun setupViewModel() {
     }
 
-    override fun setupOnViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreatedExt(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreatedExt(view, savedInstanceState)
         binding.apply {
 
             val arrayNiatShalat = TataCaraJSON.extractNiatShalat()

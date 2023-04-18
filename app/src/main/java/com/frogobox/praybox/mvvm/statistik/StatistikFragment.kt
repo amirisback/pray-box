@@ -25,7 +25,8 @@ class StatistikFragment : BaseFragment<FragmentStatistikBinding>() {
     override fun setupViewModel() {
     }
 
-    override fun setupOnViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreatedExt(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreatedExt(view, savedInstanceState)
         binding.apply {
             val pagerAdapter = PagerHelper(childFragmentManager)
             pagerAdapter.setupPagerFragment(StatistikHarianFragment(), resources.getString(R.string.statistik_harian))

@@ -14,8 +14,8 @@ import com.frogobox.praybox.databinding.ActivityAboutUsBinding
  * -----------------------------------------
  * Name     : Muhammad Faisal Amir
  * E-mail   : faisalamircs@gmail.com
- * Line     : bullbee117
- * Phone    : 081357108568
+
+
  * Majors   : D3 Teknik Informatika 2016
  * Campus   : Telkom University
  * -----------------------------------------
@@ -29,8 +29,9 @@ class AboutUsActivity : BaseActivity<ActivityAboutUsBinding>() {
 
     override fun setupViewModel() {
     }
-
-    override fun setupOnCreate(savedInstanceState: Bundle?) {
+    
+    override fun onCreateExt(savedInstanceState: Bundle?) {
+        super.onCreateExt(savedInstanceState)
         setupDetailActivity("")
     }
 

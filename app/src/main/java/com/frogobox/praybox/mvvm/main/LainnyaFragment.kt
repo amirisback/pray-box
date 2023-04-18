@@ -4,10 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.frogobox.praybox.core.BaseAdCallback
 import com.frogobox.praybox.core.BaseFragment
 import com.frogobox.praybox.databinding.FragmentLainnyaBinding
 import com.frogobox.praybox.mvvm.doa.DoaActivity
 import com.frogobox.praybox.mvvm.tatacara.TataCaraActivity
+import com.frogobox.sdk.ext.gone
+import com.frogobox.sdk.ext.startActivityExt
+import com.frogobox.sdk.ext.visible
 
 class LainnyaFragment : BaseFragment<FragmentLainnyaBinding>() {
 
@@ -21,21 +25,47 @@ class LainnyaFragment : BaseFragment<FragmentLainnyaBinding>() {
     override fun setupViewModel() {
     }
 
-    override fun setupOnViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.ads.adsPhoneTabBanner?.let { setupShowAdsBanner(it) }
+    override fun onViewCreatedExt(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreatedExt(view, savedInstanceState)
         setupButtonClick()
     }
 
     private fun setupButtonClick() {
         binding.apply {
             btnDoaActivity.setOnClickListener {
-                frogoStartActivity<DoaActivity>()
-                setupShowAdsInterstitial()
+                setupShowAdsInterstitial(object : BaseAdCallback {
+
+                    override fun onAfterLoad() {
+                        requireContext().startActivityExt<DoaActivity>()
+                    }
+
+                    override fun onShowProgress() {
+                        progressBar.visible()
+                    }
+
+                    override fun onHideProgress() {
+                        progressBar.gone()
+                    }
+
+                })
             }
 
             btnTataCaraActivity.setOnClickListener {
-                frogoStartActivity<TataCaraActivity>()
-                setupShowAdsInterstitial()
+                setupShowAdsInterstitial(object : BaseAdCallback {
+
+                    override fun onAfterLoad() {
+                        requireContext().startActivityExt<TataCaraActivity>()
+                    }
+
+                    override fun onShowProgress() {
+                        progressBar.visible()
+                    }
+
+                    override fun onHideProgress() {
+                        progressBar.gone()
+                    }
+
+                })
             }
         }
     }
