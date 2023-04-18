@@ -62,10 +62,10 @@ Name Of Contribute
 <b>Bryan Rafsanzani</b>
 </td>
 <td align="center">
-<b>Muhammad Faisal Amir</b>
+<b>M. Faisal Amir</b>
 </td>
 <td align="center">
-<b>Muhamad Ikhsan Ramadhan</b>
+<b>M. Ikhsan Ramadhan</b>
 </td>
 </tr>
     
