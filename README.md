@@ -48,12 +48,15 @@ Name Of Contribute
 <tr>
 <td align="center">
 <a href="https://github.com/bryanrafsanzani"><img src="https://avatars.githubusercontent.com/u/36535733?v=4" width="100px;" alt=""/>
+</a>
 </td>
 <td align="center">
 <a href="https://github.com/amirisback"><img src="https://avatars3.githubusercontent.com/u/24654871?s=460&u=75331d873971a2b387962aade2ba544448e2822d&v=4" width="100px;" alt=""/>
+</a>
 </td>
 <td align="center">
-<a href="https://github.com/ikhsanramadhaan"><img src="https://avatars.githubusercontent.com/u/36533637?v=4" width="100px;" alt=""/><br />
+<a href="https://github.com/ikhsanramadhaan"><img src="https://avatars.githubusercontent.com/u/36533637?v=4" width="100px;" alt=""/>
+</a>
 </td>
 </tr>
     
