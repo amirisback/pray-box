@@ -2,7 +2,7 @@ package com.frogobox.praybox.core
 
 import androidx.viewbinding.ViewBinding
 import com.frogobox.praybox.R
-import com.frogobox.sdk.FrogoFragment
+import com.frogobox.sdk.view.FrogoBindFragment
 import com.google.android.gms.ads.AdView
 
 /**
@@ -22,7 +22,7 @@ import com.google.android.gms.ads.AdView
  * com.frogobox.publicspeakingbooster.base
  *
  */
-abstract class BaseFragment<VB : ViewBinding> : FrogoFragment<VB>() {
+abstract class BaseFragment<VB : ViewBinding> : FrogoBindFragment<VB>() {
 
     private val mActivity: BaseActivity<*> by lazy {
         (activity as BaseActivity<*>)

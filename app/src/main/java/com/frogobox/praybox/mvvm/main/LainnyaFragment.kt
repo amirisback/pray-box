@@ -8,6 +8,7 @@ import com.frogobox.praybox.core.BaseFragment
 import com.frogobox.praybox.databinding.FragmentLainnyaBinding
 import com.frogobox.praybox.mvvm.doa.DoaActivity
 import com.frogobox.praybox.mvvm.tatacara.TataCaraActivity
+import com.frogobox.sdk.ext.startActivityExt
 
 class LainnyaFragment : BaseFragment<FragmentLainnyaBinding>() {
 
@@ -21,7 +22,8 @@ class LainnyaFragment : BaseFragment<FragmentLainnyaBinding>() {
     override fun setupViewModel() {
     }
 
-    override fun setupOnViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreatedExt(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreatedExt(view, savedInstanceState)
         binding.ads.adsPhoneTabBanner?.let { setupShowAdsBanner(it) }
         setupButtonClick()
     }
@@ -29,12 +31,12 @@ class LainnyaFragment : BaseFragment<FragmentLainnyaBinding>() {
     private fun setupButtonClick() {
         binding.apply {
             btnDoaActivity.setOnClickListener {
-                frogoStartActivity<DoaActivity>()
+                requireContext().startActivityExt<DoaActivity>()
                 setupShowAdsInterstitial()
             }
 
             btnTataCaraActivity.setOnClickListener {
-                frogoStartActivity<TataCaraActivity>()
+                requireContext().startActivityExt<TataCaraActivity>()
                 setupShowAdsInterstitial()
             }
         }

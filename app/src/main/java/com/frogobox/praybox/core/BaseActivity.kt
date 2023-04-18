@@ -1,14 +1,14 @@
 package com.frogobox.praybox.core
 
 import android.graphics.drawable.ColorDrawable
-import android.os.Bundle
 import android.os.Handler
 import android.view.WindowManager
 import androidx.core.content.ContextCompat
 import androidx.viewbinding.ViewBinding
-import com.frogobox.admob.ui.FrogoSdkAdmobActivity
+import com.frogobox.ad.ui.FrogoAdBindActivity
 import com.frogobox.praybox.R
 import com.frogobox.praybox.util.SingleConstant
+import com.frogobox.sdk.ext.startActivityExt
 
 
 /**
@@ -28,7 +28,7 @@ import com.frogobox.praybox.util.SingleConstant
  * com.frogobox.publicspeakingbooster.base
  *
  */
-abstract class BaseActivity<VB : ViewBinding> : FrogoSdkAdmobActivity<VB>() {
+abstract class BaseActivity<VB : ViewBinding> : FrogoAdBindActivity<VB>() {
 
     protected fun setupCustomTitleToolbar(title: Int) {
         supportActionBar?.setTitle(title)
@@ -44,7 +44,7 @@ abstract class BaseActivity<VB : ViewBinding> : FrogoSdkAdmobActivity<VB>() {
 
     protected inline fun <reified ClassActivity> setupSplashScreen() {
         Handler().postDelayed({
-            frogoStartActivity<ClassActivity>()
+            startActivityExt<ClassActivity>()
             this@BaseActivity.finish()
         }, SingleConstant.Const.SPLASH_INTERVAL.toLong())
     }

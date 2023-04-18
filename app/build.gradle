@@ -6,7 +6,29 @@ plugins {
 
 android {
 
+    // project settings
+    def nameApp = "Pray Box"
+
+    def appDomain = "com"
+    def appDevConsole = "frogobox"
+    def appName = "praybox"
+
+    def versionMajor = 1
+    def versionMinor = 0
+    def versionPatch = 4
+
+    def projectCompileSdk = 33
+    def projectMinSdk = 21
+    def projectTargetSdk = projectCompileSdk
+
+    def projectApplicationId = "$appDomain.$appDevConsole.$appName"
+    def projectVersionCode = (versionMajor * 100) + (versionMinor * 10) + (versionPatch * 1)
+    def projectVersionName = "$versionMajor.$versionMinor.$versionPatch"
+
+    def nameAPK = nameApp.toLowerCase().replace(" ", "-")
+
     compileSdk projectCompileSdk
+    namespace 'com.frogobox.praybox'
 
     defaultConfig {
         applicationId projectApplicationId
@@ -99,39 +121,35 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
-    namespace 'com.frogobox.praybox'
+
 
 }
 
 dependencies {
-    implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-    implementation "androidx.appcompat:appcompat:1.4.1"
-    implementation "androidx.core:core-ktx:1.7.0"
-    implementation "androidx.preference:preference-ktx:1.2.0"
-    implementation "androidx.constraintlayout:constraintlayout:2.1.3"
+    implementation "androidx.appcompat:appcompat:1.6.1"
+    implementation "androidx.core:core-ktx:1.10.0"
+    implementation "androidx.constraintlayout:constraintlayout:2.1.4"
 
-    implementation "androidx.work:work-runtime-ktx:2.7.1"
+    implementation "androidx.work:work-runtime-ktx:2.8.1"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 
-    implementation "com.google.code.gson:gson:2.9.0"
-    implementation "com.google.android.material:material:1.5.0"
-    implementation "com.google.android.gms:play-services-ads:20.6.0"
+    implementation "com.google.code.gson:gson:2.10.1"
+    implementation "com.google.android.material:material:1.8.0"
+    implementation "com.google.android.gms:play-services-ads:22.0.0"
 
     implementation "org.jbundle.util.osgi.wrapped:org.jbundle.util.osgi.wrapped.org.apache.http.client:4.1.2"
 
     implementation "com.github.PhilJay:MPAndroidChart:3.1.0"
 
-    implementation "com.github.amirisback:frogo-recycler-view:4.0.7"
-    implementation "com.github.amirisback:frogo-admob:4.3.1"
+    implementation "com.github.amirisback:frogo-recycler-view:4.3.4"
+    implementation "com.github.amirisback:frogo-admob:5.2.0"
 
-    implementation "com.github.frogobox:frogo-sdk:0.0.2"
-    implementation "com.github.frogobox:frogo-ui:0.0.1"
-    implementation "com.github.frogobox:frogo-consume-api:2.0.5"
+    implementation "com.github.frogobox:frogo-sdk:2.1.6"
+    implementation "com.github.frogobox:frogo-ui:1.1.4"
+    implementation "com.github.frogobox:frogo-consume-api:2.4.5"
 
-    implementation "com.github.bumptech.glide:glide:4.13.1"
-
-    kapt "androidx.lifecycle:lifecycle-compiler:2.5.0-alpha05"
-    kapt "com.github.bumptech.glide:compiler:4.13.1"
+    implementation "com.github.bumptech.glide:glide:4.15.1"
+    kapt "com.github.bumptech.glide:compiler:4.15.1"
 
 }

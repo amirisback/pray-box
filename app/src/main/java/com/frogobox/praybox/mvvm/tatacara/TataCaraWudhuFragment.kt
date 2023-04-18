@@ -33,7 +33,8 @@ class TataCaraWudhuFragment : BaseFragment<FragmentTatacaraImageBinding>() {
     override fun setupViewModel() {
     }
 
-    override fun setupOnViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreatedExt(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreatedExt(view, savedInstanceState)
         binding.apply {
             val mViewPager = tatacaraSliderimageViewpager
             val sliderDotspanel = tatacaraSliderdotsLinearLayout

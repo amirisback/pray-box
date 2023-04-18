@@ -7,8 +7,9 @@ import com.frogobox.praybox.R
 import com.frogobox.praybox.core.BaseActivity
 import com.frogobox.praybox.databinding.ActivityMainBinding
 import com.frogobox.praybox.mvvm.statistik.StatistikFragment
+import com.frogobox.sdk.ext.startActivityExt
 
-/*
+/**
  * Created by Faisal Amir
  * FrogoBox Inc License
  * =========================================
@@ -18,10 +19,6 @@ import com.frogobox.praybox.mvvm.statistik.StatistikFragment
  * -----------------------------------------
  * Name     : Muhammad Faisal Amir
  * E-mail   : faisalamircs@gmail.com
- * Line     : bullbee117
- * Phone    : 081357108568
- * Majors   : D3 Teknik Informatika 2016
- * Campus   : Telkom University
  * -----------------------------------------
  * id.amirisback.frogobox
  */
@@ -35,7 +32,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun setupViewModel() {
     }
 
-    override fun setupOnCreate(savedInstanceState: Bundle?) {
+    override fun onCreateExt(savedInstanceState: Bundle?) {
+        super.onCreateExt(savedInstanceState)
         setupToolbar()
         setupBottomNav(binding.framelayoutMainContainer.id)
         setupFragment(savedInstanceState)
@@ -59,7 +57,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.toolbar_menu_about -> {
-                frogoStartActivity<AboutUsActivity>()
+                startActivityExt<AboutUsActivity>()
                 true
             }
             else -> super.onOptionsItemSelected(item)

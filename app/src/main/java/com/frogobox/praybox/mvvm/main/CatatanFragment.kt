@@ -23,8 +23,8 @@ import java.util.*
  * -----------------------------------------
  * Name     : Muhammad Faisal Amir
  * E-mail   : faisalamircs@gmail.com
- * Line     : bullbee117
- * Phone    : 081357108568
+
+
  * Majors   : D3 Teknik Informatika 2016
  * Campus   : Telkom University
  * -----------------------------------------
@@ -59,7 +59,8 @@ class CatatanFragment : BaseFragment<FragmentCatatanBinding>() {
     override fun setupViewModel() {
     }
 
-    override fun setupOnViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreatedExt(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreatedExt(view, savedInstanceState)
         val methodHelper = SingleFunc.Controller
         val mWaktuHelper = SingleFunc.WaktuShalat
         val crud = DataOperation()

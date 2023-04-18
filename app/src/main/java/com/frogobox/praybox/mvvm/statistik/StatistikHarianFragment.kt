@@ -78,7 +78,8 @@ class StatistikHarianFragment : BaseFragment<FragmentStatistikHarianBinding>(), 
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
-    override fun setupOnViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreatedExt(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreatedExt(view, savedInstanceState)
         binding.apply {
             // -----------------------------------------------------------------------------------------
             val empty_listView = empty.statistikViewEmptyview
